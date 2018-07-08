@@ -19,3 +19,5 @@
 }
 ````
 - Set up dns CNAME record: www.backslash.site -> www.backslash.site.s3-website-eu-west-1.amazonaws.com
+
+- nest use this thing to get HTTPS TLS with lets encrypt [S3 Letsencrypt plugin](https://github.com/dlapiduz/certbot-s3front)
