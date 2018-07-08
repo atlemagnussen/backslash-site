@@ -1,29 +1,30 @@
 {
-  "name": "backslash-site",
-  "version": "0.0.1",
-  "description": "test deploy with was",
-  "main": "deploy.js",
-  "dependencies": {
-    "aws-sdk": "^2.270.1"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "node deploy.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/atlemagnussen/backslash-site.git"
-  },
-  "keywords": [
-    "aws",
-    "nodejs",
-    "deploy",
-    "static"
-  ],
-  "author": "Atle Magnussen",
-  "license": "UNLICENSED",
-  "bugs": {
-    "url": "https://github.com/atlemagnussen/backslash-site/issues"
-  },
-  "homepage": "https://github.com/atlemagnussen/backslash-site#readme"
+    "name": "backslash-site",
+    "version": "0.0.1",
+    "description": "test deploy with was",
+    "main": "deploy.js",
+    "dependencies": {
+        "aws-sdk": "^2.270.1"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "node deploy.js",
+        "start": "node server.js 2000"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/atlemagnussen/backslash-site.git"
+    },
+    "keywords": [
+        "aws",
+        "nodejs",
+        "deploy",
+        "static"
+    ],
+    "author": "Atle Magnussen",
+    "license": "UNLICENSED",
+    "bugs": {
+        "url": "https://github.com/atlemagnussen/backslash-site/issues"
+    },
+    "homepage": "http://backslash-site.s3-website-eu-west-1.amazonaws.com/"
 }

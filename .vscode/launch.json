@@ -6,6 +6,12 @@
             "request": "launch",
             "name": "Launch deploy",
             "program": "${workspaceFolder}/deploy.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch server",
+            "program": "${workspaceFolder}/server.js"
         }
     ]
 }
