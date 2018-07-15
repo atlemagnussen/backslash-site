@@ -11,4 +11,5 @@ s3.getBucketWebsite(bucketParams, function(err, data) {
     }
   });
 
+// 1. For example: aws cloudfront create-invalidation --distribution-id $CDN_DISTRIBUTION_ID --paths "/*"
 console.log('aws');
