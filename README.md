@@ -25,3 +25,11 @@
 # Make cloudfront point to S3 and point DNS to Cloudfront instead
 
 - Origins - Origin Domain Name: www.backslash.site.s3-website-eu-west-1 (use the endpoint url from S3 static web hosting options page)
+
+# Make client side routing without hashbang possible
+- Go to Error Pages tab, click on Create Custom Error Response:
+- HTTP Error Code: 403: Forbidden (404: Not Found, in case of S3 Static Website)
+- Customize Error Response: Yes
+- Response Page Path: /index.html
+- HTTP Response Code: 200: OK
+- Click on Create
