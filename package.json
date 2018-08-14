@@ -4,7 +4,7 @@
     "description": "test deploy with was",
     "main": "deploy.js",
     "dependencies": {
-        "aws-sdk": "^2.270.1"
+        "aws-sdk": "^2.292.0"
     },
     "devDependencies": {},
     "scripts": {

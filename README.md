@@ -1,5 +1,9 @@
 # Try make a static site on AWS S3 bucket with custom domain name and deploy with aws sdk
 
+## Documentation
+[API documentation for the sdk](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS.html)
+
+[Examples](https://github.com/awsdocs/aws-doc-sdk-examples)
 ## Create Bucket on amazon
 - Use the excact name as the dns record you plan to forward. www.backslash.site in this case
 - Set up static web hosting on the bucket
