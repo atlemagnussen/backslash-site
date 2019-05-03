@@ -1,0 +1,16 @@
+{
+    "short_name": "Backslash site",
+    "name": "backslash.site",
+    "icons": [
+        {
+            "src": "https://s3-eu-west-1.amazonaws.com/atle-static/backslash/html5b-192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        }
+    ],
+    "start_url": "/",
+    "background_color": "#663399",
+    "display": "fullscreen",
+    "scope": "/",
+    "theme_color": "#663399"
+}

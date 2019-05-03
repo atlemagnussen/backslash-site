@@ -1,0 +1,7 @@
+.toc-list li a{
+    color: white;
+}
+.toc-list li a:hover{
+    color: white;
+    background: var(--purple-hover);
+}

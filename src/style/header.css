@@ -1,0 +1,75 @@
+.headerline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.headermenu {
+    text-align: left;
+    padding-left: 10px;
+    font-family: 'Fjord One', serif;
+}
+.menu-button {
+    cursor: pointer;
+    margin-left: 10px;
+    background: var(--purple-light);
+}
+.menu-button svg {
+    width: 40px;
+    height: 40px;
+}
+main.scrolled .menu-button {
+    visibility: visible;
+    transition: 0.3s;
+    background: var(--purple-light);
+}
+main.scrolled.mobile-hidden .left .treeview {
+    display: none;
+}
+main:not(.mobile-hidden) .menu-button {
+    background: var(--purple-light);
+}
+h1 {
+    font-size: 2em;
+}
+a, a:visited {
+    font-style: normal;
+    /* color: lightblue; */
+    color: #76d9e6;
+    text-decoration: none;
+}
+.headline {
+    margin: 5px;
+    display: inline-block;
+    font-size: 2.5rem;
+    transition: 0.3s;
+}
+.headline span.F {
+    /* color: #ef3b7d; */
+    color: #e6d06c;
+}
+.headline span.D {
+    color: #e6d06c;
+}
+.subtitle {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-right: 10px;
+    color: var(--purple-main);
+}
+.logo {
+    height: 3rem;
+    width: 3rem;
+    display: inline-block;
+}
+
+@media only screen and (max-width : 640px) {
+    .menu-button {
+    	background: transparent;
+    }
+    main.scrolled .headline, .headline {
+        font-size: 1.8rem;
+    }
+    .subtitle {
+        font-size: 1rem;
+    }
+}

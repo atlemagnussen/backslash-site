@@ -4,14 +4,14 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch deploy",
-            "program": "${workspaceFolder}/deploy.js"
+            "name": "Launch server",
+            "program": "${workspaceFolder}/server.js"
         },
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch server",
-            "program": "${workspaceFolder}/server.js"
+            "name": "Launch test",
+            "program": "${workspaceFolder}/test.js"
         }
     ]
 }

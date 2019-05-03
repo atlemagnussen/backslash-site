@@ -1,0 +1,8 @@
+article {
+    padding: 10px;
+    z-index: 120;
+    background: transparent;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}

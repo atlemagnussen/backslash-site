@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="/lib/octicons.css">
+    <link rel="stylesheet" href="/lib/eztree.css">
+    <link rel="stylesheet" href="/lib/prism.css">
+    <link rel="stylesheet" href="/lib/prism-xonokai.css">
+    <link rel="stylesheet" href="/style/vars.css">
+    <link rel="stylesheet" href="/style/layout.css">
+    <link rel="stylesheet" href="/style/header.css">
+    <link rel="stylesheet" href="/style/nav.css">
+    <link rel="stylesheet" href="/components/blog/blog.css">
+    <link rel="stylesheet" href="/components/toc/toc.css">
+    <link href="https://fonts.googleapis.com/css?family=Fjord+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
+    <title>Backslash.site</title>
+</head>
+
+<body>
+    <svg class="svg-defs" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <symbol id="food-icon" viewBox="0 0 205.12 203.52">
+                <path d="m92.254 200.2c-37.702-3.455-71.899-30.708-83.479-66.765-12.484-35.591-1.6188-77.584 26.148-102.98 29.758-28.922 78.48-34.666 114.49-14.329 31.688 17.213 52.349 52.836 50.669 88.978-0.27729 40.493-29.013 78.406-67.456 90.634-12.973 4.5606-26.76 5.1619-40.369 4.4653zm5.4065-40.43c8.6847-2.4876 19.034-5.5156 23.514-14.07-0.452-11.599-15.311-5.0667-19.711-13.166-2.7308-7.05 4.8123-12.888 11.393-12.135-0.0831-9.3032 14.802-7.7851 9.3443-17.621-0.34263-10.238 12.314-8.165 16.143-15.649 8.7364-8.0927 13.009 4.1647 18.64 7.0761 3.6712-8.1489-1.6627-19.573-8.2813-25.497-5.9549-5.3529-13.776-7.6128-21.377-9.4868-3.9882-9.4281-11.661-18.476-22.647-18.821-10.227-2.9116-10.677 6.0044-7.0657 12.9 3.5395 6.642-1.9297 14.139-2.9317 17.996 8.0829 6.4085-2.4742 10.883-3.7745 15.783 0.54633 8.1102-8.331 9.834-13.705 9.3784-2.0586 12.638-16.108 8.1721-18.064-1.752-7.779-9.8305-17.303 5.6032-16.895 13.573-1.7242 14.922 3.04 32.293 16.94 40.018-2.6294 2.0624-7.7506 9.68 0.36146 6.1834 3.1029-2.5946 1.241 10.123 5.7806 2.9409 2.0699-10.57 11.952 5.2049 19.25 2.8399 4.3461 0.35444 8.7789 0.18188 13.086-0.49091zm-12.926-3.9806c-10.462-0.0517-15.002-10.85-24.677-12.289-12.559-8.3096-16.056-25.901-12.333-39.755 1.2076-8.6011 10.352-9.393 10.126 0.16366 2.7862 10.035 9.5494 18.49 17.583 24.909-4.2423 7.9038 5.6841 11.538 11.752 13.579 9.2257 4.4533 20.262-2.092 28.483 1.2851-2.0949 8.469-16.372 11.427-24.685 12.237-2.0822 0.0347-4.1731 0.0685-6.249-0.12943zm66.394-74.446c-8.087-10.018-19.424-2.176-28.984-1.2897-9.204-3.4475-12.56-14.002-16.761-22.053-2.784-6.0979-8.7987-17.313 3.1333-12.381 10.095 1.5725 11.103 14.083 18.57 18.199 10.191 2.0408 21.919 7.2301 24.898 18.099zm-15.948-27.264c3.8132-10.6 18.005-0.8432 21.074-8.2458-8.4269-4.9018-22.096-1.9585-25.752 7.8585 1.3718 0.51883 3.8783 3.6978 4.6779 0.38735z"/>
+            </symbol>
+            <symbol id="menu-icon" viewBox="0 0 32 32">
+                <path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"/>
+            </symbol>
+        <defs>
+    </svg>
+    
+    <div class="background-image"></div>
+    <main role="main" class="full-screen mobile-hidden" id="main">
+        <header>
+            <div class="headerline" id="headerline">
+                <div class="menu-button" id="menu-button">
+                    <svg xmlns="http://www.w3.org/2000/svg">
+                        <use xlink:href="#menu-icon" fill="white">
+                    </svg>
+                </div>
+                <div class="headline"><span class="F">B</span>ack<span class="D">S</span>lash</div>
+                <a href="/"><div class="subtitle">\</div></a>
+            </div>
+        </header>
+
+        <section id="section">
+            <aside id="left" class="left mobile-hidden">
+                <div id="treeview" class="treeview"></div>
+            </aside>
+            <div class="view" id="view">
+
+            </div>
+            <aside class="right">
+                <div id="toc-container"></div>
+            </aside>
+        </section>
+
+    </main>
+    <script src="/lib/showdown.min.js"></script>
+    <script src="/lib/prism.js"></script>
+</body>
+
+</html>

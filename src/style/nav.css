@@ -1,0 +1,13 @@
+.treeview.ez-tree summary:hover {
+    background: var(--purple-hover);
+}
+.treeview.ez-tree span[selected="true"]{
+    background-color: var(--purple-light);
+}
+
+.left .ez-tree .node-text.icon-file::before {
+    color: #e6d06c;
+}
+.token.operator {
+    background: none;
+}
