@@ -1,4 +1,4 @@
-# Try make a static site on AWS S3 bucket with custom domain name and deploy with aws sdk
+# static site on AWS S3, custom domain name, letsencrypt SSL, aws cli
 
 ## Documentation
 [API documentation for the sdk](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS.html)
