@@ -1,0 +1,58 @@
+{
+    "rootUrl": "/articles/",
+    "nodes": [{
+        "id": "root",
+        "name": "#",
+        "children": [{
+                "id": "js",
+                "name": "Javascript",
+                "children": [{
+                    "id": "es6-modules",
+                    "name": "ES6 modules"
+                }]
+            },
+            {
+                "id": "linux",
+                "name": "Linux",
+                "children": [{
+                        "id": "sane-scanners-on-linux",
+                        "name": "Scanners on linux"
+                    },
+                    {
+                        "id": "arch-linux-install",
+                        "name": "Arch Linux install"
+                    },
+                    {
+                        "id": "arch-linux-macbook-air",
+                        "name": "Arch Linux MBA 2013"
+                    }
+                ]
+            },
+            {
+                "id": "network",
+                "name": "Network",
+                "children": [
+                    {
+                        "id": "diy-router-1",
+                        "name": "DIY router rPi ipv4"
+                    }
+                ]
+            },
+            {
+                "id": "cloud",
+                "name": "Cloud",
+                "children": [
+                    {
+                        "id": "elastic-setup-linux",
+                        "name": "Elastic setup Linux"
+                    }
+                ]
+            },
+            {
+                "id": "about",
+                "name": "About"
+            }
+        ]
+    }],
+    "config": {}
+}
