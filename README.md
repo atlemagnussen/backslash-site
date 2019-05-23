@@ -12,6 +12,9 @@ git clone git@github.com:atlemagnussen/ez-tree.git (on the same level as backsla
 npm start
 ```
 
+## Deployment CI with Travis
+[Travis install and setup](./TRAVIS.md)
+
 ## Deploy AWS
 requires AWS SDK and aws init with IAM user, rights to S3 and keys  
 see [S3-SSL](./S3SSL.md) for how to use letsencrypt certbot with S3 and CloudFront
