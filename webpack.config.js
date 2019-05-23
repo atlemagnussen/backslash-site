@@ -30,9 +30,9 @@ const libs = [
     'node_modules/prismjs/prism.js',
     'node_modules/prismjs/themes/prism.css',
     'node_modules/prism-themes/themes/prism-xonokai.css',
-    '../ez-tree/public/eztree.js',
-    '../ez-tree/public/eztree.css',
-    '../ez-tree/public/icons/*.*'
+    './ez-tree/public/eztree.js',
+    './ez-tree/public/eztree.css',
+    './ez-tree/public/icons/*.*'
 ];
 let libConf = [];
 
@@ -87,13 +87,13 @@ srcConf.push({
     "toType": 'dir'
 });
 srcConf.push({
-    "from": '../articles/*.*',
+    "from": './articles/*.*',
     "to": '../src/articles',
     "toType": 'dir',
     "flatten": true
 });
 srcConf.push({
-    "from": '../articles/*.*',
+    "from": './articles/*.*',
     "to": './articles',
     "toType": 'dir',
     "flatten": true
