@@ -8,6 +8,10 @@
         "build": "webpack --mode production",
         "deploy": "webpack --mode production"
     },
+    "repository": {
+        "type": "git",
+        "url": "git+https@github.com:atlemagnussen/backslash-site.git"
+    },
     "keywords": [
         "html",
         "js",
