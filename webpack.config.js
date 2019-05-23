@@ -30,9 +30,9 @@ const libs = [
     'node_modules/prismjs/prism.js',
     'node_modules/prismjs/themes/prism.css',
     'node_modules/prism-themes/themes/prism-xonokai.css',
-    './ez-tree/public/eztree.js',
-    './ez-tree/public/eztree.css',
-    './ez-tree/public/icons/*.*'
+    'node_modules/es6-tree/public/eztree.js',
+    'node_modules/es6-tree/public/eztree.css',
+    'node_modules/es6-tree/public/icons/*.*'
 ];
 let libConf = [];
 

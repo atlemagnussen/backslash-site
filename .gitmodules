@@ -1,6 +1,3 @@
 [submodule "articles"]
 	path = articles
 	url = git@github.com:atlemagnussen/articles.git
-[submodule "ez-tree"]
-	path = ez-tree
-	url = git@github.com:atlemagnussen/ez-tree.git
