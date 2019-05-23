@@ -1,6 +1,6 @@
 import About from "./components/about/about.js";
 import Blog from "./components/blog/blog.js";
-import EzTree from "./lib/eztree.js";
+import EzTree from "../node_modules/es6-tree/public/eztree.js";
 import React from "react";
 import ReactDOM from "react-dom";
 import Router from "./services/router.js";
