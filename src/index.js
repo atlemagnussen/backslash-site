@@ -1,6 +1,6 @@
 import About from "./components/about/about.js";
 import Blog from "./components/blog/blog.js";
-import EzTree from "../node_modules/es6-tree/public/eztree.js";
+import EsTree from '../node_modules/es6-tree/src/es6tree.js';
 import React from "react";
 import ReactDOM from "react-dom";
 import Router from "./services/router.js";
@@ -29,7 +29,7 @@ class Index {
     }
     init(config) {
 
-        this.tree = new EzTree("treeview", config.config, config.nodes);
+        this.tree = new EsTree("treeview", config.config, config.nodes);
         this.tree.open('root');
         this.tree.on("select", (ev) => {
             if (ev.target.id) {
