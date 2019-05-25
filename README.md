@@ -1,4 +1,5 @@
 # Backslash-site
+[![Build Status](https://travis-ci.org/atlemagnussen/backslash-site.svg?branch=master)](https://travis-ci.org/atlemagnussen/backslash-site)
 
 ## Dependencies
 
