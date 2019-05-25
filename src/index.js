@@ -31,14 +31,12 @@ class Index {
 
         this.tree = new EsTree("treeview", config.config, config.nodes);
         this.tree.open('root');
-        this.tree.on("select", (ev) => {
-            if (ev.target.id) {
-                if (treeconfig.isBlog(ev.target.id)) {
-                    this.router.navigate(`/blog/${ev.target.id}`);
-                    setTimeout(() => {
-                        this.toggleMenu();
-                    }, TIMEOUT);
-                }
+        this.tree.on("select", (node) => {
+            if (node.id && !node.children) {
+                this.router.navigate(`/blog/${node.id}`);
+                setTimeout(() => {
+                    this.toggleMenu();
+                }, TIMEOUT);
             }
         });
 
