@@ -12,11 +12,7 @@ const MOBILEHIDETIMEOUT = 100;
 
 class Index {
     constructor() {
-        treeconfig.get().
-            then((config) => {
-                this.config = config;
-                this.init(config);
-            });
+        this.init();
     }
 
     renderAbout() {
@@ -27,9 +23,10 @@ class Index {
             viewEl
         );
     }
-    init(config) {
+    async init() {
+        const articleTree = await treeconfig.get();
 
-        this.tree = new EsTree("treeview", config.config, config.nodes);
+        this.tree = new EsTree("treeview", articleTree.config, articleTree.nodes);
         this.tree.open('root');
         this.tree.on("select", (node) => {
             if (node.id && !node.children) {

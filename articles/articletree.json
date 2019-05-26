@@ -3,6 +3,7 @@
     "nodes": [{
         "id": "root",
         "name": "#",
+        "type": "main",
         "children": [{
                 "id": "js",
                 "name": "Javascript",
@@ -54,5 +55,11 @@
             }
         ]
     }],
-    "config": {}
+    "config": {
+        "types": {
+            "main": {
+                "css": "icon icon-file-submodule"
+            }
+        }
+    }
 }
