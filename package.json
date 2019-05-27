@@ -49,6 +49,6 @@
     "dependencies": {
         "babel-polyfill": "^6.26.0",
         "disqus-react": "^1.0.5",
-        "es6-tree": "^0.2.2"
+        "es6-tree": "^0.2.3"
     }
 }
