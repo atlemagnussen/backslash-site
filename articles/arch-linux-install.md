@@ -4,8 +4,16 @@ mainly follow the official [Arch installation guide](https://wiki.archlinux.org/
 
 ## EFI
 - Partition system has to be GPT
-- Create /boot/ partition of a couple of hundred MB
+- Create `/boot/` or `/efi/` partition of a couple of hundred MB
 - boot partion must be flagged **esp**, check with ```parted /dev/nvme0n1 print```
+
+### create EFI with fdisk
+- `fdisk /dev/nvme0n1`
+- press `n` for new
+- select `2048` as default start sector
+- set size by `+512M`
+- now partition is created as `Linux filesystem`
+- Change it by hitting `t` then number `1`
 
 ## GRUB
 - Install inside chroot ```pacman -Sy grub os-prober efibootmgr```

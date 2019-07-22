@@ -3,7 +3,6 @@
     "nodes": [{
         "id": "root",
         "name": "#",
-        "type": "main",
         "children": [{
                 "id": "js",
                 "name": "Javascript",
@@ -28,6 +27,14 @@
                         "name": "Arch Linux MBA 2013"
                     }
                 ]
+            },
+            {
+                "id": "bsd",
+                "name": "BSD",
+                "children": [{
+                    "id": "freebsd-install",
+                    "name": "FreeBSD install"
+                }]
             },
             {
                 "id": "network",
@@ -55,11 +62,5 @@
             }
         ]
     }],
-    "config": {
-        "types": {
-            "main": {
-                "css": "icon icon-file-submodule"
-            }
-        }
-    }
+    "config": {}
 }

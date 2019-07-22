@@ -1,2 +1,2 @@
-#!/bin/bash
-cp -r ../articles/ .
+#!/usr/bin/env bash
+cp -r ../articles/*.* ./articles/
