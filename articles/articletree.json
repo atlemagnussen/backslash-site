@@ -25,6 +25,10 @@
                     {
                         "id": "arch-linux-macbook-air",
                         "name": "Arch Linux MBA 2013"
+                    },
+                    {
+                        "id": "gentoo-samsung-cronos",
+                        "name": "Gentoo Samsung Cronos"
                     }
                 ]
             },

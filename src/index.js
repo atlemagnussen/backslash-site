@@ -31,6 +31,7 @@ class Index {
         this.tree.on("select", (node) => {
             if (node.id && !node.children) {
                 this.router.navigate(`/blog/${node.id}`);
+                this.setDocumentTitle(node.name);
                 setTimeout(() => {
                     this.toggleMenu();
                 }, TIMEOUT);
@@ -85,6 +86,9 @@ class Index {
 
         // this.registerServiceWorker();
         this.unregisterServiceWorker();
+    }
+    setDocumentTitle(subTitle) {
+        document.title = `Backslash.site - ${subTitle}`;
     }
     toggleMenu() {
         if (this.dontToggle) {
