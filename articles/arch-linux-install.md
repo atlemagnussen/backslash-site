@@ -48,6 +48,8 @@ enable and start systemd-resolved.service for dns to start working
 ### Local user / sudo
 ````
 useradd -m -g users -G wheel -s /bin/bash myusername
+passwd myusername # set password
+
 pacman -S sudo
 groupadd sudo
 usermod -aG sudo myusername

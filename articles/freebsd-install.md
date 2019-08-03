@@ -1,5 +1,11 @@
 # FreeBSD install atle
 
+## U2F / Yubikey
+Install this package:
+```sh
+https://www.freshports.org/security/u2f-devd
+```
+
 ## Xorg
 
 Just install
