@@ -59,14 +59,6 @@ export default class BlogComponent extends React.Component {
     }
 
     render() {
-        const disqusShortname = 'backslash-site';
-
-        const disqusConfig = {
-            url: `https://www.backslash.site/blog/${this.state.id}`,
-            identifier: this.state.id,
-            title: this.state.id,
-        };
-
         return (
             <article id="current-article" dangerouslySetInnerHTML={this.wrapMarkupContent()}></article>
         );

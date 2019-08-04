@@ -40,6 +40,9 @@ class Index {
 
         document.addEventListener('blogIdChanged', (ev) => {
             this.tree.select(ev.detail.id);
+            const name = treeconfig.findNode(ev.detail.id);
+
+            this.setDocumentTitle(name);
         });
 
         const routerConfig = [{
