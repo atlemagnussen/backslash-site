@@ -47,8 +47,8 @@ class Index {
             const viewEl = document.getElementById('view');
 
             viewEl.scrollTo({
-                top: 100,
-                left: 100,
+                top: 0,
+                left: 0,
                 behavior: 'auto'
             });
         });
