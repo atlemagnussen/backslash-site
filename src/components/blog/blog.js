@@ -1,4 +1,3 @@
-import Disqus from 'disqus-react';
 import React from "react";
 import ReactDOM from "react-dom";
 import Toc from "../toc/toc.js";
@@ -64,6 +63,17 @@ export default class BlogComponent extends React.Component {
         );
     }
 
+    async setMetaDescription(id) {
+        const node = await treeconfig.findNode(id);
+
+        if (node) {
+            const metaDescription = document.querySelector("meta[name='description']");
+
+            if (metaDescription && Array.isArray(metaDescription) && metaDescription.length > 0) {
+                metaDescription[0].setAttribute("content", `Backslash.site - ${node.description}`);
+            }
+        }
+    }
     wrapMarkupContent() {
         return {"__html": this.state.content};
     }
