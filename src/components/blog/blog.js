@@ -52,6 +52,7 @@ export default class BlogComponent extends React.Component {
                 "content": temp.innerHTML,
                 id
             });
+            this.setMetaDescription(id);
         } catch (err) {
             temp.innerHTML = JSON.stringify(err);
         }

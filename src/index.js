@@ -38,9 +38,9 @@ class Index {
             }
         });
 
-        document.addEventListener('blogIdChanged', (ev) => {
+        document.addEventListener('blogIdChanged', async (ev) => {
             this.tree.select(ev.detail.id);
-            const node = treeconfig.findNode(ev.detail.id);
+            const node = await treeconfig.findNode(ev.detail.id);
 
             this.setDocumentTitle(node.name);
         });
