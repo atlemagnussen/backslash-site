@@ -70,8 +70,8 @@ export default class BlogComponent extends React.Component {
         if (node) {
             const metaDescription = document.querySelector("meta[name='description']");
 
-            if (metaDescription && Array.isArray(metaDescription) && metaDescription.length > 0) {
-                metaDescription[0].setAttribute("content", `Backslash.site - ${node.description}`);
+            if (metaDescription) {
+                metaDescription.setAttribute("content", `Backslash.site - ${node.description}`);
             }
         }
     }
