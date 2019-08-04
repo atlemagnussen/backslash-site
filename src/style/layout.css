@@ -47,6 +47,7 @@ section {
     justify-content: space-between;
     box-sizing: border-box;
     background: inherit;
+    overflow: hidden;
 }
 aside {
     flex-basis: 15%;
@@ -64,11 +65,10 @@ aside {
     z-index: 100;
     flex-basis: 70%;
     flex-shrink: 0;
-    height: 100%;
     margin: 4px;
     background: inherit;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: auto;
     background: rgba(0, 0, 0, 0.7);
     border: 2px solid var(--purple-hover);
 }

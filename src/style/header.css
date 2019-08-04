@@ -51,7 +51,7 @@ a, a:visited {
     color: #e6d06c;
 }
 .subtitle {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: bold;
     margin-right: 10px;
     color: var(--purple-main);
@@ -70,6 +70,6 @@ a, a:visited {
         font-size: 1.8rem;
     }
     .subtitle {
-        font-size: 1rem;
+        font-size: 1.5rem;
     }
 }
