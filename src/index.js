@@ -43,6 +43,14 @@ class Index {
             const node = await treeconfig.findNode(ev.detail.id);
 
             this.setDocumentTitle(node.name);
+
+            const viewEl = document.getElementById('view');
+
+            viewEl.scrollTo({
+                top: 100,
+                left: 100,
+                behavior: 'auto'
+            });
         });
 
         const routerConfig = [{
