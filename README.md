@@ -5,7 +5,6 @@
 
 ```sh
 npm install
-git clone git@github.com:atlemagnussen/ez-tree.git (on the same level as backslash repo)
 ```
 
 ## Start debug
