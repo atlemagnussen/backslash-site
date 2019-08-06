@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Toc from "../toc/toc.js";
-import treeconfig from '../../services/treeconfig.js';
+import treeconfig from "../../services/treeconfig.js";
 
 export default class BlogComponent extends React.Component {
     constructor() {
@@ -39,7 +39,7 @@ export default class BlogComponent extends React.Component {
             const text = await fetch(`${rootUrl}${id}.md`).then((r) => r.text());
 
             temp.innerHTML = converter.makeHtml(text);
-            const codeElements = temp.querySelectorAll('code');
+            const codeElements = temp.querySelectorAll("code");
 
             this.renderToc(temp.innerHTML);
             if (codeElements && NodeList.prototype.isPrototypeOf(codeElements) && codeElements.length > 0) {
@@ -47,7 +47,7 @@ export default class BlogComponent extends React.Component {
                     Prism.highlightElement(co);
                 });
             }
-            document.dispatchEvent(new CustomEvent('blogIdChanged', {"detail": {id}}));
+            document.dispatchEvent(new CustomEvent("blogIdChanged", {"detail": {id}}));
             this.setState({
                 "content": temp.innerHTML,
                 id

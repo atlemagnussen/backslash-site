@@ -1,12 +1,7 @@
-const remark = require('remark');
-const recommended = require('remark-preset-lint-recommended');
-const html = require('remark-html');
-const report = require('vfile-reporter');
-
-remark().
-    use(recommended).
-    use(html).
-    process('## Hello world!', (err, file) => {
-        console.error(report(err || file));
-        console.log(String(file));
-    });
+const test = [
+    {id: 1, text: "text1"},
+    {id: 2, text: "text2"}
+];
+console.log(test.find((f) => {
+    return f.id === 1;
+}).text);
