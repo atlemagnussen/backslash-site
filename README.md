@@ -1,6 +1,8 @@
 # Backslash-site
 [![Build Status](https://travis-ci.org/atlemagnussen/backslash-site.svg?branch=master)](https://travis-ci.org/atlemagnussen/backslash-site)
 
+Source code for my [kind of blog](https://www.backslash.site)
+
 ## Dependencies
 
 ```sh
