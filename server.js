@@ -1,6 +1,6 @@
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
+const http = require("http");
+const fs = require("fs");
+const path = require("path");
 const DEFAULT_PORT = 3000;
 const HTTP = {
     "OK": 200,
@@ -12,30 +12,30 @@ const indexFilePath = "./index.html";
 const fullIndexFilePath = path.join(root, indexFilePath);
 
 const mimeTypes = {
-    '.html': 'text/html',
-    '.js': 'text/javascript',
-    '.css': 'text/css',
-    '.json': 'application/json',
-    '.png': 'image/png',
-    '.jpg': 'image/jpg',
-    '.gif': 'image/gif',
-    '.wav': 'audio/wav',
-    '.mp4': 'video/mp4',
-    '.woff': 'application/font-woff',
-    '.ttf': 'application/font-ttf',
-    '.eot': 'application/vnd.ms-fontobject',
-    '.otf': 'application/font-otf',
-    '.svg': 'application/image/svg+xml'
+    ".html": "text/html",
+    ".js": "text/javascript",
+    ".css": "text/css",
+    ".json": "application/json",
+    ".png": "image/png",
+    ".jpg": "image/jpg",
+    ".gif": "image/gif",
+    ".wav": "audio/wav",
+    ".mp4": "video/mp4",
+    ".woff": "application/font-woff",
+    ".ttf": "application/font-ttf",
+    ".eot": "application/vnd.ms-fontobject",
+    ".otf": "application/font-otf",
+    ".svg": "application/image/svg+xml"
 };
 
-const getMimeType = (ext) => mimeTypes[ext] || 'application/octet-stream';
+const getMimeType = (ext) => mimeTypes[ext] || "application/octet-stream";
 
 http.createServer((request, response) => {
-    console.log('request ', request.url);
+    console.log("request ", request.url);
 
     let filePath = `.${request.url}`;
 
-    if (filePath === './') {
+    if (filePath === "./") {
         filePath = indexFilePath;
     }
 
@@ -47,8 +47,8 @@ http.createServer((request, response) => {
     console.log(`fullPath=${fullPath}`);
     fs.readFile(fullPath, (error, content) => {
         if (error) {
-            if (error.code === 'ENOENT') {
-                if (request.url.indexOf('.') > -1) {
+            if (error.code === "ENOENT") {
+                if (request.url.indexOf(".") > -1) {
                     console.log(`error file is not here: ${request.url}`);
                     response.writeHead(HTTP.ERROR);
                     response.end(`Sorry, man the file is not here: ${error.code} ..\n`);
@@ -62,8 +62,8 @@ http.createServer((request, response) => {
                             response.end();
                         } else {
                             console.log(`Defaulting to ${indexFilePath}`);
-                            response.writeHead(HTTP.OK, {'Content-Type': getMimeType(".html")});
-                            response.end(con, 'utf-8');
+                            response.writeHead(HTTP.OK, {"Content-Type": getMimeType(".html")});
+                            response.end(con, "utf-8");
                         }
                     });
                 }
@@ -73,8 +73,8 @@ http.createServer((request, response) => {
                 response.end();
             }
         } else {
-            response.writeHead(HTTP.OK, {'Content-Type': contentType});
-            response.end(content, 'utf-8');
+            response.writeHead(HTTP.OK, {"Content-Type": contentType});
+            response.end(content, "utf-8");
         }
     });
 
