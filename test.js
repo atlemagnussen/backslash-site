@@ -5,3 +5,6 @@ const test = [
 console.log(test.find((f) => {
     return f.id === 1;
 }).text);
+console.log(test.findIndex((f) => {
+    return f.id === 1;
+}));
