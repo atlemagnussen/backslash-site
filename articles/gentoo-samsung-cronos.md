@@ -231,7 +231,7 @@ ap_scan=1
 network={
   ssid="WhiteHartLane2"
   scan_ssid=1
-  psk="123"
+  psk="gbxvea57666"
   priority=1
 }
 

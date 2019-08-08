@@ -8,8 +8,7 @@
                 "name": "Javascript",
                 "children": [{
                     "id": "es6-modules",
-                    "name": "ES6 modules",
-                    "description": "ES6 modules and how to use them correctly"
+                    "name": "ES6 modules"
                 }]
             },
             {
@@ -17,34 +16,17 @@
                 "name": "Linux",
                 "children": [{
                         "id": "sane-scanners-on-linux",
-                        "name": "Scanners on linux",
-                        "description": "How to use scanners on Linux operation systems"
+                        "name": "Scanners on linux"
                     },
                     {
                         "id": "arch-linux-install",
-                        "name": "Arch Linux install",
-                        "description": "My experience with installing Arch Linux"
+                        "name": "Arch Linux install"
                     },
                     {
                         "id": "arch-linux-macbook-air",
-                        "name": "Arch Linux MBA 2013",
-                        "description": "How to install Arch Linux on a Macbook Air 2013 model"
-                    },
-                    {
-                        "id": "gentoo-samsung-cronos",
-                        "name": "Gentoo Linux on Samsung Cronos",
-                        "description": "My experience with install Gentoo on a Samsung Cronos laptop" 
+                        "name": "Arch Linux MBA 2013"
                     }
                 ]
-            },
-            {
-                "id": "bsd",
-                "name": "BSD",
-                "children": [{
-                    "id": "freebsd-install",
-                    "name": "FreeBSD install",
-                    "description": "How to install FreeBSD and get some basic stuff up and running"
-                }]
             },
             {
                 "id": "network",
@@ -52,8 +34,7 @@
                 "children": [
                     {
                         "id": "diy-router-1",
-                        "name": "DIY router rPi ipv4",
-                        "description": "How to create your own router on a Raspberry Pi 3"
+                        "name": "DIY router rPi ipv4"
                     }
                 ]
             },
@@ -63,8 +44,7 @@
                 "children": [
                     {
                         "id": "elastic-setup-linux",
-                        "name": "Elastic setup Linux",
-                        "description": "Small setup guide for elastic search on Linux"
+                        "name": "Elastic setup Linux"
                     }
                 ]
             },

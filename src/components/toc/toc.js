@@ -5,7 +5,7 @@ export default class TocComponent extends React.Component {
         super();
         this.state = {
             "input": "",
-            "content": ``
+            "content": ""
         };
     }
 
@@ -34,7 +34,7 @@ export default class TocComponent extends React.Component {
         }
     }
     generateMenu(conf) {
-        let html = `<ul class="toc-list">`;
+        let html = "<ul class='toc-list'>";
 
         for (let i = 0; i < conf.length; i++) {
             const c = conf[i];

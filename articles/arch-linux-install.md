@@ -4,16 +4,8 @@ mainly follow the official [Arch installation guide](https://wiki.archlinux.org/
 
 ## EFI
 - Partition system has to be GPT
-- Create `/boot/` or `/efi/` partition of a couple of hundred MB
+- Create /boot/ partition of a couple of hundred MB
 - boot partion must be flagged **esp**, check with ```parted /dev/nvme0n1 print```
-
-### create EFI with fdisk
-- `fdisk /dev/nvme0n1`
-- press `n` for new
-- select `2048` as default start sector
-- set size by `+512M`
-- now partition is created as `Linux filesystem`
-- Change it by hitting `t` then number `1`
 
 ## GRUB
 - Install inside chroot ```pacman -Sy grub os-prober efibootmgr```
@@ -30,6 +22,18 @@ Should display something like:
 
 If this is ok test link with ```ip link show dev enp4s0```:  
 If things look OK just missing ip address, you only need to set up a network manager
+#### NetworkManager
+This is the simplest choice, it also has dbus events for status bars to listen to.  
+Install:  
+```sh
+sudo pacman -S networkmanager
+```
+Start and enable:
+```sh
+sudo systemctl start NetworkManager
+sudo systemctl enable NetworkManager
+```
+That shoud be it. Try `nmcli connection show` to see status
 #### systemd-networkd
 a clean and simple way if you are used to systemd already  
 [Arch systemd-networkd wiki](https://wiki.archlinux.org/index.php/Systemd-networkd)  
@@ -48,8 +52,6 @@ enable and start systemd-resolved.service for dns to start working
 ### Local user / sudo
 ````
 useradd -m -g users -G wheel -s /bin/bash myusername
-passwd myusername # set password
-
 pacman -S sudo
 groupadd sudo
 usermod -aG sudo myusername
