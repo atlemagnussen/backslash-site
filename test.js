@@ -8,4 +8,3 @@ console.log(fil);
 console.log(test.find((f) => {
     return f.id === 1;
 }).text);
-
