@@ -21,7 +21,16 @@ mainly follow the official [Arch installation guide](https://wiki.archlinux.org/
 - Create config ```grub-mkconfig -o /boot/grub/grub.cfg```
 
 ## After first reboot
+### Network
 #### NetworkManager
+There is probably no network after reboot, test if device is present: ```lspci -v | less``` and look for 'Ethernet', then look for 'Kernel driver in use:' in the same section.
+
+Check if this driver is loaded ```dmesg | grep r8169```  
+Should display something like:  
+**r8169 Gigabit Ether driver 2.3LK-NAPI loaded...enp4s0: renamed from eth0**  
+
+If this is ok test link with ```ip link show dev enp4s0```:  
+If things look OK just missing ip address, you only need to set up a network manager
 This is the simplest choice, it also has dbus events for status bars to listen to.
 Install:
 ```sh
@@ -33,15 +42,7 @@ sudo systemctl start NetworkManager
 sudo systemctl enable NetworkManager
 ```
 That shoud be it. Try `nmcli connection show` to see status
-### Network
-There is probably no network after reboot, test if device is present: ```lspci -v | less``` and look for 'Ethernet', then look for 'Kernel driver in use:' in the same section.
 
-Check if this driver is loaded ```dmesg | grep r8169```  
-Should display something like:  
-**r8169 Gigabit Ether driver 2.3LK-NAPI loaded...enp4s0: renamed from eth0**  
-
-If this is ok test link with ```ip link show dev enp4s0```:  
-If things look OK just missing ip address, you only need to set up a network manager
 #### systemd-networkd
 a clean and simple way if you are used to systemd already  
 [Arch systemd-networkd wiki](https://wiki.archlinux.org/index.php/Systemd-networkd)  
