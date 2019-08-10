@@ -6,8 +6,8 @@ html, body, main {
     overflow: hidden;
 }
 body {
-    font-family: 'Fjord One', serif;
-    font-size: 18px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 16px;
     margin: 0;
     padding: 0;
     color: white;
