@@ -1,9 +1,10 @@
 {
     "compilerOptions": {
+        "noLib": true,
         "target": "ES2016",
         "module": "ES6",
         "baseUrl": "./",
-        "checkJs": true
+        "checkJs": false
     },
     "exclude": [
         "node_modules"

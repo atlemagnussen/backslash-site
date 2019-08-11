@@ -93,8 +93,6 @@ class Index {
             }
         });
 
-        // window.scrollTo(0, 1);
-
         // this.registerServiceWorker();
         this.unregisterServiceWorker();
     }
