@@ -114,13 +114,13 @@ class Index {
     toggleFullScreen() {
         const doc = window.document;
         const docEl = doc.documentElement;
-        const requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
-        const cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+        const requestFullScreen = docEl.requestFullscreen;
+        const cancelFullScreen = doc.exitFullscreen;
 
-        if (!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
-            Reflect.apply(requestFullScreen, doc);
+        if (!doc.fullscreenElement) {
+            Reflect.apply(requestFullScreen, doc, []);
         } else {
-            Reflect.apply(cancelFullScreen, doc);
+            Reflect.apply(cancelFullScreen, doc, []);
         }
     }
 
