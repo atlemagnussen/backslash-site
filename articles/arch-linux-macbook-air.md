@@ -47,6 +47,18 @@ pacman -S broadcom-wl-dkms dkms
 ### Network
 
 #### Wifi
+##### Network Manager
+network manager is a better choice but not preinstalled.  
+How to set wifi up with cli, this even works with a hidden SSID:
+```sh
+nmcli connection add type wifi con-name con1 ifname wlp3s0 ssid "MyHiddenOrNotSSID"
+nmcli connection modify con1 wifi-sec.key-mgmt wpa-psk
+nmcli connection modify con1 wifi-sec.psk "greatestpasswordever"
+# setup done, then connect
+nmcli connection up con1
+```
+
+##### netctl
 as root run this to make wifi persist
 ```bash
 wifi-menu      # select network, enter pw to create profile

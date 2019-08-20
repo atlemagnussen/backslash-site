@@ -58,6 +58,17 @@
                 ]
             },
             {
+                "id": "security",
+                "name": "Security",
+                "children": [
+                    {
+                        "id": "gpg-commands",
+                        "name": "GPG encryption commands",
+                        "description": "Most useful commands for encrypting files withusing GNU Privacy Guard (gnupg.org)"
+                    }
+                ]
+            },
+            {
                 "id": "cloud",
                 "name": "Cloud",
                 "children": [
