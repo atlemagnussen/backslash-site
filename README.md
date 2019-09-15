@@ -1,6 +1,9 @@
 # Backslash-site
 [![Build Status](https://travis-ci.org/atlemagnussen/backslash-site.svg?branch=master)](https://travis-ci.org/atlemagnussen/backslash-site)
 
+## Credits
+- [Simpleicons](https://simpleicons.org) for clean svg icon
+
 Source code for my [kind of blog](https://www.backslash.site)
 
 ## Dependencies
