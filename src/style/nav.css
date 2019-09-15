@@ -12,5 +12,5 @@
     background: none;
 }
 code[class*="language-"] {
-    color: var(--header-initials-color);
+    color: var(--default-lang-color);
 }
