@@ -1,7 +1,7 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const options = {
-    "debug": 'debug'
+    "debug": "debug"
 };
 
 require("babel-polyfill");
@@ -12,27 +12,27 @@ const makeLibConf = (from) => {
 
     conf.push({
         from,
-        "to": '../src/lib',
-        "toType": 'dir',
+        "to": "../src/lib",
+        "toType": "dir",
         "flatten": true
     });
     conf.push({
         from,
-        "to": 'lib',
-        "toType": 'dir',
+        "to": "lib",
+        "toType": "dir",
         "flatten": true
     });
     return conf;
 };
 
 const libs = [
-    'node_modules/showdown/dist/*.min.*',
-    'node_modules/prismjs/prism.js',
-    'node_modules/prismjs/themes/prism.css',
-    'node_modules/prism-themes/themes/prism-xonokai.css',
-    'node_modules/es6-tree/src/es6tree.js',
-    'node_modules/es6-tree/src/es6tree.css',
-    'node_modules/es6-tree/src/icons/*.*'
+    "node_modules/showdown/dist/*.min.*",
+    "node_modules/prismjs/prism.js",
+    "node_modules/prismjs/themes/prism.css",
+    "node_modules/prism-themes/themes/prism-xonokai.css",
+    "node_modules/es6-tree/src/es6tree.js",
+    "node_modules/es6-tree/src/es6tree.css",
+    "node_modules/es6-tree/src/icons/*.*"
 ];
 let libConf = [];
 
@@ -47,74 +47,77 @@ const cssDir = "./style";
 const srcConf = [];
 
 srcConf.push({
-    "from": './src/style/vars.css',
+    "from": "./BingSiteAuth.xml",
+    "to": ".",
+    "toType": "dir"
+});
+srcConf.push({
+    "from": "./src/style/vars.css",
     "to": cssDir,
-    "toType": 'dir'
+    "toType": "dir"
 });
 srcConf.push({
-    "from": './src/style/layout.css',
+    "from": "./src/style/layout.css",
     "to": cssDir,
-    "toType": 'dir'
+    "toType": "dir"
 });
 srcConf.push({
-    "from": './src/style/header.css',
+    "from": "./src/style/header.css",
     "to": cssDir,
-    "toType": 'dir'
+    "toType": "dir"
 });
 srcConf.push({
-    "from": './src/style/nav.css',
+    "from": "./src/style/nav.css",
     "to": cssDir,
-    "toType": 'dir'
+    "toType": "dir"
 });
 srcConf.push({
-    "from": './src/components/blog/blog.css',
-    "to": './components/blog',
-    "toType": 'dir'
+    "from": "./src/components/blog/blog.css",
+    "to": "./components/blog",
+    "toType": "dir"
 });
 srcConf.push({
-    "from": './src/components/toc/toc.css',
-    "to": './components/toc',
-    "toType": 'dir'
+    "from": "./src/components/toc/toc.css",
+    "to": "./components/toc",
+    "toType": "dir"
 });
 srcConf.push({
-    "from": './src/favicon.ico',
-    "to": '.',
-    "toType": 'dir'
+    "from": "./src/favicon.ico",
+    "to": ".",
+    "toType": "dir"
 });
 srcConf.push({
-    "from": './src/manifest.json',
-    "to": '.',
-    "toType": 'dir'
+    "from": "./src/manifest.json",
+    "to": ".",
+    "toType": "dir"
 });
 srcConf.push({
-    "from": './articles/*.*',
-    "to": '../src/articles',
-    "toType": 'dir',
+    "from": "./articles/*.*",
+    "to": "../src/articles",
+    "toType": "dir",
     "flatten": true
 });
 srcConf.push({
-    "from": './articles/*.*',
-    "to": './articles',
-    "toType": 'dir',
+    "from": "./articles/*.*",
+    "to": "./articles",
+    "toType": "dir",
     "flatten": true
 });
 
 const totalCopyConf = srcConf.concat(libConf);
+console.log(`Total copy conf count=${totalCopyConf.length}`);
 
-totalCopyConf.forEach((conf) => {
-    console.log(conf);
-});
 module.exports = {
-    "entry": ["babel-polyfill", './src/index.js'],
+    "entry": ["babel-polyfill", "./src/index.js"],
     "output": {
         "path": `${__dirname}/dist`,
-        "filename": 'bundle.js',
-        "publicPath": '/'
+        "filename": "bundle.js",
+        "publicPath": "/"
     },
     "devServer": {
         "port": 3000,
         "historyApiFallback": {
-            "index": 'index.html'
+            "index": "index.html"
         }
     },
     "module": {
