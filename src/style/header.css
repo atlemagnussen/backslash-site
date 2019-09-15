@@ -11,7 +11,7 @@
 .menu-button {
     cursor: pointer;
     margin-left: 10px;
-    background: var(--purple-light);
+    background: var(--light-color);
 }
 .menu-button svg {
     width: 40px;
@@ -20,21 +20,20 @@
 main.scrolled .menu-button {
     visibility: visible;
     transition: 0.3s;
-    background: var(--purple-light);
+    background: var(--light-color);
 }
 main.scrolled.mobile-hidden .left .treeview {
     display: none;
 }
 main:not(.mobile-hidden) .menu-button {
-    background: var(--purple-light);
+    background: var(--light-color);
 }
 h1 {
     font-size: 2em;
 }
 a, a:visited {
     font-style: normal;
-    /* color: lightblue; */
-    color: #76d9e6;
+    color: white;
     text-decoration: none;
 }
 .headline {
@@ -44,17 +43,16 @@ a, a:visited {
     transition: 0.3s;
 }
 .headline span.F {
-    /* color: #ef3b7d; */
-    color: #e6d06c;
+    color: var(--header-initials-color);
 }
 .headline span.D {
-    color: #e6d06c;
+    color: var(--header-initials-color);
 }
 .subtitle {
     font-size: 2rem;
     font-weight: bold;
     margin-right: 10px;
-    color: var(--purple-main);
+    color: var(--main-color);
 }
 .logo {
     height: 3rem;

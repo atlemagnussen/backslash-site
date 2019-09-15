@@ -3,5 +3,5 @@
 }
 .toc-list li a:hover{
     color: white;
-    background: var(--purple-hover);
+    background: var(--hover-color);
 }

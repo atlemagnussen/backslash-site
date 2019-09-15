@@ -59,7 +59,7 @@ aside {
     /* top: 5px; */
     /* position: sticky; */
     /* background: rgba(0, 0, 0, 0.7); */
-    border: 2px solid var(--purple-hover);
+    border: 2px solid var(--hover-color);
 }
 .view {
     z-index: 100;
@@ -70,7 +70,7 @@ aside {
     box-sizing: border-box;
     overflow: auto;
     background: rgba(0, 0, 0, 0.8);
-    border: 2px solid var(--purple-hover);
+    border: 2px solid var(--hover-color);
 }
 .right {
     font-size: 0.8rem;
@@ -89,7 +89,7 @@ aside {
 
 ::-webkit-scrollbar-thumb:window-inactive,
 ::-webkit-scrollbar-thumb {
-    background: var(--purple-light);
+    background: var(--light-color);
 }
 
 ::-webkit-scrollbar-track {

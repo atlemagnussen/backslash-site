@@ -8,8 +8,22 @@
     --white-trans: rgba(255, 255, 255, 0.8);
     --white-very-trans: rgba(255, 255, 255, 0.1);
     --red-trans: rgba(248,3,3, 0.7);
+
+
     --purple-main: rgba(44, 38, 48, 0.9);
     --purple-light: rgba(102,51,153, 0.6);
     --purple-hover: rgba(145, 60, 140, 0.4);
-    --background-pic: url(https://storage.googleapis.com/atle-static/backgrounds/bridge-clouds-cloudy-556416.jpg);
+    --red-main: rgb(139,0,0);
+    --red-light: rgb(195, 20, 20, 0.5);
+    --red-strong: rgb(195,20,20);
+    --red-hover: rgb(120,0,0, 0.2);
+
+    --main-color: var(--red-main);
+    --light-color: var(--red-light);
+    --hover-color: var(--red-hover);
+    --header-initials-color: var(--red-strong);
+    --selected-color: var(--purple-light);
+    
+    /*--background-pic: url(https://storage.googleapis.com/atle-static/backgrounds/dark-landscape.jpg);*/
+    --background-pic: url(https://storage.googleapis.com/atle-static/backgrounds/dark-scull.jpg);
 }
