@@ -76,8 +76,11 @@ aside {
     font-size: 0.8rem;
 }
 .left svg {
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.external-links {
+    list-style: none;
 }
 /******** scrollbar *********/
 ::-webkit-scrollbar {
