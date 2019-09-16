@@ -72,6 +72,11 @@ srcConf.push({
     "toType": "dir"
 });
 srcConf.push({
+    "from": "./src/style/style.css",
+    "to": cssDir,
+    "toType": "dir"
+});
+srcConf.push({
     "from": "./src/components/blog/blog.css",
     "to": "./components/blog",
     "toType": "dir"
