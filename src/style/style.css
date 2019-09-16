@@ -1,0 +1,14 @@
+html {
+    background: grey;
+}
+body {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 16px;
+    color: white;
+}
+h1 {
+    color: var(--h1-color);
+}
+h2 {
+    color: var(--h2-color);
+}

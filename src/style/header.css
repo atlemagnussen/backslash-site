@@ -11,7 +11,7 @@
 .menu-button {
     cursor: pointer;
     margin-left: 10px;
-    background: var(--light-color);
+    background: var(--toggled-color);
 }
 .menu-button svg {
     width: 40px;
@@ -20,13 +20,13 @@
 main.scrolled .menu-button {
     visibility: visible;
     transition: 0.3s;
-    background: var(--light-color);
+    background: var(--toggled-color);
 }
 main.scrolled.mobile-hidden .left .treeview {
     display: none;
 }
 main:not(.mobile-hidden) .menu-button {
-    background: var(--light-color);
+    background: var(--toggled-color);
 }
 h1 {
     font-size: 2em;
