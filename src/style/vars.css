@@ -44,7 +44,8 @@
     --toggled-color: var(--red-extra-light);
 
     --h1-color: var(--cyan-dark);
-    --h2-color: var(--magenta-dark);
+    --h2-color: white;
+    --h2-underline-color: var(--cyan-dark);
 
     /*--background-pic: url(https://storage.googleapis.com/atle-static/backgrounds/dark-landscape.jpg);*/
     --background-pic: url(https://storage.googleapis.com/atle-static/backgrounds/dark-scull.jpg);
