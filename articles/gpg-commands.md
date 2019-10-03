@@ -61,5 +61,5 @@ gpg2 --output decrypted.txt --decrypt file.txt.gpg
 ## Verify signature
 Verify that your friend created the message
 ```sh
-gpg2 --verify proisp.2fa.txt.sha256sum.sig
+gpg2 --verify file.txt.sha256sum.sig
 ```
