@@ -2,3 +2,10 @@ article {
     padding: 10px;
     background: transparent;
 }
+
+article a, article a:visited {
+    text-decoration: underline solid var(--a-underline-color);
+}
+article a:hover {
+    color: var(--a-hover-color);
+}

@@ -28,14 +28,6 @@ main.scrolled.mobile-hidden .left .treeview {
 main:not(.mobile-hidden) .menu-button {
     background: var(--toggled-color);
 }
-h1 {
-    font-size: 2em;
-}
-a, a:visited {
-    font-style: normal;
-    color: white;
-    text-decoration: none;
-}
 .headline {
     margin: 5px;
     display: inline-block;
