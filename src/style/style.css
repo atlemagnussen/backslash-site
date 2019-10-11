@@ -11,9 +11,10 @@ h1 {
 }
 h2 {
     color: var(--h2-color);
-    text-decoration: underline solid var(--h2-underline-color);
 }
 h3 {
-    color: var(--h2-color);
-    text-decoration: underline dotted var(--h2-underline-color);
+    color: var(--h3-color);
+}
+a {
+    text-decoration: underline solid var(--a-underline-color) 2px;
 }

@@ -9,31 +9,37 @@
                 "children": [{
                     "id": "es6-modules",
                     "name": "ES6 modules",
-                    "description": "ES6 modules and how to use them correctly"
+                    "desc": "ES6 modules and how to use them correctly"
                 }]
             },
             {
                 "id": "linux",
                 "name": "Linux",
-                "children": [{
+                "children": [
+                    {
+                        "id": "linux-users-and-groups",
+                        "name": "Linux users and groups",
+                        "desc": "Typical linux user and groups operations"
+                    },
+                    {
                         "id": "sane-scanners-on-linux",
                         "name": "Scanners on linux",
-                        "description": "How to use scanners on Linux operation systems"
+                        "desc": "How to use scanners on Linux operation systems"
                     },
                     {
                         "id": "arch-linux-install",
                         "name": "Arch Linux install",
-                        "description": "My experience with installing Arch Linux"
+                        "desc": "My experience with installing Arch Linux"
                     },
                     {
                         "id": "arch-linux-macbook-air",
                         "name": "Arch Linux MBA 2013",
-                        "description": "How to install Arch Linux on a Macbook Air 2013 model"
+                        "desc": "How to install Arch Linux on a Macbook Air 2013 model"
                     },
                     {
                         "id": "gentoo-samsung-cronos",
                         "name": "Gentoo Linux on Samsung Cronos",
-                        "description": "My experience with install Gentoo on a Samsung Cronos laptop" 
+                        "desc": "My experience with install Gentoo on a Samsung Cronos laptop" 
                     }
                 ]
             },
@@ -43,7 +49,7 @@
                 "children": [{
                     "id": "freebsd-install",
                     "name": "FreeBSD install",
-                    "description": "How to install FreeBSD and get some basic stuff up and running"
+                    "desc": "How to install FreeBSD and get some basic stuff up and running"
                 }]
             },
             {
@@ -53,7 +59,7 @@
                     {
                         "id": "diy-router-1",
                         "name": "DIY router rPi ipv4",
-                        "description": "How to create your own router on a Raspberry Pi 3"
+                        "desc": "How to create your own router on a Raspberry Pi 3"
                     }
                 ]
             },
@@ -64,7 +70,7 @@
                     {
                         "id": "gpg-commands",
                         "name": "GPG encryption commands",
-                        "description": "Most useful commands for encrypting files withusing GNU Privacy Guard (gnupg.org)"
+                        "desc": "Most useful commands for encrypting files withusing GNU Privacy Guard (gnupg.org)"
                     }
                 ]
             },
@@ -75,7 +81,7 @@
                     {
                         "id": "elastic-setup-linux",
                         "name": "Elastic setup Linux",
-                        "description": "Small setup guide for elastic search on Linux"
+                        "desc": "Small setup guide for elastic search on Linux"
                     }
                 ]
             },
