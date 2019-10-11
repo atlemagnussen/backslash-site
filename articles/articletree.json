@@ -13,6 +13,17 @@
                 }]
             },
             {
+                "id": "dotnet-core",
+                "name": ".NET core",
+                "children": [
+                    {
+                        "id": "dotnet-core-cli-commands",
+                        "name": ".NET core cli commands",
+                        "desc": "Collection of typical operations on dotnet cli"
+                    }
+                ]
+            },
+            {
                 "id": "linux",
                 "name": "Linux",
                 "children": [
