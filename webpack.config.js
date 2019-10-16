@@ -102,6 +102,11 @@ srcConf.push({
     "toType": "dir"
 });
 srcConf.push({
+    "from": "./src/sitemap.xml",
+    "to": ".",
+    "toType": "dir"
+});
+srcConf.push({
     "from": "./articles/*.*",
     "to": "../src/articles",
     "toType": "dir",

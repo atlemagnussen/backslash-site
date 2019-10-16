@@ -8,7 +8,7 @@ export default class BlogComponent extends React.Component {
         super();
         this.state = {
             "id": 0,
-            "content": "initializing"
+            "content": ""
         };
         this.id = "blog-component";
     }
