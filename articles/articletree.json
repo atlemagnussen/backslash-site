@@ -98,7 +98,8 @@
             },
             {
                 "id": "about",
-                "name": "About"
+                "name": "About",
+                "desc": "A technical blog about web development, operating systems and network"
             }
         ]
     }],
