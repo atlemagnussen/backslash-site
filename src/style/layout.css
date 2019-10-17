@@ -23,7 +23,7 @@ main {
     flex-direction: column;
     z-index: 100;
     box-sizing: border-box;
-    background: inherit;
+    background: transparent;
 }
 header {
     background: inherit;
@@ -52,6 +52,7 @@ aside {
     flex-shrink: 0;
     margin: 4px;
     font-size: 0.9rem;
+    background: inherit;
     box-sizing: border-box;
 }
 .view {
