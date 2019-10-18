@@ -1,21 +1,23 @@
 # Gentoo Samsung Cronos
-Dual boot install from Arch Linux
+This is a setup with the intent of having a Dual boot install from Arch Linux  
+It might be helpful if so is not the case for you but you have this laptop or a similar one.  
+This has been tested on a **Samsung NP700Z3A**
 
 ## Start here
-- https://wiki.gentoo.org/wiki/Installation_alternatives#Installing_Gentoo_from_an_existing_Linux_distribution
+[Gentoo wiki installing from an existing Linux distribution](https://wiki.gentoo.org/wiki/Installation_alternatives#Installing_Gentoo_from_an_existing_Linux_distribution)
 
 ## Then here if you need to prep partitions, else follow this link anyway to the next
-- https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Disks
+[Gentoo wiki AMD64 Installation disks](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Disks)
 
 ## Stage tarball
-- https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Stage
+[Gentoo wiki AMD64 stage tarballs](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Stage)
 
 ```sh
 tar xpvf stage3-amd64-20190131T214503Z.tar.xz --xattrs-include='*.*' --numeric-owner
 ```
 
 ### CFLAGS look up Sandy Bridge
-- https://wiki.gentoo.org/wiki/Safe_CFLAGS
+[Gentoo wiki Safe CLAGS](https://wiki.gentoo.org/wiki/Safe_CFLAGS)
 ```sh
 # /etc/portage/make.conf
 CHOST="x86_64-pc-linux-gnu"
@@ -24,9 +26,9 @@ CXXFLAGS="${CFLAGS}"
 ```
 
 ## Installing base system
-- https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base
+[Gentoo wiki installing base system](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base)
 ### Select mirrors
-- https://www.gentoo.org/downloads/mirrors/#SE
+[Gentoo wiki mirrors](https://www.gentoo.org/downloads/mirrors/#SE)
 ```sh
 # /etc/portage/make.conf
 MAKEOPTS="-j2"
@@ -39,7 +41,6 @@ mkdir --parents /mnt/gentoo/etc/portage/repos.conf
 cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
 
 cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
-
 
 mount --types proc /proc /mnt/gentoo/proc
 mount --rbind /sys /mnt/gentoo/sys
@@ -89,7 +90,7 @@ emerge --ask --verbose --update --deep --newuse @world
 ```
 
 ### USE flags
-Set for X and i3 https://wiki.gentoo.org/wiki/I3#USE_flags
+Set for X and i3 [Gentoo wiki i3 USE flags](https://wiki.gentoo.org/wiki/I3#USE_flags)
 ```sh
 nano -w /etc/portage/make.conf:
 USE="X acl alsa doc savedconfig xinerama filecaps"
@@ -118,7 +119,7 @@ LINGUAS="en"
 ```
 
 ## Configuring the kernel
-- https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Kernel
+[Gentoo wiki AMD64 Kernel installation](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Kernel)
 
 ```sh
 emerge --ask sys-kernel/gentoo-sources #takes some time, 5 mins
@@ -135,8 +136,8 @@ make menuconfig
 ```
 #### Wifi
 Intel Centrino Advanced-N 6230
-- http://atvgm.blogspot.com/2012/03/gentoo-linux-wireless-intel-centrino.html
-- https://wiki.gentoo.org/wiki/Iwlwifi#Device_driver_iwlwifi
+[My blogspot post years ago](http://atvgm.blogspot.com/2012/03/gentoo-linux-wireless-intel-centrino.html)
+[Gentoo wiki Iwlwifi driver](https://wiki.gentoo.org/wiki/Iwlwifi#Device_driver_iwlwifi)
 
 ```sh
 <M>     Intel Wireless WiFi Next Gen AGN - Wireless-N/Advanced-N/Ultimate-N (iwlwifi)
@@ -188,7 +189,8 @@ nano -w /etc/rc.conf
 ```
 
 ## Tools
-- https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Tools
+[Gentoo wiki AMD64 installation tools](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Tools)
+
 ### syslog
 ```sh
 emerge --ask app-admin/sysklogd
@@ -206,7 +208,7 @@ emerge --ask sys-fs/e2fsprogs
 emerge --ask sys-fs/dosfstools
 ```
 ### networking tools
-- https://wiki.gentoo.org/wiki/Wpa_supplicant
+[Gentoo wiki wpa_supplicant](https://wiki.gentoo.org/wiki/Wpa_supplicant)
 
 ```sh
 emerge --ask net-misc/dhcpcd
@@ -237,10 +239,10 @@ network={
 
 ```
 
-- https://wiki.gentoo.org/wiki/Handbook:AMD64/Networking/Wireless
+[Gentoo wiki AMD64 networking wireless](https://wiki.gentoo.org/wiki/Handbook:AMD64/Networking/Wireless)
 
 # Xorg
-- https://wiki.gentoo.org/wiki/Xorg/Guide
+[Gentoo wiki Xorg guide](https://wiki.gentoo.org/wiki/Xorg/Guide)
 ```sh
 emerge --pretend --verbose x11-base/xorg-drivers
 emerge --ask x11-base/xorg-server
