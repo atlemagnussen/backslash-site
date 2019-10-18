@@ -12,8 +12,6 @@ They pretty much saves the day if you don't want to have a dedicated Windows PC 
 
 First and foremost, this is a setup that works both for LAN connection and USB connection as I figured out for this particular scanner, Canon MG6150. You should just try with LAN if you are doing this with a network enabled device, then try USB if it's doesn't work.
 
-![printer.png](https://steemitimages.com/DQmR3VFrFyUDzUfJA2CZ7cVn5wABEBuvESkwsPNdzmQRdmN/printer.png)
-
 ## Server - Raspberry Pi
 So I won't cover setting up a Pi with Raspbian OS. You can go to [Raspberry PI](https://www.raspberrypi.org/downloads/raspbian/) homepages to find that  
 *You can use any PC you want for this of course, old or new, big or small*
