@@ -32,16 +32,19 @@ nmcli device wifi list
 ```
 
 ### Simple connect to wifi network
+This option does not save the connection for later
+
 ```sh
-nmcli device wifi connect WhiteHartLane2 password XXX
+nmcli device wifi connect MyVisibleSSID password MySuperSecretPassword
 ```
 
-### Create and save a connection
+### Create a saved connection
+This will save a connection that you can connect to later without prompting the password each time  
 This will also work if you have hidden SSID
 ```sh
 nmcli connection add type wifi con-name con1 ifname wlp3s0 ssid "MyHiddenOrNotSSID"
 nmcli connection modify con1 wifi-sec.key-mgmt wpa-psk
-nmcli connection modify con1 wifi-sec.psk "XXX"
+nmcli connection modify con1 wifi-sec.psk "MySuperSecretPassword"
 ```
 
 ### Connect to a saved connection
