@@ -1,11 +1,11 @@
 # Arch Linux on Macbooc Air - 2013
 by [@atlemagnussen](https://twitter.com/atlemagnussen)
 ## Resources
-- [https://github.com/pandeiro/arch-on-air](https://github.com/pandeiro/arch-on-air)
-- [https://medium.com/@philpl/arch-linux-running-on-my-macbook-2ea525ebefe3](https://medium.com/@philpl/arch-linux-running-on-my-macbook-2ea525ebefe3)
+- [Github user pandeiro's arch on air guide](https://github.com/pandeiro/arch-on-air)
+- [Medium user @philpl article on running Arch Linux on Macbook](https://medium.com/@philpl/arch-linux-running-on-my-macbook-2ea525ebefe3)
 
 And as always have the official guide in the back of your head:  
-https://wiki.archlinux.org/index.php/Installation_guide
+[Arch Linux wiki installation guide](https://wiki.archlinux.org/index.php/Installation_guide)
 
 ## Boot USB installer
 Hold alt-key while restarting the MBA, select UEFI device.
