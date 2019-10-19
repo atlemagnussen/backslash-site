@@ -4,14 +4,20 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch server",
+            "name": "server",
             "program": "${workspaceFolder}/server.js"
         },
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch test",
+            "name": "test",
             "program": "${workspaceFolder}/test.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "publish",
+            "program": "${workspaceFolder}/publish-blogger.js"
         }
     ]
 }
