@@ -39,7 +39,11 @@
                     {
                         "id": "sane-scanners-on-linux",
                         "name": "Scanners on linux",
-                        "desc": "How to use scanners on Linux operation systems"
+                        "desc": "How to use scanners on Linux operation systems",
+                        "blogger": {
+                            "publish": true,
+                            "id": "3831863161475714931"
+                        }
                     },
                     {
                         "id": "arch-linux-install",

@@ -1,5 +1,7 @@
 # Scanners on Linux - Project SANE - Tested with Raspberry Pi as server sharing a Canon MG6150 over the LAN
 
+<a href="https://4.bp.blogspot.com/-UBxvwe4jBow/Xax8scLQs3I/AAAAAAABmiI/gjOZXU1pozwBn-sOgfgK756lLO1chsVEQCLcBGAsYHQ/s1600/scanner2.jpg" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-UBxvwe4jBow/Xax8scLQs3I/AAAAAAABmiI/gjOZXU1pozwBn-sOgfgK756lLO1chsVEQCLcBGAsYHQ/s320/scanner2.jpg" width="320" height="305" data-original-width="1230" data-original-height="1173" /></a>
+
 So you might have tried to install some 8 year old drivers from Canon on an up-to-date Linux distribution. It will not remotely work in any ways. Turns out we have great open source alternatives with a lot of support
 
 ### For printers you have [CUPS](https://www.cups.org/) and for scanners you have [SANE](http://www.sane-project.org/).
