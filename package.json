@@ -49,6 +49,8 @@
     "dependencies": {
         "babel-polyfill": "^6.26.0",
         "es6-tree": "^0.2.8",
-        "googleapis": "^44.0.0"
+        "googleapis": "^44.0.0",
+        "open": "^7.0.0",
+        "server-destroy": "^1.0.1"
     }
 }
