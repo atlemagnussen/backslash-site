@@ -3,17 +3,8 @@ const http = require('http');
 const url = require('url');
 const opn = require('open');
 const destroyer = require('server-destroy');
-const fs = require('fs');
-const path = require('path');
+const keysmanager = require('./keysmanager');
 
-const keyPath = path.join(__dirname, 'oauth2.keys.json');
-let keys = {
-    redirect_uris: ['http://localhost:3000/oauth2callback'],
-};
-if (fs.existsSync(keyPath)) {
-    const keyFile = require(keyPath);
-    keys = keyFile.installed || keyFile.web;
-}
 
 const invalidRedirectUri = `Invalid!:
 "redirect_uris": [
@@ -23,13 +14,14 @@ const invalidRedirectUri = `Invalid!:
 
 class OauthClient {
     constructor(options) {
+        this.keys = keysmanager.getKeys();
         this._options = options || {scopes: []};
 
         // validate the redirectUri.  This is a frequent cause of confusion.
-        if (!keys.redirect_uris || keys.redirect_uris.length === 0) {
+        if (!this.keys.redirect_uris || this.keys.redirect_uris.length === 0) {
             throw new Error(invalidRedirectUri);
         }
-        const redirectUri = keys.redirect_uris[keys.redirect_uris.length - 1];
+        const redirectUri = this.keys.redirect_uris[this.keys.redirect_uris.length - 1];
         const parts = new url.URL(redirectUri);
         if (redirectUri.length === 0 ||
             parts.port !== '3000' ||
@@ -39,8 +31,8 @@ class OauthClient {
         }
 
         this.oAuth2Client = new google.auth.OAuth2(
-            keys.client_id,
-            keys.client_secret,
+            this.keys.client_id,
+            this.keys.client_secret,
             redirectUri
         );
     }
