@@ -9,7 +9,11 @@
                 "children": [{
                     "id": "es6-modules",
                     "name": "ES6 modules",
-                    "desc": "ES6 modules and how to use them correctly"
+                    "desc": "ES6 modules and how to use them correctly",
+                    "blogger": {
+                        "publish": true,
+                        "id": "1094851240419157807"
+                    }
                 }]
             },
             {
