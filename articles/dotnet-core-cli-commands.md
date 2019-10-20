@@ -1,4 +1,7 @@
 # dotnet core cli operations
+
+<img src="https://storage.googleapis.com/backslash-project.appspot.com/static/NETCore.png" alt="dotnet core logo" width="320">
+
 The order of which you do these are not important.  
 
 ## Solution file

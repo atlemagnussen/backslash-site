@@ -15,7 +15,7 @@ With ES6 modules you can define anything as a module, as in the example below wh
 
 Notice the difference between default exports and named. With default you can only define one, but using named exports you can export multiple.
 
-ECMAscript is ![es6](https://cdn-images-1.medium.com/max/800/0*k4bggYx2QbIYZgl8.PNG "es6") Javascript
+ECMAscript is ![es6](https://storage.googleapis.com/backslash-project.appspot.com/static/ES6.png "es6") Javascript
 
 ## Reference with script src in index.html
 ```html
