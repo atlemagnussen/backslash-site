@@ -26,6 +26,7 @@ const getBlogs = async (nodes) => {
                         res = null;
                     }
                 } else {
+                    console.log("New blogpost!!!");
                     res = await bloggerApi.insertBlog(blogId, title, content);
                 }
                 if (res) {

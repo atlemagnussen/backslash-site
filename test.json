@@ -29,28 +29,28 @@
     },
     "updated": {
         "kind": "blogger#post",
-        "id": "1094851240419157807",
+        "id": "4657454269074523041",
         "blog": {
             "id": "7734453256887931626"
         },
-        "published": "2019-10-20T07:56:00-07:00",
-        "updated": "2019-10-22T00:06:28-07:00",
-        "etag": "dGltZXN0YW1wOiAxNTcxNzI3OTg4OTAwCm9mZnNldDogLTI1MjAwMDAwCg",
-        "url": "http://blog.backslash.site/2019/10/es6-modules.html",
-        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7734453256887931626/posts/10948512404191578",
-        "title": "ES6 modules",
-        "content": "",
+        "published": "2019-10-22T00:06:00-07:00",
+        "updated": "2019-10-22T14:02:55-07:00",
+        "etag": "\"dGltZXN0YW1wOiAxNTcxNzc4MTc1MjYwCm9mZnNldDogLTI1MjAwMDAwCg\"",
+        "url": "http://blog.backslash.site/2019/10/net-core-cli-commands.html",
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7734453256887931626/posts/4657454269074523041",
+        "title": ".NET Core cli commands",
+        "content": "<h1 id=\"dotnetcorecommandlineoperations\">Dotnet Core command-line operations</h1>\n<p><img src=\"https://storage.googleapis.com/backslash-project.appspot.com/static/NETCore.png\" alt=\"dotnet core logo\" width=\"320\" align=\"middle\"></p>\n<p><a href=\"https://github.com/dotnet/core\">.Net core</a> is Microsoft's wonderfully refurbished new open source-cross platform successor for the now 20 year old .NET Framework. There are a lot of improvements such as the core of the framework not being as monolithic as its ancestor but more relies on NuGet for expanding. Being cross platform it works with docker for Linux and thus making it a natural choice over .NET Framework in the new age of Big Cloud computing.  </p>\n<p>But some of the greatest features is it's brand new and very consistent <code>CLI</code> tools. For command line and Vim geeks like myself this is very liberating. Even though you could run msbuild with .NET framework, this is completely different.</p>\n<p>This article will show a brief example of a typical setup of a solution and different projects.<br />\nThe order of which you do these are not important.  </p>\n<h2 id=\"createsolutionfile\">Create solution file</h2>\n<p>The solution file is actually optional in dotnet core, but it's an advantage if you plan to open the solution with full Visual Studio. In addition it gives you the option to build the entire solution in one command.\n<a href=\"https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-sln\">Microsoft docs on dotnet sln</a></p>\n<pre><code class=\"sh language-sh\">mkdir mysolutionfolder\ncd mysolutionfolder\ndotnet new sln\n</code></pre>\n<h2 id=\"createconsoleapp\">Create console app</h2>\n<pre><code class=\"sh language-sh\">mkdir consoleapp\ncd consoleapp\ndotnet new console\n</code></pre>\n<h3 id=\"addconsoleapptosolution\">Add console app to solution</h3>\n<pre><code class=\"sh language-sh\">cd ..\ndotnet sln add consoleapp\n</code></pre>\n<h3 id=\"runconsoleapp\">Run console App</h3>\n<pre><code class=\"sh language-sh\">cd console\ndotnet run\n</code></pre>\n<h2 id=\"createwebapp\">Create web app</h2>\n<pre><code class=\"sh language-sh\">mkdir web\ncd web\ndotnet new webapp\n</code></pre>\n<h2 id=\"createclasslibrary\">Create class library</h2>\n<pre><code class=\"sh language-sh\">mkdir lib\ncd lib\ndotnet add classlib\n</code></pre>\n<h2 id=\"addmoreprojectstosolution\">Add more projects to solution</h2>\n<pre><code class=\"sh language-sh\">cd ..\ndotnet sln add web\ndotnet sln add lib\n</code></pre>\n<h2 id=\"listprojectsinsolution\">List projects in solution</h2>\n<pre><code class=\"sh language-sh\">dotnet sln list\n</code></pre>\n<h2 id=\"buildandrun\">Build and run</h2>\n<p>Works both on solution and project level</p>\n<pre><code class=\"sh language-sh\">dotnet build\ndotnet run\n</code></pre>",
         "author": {
             "id": "02022481615804448089",
             "displayName": "atle.magnussen",
             "url": "https://www.blogger.com/profile/02022481615804448089",
             "image": {
-                "url": "//lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UP",
+                "url": "//lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35"
             }
         },
         "replies": {
             "totalItems": "0",
-            "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7734453256887931626/posts/10948512404191"
+            "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7734453256887931626/posts/4657454269074523041/comments"
         },
         "status": "LIVE",
         "readerComments": "ALLOW"

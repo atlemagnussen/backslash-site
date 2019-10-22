@@ -18,12 +18,12 @@
             },
             {
                 "id": "dotnet-core",
-                "name": ".NET core",
+                "name": ".NET Core",
                 "children": [
                     {
                         "id": "dotnet-core-cli-commands",
-                        "name": ".NET core cli commands",
-                        "desc": "Collection of typical operations on dotnet cli",
+                        "name": ".NET Core cli commands",
+                        "desc": "Collection of typical operations on .NET (dotnet) CLI (command-line interface)",
                         "blogger":{
                             "publish": true,
                             "id": "4657454269074523041"
