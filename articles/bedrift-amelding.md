@@ -1,4 +1,12 @@
 # A-melding
+Husk å få med alle punktene
+
+- Lønn
+- Andre goder som mobiltelefon
+- Arbeidsgiveravgift
+- Arb.avg. av pensjon [Det skal beregnes arbeidsgiveravgift av pensjonsinnbetalingene og omkostninger knyttet til avtalen](https://www.altinn.no/starte-og-drive/arbeidsforhold/ansettelse/obligatorisk-tjenestepensjon/)
+
+
 Finn a-melding for mindre virksomheter uten lønnssystem: [A-melding oversikt](https://www.altinn.no/skjemaoversikt/a-ordningen/a-melding2/)
 
 ## Skjema

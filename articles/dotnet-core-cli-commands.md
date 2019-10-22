@@ -1,7 +1,7 @@
 # Dotnet core commandline operations
 <img src="https://storage.googleapis.com/backslash-project.appspot.com/static/NETCore.png" alt="dotnet core logo" width="320">
 
-[.Net core](https://github.com/dotnet/core) is Microsoft's wonderfully refurbished new open source-cross platform successor for the now 20 year old .NET Framework. There are a lot of improvements such as the core of the framework not being as monolithic as its ancestor but more relies on NuGet for expanding. It is also docker enabled making it a natural choice in the new dawn of Cloud computing.  
+[.Net core](https://github.com/dotnet/core) is Microsoft's wonderfully refurbished new open source-cross platform successor for the now 20 year old .NET Framework. There are a lot of improvements such as the core of the framework not being as monolithic as its ancestor but more relies on NuGet for expanding. Being cross platform it works with docker for Linux and thus making it a natural choice over .NET Framework in the new age of Big Cloud computing.  
 
 But some of the greatest features is it's brand new and very consistent `CLI` tools. For command line and Vim geeks like myself this is very liberating. Even though you could run msbuild with .NET framework, this is completely different.
 
