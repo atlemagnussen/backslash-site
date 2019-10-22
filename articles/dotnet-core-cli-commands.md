@@ -1,11 +1,15 @@
-# dotnet core cli operations
-
+# Dotnet core commandline operations
 <img src="https://storage.googleapis.com/backslash-project.appspot.com/static/NETCore.png" alt="dotnet core logo" width="320">
 
+[.Net core](https://github.com/dotnet/core) is Microsoft's wonderfully refurbished new open source-cross platform successor for the now 20 year old .NET Framework. There are a lot of improvements such as the core of the framework not being as monolithic as its ancestor but more relies on NuGet for expanding. It is also docker enabled making it a natural choice in the new dawn of Cloud computing.  
+
+But some of the greatest features is it's brand new and very consistent `CLI` tools. For command line and Vim geeks like myself this is very liberating. Even though you could run msbuild with .NET framework, this is completely different.
+
+This article will show a brief example of a typical setup of a solution and different projects.  
 The order of which you do these are not important.  
 
-## Solution file
-The solution file is actually optional in dotnet core, but you need it if you are using full Visual Studio.  
+## Create solution file
+The solution file is actually optional in dotnet core, but it's an advantage if you plan to open the solution with full Visual Studio. In addition it gives you the option to build the entire solution in one command.
 [Microsoft docs on dotnet sln](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-sln)
 ```sh
 mkdir mysolutionfolder
@@ -13,40 +17,40 @@ cd mysolutionfolder
 dotnet new sln
 ```
 
-## Console app
+## Create console app
 ```sh
 mkdir consoleapp
 cd consoleapp
 dotnet new console
 ```
 
-### Add Console app to solution
+### Add console app to solution
 ```sh
 cd ..
 dotnet sln add consoleapp
 ```
 
-### Run Console App
+### Run console App
 ```sh
 cd console
 dotnet run
 ```
 
-## Web app
+## Create web app
 ```sh
 mkdir web
 cd web
 dotnet new webapp
 ```
 
-## Class library
+## Create class library
 ```sh
 mkdir lib
 cd lib
 dotnet add classlib
 ```
 
-## Add more projects to sln
+## Add more projects to solution
 ```sh
 cd ..
 dotnet sln add web

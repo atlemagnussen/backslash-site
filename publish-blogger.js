@@ -22,12 +22,17 @@ const getBlogs = async (nodes) => {
                     if (existing.title !== title || existing.content !== content) {
                         res = await bloggerApi.updateBlogPost(blogId, node.blogger.id, title, content);
                     } else {
-                        res = `No changes for blogpost ${node.blogger.id} - ${title}`;
+                        console.log(`No changes for blogpost ${node.blogger.id} - ${title}`);
+                        res = null;
                     }
                 } else {
                     res = await bloggerApi.insertBlog(blogId, title, content);
                 }
-                console.log(res);
+                if (res) {
+                    console.log(`${res.kind} ${res.id} updated now ${res.updated} url: ${res.url}`);
+                    console.log("JSON:");
+                    console.log(JSON.stringify(res));
+                }
             }
         }
     }

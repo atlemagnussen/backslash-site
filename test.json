@@ -1,0 +1,58 @@
+{
+    "create": {
+        "kind": "blogger#post",
+        "id": "4657454269074523041",
+        "blog": {
+            "id": "7734453256887931626"
+        },
+        "published": "2019-10-22T00:06:00-07:00",
+        "updated": "2019-10-22T00:06:30-07:00",
+        "etag": "dGltZXN0YW1wOiAxNTcxNzI3OTkwNzY5Cm9mZnNldDogLTI1MjAwMDAwCg",
+        "url": "http://blog.backslash.site/2019/10/net-core-cli-commands.html",
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7734453256887931626/posts/46574542690745230",
+        "title": ".NET core cli commands",
+        "content": "",
+        "author": {
+            "id": "02022481615804448089",
+            "displayName": "atle.magnussen",
+            "url": "https://www.blogger.com/profile/02022481615804448089",
+            "image": {
+                "url": "//lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UP"
+            }
+        },
+        "replies": {
+            "totalItems": "0",
+            "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7734453256887931626/posts/46574542690745",
+            "status": "LIVE",
+            "readerComments": "ALLOW"
+        }
+    },
+    "updated": {
+        "kind": "blogger#post",
+        "id": "1094851240419157807",
+        "blog": {
+            "id": "7734453256887931626"
+        },
+        "published": "2019-10-20T07:56:00-07:00",
+        "updated": "2019-10-22T00:06:28-07:00",
+        "etag": "dGltZXN0YW1wOiAxNTcxNzI3OTg4OTAwCm9mZnNldDogLTI1MjAwMDAwCg",
+        "url": "http://blog.backslash.site/2019/10/es6-modules.html",
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7734453256887931626/posts/10948512404191578",
+        "title": "ES6 modules",
+        "content": "",
+        "author": {
+            "id": "02022481615804448089",
+            "displayName": "atle.magnussen",
+            "url": "https://www.blogger.com/profile/02022481615804448089",
+            "image": {
+                "url": "//lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UP",
+            }
+        },
+        "replies": {
+            "totalItems": "0",
+            "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7734453256887931626/posts/10948512404191"
+        },
+        "status": "LIVE",
+        "readerComments": "ALLOW"
+    }
+}
