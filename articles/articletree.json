@@ -116,7 +116,8 @@
             {
                 "id": "about",
                 "name": "About",
-                "desc": "A technical blog about web development, operating systems and network"
+                "desc": "A technical blog about web development, operating systems and network",
+                "canonical": "/"
             }
         ]
     }],
