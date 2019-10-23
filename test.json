@@ -1,31 +1,31 @@
 {
     "create": {
         "kind": "blogger#post",
-        "id": "4657454269074523041",
+        "id": "8743443294573017928",
         "blog": {
             "id": "7734453256887931626"
         },
-        "published": "2019-10-22T00:06:00-07:00",
-        "updated": "2019-10-22T00:06:30-07:00",
-        "etag": "dGltZXN0YW1wOiAxNTcxNzI3OTkwNzY5Cm9mZnNldDogLTI1MjAwMDAwCg",
-        "url": "http://blog.backslash.site/2019/10/net-core-cli-commands.html",
-        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7734453256887931626/posts/46574542690745230",
-        "title": ".NET core cli commands",
-        "content": "",
+        "published": "2019-10-23T08:30:00-07:00",
+        "updated": "2019-10-23T08:30:09-07:00",
+        "etag": "\"dGltZXN0YW1wOiAxNTcxODQ0NjA5NjIyCm9mZnNldDogLTI1MjAwMDAwCg\"",
+        "url": "http://blog.backslash.site/2019/10/linux-users-and-groups.html",
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7734453256887931626/posts/8743443294573017928",
+        "title": "Linux users and groups",
+        "content":"<h1 id=\"linuxusersandgroups\">Linux users and groups</h1>\n<h2 id=\"createsimpleuserwithdefaultshellandhomefolder\">Create simple user with default shell and home folder</h2>\n<h3 id=\"useradd\">useradd</h3>\n<p><a href=\"https://linux.die.net/man/8/useradd\">man page useradd</a><br />\nhere you need specify:</p>\n<ul>\n<li>create home folder <code>-m</code></li>\n<li>assign to a main group <code>-g</code></li>\n<li>bash as default shell for user <code>-s</code> - or else it might be <code>/bin/sh</code></li>\n</ul>\n<p>and then set password in second command</p>\n<pre><code class=\"sh language-sh\">useradd -m -g users -s /bin/bash testuser\npasswd testuser\n</code></pre>\n<h3 id=\"adduser\">adduser</h3>\n<p><a href=\"https://linux.die.net/man/8/adduser\">man page adduser</a><br />\nthis command will prompt you for password and fullname and some other stuff<br />\nit will create a group with same name as user and assign the OS default shell</p>\n<pre><code>adduser testuser\n</code></pre>\n<h2 id=\"deleteuser\">Delete user</h2>\n<h3 id=\"userdel\">userdel</h3>\n<p><a href=\"https://linux.die.net/man/8/userdel\">man page userdel</a>\nspecify <code>-r</code> to remove users home directory and mail spool</p>\n<pre><code class=\"sh language-sh\">userdel -r testuser\n</code></pre>",
         "author": {
             "id": "02022481615804448089",
             "displayName": "atle.magnussen",
             "url": "https://www.blogger.com/profile/02022481615804448089",
             "image": {
-                "url": "//lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UP"
+                "url": "//lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35"
             }
         },
         "replies": {
             "totalItems": "0",
-            "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7734453256887931626/posts/46574542690745",
-            "status": "LIVE",
-            "readerComments": "ALLOW"
-        }
+            "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7734453256887931626/posts/8743443294573017928/comments"
+        },
+        "status": "LIVE",
+        "readerComments": "ALLOW"
     },
     "updated": {
         "kind": "blogger#post",

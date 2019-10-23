@@ -31,8 +31,6 @@ const getBlogs = async (nodes) => {
                 }
                 if (res) {
                     console.log(`${res.kind} ${res.id} updated now ${res.updated} url: ${res.url}`);
-                    console.log("JSON:");
-                    console.log(JSON.stringify(res));
                 }
             }
         }

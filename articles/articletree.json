@@ -38,7 +38,11 @@
                     {
                         "id": "linux-users-and-groups",
                         "name": "Linux users and groups",
-                        "desc": "Typical linux user and groups operations"
+                        "desc": "Typical linux user and groups operations",
+                        "blogger": {
+                            "publish": true,
+                            "id": "8743443294573017928"
+                        }
                     },
                     {
                         "id": "sane-scanners-on-linux",
