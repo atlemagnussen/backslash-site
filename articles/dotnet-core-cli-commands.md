@@ -1,5 +1,5 @@
 # Dotnet Core command-line operations
-<img src="https://storage.googleapis.com/backslash-project.appspot.com/static/NETCore.png" alt="dotnet core logo" width="320" align="middle">
+<img src="https://storage.googleapis.com/backslash-project.appspot.com/static/NETCore.png" alt="dotnet core logo" width="320">
 
 [.Net core](https://github.com/dotnet/core) is Microsoft's wonderfully refurbished new open source-cross platform successor for the now 20 year old .NET Framework. There are a lot of improvements such as the core of the framework not being as monolithic as its ancestor but more relies on NuGet for expanding. Being cross platform it works with docker for Linux and thus making it a natural choice over .NET Framework in the new age of Big Cloud computing.  
 

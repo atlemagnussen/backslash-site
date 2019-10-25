@@ -61,7 +61,11 @@
                     {
                         "id": "arch-linux-macbook-air",
                         "name": "Arch Linux MBA 2013",
-                        "desc": "How to install Arch Linux on a Macbook Air 2013 model"
+                        "desc": "How to install Arch Linux on a Macbook Air 2013 model",
+                        "blogger": {
+                            "publish": true,
+                            "id": "206412808621739674"
+                        }
                     },
                     {
                         "id": "gentoo-samsung-cronos",
