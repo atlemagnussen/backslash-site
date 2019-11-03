@@ -1,5 +1,5 @@
 # Installer notes for Arch Linux
-
+<div class="separator" style="clear: both; text-align: center;"><a href="https://2.bp.blogspot.com/-mw1DNduiGiE/Xb59pzd9A-I/AAAAAAABmtI/j-F63sjPPoAlpG9npKEecaFj7mAT5J3WwCLcBGAsYHQ/s1600/archlinux-icon-crystal-64.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="https://2.bp.blogspot.com/-mw1DNduiGiE/Xb59pzd9A-I/AAAAAAABmtI/j-F63sjPPoAlpG9npKEecaFj7mAT5J3WwCLcBGAsYHQ/s320/archlinux-icon-crystal-64.png" width="320" height="320" data-original-width="768" data-original-height="768" /></a></div>
 mainly follow the official [Arch installation guide](https://wiki.archlinux.org/index.php/installation_guide)
 
 ## EFI

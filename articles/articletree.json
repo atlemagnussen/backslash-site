@@ -56,7 +56,11 @@
                     {
                         "id": "arch-linux-install",
                         "name": "Arch Linux install",
-                        "desc": "My experience with installing Arch Linux"
+                        "desc": "My experience with installing Arch Linux",
+                        "blogger": {
+                            "publish": true,
+                            "id": "1407329115979965935"
+                        }
                     },
                     {
                         "id": "arch-linux-macbook-air",
