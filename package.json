@@ -23,12 +23,12 @@
     "license": "ISC",
     "devDependencies": {
         "babel-core": "^6.26.3",
-        "babel-loader": "^7.1.5",
+        "babel-loader": "^8.0.6",
         "babel-preset-env": "^1.7.0",
         "babel-preset-react": "^6.24.1",
-        "copy-webpack-plugin": "^4.6.0",
+        "copy-webpack-plugin": "^5.0.5",
         "copyfiles": "^2.1.1",
-        "eslint": "^5.16.0",
+        "eslint": "^6.6.0",
         "eslint-plugin-react": "^7.16.0",
         "html-loader": "^0.5.5",
         "html-webpack-plugin": "^3.2.0",
@@ -37,10 +37,10 @@
         "prop-types": "^15.7.2",
         "react": "^16.11.0",
         "react-dom": "^16.11.0",
-        "remark": "^10.0.1",
-        "remark-html": "^8.0.0",
+        "remark": "^11.0.1",
+        "remark-html": "^10.0.0",
         "remark-preset-lint-recommended": "^3.0.3",
-        "vfile-reporter": "^5.1.2",
+        "vfile-reporter": "^6.0.0",
         "webpack": "^4.41.2",
         "webpack-cli": "^3.3.10",
         "webpack-dev-server": "^3.9.0"
@@ -48,7 +48,7 @@
     "dependencies": {
         "babel-polyfill": "^6.26.0",
         "es6-tree": "^0.2.8",
-        "googleapis": "^44.0.0",
+        "googleapis": "^45.0.0",
         "open": "^7.0.0",
         "server-destroy": "^1.0.1",
         "showdown": "^1.9.1"
