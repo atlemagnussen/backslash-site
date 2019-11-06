@@ -74,7 +74,11 @@
                     {
                         "id": "gentoo-samsung-cronos",
                         "name": "Gentoo Linux on Samsung Cronos",
-                        "desc": "My experience with install Gentoo on a Samsung Cronos laptop" 
+                        "desc": "My experience with install Gentoo on a Samsung Cronos laptop",
+                        "blogger": {
+                            "publish": true,
+                            "id": "6828230720378245981"
+                        }
                     },
                     {
                         "id": "nmcli-how-to",

@@ -1,4 +1,5 @@
 # Gentoo Samsung Cronos
+<div class="separator" style="clear: both; text-align: center;"><img border="0" src="https://1.bp.blogspot.com/-640VjDT5nFk/XcM66ceNPUI/AAAAAAABmxo/dmtUZd-a8FYFUI5jMOV05W564PbRfKiOwCLcBGAsYHQ/s320/gentoo-signet.png" width="320" height="320" data-original-width="533" data-original-height="533" /></div>
 This is a setup with the intent of having a Dual boot install from Arch Linux  
 It might be helpful if so is not the case for you but you have this laptop or a similar one.  
 This has been tested on a **Samsung NP700Z3A**
