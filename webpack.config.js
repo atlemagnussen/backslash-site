@@ -4,8 +4,6 @@ const options = {
     "debug": "debug"
 };
 
-require("babel-polyfill");
-
 const makeLibConf = (from) => {
     console.log(`from ${from}`);
     const conf = [];
@@ -123,7 +121,7 @@ const totalCopyConf = srcConf.concat(libConf);
 console.log(`Total copy conf count=${totalCopyConf.length}`);
 
 module.exports = {
-    "entry": ["babel-polyfill", "./src/index.js"],
+    "entry": "./src/index.js",
     "output": {
         "path": `${__dirname}/dist`,
         "filename": "bundle.js",

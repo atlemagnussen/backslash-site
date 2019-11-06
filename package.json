@@ -22,12 +22,14 @@
     "author": "Atle Magnussen",
     "license": "ISC",
     "devDependencies": {
-        "babel-core": "^6.26.3",
+        "@babel/core": "^7.7.0",
+        "@babel/plugin-transform-runtime": "^7.6.2",
+        "@babel/preset-env": "^7.7.1",
+        "@babel/preset-react": "^7.7.0",
         "babel-loader": "^8.0.6",
-        "babel-preset-env": "^1.7.0",
-        "babel-preset-react": "^6.24.1",
         "copy-webpack-plugin": "^5.0.5",
         "copyfiles": "^2.1.1",
+        "core-js": "^3.4.0",
         "eslint": "^6.6.0",
         "eslint-plugin-react": "^7.16.0",
         "html-loader": "^0.5.5",
@@ -46,7 +48,7 @@
         "webpack-dev-server": "^3.9.0"
     },
     "dependencies": {
-        "babel-polyfill": "^6.26.0",
+        "@babel/runtime": "^7.7.1",
         "es6-tree": "^0.2.8",
         "googleapis": "^45.0.0",
         "open": "^7.0.0",
