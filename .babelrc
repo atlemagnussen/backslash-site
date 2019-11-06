@@ -3,6 +3,10 @@
         [
             "@babel/preset-env",
             {
+                "targets": {
+                    "node": "10.14.1"
+                },
+                "corejs": "3",
                 "useBuiltIns": "entry"
             }
         ],
