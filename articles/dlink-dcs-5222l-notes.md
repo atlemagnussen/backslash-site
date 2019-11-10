@@ -9,16 +9,16 @@ Log in to your camera locally, you need to know your camera's IP address on the 
 Then navigate to `Maintenance` on the top navigation bar, then `Firmware upgrade` on the left navigation bar and you will see something like this screenshot:  
 ![dlink dcs-5222l maintenance](https://storage.googleapis.com/atle-static/pics/dlink-dcs5222l-firmware-upgrade-page.jpg)
 
-The version in this example is `2.03.01`.
+The current version in this example is `2.03.01`.
 
 ### Find latest firmware
 
 Go to [D-Link DCS-5222L technical support downloads](https://support.dlink.com/productinfo.aspx?m=DCS-5222L) and select your revision A or B. There you will find firmware among other downloads and you see which is the latest version, screenshot:  
 ![dlink dcs-5222l support downloads](https://storage.googleapis.com/atle-static/pics/dlink-support-dcs-5222l-downloads.jpg)
 
-The version in this example is `2.16.03`
+The latest available version in this example is `2.16.03`
 
-If your current version is outdated, download now and proceed.
+If your current version is outdated, download the latest now and proceed.
 
 ### Execute the upgrade
 
