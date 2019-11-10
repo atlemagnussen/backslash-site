@@ -1,141 +1,161 @@
 {
     "rootUrl": "/articles/",
-    "nodes": [{
-        "id": "root",
-        "name": "#",
-        "children": [{
-                "id": "js",
-                "name": "Javascript",
-                "children": [{
-                    "id": "es6-modules",
-                    "name": "ES6 modules",
-                    "desc": "ES6 modules and how to use them correctly",
-                    "blogger": {
-                        "publish": true,
-                        "id": "1094851240419157807"
-                    }
-                }]
-            },
-            {
-                "id": "dotnet-core",
-                "name": ".NET Core",
-                "children": [
-                    {
-                        "id": "dotnet-core-cli-commands",
-                        "name": ".NET Core cli commands",
-                        "desc": "Collection of typical operations on .NET (dotnet) CLI (command-line interface)",
-                        "blogger":{
-                            "publish": true,
-                            "id": "4657454269074523041"
+    "nodes": [
+        {
+            "id": "root",
+            "name": "#",
+            "children": [
+                {
+                    "id": "js",
+                    "name": "Javascript",
+                    "children": [
+                        {
+                            "id": "es6-modules",
+                            "name": "ES6 modules",
+                            "desc": "ES6 modules and how to use them correctly",
+                            "blogger": {
+                                "publish": true,
+                                "id": "1094851240419157807"
+                            }
                         }
-                    }
-                ]
-            },
-            {
-                "id": "linux",
-                "name": "Linux",
-                "children": [
-                    {
-                        "id": "linux-users-and-groups",
-                        "name": "Linux users and groups",
-                        "desc": "Typical linux user and groups operations",
-                        "blogger": {
-                            "publish": true,
-                            "id": "8743443294573017928"
+                    ]
+                },
+                {
+                    "id": "dotnet-core",
+                    "name": ".NET Core",
+                    "children": [
+                        {
+                            "id": "dotnet-core-cli-commands",
+                            "name": ".NET Core cli commands",
+                            "desc": "Collection of typical operations on .NET (dotnet) CLI (command-line interface)",
+                            "blogger": {
+                                "publish": true,
+                                "id": "4657454269074523041"
+                            }
                         }
-                    },
-                    {
-                        "id": "sane-scanners-on-linux",
-                        "name": "Scanners on linux",
-                        "desc": "How to use scanners on Linux operation systems",
-                        "blogger": {
-                            "publish": true,
-                            "id": "3831863161475714931"
+                    ]
+                },
+                {
+                    "id": "linux",
+                    "name": "Linux",
+                    "children": [
+                        {
+                            "id": "linux-users-and-groups",
+                            "name": "Linux users and groups",
+                            "desc": "Typical linux user and groups operations",
+                            "blogger": {
+                                "publish": true,
+                                "id": "8743443294573017928"
+                            }
+                        },
+                        {
+                            "id": "sane-scanners-on-linux",
+                            "name": "Scanners on linux",
+                            "desc": "How to use scanners on Linux operation systems",
+                            "blogger": {
+                                "publish": true,
+                                "id": "3831863161475714931"
+                            }
+                        },
+                        {
+                            "id": "arch-linux-install",
+                            "name": "Arch Linux install",
+                            "desc": "My experience with installing Arch Linux",
+                            "blogger": {
+                                "publish": true,
+                                "id": "1407329115979965935"
+                            }
+                        },
+                        {
+                            "id": "arch-linux-macbook-air",
+                            "name": "Arch Linux MBA 2013",
+                            "desc": "How to install Arch Linux on a Macbook Air 2013 model",
+                            "blogger": {
+                                "publish": true,
+                                "id": "206412808621739674"
+                            }
+                        },
+                        {
+                            "id": "gentoo-samsung-cronos",
+                            "name": "Gentoo Linux on Samsung Cronos",
+                            "desc": "My experience with install Gentoo on a Samsung Cronos laptop",
+                            "blogger": {
+                                "publish": true,
+                                "id": "6828230720378245981"
+                            }
+                        },
+                        {
+                            "id": "nmcli-how-to",
+                            "name": "nmcli how to use",
+                            "desc": "Network manager command line interface how to do typical operations"
                         }
-                    },
-                    {
-                        "id": "arch-linux-install",
-                        "name": "Arch Linux install",
-                        "desc": "My experience with installing Arch Linux",
-                        "blogger": {
-                            "publish": true,
-                            "id": "1407329115979965935"
+                    ]
+                },
+                {
+                    "id": "bsd",
+                    "name": "BSD",
+                    "children": [
+                        {
+                            "id": "freebsd-install",
+                            "name": "FreeBSD install",
+                            "desc": "How to install FreeBSD and get some basic stuff up and running"
                         }
-                    },
-                    {
-                        "id": "arch-linux-macbook-air",
-                        "name": "Arch Linux MBA 2013",
-                        "desc": "How to install Arch Linux on a Macbook Air 2013 model",
-                        "blogger": {
-                            "publish": true,
-                            "id": "206412808621739674"
+                    ]
+                },
+                {
+                    "id": "network",
+                    "name": "Network",
+                    "children": [
+                        {
+                            "id": "diy-router-1",
+                            "name": "DIY router rPi ipv4",
+                            "desc": "How to create your own router on a Raspberry Pi 3",
+                            "blogger":{
+                                "publish": true,
+                                "id": "2712465569829651298"
+                            }
+                        },
+                        {
+                            "id": "dlink-dcs-5222l-notes",
+                            "name": "D-Link DCS-5222L notes",
+                            "desc": "D-Link DCS-5222L notes on how to upgrade and general usage",
+                            "blogger": {
+                                "publish": true,
+                                "id": "7278323748354023970"
+                            }
                         }
-                    },
-                    {
-                        "id": "gentoo-samsung-cronos",
-                        "name": "Gentoo Linux on Samsung Cronos",
-                        "desc": "My experience with install Gentoo on a Samsung Cronos laptop",
-                        "blogger": {
-                            "publish": true,
-                            "id": "6828230720378245981"
+                    ]
+                },
+                {
+                    "id": "security",
+                    "name": "Security",
+                    "children": [
+                        {
+                            "id": "gpg-commands",
+                            "name": "GPG encryption commands",
+                            "desc": "Most useful commands for encrypting files withusing GNU Privacy Guard (gnupg.org)"
                         }
-                    },
-                    {
-                        "id": "nmcli-how-to",
-                        "name": "nmcli how to use",
-                        "desc": "Network manager command line interface how to do typical operations"
-                    }
-                ]
-            },
-            {
-                "id": "bsd",
-                "name": "BSD",
-                "children": [{
-                    "id": "freebsd-install",
-                    "name": "FreeBSD install",
-                    "desc": "How to install FreeBSD and get some basic stuff up and running"
-                }]
-            },
-            {
-                "id": "network",
-                "name": "Network",
-                "children": [
-                    {
-                        "id": "diy-router-1",
-                        "name": "DIY router rPi ipv4",
-                        "desc": "How to create your own router on a Raspberry Pi 3"
-                    }
-                ]
-            },
-            {
-                "id": "security",
-                "name": "Security",
-                "children": [
-                    {
-                        "id": "gpg-commands",
-                        "name": "GPG encryption commands",
-                        "desc": "Most useful commands for encrypting files withusing GNU Privacy Guard (gnupg.org)"
-                    }
-                ]
-            },
-            {
-                "id": "cloud",
-                "name": "Cloud",
-                "children": [
-                    {
-                        "id": "elastic-setup-linux",
-                        "name": "Elastic setup Linux",
-                        "desc": "Small setup guide for elastic search on Linux"
-                    }
-                ]
-            },
-            {
-                "id": "about",
-                "name": "About",
-                "desc": "A technical blog about web development, operating systems and network",
-                "canonical": "/"
-            }
-        ]
-    }],
+                    ]
+                },
+                {
+                    "id": "cloud",
+                    "name": "Cloud",
+                    "children": [
+                        {
+                            "id": "elastic-setup-linux",
+                            "name": "Elastic setup Linux",
+                            "desc": "Small setup guide for elastic search on Linux"
+                        }
+                    ]
+                },
+                {
+                    "id": "about",
+                    "name": "About",
+                    "desc": "A technical blog about web development, operating systems and network",
+                    "canonical": "/"
+                }
+            ]
+        }
+    ],
     "config": {}
 }
