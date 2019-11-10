@@ -9,3 +9,9 @@ article a, article a:visited {
 article a:hover {
     color: var(--a-hover-color);
 }
+article h1 {
+    text-align: center;
+}
+article p:has(img) {
+    text-align: center;
+}
