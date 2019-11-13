@@ -87,7 +87,11 @@
                         {
                             "id": "nmcli-how-to",
                             "name": "nmcli how to use",
-                            "desc": "Network manager command line interface how to do typical operations"
+                            "desc": "Network manager command line interface how to do typical operations",
+                            "blogger": {
+                                "publish": true,
+                                "id": "2000728119576568457"
+                            }
                         }
                     ]
                 },

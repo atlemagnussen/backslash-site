@@ -15,7 +15,8 @@ const getBlogs = async (nodes) => {
                 const filepath = `articles/${node.id}.md`;
                 const title = node.name;
                 const md = fs.readFileSync(filepath, 'utf8');
-                const content = converter.makeHtml(md);
+                const link = getLinkToBackSlash(node.id);
+                const content = converter.makeHtml(md) + link;
                 let res;
                 if (node.blogger.id) {
                     const existing = await bloggerApi.getBlogPost(blogId, node.blogger.id);
@@ -35,6 +36,10 @@ const getBlogs = async (nodes) => {
             }
         }
     }
+};
+
+const getLinkToBackSlash = (id) => {
+    return `<p><a href="https://www.backslash.site/blog/${id}">Read this blogpost with full syntax hightlighting on code snippets</a></p>`;
 };
 
 const main = async () => {
