@@ -102,7 +102,11 @@
                         {
                             "id": "unix-tar-commond-operations",
                             "name": "Unix tar commond operations",
-                            "desc": "How to extract and create tarballs with gzip or bzip compression in unix or linux"
+                            "desc": "How to extract and create tarballs with gzip or bzip compression in unix or linux",
+                            "blogger": {
+                                "publish": true,
+                                "id": "2491551779806479351"
+                            }
                         }
                     ]
                 },
