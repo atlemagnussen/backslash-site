@@ -96,6 +96,17 @@
                     ]
                 },
                 {
+                    "id": "unix",
+                    "name": "Unix",
+                    "children": [
+                        {
+                            "id": "unix-tar-commond-operations",
+                            "name": "Unix tar commond operations",
+                            "desc": "How to extract and create tarballs with gzip or bzip compression in unix or linux"
+                        }
+                    ]
+                },
+                {
                     "id": "bsd",
                     "name": "BSD",
                     "children": [
@@ -114,7 +125,7 @@
                             "id": "diy-router-1",
                             "name": "DIY router rPi ipv4",
                             "desc": "How to create your own router on a Raspberry Pi 3",
-                            "blogger":{
+                            "blogger": {
                                 "publish": true,
                                 "id": "2712465569829651298"
                             }

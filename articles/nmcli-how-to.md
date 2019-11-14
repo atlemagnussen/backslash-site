@@ -4,7 +4,7 @@
 Are you looking for a command line way of doing another typical graphical task? Well, here it is. [Network Manager](https://wiki.gnome.org/Projects/NetworkManager) is very well known in Linux as **the** GUI tool for wireless network management. Originally developed by Redhat.  
 But, it also have a cli sibling that I like even better. Just because of the simple fact that when I have set it all up, I just need to search in my bash history or remember `nmcli connection up xxx`, with help of autocomplete, to reconnect. Since network manager also supports dbus, it also works with my home made [dwm status bar](https://github.com/atlemagnussen/dbus-bar) :)  
 
-Anyhow, if you want the full documentation go to the official gnome page [here](https://developer.gnome.org/NetworkManager/stable/nmcli.html). I will write brieflly on some of my favorite useful commands. And hey, network manager works for wired connections as well.
+Anyhow, if you want the full documentation go to the official gnome page [here](https://developer.gnome.org/NetworkManager/stable/nmcli.html). I will write briefly on some of my favorite useful commands. And hey, network manager works for wired connections as well.
 ## Wireless
 
 ### Check if wifi is enabled
