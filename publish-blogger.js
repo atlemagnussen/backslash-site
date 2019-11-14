@@ -14,14 +14,20 @@ const getBlogs = async (nodes) => {
             if (node.blogger && node.blogger.publish) {
                 const filepath = `articles/${node.id}.md`;
                 const title = node.name;
+                const tags = node.tags ? node.tags.sort() : null;
+                let tagsString = null;
+                if (tags) {
+                    tagsString = tags.join(",");
+                }
                 const md = fs.readFileSync(filepath, 'utf8');
                 const link = getLinkToBackSlash(node.id);
                 const content = converter.makeHtml(md) + link;
                 let res;
                 if (node.blogger.id) {
                     const existing = await bloggerApi.getBlogPost(blogId, node.blogger.id);
-                    if (existing.title !== title || existing.content !== content) {
-                        res = await bloggerApi.updateBlogPost(blogId, node.blogger.id, title, content);
+                    const existingTagsString = existing.labels ? existing.labels.join(",") : null;
+                    if (existing.title !== title || existing.content !== content || tagsString !== existingTagsString) {
+                        res = await bloggerApi.updateBlogPost(blogId, node.blogger.id, title, content, node.tags);
                     } else {
                         console.log(`No changes for blogpost ${node.blogger.id} - ${title}`);
                         res = null;

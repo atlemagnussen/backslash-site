@@ -26,30 +26,34 @@ class BloggerRestApi {
         const post = await this.bloggerApiKey.posts.get({blogId, postId});
         return post.data;
     }
-    async updateBlogPost(blogId, postId, title, content) {
-        const a = await this.auth();
+    async updateBlogPost(blogId, postId, title, content, labels) {
+        await this.auth();
         const post = await this.bloggerOAuth.posts.update({blogId, postId, 
             requestBody: {
                 title,
                 content,
+                labels
             }});
         return post.data;
     }
-    async insertBlog (blogId, title, content) {
-        const a = await this.auth();
+    async insertBlog (blogId, title, content, labels) {
+        await this.auth();
         const res = await this.bloggerOAuth.posts.insert({
             blogId,
             requestBody: {
                 title,
                 content,
+                labels
             },
         });
         return res.data;
     }
     async auth() {
-        const scopes = ['https://www.googleapis.com/auth/blogger'];
-        const res = await oauthClient.authenticate(scopes);
-        return res;
+        if (!this.a) {
+            const scopes = ['https://www.googleapis.com/auth/blogger'];
+            this.a = await oauthClient.authenticate(scopes);
+        }
+        return this.a;
     }
 }
 
