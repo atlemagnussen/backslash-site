@@ -1,6 +1,6 @@
 # Tar (tarball) compress and extract files in Unix or Linux
 
-<div class="separator" style="clear: both; text-align: center;"><img border="0" src="https://storage.googleapis.com/atle-static/pics/targz.png" width="420" height="420" /></div>
+<div class="separator" style="clear: both; text-align: center;"><img border="0" src="https://storage.googleapis.com/atle-static/pics/tar.png" width="420" height="420" /></div>
 
 Are you, like the rest of the world, figuring out how to unwrap whatever is inside a `.tar.gz` file?  
 Or have you learned the command for tar.gz but now you have a `.tar.bz2` file?
