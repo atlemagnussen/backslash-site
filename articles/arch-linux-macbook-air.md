@@ -1,6 +1,6 @@
 # Arch Linux on Macbooc Air - 2013
 
-<img src="https://storage.googleapis.com/backslash-project.appspot.com/static/Macbook-linux-white.png" alt="dotnet core logo" width="320">
+<div class="separator" style="clear: both; text-align: center;"><img border="0" src="https://storage.googleapis.com/backslash-project.appspot.com/static/Macbook-linux-white.png"/></div>
 
 ## Resources
 - [Github user pandeiro's arch on air guide](https://github.com/pandeiro/arch-on-air)

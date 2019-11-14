@@ -1,5 +1,5 @@
-# FreeBSD install atle
-
+# FreeBSD install notes
+<div class="separator" style="clear: both; text-align: center;"><img border="0" src="https://storage.googleapis.com/atle-static/pics/freebsdgreen.png"/></div>
 ## U2F / Yubikey
 Install this package:
 ```sh

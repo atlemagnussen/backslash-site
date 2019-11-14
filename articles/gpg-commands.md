@@ -1,4 +1,7 @@
 # GPG encryption commands
+
+
+<div class="separator" style="clear: both; text-align: center;"><img border="0" src="https://storage.googleapis.com/atle-static/pics/gpg_logo.png"/></div>
 ## Create
 The simple command
 ```sh

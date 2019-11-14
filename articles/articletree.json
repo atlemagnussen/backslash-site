@@ -29,7 +29,7 @@
                             "id": "dotnet-core-cli-commands",
                             "name": ".NET Core cli commands",
                             "desc": "Collection of typical operations on .NET (dotnet) CLI (command-line interface)",
-                            "tags": [".net core", "dotnet", "dotnet core", "cli"],
+                            "tags": [".net core", "dotnet", "cli"],
                             "blogger": {
                                 "publish": true,
                                 "id": "4657454269074523041"
