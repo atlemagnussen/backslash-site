@@ -179,7 +179,11 @@
                             "id": "ssh-best-practice",
                             "name": "SSH best practice",
                             "desc": "How to utilize the security features of ssh and use great features like public key encryption",
-                            "tags": ["ssh", "cli", "encryption", "linux", "remote"]
+                            "tags": ["ssh", "cli", "encryption", "linux", "remote"],
+                            "blogger": {
+                                "publish": true,
+                                "id": "9024053670954169562"
+                            }
                         }
                     ]
                 },
