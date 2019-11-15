@@ -1,4 +1,6 @@
-# ssh advanced - start using the secure shell as it was meant to be
+# SSH best practices
+
+start using the secure shell as it was meant to be
 
 <div class="separator" style="clear: both; text-align: center;"><img border="0" src="https://storage.googleapis.com/atle-static/pics/ssh_danger_zone.jpg" /></div>
 
@@ -34,7 +36,7 @@ The recommended algorithm as of writing is called [ed25519](https://ed25519.cr.y
 Since this is not default in `ssh-keygen` you need to specify it, like this:
 
 ```sh
-ssh-keygen -o -a 100 -t ed25519
+$ ssh-keygen -o -a 100 -t ed25519
 ```
 
 It will prompt you like this:
@@ -68,11 +70,11 @@ Te be continued...
 default SHA256 format:
 
 ```sh
-ssh-keygen -lf /etc/ssh/ssh_host_rsa_key
+$ ssh-keygen -lf /etc/ssh/ssh_host_rsa_key
 ```
 
 old MD5 format:
 
 ```sh
-ssh-keygen -lf /etc/ssh/ssh_host_rsa_key -E md5
+$ ssh-keygen -lf /etc/ssh/ssh_host_rsa_key -E md5
 ```
