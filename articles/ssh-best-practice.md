@@ -6,7 +6,8 @@ start using the secure shell as it was meant to be
 
 If you're _ssh'ing_ home to your open port 22, you're done. Internet hacker factories continuously crawl the web for open SSH connections.
 
-You can easily prove it yourself, as I've done with my illustration picture above. Try this: `grep "Failed pass" /var/log/auth.log` and see if there's any occurrences.
+You can easily prove it yourself, as I've done with my illustration picture above.
+Try this: `$ grep "Failed pass" /var/log/auth.log` and see if there's any occurrences.
 See [this blogpost on tecmint.com](https://www.tecmint.com/find-failed-ssh-login-attempts-in-linux/) to check out other ways, as it depends on your distro where you find the auth log.
 
 Now you see them hackers usually trying to log in with the root user. Luckily the option of logging in as root over ssh is disabled by default. You can enable that, but I will not even speak of how.  
@@ -29,10 +30,11 @@ Well, not so fast. If you do this without setting up a public and private key pa
 
 ### Set up keys
 
-There are a lot of articles out there on the details of how the public key authentication _really_ works. I won't go into that, I'll just show you how to make use of it.
-Start off by creating a pair on `the computer where you will log in from`.
-There are different algorithms you can select from when creating your pair, the most common is known as `RSA`. RSA is only considered safe if you have large keys like 4096 bits.  
-The recommended algorithm as of writing is called [ed25519](https://ed25519.cr.yp.to/)
+There are a lot of articles out there on the details of how the public key authentication _really_ works. I won't go into that, I'll just show you how to make use of it.  
+Start off by creating a pair on _the client computer_ where you will **log in from**.  
+Over the years algorithms rise and fall you. It means you need to select according to best practice of today when creating your pair.  
+The most common one is known as `RSA`. RSA is now only considered safe if you have large keys like 4096 bits.  
+The recommended algorithm as of writing is called [ed25519](https://ed25519.cr.yp.to/)  
 Since this is not default in `ssh-keygen` you need to specify it, like this:
 
 ```sh
@@ -63,7 +65,39 @@ The key's randomart image is:
 I excluded the random art image, you can read more about that [here](https://superuser.com/questions/22535/what-is-randomart-produced-by-ssh-keygen) if you want.  
 The fingerprint you can also ignore for now, I will talk about this later regarding the ssh server.
 
-Te be continued...
+**You now go a a private public key pair to play with**
+_~/.ssh/id_ed25519.pub_ is the publis key as it states. This key is no secret. Bit like your bank account number. If you want to get paid by someone, you must share it.
+_~/.ssh/id_ed25519_ is the corresponding secret key, the one you need to keep safe like your house and car keys.  
+But just in case you wonder, they are just plain text string. So go ahead and inspect them, your private key is kind of interesting ^^  
+Let's go ahead and use it for some real world problems ey.
+
+### Authenticate your public key on the ssh server
+
+Hopefully you created the key pair on the client machine you would _log in from_ and not the _ssh server you want to log in to_, as I said.  
+Don't worry, just do it again on the right machine. The server can have a pair lying around. No worries.  
+Now print out your public file:
+
+```sh
+$ cat ~/.ssh/id_ed25519.pub
+```
+
+Should give you something like this:
+
+```bash
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKIaMSAI0b3loG9wbWx2Ja/WZPsIj5Zip3XbShxG3zuC atle@atle-server
+```
+
+Now log on to your _ssh server_ again, either physically or ssh with password.  
+Create this file `~/.ssh/authorized_keys` - if the .ssh folder don't exist just create it .
+Then paste the entire line of your public key from the previous step, all the way from _ssh-ed25519_ everything in between and to the end which in my case is _atle@atle-server_  
+If you add more keys later, add them on a new line. One public key, one line.
+
+Now go back to your _client computer_ and try to log in to the _server_ like you always did. Now you should fly right in without a password, unless you set a password on your private key.  
+This means you can now safely remove password authentication in `sshd_config`
+
+```ssh
+PasswordAuthenctication no
+```
 
 ## Find host fingerprint
 
