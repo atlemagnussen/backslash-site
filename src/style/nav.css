@@ -1,16 +1,19 @@
 .treeview.es6-tree summary:hover {
-    background: var(--hover-color);
+  background: var(--hover-color);
 }
-.treeview.es6-tree span[selected="true"]{
-    background-color: var(--selected-color);
+.treeview.es6-tree span[selected="true"] {
+  background-color: var(--selected-color);
 }
 
 .left .es6-tree .node-text.icon-file::before {
-    color: var(--main-color);
+  color: var(--main-color);
 }
 .token.operator {
-    background: none;
+  background: none;
 }
 code[class*="language-"] {
-    color: var(--default-lang-color);
+  color: var(--default-lang-color);
+}
+code.language-bash {
+  color: var(--cyan-dark);
 }

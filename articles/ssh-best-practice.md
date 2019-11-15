@@ -39,7 +39,7 @@ ssh-keygen -o -a 100 -t ed25519
 
 It will prompt you like this:
 
-```sh
+```bash
 Generating public/private ed25519 key pair.
 Enter file in which to save the key (/home/atle/.ssh/id_ed25519):
 ```
@@ -50,7 +50,7 @@ Next thing it will ask of you is a password. What this means is: Do you want to 
 If you want to skip password, just hit enter - twice.
 When done you are done you will see something like this:
 
-```sh
+```bash
 Your identification has been saved in ~/.ssh/id_ed25519.
 Your public key has been saved in ~/.ssh/id_ed25519.pub.
 The key fingerprint is:
