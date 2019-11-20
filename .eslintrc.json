@@ -18,25 +18,14 @@
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
-    "plugins": [
-        "react"
-    ],
+    "plugins": ["react"],
     "rules": {
-        "indent": [
-            "error",
-            4
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
+        "indent": ["error", 4],
         "quotes": "off",
-        "semi": [
-            "error",
-            "always"
-        ],
+        "semi": ["error", "always"],
         "no-console": "warn",
-	"eqeqeq": "warn",
-	"space-infix-ops": ["error", {"int32Hint": false}]
+        "eqeqeq": "warn",
+        "space-infix-ops": ["error", { "int32Hint": false }],
+        "arrow-parens": "off"
     }
 }

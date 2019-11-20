@@ -21,7 +21,13 @@ export class Route {
         }
 
         if (subRoute) {
-            this.subRoute = new Route(subRoute.path, subRoute.content, subRoute.init, subRoute.subRoute, subRoute.reactComponent);
+            this.subRoute = new Route(
+                subRoute.path,
+                subRoute.content,
+                subRoute.init,
+                subRoute.subRoute,
+                subRoute.reactComponent
+            );
         }
     }
 }
@@ -30,60 +36,62 @@ export default class Router {
     constructor(config) {
         this.config = config;
         this.routes = [];
-        this.config.forEach((c) => {
+        this.config.forEach(c => {
             const route = new Route(c.path, c.content, c.init, c.subRoute, c.reactComponent);
 
             c.route = route;
             this.routes.push(route);
         });
 
-        const view = document.getElementById('view');
+        const view = document.getElementById("view");
 
         if (!view) {
             throw new Error("Need a view");
         }
         this.view = view;
 
-        const activeRoutes = Array.from(document.querySelectorAll('[route]'));
+        const activeRoutes = Array.from(document.querySelectorAll("[route]"));
 
-        activeRoutes.forEach((route) => {
-            route.addEventListener('click', (e) => {
-                this.onClickRoute(e);
-            }, false);
+        activeRoutes.forEach(route => {
+            route.addEventListener(
+                "click",
+                e => {
+                    this.onClickRoute(e);
+                },
+                false
+            );
         });
 
-        window.onpopstate = (event) => {
-            console.log(`location: ${document.location}, state: ${JSON.stringify(event.state)}`);
-            console.log(`window.location.pathname=${window.location.pathname}`);
+        window.onpopstate = () => {
             this.navigate(window.location.pathname, true);
         };
 
         this.navigate(window.location.pathname, true);
 
-        document.addEventListener('routeChange', (e) => {
+        document.addEventListener("routeChange", e => {
             this.navigate(e.detail.route);
         });
     }
 
     pathBreaker(path) {
-        const slashes = path.match(/\//ig) || [];
+        const slashes = path.match(/\//gi) || [];
 
         if (slashes.length === 0) {
-            return {"main": "/"};
+            return { main: "/" };
         } else if (slashes.length === 1) {
-            return {"main": path};
+            return { main: path };
         }
 
-        let pathSplit = path.split('/');
+        let pathSplit = path.split("/");
 
         pathSplit = this.clearEmptyElementsInArray(pathSplit);
-        const fullPath = `/${pathSplit.join('/')}`;
+        const fullPath = `/${pathSplit.join("/")}`;
         const mainPath = `/${pathSplit.splice(0, 1)}`;
 
         return {
-            "main": mainPath,
-            "params": pathSplit,
-            "full": fullPath
+            main: mainPath,
+            params: pathSplit,
+            full: fullPath,
         };
     }
     onClickRoute(event) {
@@ -103,18 +111,22 @@ export default class Router {
     navigate(routePath, notPushHistory) {
         const routeObj = this.pathBreaker(routePath);
 
-        const route = this.routes.find((r) => r.path === routeObj.main);
+        const route = this.routes.find(r => r.path === routeObj.main);
 
         if (route) {
             if (!notPushHistory) {
                 if (routeObj.full) {
                     if (route.subRoute.reactComponent) {
-                        window.history.pushState({"path": route.subRoute.path}, this.getNameFromPath(routeObj.full), routeObj.full);
+                        window.history.pushState(
+                            { path: route.subRoute.path },
+                            this.getNameFromPath(routeObj.full),
+                            routeObj.full
+                        );
                     } else {
                         window.history.pushState(route.subRoute, this.getNameFromPath(routeObj.full), routeObj.full);
                     }
                 } else if (route.reactComponent) {
-                    window.history.pushState({"path": route.path}, this.getNameFromPath(route.path), route.path);
+                    window.history.pushState({ path: route.path }, this.getNameFromPath(route.path), route.path);
                 } else {
                     window.history.pushState(route, this.getNameFromPath(route.path), route.path);
                 }
@@ -125,10 +137,7 @@ export default class Router {
                     const component = route.subRoute.reactComponent;
                     const param = routeObj.params[0];
 
-                    ReactDOM.render(
-                        React.createElement(component, {"id": param}, null),
-                        this.view
-                    );
+                    ReactDOM.render(React.createElement(component, { id: param }, null), this.view);
                 } else if (route.subRoute.content) {
                     let content = route.subRoute.content;
 
@@ -138,7 +147,7 @@ export default class Router {
                     this.view.innerHTML = content;
                 }
             } else if (route.reactComponent) {
-                ReactDOM.render(<route.reactComponent/>, this.view);
+                ReactDOM.render(<route.reactComponent />, this.view);
             } else if (route.content) {
                 this.view.innerHTML = route.content;
             } else {
@@ -149,13 +158,13 @@ export default class Router {
                 route.init();
             }
         } else {
-            window.history.pushState({}, '', 'error');
-            this.view.innerHTML = 'No route exists with this path';
+            window.history.pushState({}, "", "error");
+            this.view.innerHTML = "No route exists with this path";
         }
     }
 
     getNameFromPath(path) {
-        const pathSplit = path.split('/');
+        const pathSplit = path.split("/");
 
         if (pathSplit[pathSplit.length - 1]) {
             return pathSplit[pathSplit.length - 1];
