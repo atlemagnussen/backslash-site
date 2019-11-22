@@ -1,4 +1,6 @@
-html, body, main {
+html,
+body,
+main {
     height: 100%;
     width: 100%;
     max-width: 100%;
@@ -9,15 +11,26 @@ body {
     margin: 0;
     padding: 0;
     background-image: var(--background-pic);
-    background-attachment: fixed; 
+    background-attachment: fixed;
     background-size: cover;
 }
 * {
     box-sizing: border-box;
 }
-div, article, p, span, section, header, h1, h2, h3, h4, h5, h6 {
+div,
+article,
+p,
+span,
+section,
+header,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     z-index: inherit;
-}    
+}
 main {
     display: flex;
     flex-direction: column;
@@ -27,7 +40,7 @@ main {
 }
 header {
     background: inherit;
-    font-family: 'Fredericka the Great', cursive;
+    font-family: "Fredericka the Great", cursive;
     height: auto;
     text-align: center;
     display: flex;
@@ -92,7 +105,7 @@ aside {
 .svg-defs {
     display: none;
 }
-@media only screen and (max-width : 640px) {
+@media only screen and (max-width: 640px) {
     section {
         flex-direction: column;
     }
@@ -127,14 +140,14 @@ aside {
     background: inherit;
     border-radius: 5px;
     z-index: 1;
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
 }
 .blur:before {
     content: "";
     position: absolute;
     background: inherit;
     filter: blur(10px);
-    box-shadow: inset 0 0 2000px rgba(100, 100, 100, .8);
+    box-shadow: inset 0 0 2000px rgba(100, 100, 100, 0.8);
     margin: -10px;
     z-index: -1;
     top: 0;
@@ -144,7 +157,7 @@ aside {
 }
 .frosted {
     background: inherit;
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);   
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     z-index: 1;
 }
@@ -157,7 +170,7 @@ aside {
     left: 0;
     right: 0;
     bottom: 0;
-    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
     filter: blur(10px);
     margin: -20px;
 }
