@@ -16,7 +16,6 @@ export default class BlogComponent extends React.Component {
     componentDidUpdate(prevProps) {
         if (this.props.id !== prevProps.id) {
             this.fetchArticle(this.props.id);
-            console.log(`updated to id ${this.props.id}`);
         }
     }
 
