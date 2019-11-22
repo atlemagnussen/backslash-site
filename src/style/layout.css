@@ -10,7 +10,7 @@ main {
 body {
     margin: 0;
     padding: 0;
-    background-image: var(--background-pic);
+    background-image: url(https://storage.googleapis.com/backslash-project.appspot.com/static/dark-landscape-smaller2.jpg);
     background-attachment: fixed;
     background-size: cover;
 }

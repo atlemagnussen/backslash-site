@@ -48,7 +48,8 @@
     --a-underline-color: var(--cyan-dark);
     --a-hover-color: var(--cyan);
 
+    /* don't use var for background, causes double loading */
     /* --background-pic: url(https://storage.googleapis.com/backslash-project.appspot.com/static/dark-landscape_compact-1.jpg); */
-    --background-pic: url(https://storage.googleapis.com/backslash-project.appspot.com/static/dark-landscape-smaller2.jpg);
+    /* --background-pic: url(https://storage.googleapis.com/backslash-project.appspot.com/static/dark-landscape-smaller2.jpg); */
     /*--background-pic: url(https://storage.googleapis.com/atle-static/backgrounds/dark-scull.jpg);*/
 }

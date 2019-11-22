@@ -3,7 +3,17 @@
     "name": "backslash.site",
     "icons": [
         {
-            "src": "https://s3-eu-west-1.amazonaws.com/atle-static/backslash/html5b-192.png",
+            "src": "https://storage.googleapis.com/backslash-project.appspot.com/static/html5b-48.png",
+            "type": "image/png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "https://storage.googleapis.com/backslash-project.appspot.com/static/html5b-96.png",
+            "type": "image/png",
+            "sizes": "96x96"
+        },
+        {
+            "src": "https://storage.googleapis.com/backslash-project.appspot.com/static/html5b-192.png",
             "type": "image/png",
             "sizes": "192x192"
         }
