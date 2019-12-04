@@ -100,6 +100,16 @@
                                 "publish": true,
                                 "id": "2000728119576568457"
                             }
+                        },
+                        {
+                            "id": "linux-disk-management",
+                            "name": "Linux disk management",
+                            "desc": "Linux partitioning, fstab and raid with mdadm, how to monitor and setup",
+                            "tags": ["raid", "linux", "mdadm", "config", "cli", "fstab", "partitioning"],
+                            "blogger": {
+                                "publish": true,
+                                "id": "1766837538288488018"
+                            }
                         }
                     ]
                 },

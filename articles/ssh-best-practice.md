@@ -3,7 +3,7 @@
 Start using the secure shell as it was meant to be, secure.  
 **TLDR;**
 
--   Use public key authentication and disable login with password in _sshd_config_ `PasswordAuthenctication no`
+-   Use public key authentication and disable login with password in sshd_config `PasswordAuthenctication no`
 -   Use ed25519 for your SSH keys `$ ssh-keygen -a 100 -t ed25519`
 -   Don't ignore the fingerprint changed messages if you get one
 
