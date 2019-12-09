@@ -18,8 +18,8 @@ here you need specify:
 
 and then set password in second command
 ```sh
-useradd -m -g users -s /bin/bash testuser
-passwd testuser
+$ useradd -m -g users -s /bin/bash testuser
+$ passwd testuser
 ```
 
 ### adduser
@@ -27,7 +27,7 @@ passwd testuser
 this command will prompt you for password and fullname and some other stuff  
 it will create a group with same name as user and assign the OS default shell
 ```
-adduser testuser
+$ adduser testuser
 ```
 
 ## Delete user
@@ -36,13 +36,17 @@ There is also a low level `userdel` and high level command `deluser` for deletin
 [man page](https://linux.die.net/man/8/userdel)
 specify `-r` to remove users home directory and mail spool
 ```sh
-userdel -r testuser
+$ userdel -r testuser
 ```
 
 ## Create group
+```sh
+$ groupadd newgroup
+```
 
 ## Add user to group
+```sh
+$ usermod -a -G newgroup testuser
+```
 
 ## Create service user
-
-## Update password
