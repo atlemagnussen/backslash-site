@@ -85,11 +85,26 @@ $ mount /dev/sdc1 /mnt/disk1
 ## Linux software RAID setup with mdadm
 [Manpage](https://linux.die.net/man/8/mdadm)
 
+### Create new array
+Raid 1 (mirror) with 2 devices
+```sh
+$ sudo mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 /dev/sdc /dev/sdd
+```
+
 ### check status
 ```sh
 $ cat /proc/mdstat
 ```
-Healthy output looks something like this:
+While creating it could look like this:  
+```bash
+Personalities : [raid1] [linear] [multipath] [raid0] [raid6] [raid5] [raid4] [raid10]
+md1 : active raid1 sdd[1] sdc[0]
+      9766305792 blocks super 1.2 [2/2] [UU]
+      [===>.................]  resync = 18.5% (1811232960/9766305792) finish=686.7min speed=193056K/sec
+      bitmap: 60/73 pages [240KB], 65536KB chunk
+```
+
+Healthy output when everything is up and running looks something like this:
 ```bash
 md0 : active raid1 sda1[1] sdb1[2]
       3906886272 blocks super 1.2 [2/2] [UU]
