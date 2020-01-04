@@ -33,16 +33,17 @@ Is probably `/dev/sda1`
 You will not make the Wifi on MBA work during install. You have options:
 #### USB wired adapter
 [D-Link USB DUB-1312](https://eu.dlink.com/uk/en/products/dub-1312-usb-3-gigabit-ethernet-adapter) usually works out of the box on Linux.
-Plug in and type `ip a` it probably already works, if not try too boot up USB with the adapter and network already connected.
+Plug in and type `$ ip a` it probably already works, if not try too boot up USB with the adapter and network already connected.
 
 ### USB mobile tethering
 An alternative from the guide in my sources:
 [Android tethering](https://wiki.archlinux.org/index.php/Android_tethering)
 
-## Remember
-```bash
-pacman -S linux-headers
-pacman -S broadcom-wl-dkms dkms
+## Remember broadcom wireless
+Install Broadcom dkms drivers
+```sh
+$ pacman -S linux-headers
+$ pacman -S broadcom-wl-dkms dkms
 ```
 
 ## After install and first boot
@@ -53,24 +54,24 @@ pacman -S broadcom-wl-dkms dkms
 network manager is a better choice but not preinstalled.  
 How to set wifi up with cli, this even works with a hidden SSID:
 ```sh
-nmcli connection add type wifi con-name con1 ifname wlp3s0 ssid "MyHiddenOrNotSSID"
-nmcli connection modify con1 wifi-sec.key-mgmt wpa-psk
-nmcli connection modify con1 wifi-sec.psk "greatestpasswordever"
+$ nmcli connection add type wifi con-name con1 ifname wlp3s0 ssid "MyHiddenOrNotSSID"
+$ nmcli connection modify con1 wifi-sec.key-mgmt wpa-psk
+$ nmcli connection modify con1 wifi-sec.psk "greatestpasswordever"
 # setup done, then connect
-nmcli connection up con1
+$ nmcli connection up con1
 ```
 
 ##### netctl
 as root run this to make wifi persist
-```bash
-wifi-menu      # select network, enter pw to create profile
-ls /etc/netctl # to see the name of the profile just created
-netctl enable wlp3s0-MyHomeWifiNetworkName
+```sh
+$ wifi-menu      # select network, enter pw to create profile
+$ ls /etc/netctl # to see the name of the profile just created
+$ netctl enable wlp3s0-MyHomeWifiNetworkName
 ```
 
 #### Wired
 If you have a adapter and no network automatically works, try this:
-`ip link show` and see if there is another device in addition to loopback.  
+`$ ip link show` and see if there is another device in addition to loopback.  
 if there is, try to start systemd-networkd:
 
 config file `/etc/systemd/network/50-temp.network`
@@ -83,9 +84,9 @@ DHCP=ipv4
 ```
 Services:
 
-```bash
-systemctl start systemd-networkd.service // up the device
-systemctl start systemd-resolved.service // for DNS
+```sh
+$ systemctl start systemd-networkd.service // up the device
+$ systemctl start systemd-resolved.service // for DNS
 ```
 
 ### Touchpad
@@ -108,10 +109,10 @@ Reference:
 
 ### Sound
 First install alsamixer
-```bash
-sudo pacman -S alsa-utils
+```sh
+$ sudo pacman -S alsa-utils
 ```
-Then run alsamixer and unmute `HDA Intel PCH`, toggle with `m`  
+Then run `alsamixer` and unmute `HDA Intel PCH`, toggle with `m`  
 
 Then install `pulseaudio`, `volumeicon` and `pavucontrol` to control stuff easier.
 
@@ -120,32 +121,32 @@ To set your default backlight value, that will be set on reboot and resume
 Set something between 0 and 100
 ```sh
 # get current
-cat /sys/class/backlight/acpi_video0/brightness
+$ cat /sys/class/backlight/acpi_video0/brightness
 # get max
-cat /sys/class/backlight/acpi_video0/max_brightness
+$ cat /sys/class/backlight/acpi_video0/max_brightness
 # only root can set
-sudo su
-echo 50 > /sys/class/backlight/acpi_video0/brightness
+$ sudo su
+$ echo 50 > /sys/class/backlight/acpi_video0/brightness
 ```
 
 #### Xbacklight
 This will temporarily set backlight, resets on reboot and resume  
 Can be used for hotkeys, see [Functionkeys](#functionkeyssetbacklightandvolume)
-```bash
-sudo pacman -S xorg-xbacklight
-xbacklight -set 50 # is %
+```sh
+$ sudo pacman -S xorg-xbacklight
+$ xbacklight -set 50 # is %
 ```
 
 ### Keyboard
 [Arch Linux Apple keyboard article](https://wiki.archlinux.org/index.php/Apple_Keyboard)  
 
 #### Function keys setup
-Need to use fn-key to get F[num] function
+Need to use fn-key to get F[num] function  
+edit file `/etc/modprobe.d/hid_apple.conf` and add this:  
 ```bash
-sudo nano /etc/modprobe.d/hid_apple.conf
-# input this
 options hid_apple fnmode=2
 ```
+
 #### Function keys set backlight and volume
 Add this to config:
 ```bash
@@ -153,7 +154,7 @@ Add this to config:
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
-- Pulse Audio controls
+# Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
@@ -164,12 +165,12 @@ Create .Xmodmap in home folder containing this:
 keycode  94 = bar section grave asciitilde brokenbar paragraph
 keycode  49 = less greater less greater onehalf threequarters onehalf threequarters
 ```
-Put this in .config/i3/config, after eventual setxkbmap commands:  
+Put this in your shells startup file somehow, i.e for i3 `.config/i3/config`, after eventual setxkbmap commands:  
 ```bash
 exec "xmodmap $HOME/.Xmodmap"
 ```
 
 If others keys are wrong, look at all current bindings with this command and then change accordingly in .Xmodmap:  
-```bash
-xmodmap -pke
+```sh
+$ xmodmap -pke
 ```
