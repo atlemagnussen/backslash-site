@@ -198,6 +198,18 @@
                     ]
                 },
                 {
+                    "id": "android",
+                    "name": "Android",
+                    "children": [
+                        {
+                            "id": "samsung-s9-bloatware",
+                            "name": "Samsung S9 bloatware",
+                            "desc": "Samsung Galaxy S9 bloatware to remove and how",
+                            "tags": ["android", "samsung", "s9", "cli", "bloatware"]
+                        }
+                    ]
+                },
+                {
                     "id": "cloud",
                     "name": "Cloud",
                     "children": [
