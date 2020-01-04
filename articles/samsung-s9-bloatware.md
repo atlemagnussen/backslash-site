@@ -1,10 +1,17 @@
-# Samsung Galaxy S9 bloatware
+# Samsung Galaxy S9 bloatware removal without rooting
 
 <div class="separator" style="clear: both; text-align: center;"><img width="400" border="0" src="https://storage.googleapis.com/atle-static/pics/android_robot.png"/></div>
 
+## Introduction
+
+<details>
+<summary>
+<span class="closed">Click to read intro</span>
+<span class="open">close</span>
+</summary>
 The background for this article is the fact that Samsung contains an infamous number of preinstalled apps on their phones which you cannot remove easily because they are installed as "system apps". Among them is Facebook and many more...
 
-So I had to find a way to remove some of the apps I **never ever use** and see if my battery life will improve. As of before this guide was written it will not last a full day.  
+So I had to find a way to remove some of the apps I **never ever use** and see if my battery life will improve. As of before this guide was written it will not last a full day. But I would not take the risk of rooting the phone and/or install custom ROM.
 
 In other words this article contains a list of packages/bloatware I have tested removing on my Galaxy S9 and verified that the phone still works.  
 I have connected the phone to a computer and used the [adb](https://developer.android.com/studio/command-line/adb) command line tool to remove the packages without rooting the phone.  
@@ -12,8 +19,15 @@ I have connected the phone to a computer and used the [adb](https://developer.an
 To learn how to connect phone and remove packages using `adb` see [XDA developers debloat guide](https://www.xda-developers.com/uninstall-carrier-oem-bloatware-without-root-access/)  
 
 Inspiration to which packages to remove I got from [XDA Developers Forum S10 bloatware list](https://forum.xda-developers.com/galaxy-s10/how-to/galaxy-s10-s10-debloat-bloatware-t3912073)
+</details>
 
-## TLDR connection guide
+
+## TLDR adb connection guide
+<details>
+<summary>
+<span class="closed">Click to read quick connection guide</span>
+<span class="open">close</span>
+</summary>
 Once you have `adb`, set allow `USB debugging` on your phone and connected the phone to your computer with USB, enter this in your terminal
 ```
 adb devices
@@ -31,8 +45,14 @@ Should look like this
 ```bash
 starlte:/ $
 ```
+</details>
 
-## General
+## Android Package Manager
+<details>
+<summary>
+<span class="closed">Click to read general info on the package manager</span>
+<span class="open">close</span>
+</summary>
 Once you are inside `adb shell` you can do the following operations using [Android Package manager pm](http://adbcommand.com/adbshell/pm)
 
 List all packages
@@ -61,14 +81,9 @@ Should output
 ```bash
 Success
 ```
+</details>
 
-## More Uninstalls I have not tested:
-- Bixby
-- General System apps
-- Gimmicky apps
-- Gear VR
-
-## Tested uninstalls
+## Tested and verified uninstalls
 ### Facebook
 
 If you have installed other facebook apps like `messenger lite` you will see this package in addition. You might don't want to uninstall that package
@@ -140,7 +155,6 @@ pm uninstall -k --user 0 com.samsung.android.kidsinstaller
 pm uninstall -k --user 0 com.samsung.android.app.camera.sticker.facearavatar.preload
 ```
 
-
 ### Samsung Edge
 ```sh
 pm uninstall -k --user 0 com.samsung.android.service.peoplestripe
@@ -150,3 +164,9 @@ pm uninstall -k --user 0 com.samsung.android.service.peoplestripe
 ```sh
 pm uninstall -k --user 0 com.samsung.android.drivelink.stub
 ```
+
+## More Uninstalls I have not tested yet
+- Bixby
+- General System apps
+- Gimmicky apps
+- Gear VR

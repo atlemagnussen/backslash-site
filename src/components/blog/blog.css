@@ -15,3 +15,22 @@ article h1 {
 article p:has(img) {
     text-align: center;
 }
+article details summary {
+    cursor: pointer;
+    font-style: italic;
+}
+article details[open] summary {
+    color: grey;
+}
+article details:not([open]) .closed {
+    display: inline-block;
+}
+article details:not([open]) .open {
+    display: none;
+}
+article details[open] .closed {
+    display: none;
+}
+article details[open] .open {
+    display: inline-block;
+}
