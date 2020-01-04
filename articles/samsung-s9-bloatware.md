@@ -1,6 +1,6 @@
 # Samsung Galaxy S9 bloatware
 
-<div class="separator" style="clear: both; text-align: center;"><img border="0" src="https://storage.googleapis.com/atle-static/pics/android_robot.png"/></div>
+<div class="separator" style="clear: both; text-align: center;"><img width="400" border="0" src="https://storage.googleapis.com/atle-static/pics/android_robot.png"/></div>
 
 The background for this article is the fact that Samsung contains an infamous number of preinstalled apps on their phones which you cannot remove easily because they are installed as "system apps". Among them is Facebook and many more...
 
