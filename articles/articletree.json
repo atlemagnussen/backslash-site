@@ -205,7 +205,12 @@
                             "id": "samsung-s9-bloatware",
                             "name": "Samsung S9 bloatware",
                             "desc": "Samsung Galaxy S9 bloatware to remove and how",
-                            "tags": ["android", "samsung", "s9", "cli", "bloatware"]
+                            "tags": ["android", "samsung", "s9", "cli", "bloatware"],
+                            "blogger": {
+                                "publish": true,
+                                "id": "3661130018730126039",
+                                "link": "http://blog.backslash.site/2020/01/samsung-s9-bloatware.html"
+                            }
                         }
                     ]
                 },

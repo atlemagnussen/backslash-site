@@ -12,7 +12,7 @@ const getBlogs = async (nodes) => {
             await getBlogs(node.children);
         } else {
             if (node.blogger && node.blogger.publish) {
-                const filepath = `articles/${node.id}.md`;
+                const filepath = `./articles/${node.id}.md`;
                 const title = node.name;
                 const tags = node.tags ? node.tags.sort() : null;
                 let tagsString = null;
