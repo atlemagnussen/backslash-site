@@ -2,10 +2,45 @@
 
 <div class="separator" style="clear: both; text-align: center;"><img border="0" src="https://storage.googleapis.com/atle-static/pics/android_robot.png"/></div>
 
-This is a list of packages I remove using [XDA developers debloat guide](https://www.xda-developers.com/uninstall-carrier-oem-bloatware-without-root-access/) using adb to connect to the phone via usb and opening a shell
+The background for this article is the fact that Samsung contains an infamous number of preinstalled apps on their phones which you cannot remove easily because they are installed as "system apps". Among them is Facebook and many more...
 
-## Facebook
-List all packages containing facebook
+So I had to find a way to remove some of the apps I **never ever use** and see if my battery life will improve. As of before this guide was written it will not last a full day.  
+
+In other words this article contains a list of packages/bloatware I have tested removing on my Galaxy S9 and verified that the phone still works.  
+I have connected the phone to a computer and used the [adb](https://developer.android.com/studio/command-line/adb) command line tool to remove the packages without rooting the phone.  
+
+To learn how to connect phone and remove packages using `adb` see [XDA developers debloat guide](https://www.xda-developers.com/uninstall-carrier-oem-bloatware-without-root-access/)  
+
+Inspiration to which packages to remove I got from [XDA Developers Forum S10 bloatware list](https://forum.xda-developers.com/galaxy-s10/how-to/galaxy-s10-s10-debloat-bloatware-t3912073)
+
+## TLDR connection guide
+Once you have `adb`, set allow `USB debugging` on your phone and connected the phone to your computer with USB, enter this in your terminal
+```
+adb devices
+```
+If you get some output like this
+```bash
+List of devices attached
+2cd02add38057ece        device
+```
+You are good to go, enter the shell
+```sh
+adb shell
+```
+Should look like this
+```bash
+starlte:/ $
+```
+
+## General
+Once you are inside `adb shell` you can do the following operations using [Android Package manager pm](http://adbcommand.com/adbshell/pm)
+
+List all packages
+```sh
+pm list packages
+```
+
+List limited set of packages i.e containing `facebook`
 ```sh
 pm list packages | grep facebook
 ```
@@ -18,7 +53,25 @@ package:com.facebook.services
 package:com.facebook.appmanager
 ```
 
-If you have installed other facebook apps like `messenger lite` you will see this package in addition. You might don't want to uninstall that
+To uninstall a package
+```sh
+pm uninstall -k --user 0 com.facebook.katana
+```
+Should output
+```bash
+Success
+```
+
+## More Uninstalls I have not tested:
+- Bixby
+- General System apps
+- Gimmicky apps
+- Gear VR
+
+## Tested uninstalls
+### Facebook
+
+If you have installed other facebook apps like `messenger lite` you will see this package in addition. You might don't want to uninstall that package
 ```bash
 package:com.facebook.mlite
 ```
@@ -29,4 +82,71 @@ pm uninstall -k --user 0 com.facebook.katana
 pm uninstall -k --user 0 com.facebook.system
 pm uninstall -k --user 0 com.facebook.appmanager
 pm uninstall -k --user 0 com.facebook.services
+```
+
+### Samsung Pass / Pay
+```sh
+pm uninstall -k --user 0 com.samsung.android.samsungpassautofill
+pm uninstall -k --user 0 com.samsung.android.authfw
+pm uninstall -k --user 0 com.samsung.android.samsungpass
+pm uninstall -k --user 0 com.samsung.android.spay
+pm uninstall -k --user 0 com.samsung.android.spayfw
+```
+
+### Samsung Game launcher
+```sh
+pm uninstall -k --user 0 com.samsung.android.game.gamehome
+pm uninstall -k --user 0 com.enhance.gameservice
+pm uninstall -k --user 0 com.samsung.android.game.gametools
+pm uninstall -k --user 0 com.samsung.android.game.gos
+```
+
+### Samsung DEX (desktop docking stuff)
+```sh
+pm uninstall -k --user 0 com.sec.android.desktopmode.uiservice
+pm uninstall -k --user 0 com.samsung.desktopsystemui
+pm uninstall -k --user 0 com.sec.android.app.desktoplauncher
+```
+
+### Printing
+```sh
+pm uninstall -k --user 0 com.android.bips
+pm uninstall -k --user 0 com.google.android.printservice.recommendation
+pm uninstall -k --user 0 com.android.printspooler
+```
+
+### Samsung Mail
+```sh
+pm uninstall -k --user 0 com.samsung.android.email.provider
+pm uninstall -k --user 0 com.wsomacp
+```
+
+### Samsung Internet (browser)
+```sh
+pm uninstall -k --user 0 com.sec.android.app.sbrowser
+pm uninstall -k --user 0 com.samsung.android.app.sbrowseredge
+```
+
+### Samsung LED cover
+```sh
+pm uninstall -k --user 0 com.samsung.android.app.ledcoverdream
+pm uninstall -k --user 0 com.sec.android.cover.ledcover
+
+```
+
+### Samsung Kids
+```sh
+pm uninstall -k --user 0 com.samsung.android.kidsinstaller
+pm uninstall -k --user 0 com.samsung.android.app.camera.sticker.facearavatar.preload
+```
+
+
+### Samsung Edge
+```sh
+pm uninstall -k --user 0 com.samsung.android.service.peoplestripe
+```
+
+### Car mode
+```sh
+pm uninstall -k --user 0 com.samsung.android.drivelink.stub
 ```
