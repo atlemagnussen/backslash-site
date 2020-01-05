@@ -16,7 +16,8 @@
                             "tags": ["es6", "javascript", "modules", "web development"],
                             "blogger": {
                                 "publish": true,
-                                "id": "1094851240419157807"
+                                "id": "1094851240419157807",
+                                "link": "https://blog.backslash.site/2019/10/es6-modules.html"
                             }
                         }
                     ]
@@ -32,7 +33,8 @@
                             "tags": [".net core", "dotnet", "cli"],
                             "blogger": {
                                 "publish": true,
-                                "id": "4657454269074523041"
+                                "id": "4657454269074523041",
+                                "link": "https://blog.backslash.site/2019/10/net-core-cli-commands.html"
                             }
                         }
                     ]
@@ -48,7 +50,8 @@
                             "tags": ["linux", "unix", "users", "groups", "cli"],
                             "blogger": {
                                 "publish": true,
-                                "id": "8743443294573017928"
+                                "id": "8743443294573017928",
+                                "link": "https://blog.backslash.site/2019/10/linux-users-and-groups.html"
                             }
                         },
                         {
@@ -58,7 +61,8 @@
                             "tags": ["linux", "scanner", "hardware", "setup"],
                             "blogger": {
                                 "publish": true,
-                                "id": "3831863161475714931"
+                                "id": "3831863161475714931",
+                                "link": "https://blog.backslash.site/2019/10/scanners-on-linux.html"
                             }
                         },
                         {
@@ -68,7 +72,8 @@
                             "tags": ["arch linux", "linux", "installation", "os"],
                             "blogger": {
                                 "publish": true,
-                                "id": "1407329115979965935"
+                                "id": "1407329115979965935",
+                                "link": "https://blog.backslash.site/2019/11/arch-linux-install.html"
                             }
                         },
                         {
@@ -78,7 +83,8 @@
                             "tags": ["arch linux", "linux", "macbook air", "os"],
                             "blogger": {
                                 "publish": true,
-                                "id": "206412808621739674"
+                                "id": "206412808621739674",
+                                "link": "http://blog.backslash.site/2019/10/arch-linux-mba-2013.html"
                             }
                         },
                         {
@@ -88,7 +94,8 @@
                             "tags": ["cronos", "gentoo linux", "linux", "samsung"],
                             "blogger": {
                                 "publish": true,
-                                "id": "6828230720378245981"
+                                "id": "6828230720378245981",
+                                "link": "https://blog.backslash.site/2019/11/gentoo-linux-on-samsung-cronos.html"
                             }
                         },
                         {
@@ -98,7 +105,8 @@
                             "tags": ["network manager", "cli", "network", "wifi"],
                             "blogger": {
                                 "publish": true,
-                                "id": "2000728119576568457"
+                                "id": "2000728119576568457",
+                                "link": "https://blog.backslash.site/2019/11/nmcli-how-to-use.html"
                             }
                         },
                         {
@@ -108,7 +116,8 @@
                             "tags": ["raid", "linux", "mdadm", "config", "cli", "fstab", "partitioning"],
                             "blogger": {
                                 "publish": true,
-                                "id": "1766837538288488018"
+                                "id": "1766837538288488018",
+                                "link": "https://blog.backslash.site/2019/12/linux-disk-management.html"
                             }
                         }
                     ]
@@ -124,7 +133,8 @@
                             "tags": ["unix", "linux", "tar", "compression", "cli"],
                             "blogger": {
                                 "publish": true,
-                                "id": "2491551779806479351"
+                                "id": "2491551779806479351",
+                                "link": "https://blog.backslash.site/2019/11/unix-tar-commond-operations.html"
                             }
                         }
                     ]
@@ -140,7 +150,8 @@
                             "tags": ["os", "installation", "bsd", "freebsd"],
                             "blogger": {
                                 "publish": true,
-                                "id": "99969239468267565"
+                                "id": "99969239468267565",
+                                "link": "https://blog.backslash.site/2019/11/freebsd-install.html"
                             }
                         }
                     ]
@@ -156,7 +167,8 @@
                             "tags": ["network", "raspberry pi", "router", "linux", "dyi"],
                             "blogger": {
                                 "publish": true,
-                                "id": "2712465569829651298"
+                                "id": "2712465569829651298",
+                                "link": "https://blog.backslash.site/2019/11/diy-router-rpi-ipv4.html"
                             }
                         },
                         {
@@ -166,7 +178,8 @@
                             "tags": ["dlink", "dcs-5222l", "firmware", "ip camera"],
                             "blogger": {
                                 "publish": true,
-                                "id": "7278323748354023970"
+                                "id": "7278323748354023970",
+                                "link": "https://blog.backslash.site/2019/11/d-link-dcs-5222l-notes.html"
                             }
                         }
                     ]
@@ -182,7 +195,8 @@
                             "tags": ["gpg", "pgp", "encryption", "linux", "cli"],
                             "blogger": {
                                 "publish": true,
-                                "id": "1084071241409614009"
+                                "id": "1084071241409614009",
+                                "link": "https://blog.backslash.site/2019/11/gpg-encryption-commands.html"
                             }
                         },
                         {
@@ -192,7 +206,8 @@
                             "tags": ["ssh", "cli", "encryption", "linux", "remote"],
                             "blogger": {
                                 "publish": true,
-                                "id": "9024053670954169562"
+                                "id": "9024053670954169562",
+                                "link": "https://blog.backslash.site/2019/11/ssh-best-practice.html"
                             }
                         }
                     ]

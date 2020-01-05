@@ -116,6 +116,19 @@ pm uninstall -k --user 0 com.samsung.android.game.gametools
 pm uninstall -k --user 0 com.samsung.android.game.gos
 ```
 
+### Bixby
+```sh
+pm uninstall -k --user 0 com.samsung.android.bixby.wakeup
+pm uninstall -k --user 0 com.samsung.android.app.spage
+pm uninstall -k --user 0 com.samsung.android.bixby.service
+pm uninstall -k --user 0 com.samsung.android.visionintelligence
+pm uninstall -k --user 0 com.samsung.android.bixby.agent
+pm uninstall -k --user 0 com.samsung.android.bixby.agent.dummy
+pm uninstall -k --user 0 com.samsung.android.bixbyvision.framework # keep this for barcode-scanning in stock camera app
+pm uninstall -k --user 0 com.samsung.android.app.settings.bixby
+pm uninstall -k --user 0 com.samsung.systemui.bixby2
+```
+
 ### Samsung DEX (desktop docking stuff)
 ```sh
 pm uninstall -k --user 0 com.sec.android.desktopmode.uiservice
