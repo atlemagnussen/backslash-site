@@ -129,6 +129,15 @@ pm uninstall -k --user 0 com.samsung.android.app.settings.bixby
 pm uninstall -k --user 0 com.samsung.systemui.bixby2
 ```
 
+### Microsoft apps
+```sh
+pm uninstall -k --user 0 com.microsoft.office.excel
+pm uninstall -k --user 0 com.microsoft.skydrive
+pm uninstall -k --user 0 com.microsoft.office.outlook
+pm uninstall -k --user 0 com.microsoft.office.word
+pm uninstall -k --user 0 com.microsoft.office.powerpoint
+```
+
 ### Samsung DEX (desktop docking stuff)
 ```sh
 pm uninstall -k --user 0 com.sec.android.desktopmode.uiservice
