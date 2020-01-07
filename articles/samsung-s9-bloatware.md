@@ -188,7 +188,6 @@ pm uninstall -k --user 0 com.samsung.android.drivelink.stub
 ```
 
 ## More Uninstalls I have not tested yet
-- Bixby
 - General System apps
 - Gimmicky apps
 - Gear VR
