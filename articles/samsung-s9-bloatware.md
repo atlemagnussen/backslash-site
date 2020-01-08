@@ -84,14 +84,8 @@ Success
 </details>
 
 ## Tested and verified uninstalls
+
 ### Facebook
-
-If you have installed other facebook apps like `messenger lite` you will see this package in addition. You might don't want to uninstall that package
-```bash
-package:com.facebook.mlite
-```
-
-Uninstall preinstalled facebook packages
 ```sh
 pm uninstall -k --user 0 com.facebook.katana
 pm uninstall -k --user 0 com.facebook.system
@@ -129,6 +123,13 @@ pm uninstall -k --user 0 com.samsung.android.app.settings.bixby
 pm uninstall -k --user 0 com.samsung.systemui.bixby2
 ```
 
+### Gimmicky apps
+```sh
+pm uninstall -k --user 0 com.samsung.android.aremoji
+pm uninstall -k --user 0 com.google.ar.core
+pm uninstall -k --user 0 com.samsung.android.da.daagent
+```
+
 ### Microsoft apps
 ```sh
 pm uninstall -k --user 0 com.microsoft.office.excel
@@ -136,6 +137,12 @@ pm uninstall -k --user 0 com.microsoft.skydrive
 pm uninstall -k --user 0 com.microsoft.office.outlook
 pm uninstall -k --user 0 com.microsoft.office.word
 pm uninstall -k --user 0 com.microsoft.office.powerpoint
+```
+
+### Gear VR
+```sh
+pm uninstall -k --user 0 com.samsung.android.hmt.vrsvc
+pm uninstall -k --user 0 com.google.vr.vrcore
 ```
 
 ### Samsung DEX (desktop docking stuff)
