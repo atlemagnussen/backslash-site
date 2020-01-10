@@ -242,6 +242,22 @@
                     ]
                 },
                 {
+                    "id": "music",
+                    "name": "Music",
+                    "children": [
+                        {
+                            "id": "raspberry-midi-keyboard",
+                            "name": "RaspberryPi MIDI keyboard",
+                            "desc": "How to set up a raspberry pi and a midi keyboard",
+                            "blogger": {
+                                "publish": true,
+                                "id": "3885095364219837866",
+                                "link": "http://blog.backslash.site/2020/01/raspberrypi-midi-keyboard.html"
+                            }
+                        }
+                    ]
+                },
+                {
                     "id": "links",
                     "name": "Links",
                     "desc": "Useful blogposts by others that I link to",
