@@ -82,3 +82,30 @@ $ sudo raspi-config
 -   Go to `Advanced options`
 -   Then `Audio`
 -   Select `Force 3.5mm ('headphone') jack
+
+### Running better and more realtime
+
+#### Give access to priority threading and memory
+
+-   Add yourself to group `audio` on the raspberry  
+    Then edit file `/etc/security/limits.conf` and put this at the end
+
+```bash
+@audio   -  rtprio      99
+@audio   -  memlock     unlimited
+```
+
+Log out and in again, start fluidsynth and the error message about priority thread should be gone.
+
+#### Run with different settings
+
+```sh
+$ fluidsynth \
+  -o audio.alsa.device=hw:0 \
+  -r 22050 \
+  -a alsa \
+  -c 8 \
+  -z 32 \
+  --gain 5 \
+  /usr/share/sounds/sf2/FluidR3_GM.sf2
+```
