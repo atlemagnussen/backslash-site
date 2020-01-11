@@ -1,9 +1,12 @@
 # Raspberry PI and a MIDI keyboard
 
 How to set things up and play.  
-This is tested in 2020 on an up-to-date `Raspberry Pi 3 model B` and a `M-audio Keystation 49 MK3` keyboard.
+This is tested in 2020 on up-to-date `Raspberry Pi 3 model B`/`Raspberry 4` and a `M-audio Keystation 49 MK3` keyboard.
 
 Plug the MIDI keyboard to your PI using usb and get started.
+
+-   Part 1: First test with only [FluidSynth](https://github.com/FluidSynth/fluidsynth), [ALSA](https://alsa-project.org/wiki/Main_Page) and `the keyboard`
+-   Part 2: Try to get better performance (less latency) by tweaking some and then use [JACKD](https://jackaudio.org/)
 
 Credits:
 
@@ -11,23 +14,26 @@ Credits:
 -   [Raspberry Pi and realtime, low-latency audio](https://wiki.linuxaudio.org/wiki/raspberrypi)
 -   [Ted's Linux MIDI Guide](http://tedfelix.com/linux/linux-midi.html)
 
-## Install software
+## Part 1
 
-ALSA
+### Installing the basic software
+
+**ALSA**  
+Alsa is usually already there, but we need at least these two packages, so running this to either install or make sure you have it:
 
 ```sh
 $ sudo apt install alsa-base alsa-firmware-loaders
 ```
 
-Fluidsynth
+**Fluidsynth**
 
 ```sh
 $ sudo apt install fluidsynth
 ```
 
-## Configure
+### Configure
 
-### Audio
+#### Audio
 
 Append this line to file `/boot/config.txt`
 
@@ -37,9 +43,9 @@ audio_pwm_mode=2
 
 Then reboot
 
-## Start
+### Start
 
-### Start Fluidsynth
+#### Start Fluidsynth
 
 ```sh
 $ fluidsynth --audio-driver=alsa --gain 5 /usr/share/sounds/sf2/FluidR3_GM.sf2
@@ -47,7 +53,7 @@ $ fluidsynth --audio-driver=alsa --gain 5 /usr/share/sounds/sf2/FluidR3_GM.sf2
 
 -   Hint: Open a [screen](https://linux.die.net/man/1/screen) session before you start fluidsynth and then disconnect the session so it runs in the background, or else you need to open another terminal
 
-### List alsa outputs
+#### List alsa outputs
 
 ```sh
 $ aconnect -o
@@ -65,7 +71,7 @@ client 128: 'FLUID Synth (887)' [type=user,pid=887]
     0 'Synth input port (887:0)'
 ```
 
-### Connect the MIDI keyboard to Fluidsynth
+#### Connect the MIDI keyboard to Fluidsynth
 
 ```sh
 $ aconnect 20:0 128:0
@@ -85,11 +91,13 @@ $ sudo raspi-config
 -   Then `Audio`
 -   Select `Force 3.5mm ('headphone') jack
 
-### Running with less latency, more realtime
+When you get sound we are all good.
 
-If you have followed the guide this far, even with a brand new Rpi4 - there will be a significant delay from when you input until the sound comes out of your headphones. Feels like a second.
+## Part 2
 
-There are multiple bottlenecks here, let's try to unwind some of them.
+If you have followed the guide this far, even with a brand new Rpi4 - there will probably be a significant delay from keypress until the sound comes out of your headphones. Feels like a second to me.
+
+There are multiple bottlenecks here, let's try to unwind some of those that has to do with config and settings first.
 
 #### Give access to priority threading and memory
 
@@ -101,9 +109,12 @@ There are multiple bottlenecks here, let's try to unwind some of them.
 @audio   -  memlock     unlimited
 ```
 
-Log out and in again, start fluidsynth and the error message about priority thread should be gone.
+Log out and in again, start fluidsynth and if you had an error message about priority thread before, it should be gone.
 
-#### Run with different settings
+### Run Fluidsynth with different settings
+
+Try lower the sample-rate (-r), buffer count (-c) and buffer size (-z)  
+--gain is just volume btw.
 
 ```sh
 $ fluidsynth \
@@ -116,18 +127,19 @@ $ fluidsynth \
   /usr/share/sounds/sf2/FluidR3_GM.sf2
 ```
 
-#### Jackd
+It might be a little bit better after your got rights to set high priority threads and hacking with different settings for fluidsynth, but it never got good enough for me.
 
-It might be a little bit better after your got rights to set high priority threads and hacking with different settings for fluidsynth, but it never got good enough for me.  
+### Jackd
+
 After some googling it becomes clear that I need to try [JACKD](https://linux.die.net/man/1/jackd) - which is described as a _a low-latency audio server_.
 
-##### Install
+#### Install
 
 ```sh
 $ sudo apt install jackd2 jack-tools
 ```
 
-##### Give dbus rights
+#### Give dbus rights
 
 Create a file called `/etc/dbus-1/system.d/jack.conf` and put this content into. Just replace `atle` with your username.
 
@@ -143,7 +155,7 @@ Create a file called `/etc/dbus-1/system.d/jack.conf` and put this content into.
 </busconfig>
 ```
 
-##### Start jackd
+#### Start jackd
 
 Some of these things are described in the blogpost [Raspberry Pi and realtime, low-latency audio](https://wiki.linuxaudio.org/wiki/raspberrypi)
 it will probably be a good idea to put this in a script:
@@ -158,7 +170,7 @@ $ jackd -P90 -p16 -t2000 -dalsa -dhw:0 -p512 -n3 -r44100
 
 If you get into trouble starting jackd, please read [Ted's Linux MIDI Guide](http://tedfelix.com/linux/linux-midi.html) as he explains how to test Jackd without using fluidsynth and more.
 
-##### Start fluidsynth connecting to jackd
+#### Start fluidsynth connecting to jackd
 
 ```sh
 $ fluidsynth --server --audio-driver=jack --connect-jack-outputs /usr/share/sounds/sf2/FluidR3_GM.sf2
