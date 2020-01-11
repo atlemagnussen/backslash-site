@@ -5,7 +5,7 @@ This is tested in 2020 on up-to-date `Raspberry Pi 3 model B`/`Raspberry 4` and 
 
 Plug the MIDI keyboard to your PI using usb and get started.
 
--   Part 1: First test with only [FluidSynth](https://github.com/FluidSynth/fluidsynth), [ALSA](https://alsa-project.org/wiki/Main_Page) and `the keyboard`
+-   Part 1: First test with only [FluidSynth](https://github.com/FluidSynth/fluidsynth), [ALSA](https://alsa-project.org/wiki/Main_Page) and [the keyboard](https://www.m-audio.com/keystation-49-mk3)
 -   Part 2: Try to get better performance (less latency) by tweaking some and then use [JACKD](https://jackaudio.org/)
 
 Credits:
@@ -35,7 +35,7 @@ $ sudo apt install fluidsynth
 
 #### Audio
 
-Append this line to file `/boot/config.txt`
+Append this line to file `/boot/config.txt` to get [better quality](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=136445) on the sound of the 3.5mm jack output
 
 ```bash
 audio_pwm_mode=2
@@ -99,10 +99,12 @@ If you have followed the guide this far, even with a brand new Rpi4 - there will
 
 There are multiple bottlenecks here, let's try to unwind some of those that has to do with config and settings first.
 
-#### Give access to priority threading and memory
+### Give access to priority
 
--   Add yourself to group `audio` on the raspberry  
-    Then edit file `/etc/security/limits.conf` and put this at the end
+This will give your user access to prioritize threading and memory locking, which is better for performance.
+
+-   Add yourself to group `audio` on the raspberry
+-   Then edit file `/etc/security/limits.conf` and put this at the end
 
 ```bash
 @audio   -  rtprio      99
@@ -111,7 +113,7 @@ There are multiple bottlenecks here, let's try to unwind some of those that has 
 
 Log out and in again, start fluidsynth and if you had an error message about priority thread before, it should be gone.
 
-### Run Fluidsynth with different settings
+### Run Fluidsynth with lower quality
 
 Try lower the sample-rate (-r), buffer count (-c) and buffer size (-z)  
 --gain is just volume btw.
@@ -127,7 +129,7 @@ $ fluidsynth \
   /usr/share/sounds/sf2/FluidR3_GM.sf2
 ```
 
-It might be a little bit better after your got rights to set high priority threads and hacking with different settings for fluidsynth, but it never got good enough for me.
+It might be a little bit better after these tweaks, but it never got good enough for me.
 
 ### Jackd
 
@@ -161,7 +163,7 @@ Some of these things are described in the blogpost [Raspberry Pi and realtime, l
 it will probably be a good idea to put this in a script:
 
 ```sh
-$sudo mount -o remount,size=128M /dev/shm
+$ sudo mount -o remount,size=128M /dev/shm
 $ echo -n performance | sudo tee /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 $ export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
 

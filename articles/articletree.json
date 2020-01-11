@@ -249,6 +249,7 @@
                             "id": "raspberry-midi-keyboard",
                             "name": "RaspberryPi MIDI keyboard",
                             "desc": "How to set up a raspberry pi and a midi keyboard",
+                            "tags": ["raspberry pi", "midi keyboard", "fluidsynth", "alsa", "jackd"],
                             "blogger": {
                                 "publish": true,
                                 "id": "3885095364219837866",
