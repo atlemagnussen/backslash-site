@@ -12,8 +12,8 @@ This is tested in 2020 on up-to-date `Raspberry Pi 3 model B`/`Raspberry 4` and 
 - Head phones with 3.5mm jack
 
 **Parts**
--   Part 1: First test with only [FluidSynth](https://github.com/FluidSynth/fluidsynth), [ALSA](https://alsa-project.org/wiki/Main_Page) and [the keyboard](https://www.m-audio.com/keystation-49-mk3)
--   Part 2: Try to get better performance (less latency) by tweaking some and then use [JACKD](https://jackaudio.org/)
+-   <a href="#part1">Part 1</a>: First test with only [FluidSynth](https://github.com/FluidSynth/fluidsynth), [ALSA](https://alsa-project.org/wiki/Main_Page) and [the keyboard](https://www.m-audio.com/keystation-49-mk3)
+-   <a href="#part2">Part 2</a>: Try to get better performance (less latency) by tweaking some and then use [JACKD](https://jackaudio.org/)
 
 Credits:
 
@@ -53,6 +53,8 @@ Then reboot
 ### Start
 
 #### Start Fluidsynth
+
+Note that FluidR3_GM.sf2 is the [sound font](https://en.wikipedia.org/wiki/SoundFont) file which comes default with Fluidsynth. This is what make it sound like a piano when you play. You can download others when you want to test other instruments.
 
 ```sh
 $ fluidsynth --audio-driver=alsa --gain 5 /usr/share/sounds/sf2/FluidR3_GM.sf2
