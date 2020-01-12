@@ -1,10 +1,17 @@
 # Raspberry PI and a MIDI keyboard
 
-How to set things up and play.  
+How to set up Raspberry Pi as a synthesizer when connected to a midi keyboard  
+I'm setting this up with the Pi as headless, meaning without connecting it to a screen and displaying any desktop environment on it at all. That said, you might need to connect a screen first time to set up things like Wifi.
+
 This is tested in 2020 on up-to-date `Raspberry Pi 3 model B`/`Raspberry 4` and a `M-audio Keystation 49 MK3` keyboard.
 
-Plug the MIDI keyboard to your PI using usb and get started.
+## Prerequisites
+- a Raspberry Pi loaded up with [Raspbian](https://www.raspberrypi.org/downloads/raspbian/). Preferrably `Raspbian Lite` which will not install any GUI.
+- [SSH](https://www.raspberrypi.org/documentation/remote-access/ssh/) enabled for running commands remote.
+- [MIDI keyboard](https://en.wikipedia.org/wiki/MIDI_keyboard) connected to PI with USB
+- Head phones with 3.5mm jack
 
+**Parts**
 -   Part 1: First test with only [FluidSynth](https://github.com/FluidSynth/fluidsynth), [ALSA](https://alsa-project.org/wiki/Main_Page) and [the keyboard](https://www.m-audio.com/keystation-49-mk3)
 -   Part 2: Try to get better performance (less latency) by tweaking some and then use [JACKD](https://jackaudio.org/)
 
@@ -19,7 +26,7 @@ Credits:
 ### Installing the basic software
 
 **ALSA**  
-Alsa is usually already there, but we need at least these two packages, so running this to either install or make sure you have it:
+Alsa is usually already installed, but we need at least these two packages, so running this to either install or make sure you have it:
 
 ```sh
 $ sudo apt install alsa-base alsa-firmware-loaders
@@ -77,9 +84,9 @@ client 128: 'FLUID Synth (887)' [type=user,pid=887]
 $ aconnect 20:0 128:0
 ```
 
-You should now be able to play and hear sounds, bit depending on your output of sound.
+You should now be able to play and hear sounds, bit depending if the Pi was able to detect where you have connected sound output.
 
-You can try force sound to your device, ie if you have connected jack phones.
+I am using headphones but I had to force the sound to the 3.5mm jack output. You can do this with `raspi-config`
 
 -   Run raspi-config
 
@@ -95,9 +102,9 @@ When you get sound we are all good.
 
 ## Part 2
 
-If you have followed the guide this far, even with a brand new Rpi4 - there will probably be a significant delay from keypress until the sound comes out of your headphones. Feels like a second to me.
+If you have followed the guide this far, even with a brand new Rpi4 - there will probably be a delay from keypress until the sound comes out of your headphones. Feels like a second to me, though it is probably not that much.
 
-There are multiple bottlenecks here, let's try to unwind some of those that has to do with config and settings first.
+There are multiple possible bottlenecks, let's try to unwind some of those that has to do with config and settings first.
 
 ### Give access to priority
 
@@ -183,3 +190,5 @@ and connect the MIDI keyboard to fluidsynth again like previously:
 ```sh
 $ aconnect 20:0 128:0
 ```
+
+For me it now sounds like real time, finally. If you still have issues, you should also try with different headphones or speakers. I experienced a certain standalone speaker that had a significant delay and initially had me banging my head against the wall.
