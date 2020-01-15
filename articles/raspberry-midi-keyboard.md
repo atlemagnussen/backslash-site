@@ -1,17 +1,20 @@
 # Raspberry PI and a MIDI keyboard
 
 How to set up Raspberry Pi as a synthesizer when connected to a midi keyboard  
-I'm setting this up with the Pi as headless, meaning without connecting it to a screen and displaying any desktop environment on it at all. That said, you might need to connect a screen first time to set up things like Wifi.
+I'm setting this up with the Pi as headless, meaning I don't need to connect the Pi to a screen when I want to play, just SSH into the Pi from another computer to start the software needed. That said, you might need to connect a screen first time to set up things like Wifi.
 
-This is tested in 2020 on up-to-date `Raspberry Pi 3 model B`/`Raspberry 4` and a `M-audio Keystation 49 MK3` keyboard.
+This is tested in 2020 on up-to-date `Raspberry Pi 3 model B`/`Raspberry 4` and a `M-audio Keystation 49 MK3` keyboard.  
+And I'm using the stock built-in soundcard. This is why you will see `hw0` around in the commands. External soundcards will get another number.
 
 ## Prerequisites
-- a Raspberry Pi loaded up with [Raspbian](https://www.raspberrypi.org/downloads/raspbian/). Preferrably `Raspbian Lite` which will not install any GUI.
-- [SSH](https://www.raspberrypi.org/documentation/remote-access/ssh/) enabled for running commands remote.
-- [MIDI keyboard](https://en.wikipedia.org/wiki/MIDI_keyboard) connected to PI with USB
-- Head phones with 3.5mm jack
+
+-   a Raspberry Pi loaded up with [Raspbian](https://www.raspberrypi.org/downloads/raspbian/). Preferrably `Raspbian Lite` which will not install any GUI.
+-   [SSH](https://www.raspberrypi.org/documentation/remote-access/ssh/) enabled for running commands remote.
+-   [MIDI keyboard](https://en.wikipedia.org/wiki/MIDI_keyboard) connected to PI with USB
+-   Head phones with 3.5mm jack
 
 **Parts**
+
 -   <a href="#part1">Part 1</a>: First test with only [FluidSynth](https://github.com/FluidSynth/fluidsynth), [ALSA](https://alsa-project.org/wiki/Main_Page) and [the keyboard](https://www.m-audio.com/keystation-49-mk3)
 -   <a href="#part2">Part 2</a>: Try to get better performance (less latency) by tweaking some and then use [JACKD](https://jackaudio.org/)
 
@@ -54,13 +57,17 @@ Then reboot
 
 #### Start Fluidsynth
 
-Note that FluidR3_GM.sf2 is the [sound font](https://en.wikipedia.org/wiki/SoundFont) file which comes default with Fluidsynth. This is what make it sound like a piano when you play. You can download others when you want to test other instruments.
+Note that `FluidR3_GM.sf2` is the [sound font](https://en.wikipedia.org/wiki/SoundFont) file which comes default with Fluidsynth. This is what make it sound like a piano when you play. You can download others when you want to test other instruments.
 
 ```sh
-$ fluidsynth --audio-driver=alsa --gain 5 /usr/share/sounds/sf2/FluidR3_GM.sf2
+$ fluidsynth -a alsa -o audio.alsa.device=hw:0 /usr/share/sounds/sf2/FluidR3_GM.sf2
 ```
 
--   Hint: Open a [screen](https://linux.die.net/man/1/screen) session before you start fluidsynth and then disconnect the session so it runs in the background, or else you need to open another terminal
+When Fluidsynth has started you will be in a new command line interface with a prompt that is only a `>`.  
+Here you can change settings, type `help` to see options  
+
+Now you need a new terminal session to proceed  
+Or, you can use [screen](https://linux.die.net/man/1/screen) which allows you to create sessions that you can connect and disconnect from within the same terminal
 
 #### List alsa outputs
 
@@ -98,7 +105,7 @@ $ sudo raspi-config
 
 -   Go to `Advanced options`
 -   Then `Audio`
--   Select `Force 3.5mm ('headphone') jack
+-   Select `Force 3.5mm ('headphone') jack`
 
 When you get sound we are all good.
 
@@ -125,16 +132,15 @@ Log out and in again, start fluidsynth and if you had an error message about pri
 ### Run Fluidsynth with lower quality
 
 Try lower the sample-rate (-r), buffer count (-c) and buffer size (-z)  
---gain is just volume btw.
+If you have low volume you can use the `--gain 1` argument.
 
 ```sh
 $ fluidsynth \
+-a alsa \
   -o audio.alsa.device=hw:0 \
   -r 22050 \
-  -a alsa \
   -c 8 \
   -z 32 \
-  --gain 5 \
   /usr/share/sounds/sf2/FluidR3_GM.sf2
 ```
 
