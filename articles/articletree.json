@@ -119,6 +119,12 @@
                                 "id": "1766837538288488018",
                                 "link": "https://blog.backslash.site/2019/12/linux-disk-management.html"
                             }
+                        },
+                        {
+                            "id": "arch-linux-bluetooth",
+                            "name": "Arch Linux bluetooth",,
+                            "desc": "How to pair and connect bluetooth devices to your Arch Linux computer",
+                            "tags": ["bluetooth", "bluez", "pulseaudio", "linux", "arch linux", "cli"]
                         }
                     ]
                 },
