@@ -24,7 +24,7 @@ bluetoothctl
 Will get you into a new command line interface  
 
 Type `list` to see bluetooth controller is present on the computer  
-If yes make your headphone ready for `pairing` follow this:
+If yes make your headphone ready for `pairing` and follow this:
 ```sh
 [bluetooth]# power on
 [bluetooth]# agent on

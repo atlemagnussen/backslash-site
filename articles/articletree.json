@@ -122,7 +122,7 @@
                         },
                         {
                             "id": "arch-linux-bluetooth",
-                            "name": "Arch Linux bluetooth",,
+                            "name": "Arch Linux bluetooth",
                             "desc": "How to pair and connect bluetooth devices to your Arch Linux computer",
                             "tags": ["bluetooth", "bluez", "pulseaudio", "linux", "arch linux", "cli"]
                         }
