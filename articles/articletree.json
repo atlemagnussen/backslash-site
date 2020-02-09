@@ -13,11 +13,22 @@
                             "id": "es6-modules",
                             "name": "ES6 modules",
                             "desc": "ES6 modules and how to use them correctly",
-                            "tags": ["es6", "javascript", "modules", "web development"],
+                            "tags": ["es6", "ecmascript", "javascript", "modules", "web development"],
                             "blogger": {
                                 "publish": true,
                                 "id": "1094851240419157807",
                                 "link": "https://blog.backslash.site/2019/10/es6-modules.html"
+                            }
+                        },
+                        {
+                            "id": "js-useful-tricks",
+                            "name": "JS useful tricks",
+                            "desc": "JS tricks and standard functions that is not so commonly used",
+                            "tags": ["ecmascript", "javascript", "web development"],
+                            "blogger": {
+                                "publish": true,
+                                "id": "68264499673938846",
+                                "link": "http://blog.backslash.site/2020/02/js-useful-tricks.html"
                             }
                         }
                     ]
@@ -35,6 +46,23 @@
                                 "publish": true,
                                 "id": "4657454269074523041",
                                 "link": "https://blog.backslash.site/2019/10/net-core-cli-commands.html"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "source-control",
+                    "name": "source control",
+                    "children": [
+                        {
+                            "id": "git-tricks",
+                            "name": "GIT tricks",
+                            "desc": "GIT tricks that are not so commonly used",
+                            "tags": ["git", "cli, source control"],
+                            "blogger": {
+                                "publish": true,
+                                "id": "5349033673193064288",
+                                "link": "http://blog.backslash.site/2020/02/git-tricks.html"
                             }
                         }
                     ]
