@@ -1,5 +1,7 @@
 # Raspberry PI and a MIDI keyboard
 
+<div class="separator" style="clear: both; text-align: center;"><img border="0" src="https://storage.googleapis.com/backslash-project.appspot.com/static/rpi-midi-small.jpg"/></div>
+
 How to set up Raspberry Pi as a synthesizer when connected to a midi keyboard  
 I'm setting this up with the Pi as headless, meaning I don't need to connect the Pi to a screen when I want to play, just SSH into the Pi from another computer to start the software needed. That said, you might need to connect a screen first time to set up things like Wifi.
 
