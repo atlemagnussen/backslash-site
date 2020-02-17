@@ -57,6 +57,18 @@ dotnet sln add web
 dotnet sln add lib
 ```
 
+## Add references in the solution
+```sh
+cd web
+dotnet add reference ../classlib
+```
+
+## Add nuget package
+```sh
+cd web
+dotnet add package Microsoft.Extensions.Logging.AzureAppServices
+```
+
 ## List projects in solution
 ```sh
 dotnet sln list
