@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Toc from "../toc/toc.js";
+import showdown  from 'showdown';
+import Prism from 'prismjs';
 import treeconfig from "../../services/treeconfig.js";
 
 export default class BlogComponent extends React.Component {
