@@ -24,7 +24,6 @@ const makeLibConf = (from) => {
 };
 
 const libs = [
-    "node_modules/prismjs/prism.js",
     "node_modules/prismjs/themes/prism.css",
     "node_modules/prism-themes/themes/prism-xonokai.css",
     "node_modules/es6-tree/src/es6tree.css",
