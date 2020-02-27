@@ -5,7 +5,6 @@ const options = {
 };
 
 const makeLibConf = (from) => {
-    console.log(`from ${from}`);
     const conf = [];
 
     conf.push({
