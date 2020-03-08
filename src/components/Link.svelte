@@ -1,10 +1,9 @@
 <script>
-    import { curRoute } from "../store";
+    import router from "../router.js";
     export let page;
 
-    function redirectTo(event) {
-        curRoute.set(event.currentTarget.pathname);
-        window.history.pushState({ path: page.path }, "", window.location.origin + page.path);
+    const redirectTo = (event) => {
+        router.to(event.currentTarget.pathname)
     }
 </script>
 

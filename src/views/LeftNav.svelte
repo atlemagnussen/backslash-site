@@ -1,5 +1,6 @@
 <script>
     import { onMount } from "svelte";
+    import router from "../router.js";
     import EsTree from "es6-tree";
     import treeconfig from "../services/treeconfig.js";
     let articleTree = { "rootUrl": "/articles/", nodes: []};
@@ -8,11 +9,12 @@
         tree = new EsTree("treeview", articleTree.config, articleTree.nodes);
         tree.on("select", (node) => {
             if (node.id && !node.children) {
-                this.router.navigate(`/blog/${node.id}`);
-                this.setDocumentTitle(node.name);
-                setTimeout(() => {
-                    this.toggleMenu();
-                }, TIMEOUT);
+                const path = `/blog/${node.id}`;
+                router.to(path);
+                // this.setDocumentTitle(node.name);
+                // setTimeout(() => {
+                //     this.toggleMenu();
+                // }, TIMEOUT);
             }
         });
     }

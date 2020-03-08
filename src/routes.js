@@ -1,5 +1,6 @@
 import Home from "./views/Home.svelte";
 import About from "./views/About.svelte";
+import Blog from "./views/Blogs.svelte";
 
 export default [
     {
@@ -11,5 +12,10 @@ export default [
         path: "about",
         name: "About",
         component: About,
+    },
+    {
+        path: "blog",
+        name: "Blog",
+        component: Blog,
     }
 ];
