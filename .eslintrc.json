@@ -10,20 +10,19 @@
         "SharedArrayBuffer": "readonly"
     },
     "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 2018,
+        "ecmaVersion": 2019,
         "sourceType": "module"
     },
-    "plugins": ["react"],
+    "plugins": ["svelte3"],
+    "overrides": [
+        {
+            "files": ["**/*.svelte"],
+            "processor": "svelte3/svelte3"
+        }
+    ],
     "rules": {
-        "indent": ["error", 4],
-        "quotes": "off",
-        "semi": ["error", "always"],
-        "no-console": "warn",
-        "eqeqeq": "warn",
-        "space-infix-ops": ["error", { "int32Hint": false }],
-        "arrow-parens": "off"
+        "indent": ["error", 4, { "SwitchCase": 1 }],
+        "quotes": ["error", "double"],
+        "semi": ["error", "always"]
     }
 }
