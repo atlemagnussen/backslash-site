@@ -1,35 +1,41 @@
-import svelte from 'rollup-plugin-svelte';
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
-import livereload from 'rollup-plugin-livereload';
-import { terser } from 'rollup-plugin-terser';
+import svelte from "rollup-plugin-svelte";
+import resolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
+import livereload from "rollup-plugin-livereload";
+import { terser } from "rollup-plugin-terser";
+import postcss from "rollup-plugin-postcss";
+import copy from "rollup-plugin-copy";
 
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
-    input: 'src/main.js',
+    input: "src/main.js",
     output: {
         sourcemap: true,
-        format: 'iife',
-        name: 'app',
-        file: 'public/build/bundle.js'
+        format: "iife",
+        name: "app",
+        file: "public/build/bundle.js"
     },
     plugins: [
         svelte({
             dev: !production,
             css: css => {
-                css.write('public/build/bundle.css');
+                css.write("public/build/bundle.css");
             }
         }),
         resolve({
             browser: true,
-            dedupe: ['svelte']
+            dedupe: ["svelte"]
         }),
         commonjs(),
+        postcss(),
+        copy({
+            targets: [{ src: "articles", dest: "public" }]
+        }),
 
         !production && serve(),
 
-        !production && livereload('public'),
+        !production && livereload("public"),
 
         production && terser()
     ],
@@ -46,8 +52,8 @@ function serve() {
             if (!started) {
                 started = true;
 
-                require('child_process').spawn('npm', ['run', 'start', '--', '--dev'], {
-                    stdio: ['ignore', 'inherit', 'inherit'],
+                require("child_process").spawn("npm", ["run", "start", "--", "--dev"], {
+                    stdio: ["ignore", "inherit", "inherit"],
                     shell: true
                 });
             }

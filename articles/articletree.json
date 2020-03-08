@@ -4,6 +4,7 @@
         {
             "id": "root",
             "name": "#",
+            "expanded": true,
             "children": [
                 {
                     "id": "js",
