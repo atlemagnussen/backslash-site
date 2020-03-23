@@ -4,6 +4,7 @@
         {
             "id": "root",
             "name": "#",
+            "expanded": true,
             "children": [
                 {
                     "id": "js",
@@ -272,6 +273,18 @@
                             "name": "Elastic setup Linux",
                             "desc": "Small setup guide for elastic search on Linux",
                             "tags": ["cloud", "elastic search", "linux"]
+                        }
+                    ]
+                },
+                {
+                    "id": "database",
+                    "name": "Database",
+                    "children": [
+                        {
+                            "id": "sql-server-linux",
+                            "name": "SQL Server Linux",
+                            "desc": "How you use SQL Server in Linux environment using docker, sqlcmd and VSCode",
+                            "tags": ["database", "sql server", "docker", "sqlcmd", "VSCode"]
                         }
                     ]
                 },
