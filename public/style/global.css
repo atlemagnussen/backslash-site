@@ -21,3 +21,48 @@ a, a:visited {
     font-style: normal;
     text-decoration: none;
 }
+
+.toc-list li a{
+    color: white;
+}
+.toc-list li a:hover{
+    color: white;
+    background: var(--hover-color);
+}
+
+article {
+    padding: 10px;
+    background: transparent;
+}
+
+article a, article a:visited {
+    text-decoration: underline solid var(--a-underline-color);
+}
+article a:hover {
+    color: var(--a-hover-color);
+}
+article h1 {
+    text-align: center;
+}
+article p:has(img) {
+    text-align: center;
+}
+article details summary {
+    cursor: pointer;
+    font-style: italic;
+}
+article details[open] summary {
+    color: grey;
+}
+article details:not([open]) .closed {
+    display: inline-block;
+}
+article details:not([open]) .open {
+    display: none;
+}
+article details[open] .closed {
+    display: none;
+}
+article details[open] .open {
+    display: inline-block;
+}

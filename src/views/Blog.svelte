@@ -1,12 +1,13 @@
 
 <script>
     import { onMount } from "svelte"; //onDestroy 
+    import { blogId } from "../store";
     import blogService from "../services/blogService.js";
     export let id;
     let blogHtml = "";
     let getBlog = async () => {
         blogHtml = await blogService.get(id);
-        //console.log(`Got new blog id ${id}`);
+        blogId.set(id);
         
         const metaDescription = document.querySelector("meta[name='description']");
         if (metaDescription) {

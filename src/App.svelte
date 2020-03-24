@@ -4,6 +4,8 @@
     import LeftNav from "./views/LeftNav.svelte";
     import Container from "./Container.svelte";
     import Link from "./components/Link.svelte"
+    import Toc from "./components/Toc.svelte";
+    
     onMount(() => {
         curRoute.set(window.location.pathname);
         if (!history.state) {
@@ -42,7 +44,9 @@
         </li>
     </ul>
 </aside>
-<Container />
+<div class="view" id="view">
+    <Container />
+</div>
 <aside class="right">
-    <div id="toc-container"></div>
+    <Toc></Toc>
 </aside>

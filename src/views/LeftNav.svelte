@@ -11,10 +11,6 @@
             if (node.id && !node.children) {
                 const path = `/blog/${node.id}`;
                 router.to(path);
-                // this.setDocumentTitle(node.name);
-                // setTimeout(() => {
-                //     this.toggleMenu();
-                // }, TIMEOUT);
             }
         });
     }

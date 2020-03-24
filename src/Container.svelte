@@ -27,6 +27,5 @@
 
 </style>
 
-<section class="main-container">
-    <svelte:component this={component} param={param} />
-</section>
+<svelte:component this={component} param={param} />
+
