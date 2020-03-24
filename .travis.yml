@@ -5,7 +5,6 @@ branches:
   only:
     - master
 before_script:
-  - npm install -g webpack webpack-cli
   - node generate-sitemap.js
 script:
   - npm install
