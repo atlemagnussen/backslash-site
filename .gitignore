@@ -1,3 +1,5 @@
+public/lib
+
 *.keys.json
 
 .firebase/
@@ -68,7 +70,8 @@ typings/
 dist/
 lib/
 src/articles/
-
+public/articles/
+public/build/
 .DS_Store
 
 token.txt

@@ -8,17 +8,15 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="manifest" href="/manifest.json">
-    <link rel="stylesheet" href="/lib/octicons.css">
-    <link rel="stylesheet" href="/lib/es6tree.css">
+    <link rel='stylesheet' href='/style/vars.css'>
+    <link rel='stylesheet' href='/style/global.css'>
+    <link rel='stylesheet' href='/style/layout.css'>
+    <link rel='stylesheet' href='/style/header.css'>
+    <link rel='stylesheet' href='/style/nav.css'>
+    <link rel='stylesheet' href='/build/bundle.css'>
+    <link rel='stylesheet' href='/build/bundle-ext.min.css'>
     <link rel="stylesheet" href="/lib/prism.css">
     <link rel="stylesheet" href="/lib/prism-xonokai.css">
-    <link rel="stylesheet" href="/style/vars.css">
-    <link rel="stylesheet" href="/style/layout.css">
-    <link rel="stylesheet" href="/style/header.css">
-    <link rel="stylesheet" href="/style/nav.css">
-    <link rel="stylesheet" href="/style/style.css">
-    <link rel="stylesheet" href="/components/blog/blog.css">
-    <link rel="stylesheet" href="/components/toc/toc.css">
     <link href="https://fonts.googleapis.com/css?family=Fjord+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
     <title>Backslash.site</title>
@@ -35,7 +33,7 @@
         gtag('js', new Date());
         gtag('config', 'UA-150185230-1');
     </script>
-
+    <script defer src='/build/bundle.js'></script>
 </head>
 
 <body>
@@ -71,39 +69,8 @@
         </header>
 
         <section id="section">
-            <aside id="left" class="left mobile-hidden">
-                <nav id="treeview" class="treeview"></nav>
-                <ul class="external-links">
-                    <li>
-                        <a href="https://twitter.com/atlemagnussen?ref_src=twsrc%5Etfw" target="_blank" rel="noreferrer" rel="noopener">
-                            <svg xmlns="http://www.w3.org/2000/svg">
-                                <use xlink:href="#twitter-icon" fill="white">
-                            </svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a rel="me" href="https://tilde.zone/@avm" target="_blank" rel="noreferrer" rel="noopener">
-                            <svg xmlns="http://www.w3.org/2000/svg">
-                                <use xlink:href="#mastodon-icon" fill="white">
-                            </svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a rel="me" href="https://github.com/atlemagnussen" target="_blank" rel="noreferrer" rel="noopener">
-                            <svg xmlns="http://www.w3.org/2000/svg">
-                                <use xlink:href="#github-icon" fill="white">
-                            </svg>
-                        </a>
-                    </li>
-            </aside>
-            <div class="view" id="view">
-
-            </div>
-            <aside class="right">
-                <div id="toc-container"></div>
-            </aside>
+            
         </section>
-
     </main>
 </body>
 

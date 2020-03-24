@@ -1,12 +1,12 @@
 {
     "name": "backslash.site",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "atles personal blog",
     "main": "index.js",
     "scripts": {
-        "start": "webpack-dev-server --open --mode development --content-base src/",
-        "build": "webpack --mode production",
-        "deploy": "webpack --mode production"
+        "build": "rollup -c",
+        "dev": "rollup -c -w",
+        "start": "sirv public"
     },
     "repository": {
         "type": "git",
@@ -16,43 +16,33 @@
         "html",
         "js",
         "es6",
-        "react",
-        "webpack"
+        "svelte",
+        "rollup"
     ],
     "author": "Atle Magnussen",
     "license": "ISC",
     "devDependencies": {
-        "@babel/core": "^7.8.4",
-        "@babel/plugin-transform-runtime": "^7.8.3",
-        "@babel/preset-env": "^7.8.4",
-        "@babel/preset-react": "^7.8.3",
-        "babel-loader": "^8.0.6",
-        "copy-webpack-plugin": "^5.1.1",
-        "copyfiles": "^2.2.0",
-        "core-js": "^3.6.4",
+        "@rollup/plugin-commonjs": "^11.0.2",
+        "@rollup/plugin-node-resolve": "^7.1.1",
         "eslint": "^6.8.0",
-        "eslint-plugin-react": "^7.18.3",
-        "html-loader": "^0.5.5",
-        "html-webpack-plugin": "^3.2.0",
-        "prop-types": "^15.7.2",
-        "react": "^16.12.0",
-        "react-dom": "^16.12.0",
-        "remark": "^11.0.2",
-        "remark-html": "^10.0.0",
-        "remark-preset-lint-recommended": "^3.0.3",
-        "vfile-reporter": "^6.0.0",
-        "webpack": "^4.41.6",
-        "webpack-cli": "^3.3.11",
-        "webpack-dev-server": "^3.10.3"
+        "eslint-plugin-svelte3": "^2.7.3",
+        "rollup": "^2.0.2",
+        "rollup-plugin-copy": "^3.3.0",
+        "rollup-plugin-css-porter": "^1.0.2",
+        "rollup-plugin-livereload": "^1.0.4",
+        "rollup-plugin-postcss": "^2.3.0",
+        "rollup-plugin-svelte": "^5.1.1",
+        "rollup-plugin-terser": "^5.2.0",
+        "sirv-cli": "^0.4.5",
+        "svelte": "^3.19.2"
     },
     "dependencies": {
-        "@babel/runtime": "^7.8.4",
-        "es6-tree": "^0.3.1",
+        "es6-tree": "^0.3.4",
         "googleapis": "^45.0.0",
         "open": "^7.0.2",
-        "server-destroy": "^1.0.1",
-        "showdown": "^1.9.1",
         "prism-themes": "^1.3.0",
-        "prismjs": "^1.19.0"
+        "prismjs": "^1.19.0",
+        "server-destroy": "^1.0.1",
+        "showdown": "^1.9.1"
     }
 }

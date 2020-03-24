@@ -8,7 +8,7 @@ class Config {
             if (this.articleTree) {
                 resolve(this.articleTree);
             } else {
-                fetch('/articles/articletree.json').
+                fetch("/articles/articletree.json").
                     then(async (res) => {
                         const json = await res.json();
 

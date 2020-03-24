@@ -1,34 +1,42 @@
-import React from "react";
+import treeconfig from "./treeconfig.js";
+import showdown  from "showdown";
+const converter = new showdown.Converter();
+import Prism from "prismjs";
 
-export default class TocComponent extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            "input": "",
-            "content": ""
-        };
-    }
-
-    componentDidUpdate(prevProps) {
-        if (this.props.input !== prevProps.input) {
-            this.parseArticle(this.props.input);
+class BlogService
+{
+    async get(id) {
+        const temp = document.createElement("div");
+        temp.innerHTML = await this.getHtml(id);
+        const codeElements = temp.querySelectorAll("code");
+        if (codeElements && NodeList.prototype.isPrototypeOf(codeElements) && codeElements.length > 0) {
+            codeElements.forEach((co) => {
+                Prism.highlightElement(co);
+            });
         }
+        return temp.innerHTML;
     }
-
-    componentDidMount() {
+    async getHtml(id) {
+        const config = await treeconfig.get();
+        const rootUrl = config.rootUrl;
+        var md = await fetch(`${rootUrl}${id}.md`).then((r) => r.text());
+        return converter.makeHtml(md);
     }
-
-    async parseArticle(input) {
+    async getArticleDescription(id) {
+        const node = await treeconfig.findNode(id);
+        if (node) {
+            return node.desc;
+        }
+        return null;
+    }
+    async getToc(inputHtml) {
         const temp = document.createElement("div");
 
         try {
-            temp.innerHTML = input;
+            temp.innerHTML = inputHtml;
             const menuConfig = this.parse(temp, 1, 3);
             const menuHtml = this.generateMenu(menuConfig);
-
-            this.setState({
-                "content": menuHtml
-            });
+            return menuHtml;
         } catch (err) {
             temp.innerHTML = JSON.stringify(err);
         }
@@ -69,15 +77,6 @@ export default class TocComponent extends React.Component {
 
         return htags;
     }
-
-    render() {
-
-        return (
-            <div id="toc-menu" dangerouslySetInnerHTML={this.wrapMarkupContent()}></div>
-        );
-    }
-
-    wrapMarkupContent() {
-        return {"__html": this.state.content};
-    }
 }
+
+export default new BlogService();
