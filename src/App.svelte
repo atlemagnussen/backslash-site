@@ -41,7 +41,6 @@
             </a>
         </li>
     </ul>
-    <Link page="{{ path: '/about', name: 'About' }}" />
 </aside>
 <Container />
 <aside class="right">
