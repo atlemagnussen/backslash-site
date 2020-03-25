@@ -8,9 +8,10 @@
         const blogHtml = await blogService.getHtml(id);
         tocHtml = await blogService.getToc(blogHtml);
     };
-    const unsubscribe = blogId.subscribe(value => {
-        id = value;
-        getToc();
+    const unsubscribe = blogId.subscribe(val => {
+        id = val;
+        if (id)
+            getToc();
     });
 
     onDestroy(unsubscribe);

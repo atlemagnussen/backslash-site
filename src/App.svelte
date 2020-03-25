@@ -1,11 +1,16 @@
 <script>
     import { onMount } from "svelte";
-    import { curRoute } from "./store";
+    import { curRoute, blogId } from "./store";
+
+    const TIMEOUT = 200;
+    const SCROLLTOP = 50;
+    const MOBILEHIDETIMEOUT = 100;
+
     import LeftNav from "./views/LeftNav.svelte";
     import Container from "./Container.svelte";
     import Link from "./components/Link.svelte"
     import Toc from "./components/Toc.svelte";
-    
+
     onMount(() => {
         curRoute.set(window.location.pathname);
         if (!history.state) {
@@ -15,10 +20,25 @@
     const handlerBackNavigation = (event) => {
         curRoute.set(event.state.path);
     }
+    
     const mainEl = document.querySelector("main#main");
+
     const toggleMenu = () => {
         mainEl.classList.toggle("mobile-hidden");
     }
+    blogId.subscribe((val) => {
+        setTimeout(() => {
+            toggleMenu();
+        }, TIMEOUT);
+        const viewEl = document.querySelector("div#view");
+        if (viewEl) {
+            viewEl.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth"
+            });
+        }
+    });
 </script>
 
 <svelte:window on:popstate="{handlerBackNavigation}" />

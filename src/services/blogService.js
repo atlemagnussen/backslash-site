@@ -22,10 +22,10 @@ class BlogService
         var md = await fetch(`${rootUrl}${id}.md`).then((r) => r.text());
         return converter.makeHtml(md);
     }
-    async getArticleDescription(id) {
+    async getArticleMetaData(id) {
         const node = await treeconfig.findNode(id);
         if (node) {
-            return node.desc;
+            return node;
         }
         return null;
     }
