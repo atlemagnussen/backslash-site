@@ -71,7 +71,6 @@ typings/
 dist/
 lib/
 src/articles/
-public/articles/
 public/build/
 .DS_Store
 
