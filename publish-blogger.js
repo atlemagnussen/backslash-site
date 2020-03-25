@@ -1,9 +1,9 @@
-const bloggerApi = require('./blogger-api');
+const bloggerApi = require("./blogger-api");
 const blogId = "7734453256887931626";
-const config = require('./public/articles/articletree.json');
-const showdown  = require('showdown');
+const config = require("./public/articles/articletree.json");
+const showdown  = require("showdown");
 const converter = new showdown.Converter();
-const fs = require('fs');
+const fs = require("fs");
 
 const getBlogs = async (nodes) => {
     for(let i = 0; i < nodes.length; i++) {
@@ -19,7 +19,7 @@ const getBlogs = async (nodes) => {
                 if (tags) {
                     tagsString = tags.join(",");
                 }
-                const md = fs.readFileSync(filepath, 'utf8');
+                const md = fs.readFileSync(filepath, "utf8");
                 const link = getLinkToBackSlash(node.id);
                 const content = converter.makeHtml(md) + link;
                 let res;

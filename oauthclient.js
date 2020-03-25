@@ -1,9 +1,9 @@
-const {google} = require('googleapis');
-const http = require('http');
-const url = require('url');
-const opn = require('open');
-const destroyer = require('server-destroy');
-const keysmanager = require('./keysmanager');
+const {google} = require("googleapis");
+const http = require("http");
+const url = require("url");
+const opn = require("open");
+const destroyer = require("server-destroy");
+const keysmanager = require("./keysmanager");
 
 
 const invalidRedirectUri = `Invalid!:
@@ -24,9 +24,9 @@ class OauthClient {
         const redirectUri = this.keys.redirect_uris[this.keys.redirect_uris.length - 1];
         const parts = new url.URL(redirectUri);
         if (redirectUri.length === 0 ||
-            parts.port !== '3000' ||
-            parts.hostname !== 'localhost' ||
-            parts.pathname !== '/oauth2callback') {
+            parts.port !== "3000" ||
+            parts.hostname !== "localhost" ||
+            parts.pathname !== "/oauth2callback") {
             throw new Error(invalidRedirectUri);
         }
 
@@ -41,17 +41,17 @@ class OauthClient {
         return new Promise((resolve, reject) => {
         // grab the url that will be used for authorization
             this.authorizeUrl = this.oAuth2Client.generateAuthUrl({
-                access_type: 'offline',
-                scope: scopes.join(' '),
+                access_type: "offline",
+                scope: scopes.join(" "),
             });
             const server = http.createServer(async (req, res) => {
                 try {
-                    if (req.url.indexOf('/oauth2callback') > -1) {
-                        const qs = new url.URL(req.url, 'http://localhost:3000')
+                    if (req.url.indexOf("/oauth2callback") > -1) {
+                        const qs = new url.URL(req.url, "http://localhost:3000")
                             .searchParams;
-                        res.end('Authentication successful! Please return to the console.');
+                        res.end("Authentication successful! Please return to the console.");
                         server.destroy();
-                        const {tokens} = await this.oAuth2Client.getToken(qs.get('code'));
+                        const {tokens} = await this.oAuth2Client.getToken(qs.get("code"));
                         this.oAuth2Client.credentials = tokens;
                         resolve(this.oAuth2Client);
                     }

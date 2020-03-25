@@ -284,7 +284,12 @@
                             "id": "sql-server-linux",
                             "name": "SQL Server Linux",
                             "desc": "How you use SQL Server in Linux environment using docker, sqlcmd and VSCode",
-                            "tags": ["database", "sql server", "docker", "sqlcmd", "VSCode"]
+                            "tags": ["database", "sql server", "docker", "sqlcmd", "VSCode"],
+                            "blogger": {
+                                "publish": true,
+                                "id": "2326975353314798452",
+                                "link": "http://blog.backslash.site/2020/03/sql-server-linux.html"
+                            }
                         }
                     ]
                 },
