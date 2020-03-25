@@ -1,6 +1,6 @@
 const bloggerApi = require('./blogger-api');
 const blogId = "7734453256887931626";
-const config = require('./articles/articletree.json');
+const config = require('./public/articles/articletree.json');
 const showdown  = require('showdown');
 const converter = new showdown.Converter();
 const fs = require('fs');
@@ -12,7 +12,7 @@ const getBlogs = async (nodes) => {
             await getBlogs(node.children);
         } else {
             if (node.blogger && node.blogger.publish) {
-                const filepath = `./articles/${node.id}.md`;
+                const filepath = `./public/articles/${node.id}.md`;
                 const title = node.name;
                 const tags = node.tags ? node.tags.sort() : null;
                 let tagsString = null;

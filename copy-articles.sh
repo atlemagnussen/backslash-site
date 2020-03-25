@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-rm articles/*
-cp -r ../articles/*.* ./articles/
+rm public/articles/*
+cp -r ../articles/*.* ./public/articles/

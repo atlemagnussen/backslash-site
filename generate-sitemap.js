@@ -5,7 +5,7 @@ const filepath = path.join(process.cwd(), "public", "sitemap.xml");
 const mainUrl = "https://www.backslash.site";
 const { exec } = require("child_process");
 
-const pathToConfig = path.join(process.cwd(), "articles", "articletree.json");
+const pathToConfig = path.join(process.cwd(), "public", "articles", "articletree.json");
 const config = require(pathToConfig);
 let fileContent = `<?xml version="1.0" encoding="UTF-8"?>`;
 
@@ -53,7 +53,7 @@ const getBlogs = async (nodes) => {
         if (node.children && Array.isArray(node.children) && node.children.length > 0) {
             await getBlogs(node.children);
         } else {
-            const filepath = `articles/${node.id}.md`;
+            const filepath = `public/articles/${node.id}.md`;
             let lastMod = await getLastModifiedGit(filepath);
             if (lastMod && lastMod.length > 10)
                 lastMod = lastMod.substring(0,10);

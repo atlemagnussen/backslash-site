@@ -32,7 +32,6 @@ export default {
         css({dest: "public/build/bundle-ext.css"}),
         copy({
             targets: [
-                { src: "articles", dest: "public" },
                 { src: "node_modules/prismjs/themes/prism.css", dest: "public/lib" },
                 { src: "node_modules/prism-themes/themes/prism-xonokai.css", dest: "public/lib" }
             ]
