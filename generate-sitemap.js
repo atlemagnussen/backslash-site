@@ -5,7 +5,8 @@ const filepath = path.join(process.cwd(), "public", "sitemap.xml");
 const mainUrl = "https://www.backslash.site";
 const { exec } = require("child_process");
 
-const config = require("./public/articles/articletree.json");
+const pathToConfig = path.join(process.cwd(), "public", "articles", "articletree.json");
+const config = require(pathToConfig);
 let fileContent = `<?xml version="1.0" encoding="UTF-8"?>`;
 
 const append = (input) => {
