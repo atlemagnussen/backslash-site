@@ -1,11 +1,11 @@
-const os = require('os');
-const fs = require('fs');
-const path = require('path');
-const filepath = path.join(process.cwd(), 'src', 'sitemap.xml');
+const os = require("os");
+const fs = require("fs");
+const path = require("path");
+const filepath = path.join(process.cwd(), "public", "sitemap.xml");
 const mainUrl = "https://www.backslash.site";
-const { exec } = require('child_process');
+const { exec } = require("child_process");
 
-const config = require('./articles/articletree.json');
+const config = require("./public/articles/articletree.json");
 let fileContent = `<?xml version="1.0" encoding="UTF-8"?>`;
 
 const append = (input) => {
