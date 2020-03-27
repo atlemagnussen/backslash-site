@@ -3,7 +3,7 @@
 Working with SQL Server in Linux is not as easy as inside a Windows environment, but it certainly is fully possible when Microsoft started releasing SQL Server docker images.
 You will not get Sql Server Management Studio, but you get something just as good.
 
-
+<div class="separator" style="clear: both; text-align: center;"><img border="0" src="https://storage.googleapis.com/backslash-project.appspot.com/static/sql-docker.png"/></div>
 
 ## Docker
 I'm guessing people are familiar with [Docker](https://www.docker.com/), if not there is a hundred tutorials out there.

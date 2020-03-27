@@ -48,6 +48,17 @@
                                 "id": "4657454269074523041",
                                 "link": "https://blog.backslash.site/2019/10/net-core-cli-commands.html"
                             }
+                        },
+                        {
+                            "id": "docker-dotnet-core",
+                            "name": "Docker dotnet core",
+                            "desc": "how to use docker with dotnet core",
+                            "tags": ["docker", ".net core", "dotnet", "cli", "linux"],
+                            "blogger": {
+                                "publish": true,
+                                "id": "8464130343546226878",
+                                "link": "http://blog.backslash.site/2020/03/docker-dotnet-core.html"
+                            }
                         }
                     ]
                 },
