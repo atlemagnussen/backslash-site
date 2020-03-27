@@ -15,14 +15,10 @@ This is for aspnet core
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /source
 
-# copy csproj and restore as distinct layers
-COPY *.sln .
-COPY aspnetapp/*.csproj ./aspnetapp/
-RUN dotnet restore
-
-# copy everything else and build app
+# copy everything and build app
 COPY aspnetapp/. ./aspnetapp/
 WORKDIR /source/aspnetapp
+RUN dotnet restore
 RUN dotnet publish -c release -o /app --no-restore
 
 # final stage/image
@@ -34,7 +30,7 @@ ENTRYPOINT ["dotnet", "aspnetapp.dll"]
 
 ## build image
 ```sh
-$docker build -t aspnetapp .
+$ docker build -t aspnetapp .
 ```
 
 ## run container
@@ -108,12 +104,12 @@ First you need to create an Azure Container Registry
 
 Once you have built your image, log in to your registry, lets say you chose the name `myazureregistryname`
 ```sh
-docker login myazureregistryname.azurecr.io
+$ docker login myazureregistryname.azurecr.io
 ```
 
 Then you should tag your image
 ```sh
-docker tag aspnetapp:latest myazureregistryname.azurecr.io/aspnetapp
+$ docker tag aspnetapp:latest myazureregistryname.azurecr.io/aspnetapp
 ```
 
 Then push it

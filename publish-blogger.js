@@ -17,7 +17,7 @@ const getBlogs = async (nodes) => {
                 const tags = node.tags ? node.tags.sort() : null;
                 let tagsString = null;
                 if (tags) {
-                    tagsString = tags.join(",");
+                    tagsString = tags.join(",").toLowerCase();
                 }
                 const md = fs.readFileSync(filepath, "utf8");
                 const link = getLinkToBackSlash(node.id);
@@ -25,7 +25,7 @@ const getBlogs = async (nodes) => {
                 let res;
                 if (node.blogger.id) {
                     const existing = await bloggerApi.getBlogPost(blogId, node.blogger.id);
-                    const existingTagsString = existing.labels ? existing.labels.join(",") : null;
+                    const existingTagsString = existing.labels ? existing.labels.join(",").toLowerCase() : null;
                     if (existing.title !== title || existing.content !== content || tagsString !== existingTagsString) {
                         res = await bloggerApi.updateBlogPost(blogId, node.blogger.id, title, content, node.tags);
                     } else {
