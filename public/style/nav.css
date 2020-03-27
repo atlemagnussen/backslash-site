@@ -8,12 +8,12 @@
 .left .es6-tree .node-text.icon-file::before {
   color: var(--main-color);
 }
-.token.operator {
+article .token.operator {
   background: none;
 }
-code[class*="language-"] {
+article code[class*="language-"] {
   color: var(--default-lang-color);
 }
-code.language-bash {
+article code.language-bash {
   color: var(--cyan-dark);
 }

@@ -5,7 +5,7 @@ Add file to `.git/info/exclude`
 
 Then run
 ```sh
-git update-index --assume-unchanged file
+$ git update-index --assume-unchanged file
 ```
 
 ## Delete branch
