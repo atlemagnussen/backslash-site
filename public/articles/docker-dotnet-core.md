@@ -50,6 +50,7 @@ $ docker run -it --rm -p 5000:80 --name aspnetcore_sample aspnetapp
 ```sh
 $ docker images
 ```
+
 Should display 
 ```bash
 REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
@@ -98,4 +99,24 @@ $ docker start aspnetcore_sample
 #### Restart running container
 ```sh
 $ docker restart aspnetcore_sample
+```
+
+## Deploy to Azure 
+Using Azure Container Registry
+
+First you need to create an Azure Container Registry  
+
+Once you have built your image, log in to your registry, lets say you chose the name `myazureregistryname`
+```sh
+docker login myazureregistryname.azurecr.io
+```
+
+Then you should tag your image
+```sh
+docker tag aspnetapp:latest myazureregistryname.azurecr.io/aspnetapp
+```
+
+Then push it
+```sh
+$ docker push myazureregistryname.azurecr.io/aspnetapp
 ```
