@@ -116,3 +116,92 @@ Then push it
 ```sh
 $ docker push myazureregistryname.azurecr.io/aspnetapp
 ```
+
+## HTTPS in developer mode
+### Method 1
+```sh
+# generate a self-signed cert
+$ dotnet dev-certs https -v
+
+# go to cert
+$ cd ~/.dotnet/corefx/cryptography/x509stores/my
+
+# convert the generated cert from pfx to pem, enter blank pw
+$ openssl pkcs12 -in <certname>.pfx -nokeys -out localhost.crt -nodes
+
+# copy to ca-certificates
+$ sudo cp localhost.crt /usr/local/share/ca-certificates/
+
+# verify the file is there
+$ sudo cat /etc/ssl/certs/localhost.pem
+
+# verify if it's trusted
+$ openssl verify localhost.crt
+```
+
+### Method 2
+Create localhost.conf
+```bash
+[req]
+  default_bits       = 2048
+  default_keyfile    = localhost.key
+  distinguished_name = req_distinguished_name
+  req_extensions     = req_ext
+  x509_extensions    = v3_ca
+
+  [req_distinguished_name]
+  commonName                  = localhostaspnetcore
+  commonName_default          = localhost
+  commonName_max              = 64
+
+  [req_ext]
+  subjectAltName = @alt_names
+
+  [v3_ca]
+  subjectAltName = @alt_names
+  basicConstraints = critical, CA:false
+  keyUsage = keyCertSign, cRLSign, digitalSignature,keyEncipherment
+
+  [alt_names]
+  DNS.1   = localhost
+  DNS.2   = 127.0.0.1
+```
+
+Generate cert
+```sh
+$ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt -config localhost.conf
+
+# Convert cert to pfx
+$ openssl pkcs12 -export -out localhost.pfx -inkey localhost.key -in localhost.crt
+
+# Verify
+$ openssl verify -CAfile localhost.crt localhost.crt
+```
+
+Trust cert
+```sh
+# Copy
+$ sudo cp localhost.crt /usr/local/share/ca-certificates
+
+# Trust
+$ sudo update-ca-certificates
+
+# Verify exists
+$ sudo cat /etc/ssl/certs/localhost.pem
+
+# Cerify without -CAfile option
+$ cd /usr/local/share/ca-certificates/
+$ sudo openssl verify localhost.crt
+```
+
+Now force kestrel to use it with `appsetting.json`
+```json
+"Kestrel": {
+    "Certificates": {
+        "Default": {
+            "Path": "localhost.pfx",
+            "Password": ""
+        }
+    }
+}
+```
