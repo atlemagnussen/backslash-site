@@ -118,6 +118,7 @@ $ docker push myazureregistryname.azurecr.io/aspnetapp
 ```
 
 ## HTTPS in developer mode
+[Helpful SO thread](https://stackoverflow.com/questions/55485511/how-to-run-dotnet-dev-certs-https-trust)
 ### Method 1
 ```sh
 # generate a self-signed cert
