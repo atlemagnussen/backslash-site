@@ -37,5 +37,3 @@
 </script>
 
 <nav id="treeview" class="treeview"></nav>
-
-<a href='/blog/dotnet-core-cli-commands?test=true'>Test link</a>
