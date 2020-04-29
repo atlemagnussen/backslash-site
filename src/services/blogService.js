@@ -77,6 +77,31 @@ class BlogService
 
         return htags;
     }
+    async setMetaData(id) {
+        const metaData = await this.getArticleMetaData(id);
+        document.title = `Backslash.site - ${metaData.name}`;
+
+        const metaDescription = document.querySelector("meta[name='description']");
+        if (metaDescription) {
+            metaDescription.setAttribute("content", `Backslash.site - ${metaData.desc}`);
+        }
+        const canonicalLink = document.querySelector("link[rel='canonical']");
+        if(metaData.canonical) {
+            const fullCanonicalUrl = `${window.location.origin}${metaData.canonical}`;
+            if (canonicalLink)
+                canonicalLink.setAttribute("href", fullCanonicalUrl);
+            
+            else {
+                const newCanonicalLink = document.createElement("link");
+                newCanonicalLink.setAttribute("href", fullCanonicalUrl);
+                newCanonicalLink.setAttribute("rel", "canonical");
+                document.head.appendChild(newCanonicalLink);
+            }
+        } else {
+            if (canonicalLink)
+                document.head.removeChild(canonicalLink);
+        }
+    }
 }
 
 export default new BlogService();

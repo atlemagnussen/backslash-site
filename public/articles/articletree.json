@@ -335,8 +335,7 @@
                 {
                     "id": "links",
                     "name": "Links",
-                    "desc": "Useful blogposts by others that I link to",
-                    "canonical": "/"
+                    "desc": "Useful blogposts by others that I link to"
                 },
                 {
                     "id": "about",

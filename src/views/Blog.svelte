@@ -9,13 +9,7 @@
         blogHtml = await blogService.get(id);
         blogId.set(id);
         
-        const blogMetaData = await blogService.getArticleMetaData(id);
-        document.title = `Backslash.site - ${blogMetaData.name}`;
-
-        const metaDescription = document.querySelector("meta[name='description']");
-        if (metaDescription) {
-            metaDescription.setAttribute("content", `Backslash.site - ${blogMetaData.desc}`);
-        }
+        blogService.setMetaData(id);
     }
     onMount(async () => {
         //blogHtml = await getBlog(id)
