@@ -3,6 +3,7 @@
     import router from "../router.js";
     import EsTree from "es6-tree";
     import treeconfig from "../services/treeconfig.js";
+    import Link from "./components/Link.svelte"
     let articleTree = { "rootUrl": "/articles/", nodes: []};
     const buildTree = async () => {
         articleTree = await treeconfig.get();
@@ -37,3 +38,5 @@
 </script>
 
 <nav id="treeview" class="treeview"></nav>
+
+<Link page="{{ path: '/blog/dotnet-core-cli-commands?test=true', name: 'Test link' }}" />

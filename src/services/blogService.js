@@ -86,20 +86,19 @@ class BlogService
             metaDescription.setAttribute("content", `Backslash.site - ${metaData.desc}`);
         }
         const canonicalLink = document.querySelector("link[rel='canonical']");
+        let fullCanonicalUrl = `${window.location.origin}`;
         if(metaData.canonical) {
-            const fullCanonicalUrl = `${window.location.origin}${metaData.canonical}`;
-            if (canonicalLink)
-                canonicalLink.setAttribute("href", fullCanonicalUrl);
-            
-            else {
-                const newCanonicalLink = document.createElement("link");
-                newCanonicalLink.setAttribute("href", fullCanonicalUrl);
-                newCanonicalLink.setAttribute("rel", "canonical");
-                document.head.appendChild(newCanonicalLink);
-            }
+            fullCanonicalUrl = `${fullCanonicalUrl}${metaData.canonical}`;
         } else {
-            if (canonicalLink)
-                document.head.removeChild(canonicalLink);
+            fullCanonicalUrl = `${fullCanonicalUrl}${window.location.pathname}`;
+        }
+        if (canonicalLink)
+            canonicalLink.setAttribute("href", fullCanonicalUrl);
+        else {
+            const newCanonicalLink = document.createElement("link");
+            newCanonicalLink.setAttribute("href", fullCanonicalUrl);
+            newCanonicalLink.setAttribute("rel", "canonical");
+            document.head.appendChild(newCanonicalLink);
         }
     }
 }
