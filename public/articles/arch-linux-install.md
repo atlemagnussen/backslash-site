@@ -7,6 +7,13 @@ mainly follow the official [Arch installation guide](https://wiki.archlinux.org/
 - Create `/boot/` or `/efi/` partition of a couple of hundred MB
 - boot partion must be flagged **esp**, check with ```parted /dev/nvme0n1 print```
 
+### create with parted
+- `parted /dev/sda`
+- `mkpart boot fat32 0% 512M`
+- `toggle 1 esp`
+- `quit`
+- `mkfs.fat -F32 /dev/sda1`
+
 ### create EFI with fdisk
 - `fdisk /dev/nvme0n1`
 - press `n` for new
