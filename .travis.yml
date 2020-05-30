@@ -6,6 +6,8 @@ branches:
     - master
 before_script:
   - node generate-sitemap.js
+  - cd ./functions
+  - npm install
 script:
   - npm install
   - npm run build
