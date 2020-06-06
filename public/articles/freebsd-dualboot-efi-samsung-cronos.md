@@ -28,7 +28,7 @@ menuentry "FreeBSD" {
     insmod part_gpt
     insmod fat
     set root=(hd0,gpt5) # 5 because FreeBSD EFI partition is sda5 in my setup
-    chainloader /efi/boot/bootx64.efi # look up this by mounting the FreeBSD EFI partition, the name might be different
+    chainloader /efi/boot/BOOTx64.efi # look up this by mounting the FreeBSD EFI partition, the name might be different
 }
 ```
 
