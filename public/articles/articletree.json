@@ -199,6 +199,12 @@
                                 "id": "99969239468267565",
                                 "link": "https://blog.backslash.site/2019/11/freebsd-install.html"
                             }
+                        },
+                        {
+                            "id": "freebsd-dualboot-efi-samsung-cronos",
+                            "name": "FreeBSD Samsung Cronos",
+                            "desc": "How to install FreeBSD alongside Linux and dual boot from GRUB with EFI enabled on a Samsung Cronos",
+                            "tags": ["os", "installation", "bsd", "freebsd", "dual boot", "efi"]
                         }
                     ]
                 },
