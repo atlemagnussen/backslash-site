@@ -14,7 +14,7 @@ script:
   - npm run build
 deploy:
   provider: firebase
-  skip_cleanup: true
+  skip_cleanup: false
   token:
     secure: "RX7F9CGxUENArYWdi1iA2Uu8zMRXN6pk4igc49tdcoHd92ByD+4VfoMe4HQhEYfRdXc8kkW/D1GkDZLPTifzSCFYB/DK3trkBqeWboQpSVvsYR0ewv+OMSh6S5dTt6+c2ormLa+Yvfxp3U4tM4+Fu6FQBRR7fARfqwF16XczhvAdfNhh9d2Ac1PG1h5j2UwU4sZt4leIOGNU/a39KPfI9cCg/S7kkJ6pA5mPX25vZhGahCLdEtd3IwGpTAHwxiddlaGvcWEoXmcs3AsbaoS3uoomVLLp4nUKOWYWEDwIL+i9x8LX9o9bNSjyEQ5cOaPMvMiw6gr7DvtCeI/ylQugytae6YdDJPEXKWRhtLe6KkcQRHujXV4vCcS0vfKh+rWXSlnz3o0UvlgNfpV2IMk9H1xl5Rtpk8YcZI4cYpS3CMWVdgny8PuzH66Cdo6Xg25rpNCPzmVp4W+4A7R5dQ/DtkkN/Gx36ApBtLi/hvOW+giCroe2NMcQ5lZzojPsSQT5NB30gKTlkwY45EUb5kaoVH7p9qhnbfRT6/xCaytOIrJZxV/FjHcuoxA4hxFmhDkL3E1e93Qv+HgOcWGdkGkZ3LQD9p/N8pDz8+PtflI8TBOH4ORPRed+Y+ItVPBfgI2YtZLx52D97Lj9NH62yx1uY/rzHe2S72aiq8hVYY9W93Q="
   message: "My firebase backslash travis github build"
