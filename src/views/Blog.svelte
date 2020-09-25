@@ -10,7 +10,7 @@
         blogId.set(id);
         
         blogService.setMetaData(id);
-    }
+    };
     onMount(async () => {
         //blogHtml = await getBlog(id)
     });
