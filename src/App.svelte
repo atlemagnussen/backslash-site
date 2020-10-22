@@ -10,7 +10,8 @@
     import Container from "./Container.svelte";
     import Link from "./components/Link.svelte"
     import Toc from "./components/Toc.svelte";
-
+    import Meta from "./components/Meta.svelte";
+    
     onMount(() => {
         curRoute.set(window.location.pathname);
         if (!history.state) {
@@ -42,6 +43,7 @@
 </script>
 
 <svelte:window on:popstate="{handlerBackNavigation}" />
+<Meta />
 <header>
     <div class="headerline" id="headerline">
         <div class="menu-button" id="menu-button" on:click="{toggleMenu}">

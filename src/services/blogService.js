@@ -77,30 +77,6 @@ class BlogService
 
         return htags;
     }
-    async setMetaData(id) {
-        const metaData = await this.getArticleMetaData(id);
-        document.title = `Backslash.site - ${metaData.name}`;
-
-        const metaDescription = document.querySelector("meta[name='description']");
-        if (metaDescription) {
-            metaDescription.setAttribute("content", `Backslash.site - ${metaData.desc}`);
-        }
-        const canonicalLink = document.querySelector("link[rel='canonical']");
-        let fullCanonicalUrl = `${window.location.origin}`;
-        if(metaData.canonical) {
-            fullCanonicalUrl = `${fullCanonicalUrl}${metaData.canonical}`;
-        } else {
-            fullCanonicalUrl = `${fullCanonicalUrl}${window.location.pathname}`;
-        }
-        if (canonicalLink)
-            canonicalLink.setAttribute("href", fullCanonicalUrl);
-        else {
-            const newCanonicalLink = document.createElement("link");
-            newCanonicalLink.setAttribute("href", fullCanonicalUrl);
-            newCanonicalLink.setAttribute("rel", "canonical");
-            document.head.appendChild(newCanonicalLink);
-        }
-    }
 }
 
 export default new BlogService();
