@@ -40,7 +40,7 @@ exports.redirectBlog = functions.https.onRequest((request, response) => {
         response.redirect(301, redirectUrl);
     } else {
         console.log("could not find redirect, go to backslash");
-        response.redirect(301, "https://www.backslash.site");
+        response.redirect(301, "https://backslash.site");
     }
 });
 
