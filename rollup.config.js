@@ -3,8 +3,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
-import css from "rollup-plugin-css-porter";
-import copy from "rollup-plugin-copy";
+import serve from "rollup-plugin-serve";
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -20,23 +19,24 @@ export default {
         svelte({
             dev: !production,
             css: css => {
-                css.write("public/build/bundle.css");
+                css.write("bundle.css");
             }
         }),
+
         resolve({
             browser: true,
             dedupe: ["svelte"]
         }),
-        commonjs(),
-        css({dest: "public/build/bundle-ext.css"}),
-        copy({
-            targets: [
-                { src: "node_modules/prismjs/themes/prism.css", dest: "public/lib" },
-                { src: "node_modules/prism-themes/themes/prism-xonokai.css", dest: "public/lib" }
-            ]
-        }),
 
-        !production && serve(),
+        commonjs(),
+
+        !production && serve({
+            contentBase: "public",
+            open: true,
+            host: "localhost",
+            port: 8000,
+            historyApiFallback: true,
+        }),
 
         !production && livereload("public"),
 
@@ -46,20 +46,3 @@ export default {
         clearScreen: false
     }
 };
-
-function serve() {
-    let started = false;
-
-    return {
-        writeBundle() {
-            if (!started) {
-                started = true;
-
-                require("child_process").spawn("npm", ["run", "start", "--", "--dev"], {
-                    stdio: ["ignore", "inherit", "inherit"],
-                    shell: true
-                });
-            }
-        }
-    };
-}

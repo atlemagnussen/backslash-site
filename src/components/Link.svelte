@@ -1,6 +1,6 @@
 <script>
     import router from "../router.js";
-    export let page;
+    export let path, name;
 
     const redirectTo = (event) => {
         router.to(event.currentTarget.pathname)
@@ -14,6 +14,6 @@
     }
 </style>
 
-<a href={page.path} on:click|preventDefault={redirectTo}>
-    <slot>{page.name}</slot>
+<a href={path} on:click|preventDefault={redirectTo}>
+    <slot>{name}</slot>
 </a>
