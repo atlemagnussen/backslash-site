@@ -9,7 +9,6 @@
 
 <style>
     a {
-        padding: 1rem;
         color: var(--secondary-text);
     }
 </style>
