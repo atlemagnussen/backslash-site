@@ -6,10 +6,10 @@
         "node": "10"
     },
     "scripts": {
-        "build": "rollup -c",
+        "build": "rollup -c && node generate-sitemap.js",
         "dev": "rollup -c -w",
         "start": "npm i && npm run dev",
-        "deploy": "npm run build && node generate-sitemap.js && firebase deploy"
+        "deploy": "npm run build && firebase deploy"
     },
     "repository": {
         "type": "git",

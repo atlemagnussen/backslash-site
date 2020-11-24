@@ -1,0 +1,9 @@
+steps:
+  - name: node
+    entrypoint: npm
+    args: ['install']
+  - name: node
+    entrypoint: npm
+    args: ['run', 'build']
+  - name: gcr.io/backslash-project/firebase
+    args: ['deploy', '--project=backslash-project', '--only=hosting']
