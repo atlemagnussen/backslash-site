@@ -18,3 +18,19 @@ Remote
 ```sh
 $ git push -d origin branch-name
 ```
+
+## Delete tag
+Locally
+```sh
+$ git tag -d tagname
+```
+
+Remote
+```sh
+$ git push --delete origin tagname
+```
+
+## Push tags after commit
+```sh
+git push origin --tags
+```

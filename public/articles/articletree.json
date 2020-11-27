@@ -165,6 +165,12 @@
                             "name": "Arch Linux bluetooth",
                             "desc": "How to pair and connect bluetooth devices to your Arch Linux computer",
                             "tags": ["bluetooth", "bluez", "pulseaudio", "linux", "arch linux", "cli"]
+                        },
+                        {
+                            "id": "linux-mount-smb",
+                            "name": "Mount smb Linux",
+                            "desc": "How to mount a smb file share in Linux",
+                            "tags": ["smb", "linux", "windows", "file"]
                         }
                     ]
                 },

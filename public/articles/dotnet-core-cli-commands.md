@@ -47,7 +47,7 @@ dotnet new webapp
 ```sh
 mkdir lib
 cd lib
-dotnet add classlib
+dotnet new classlib
 ```
 
 ## Add more projects to solution
