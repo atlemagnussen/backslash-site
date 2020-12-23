@@ -188,6 +188,12 @@
                                 "id": "2491551779806479351",
                                 "link": "https://blog.backslash.site/2019/11/unix-tar-commond-operations.html"
                             }
+                        },
+                        {
+                            "id": "cups-configure",
+                            "name": "CUPS configure",
+                            "desc": "How to set up CUPS on Unix based systems",
+                            "tags": ["unix", "linux", "printer", "cli"]
                         }
                     ]
                 },
