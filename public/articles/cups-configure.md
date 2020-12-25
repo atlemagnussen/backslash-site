@@ -54,9 +54,9 @@ You usually need to log out of the session for the group change to be effected
 Add the printer to the server like you normally do with CUPS first.  
 Go to `https://192.168.1.3:631/admin` and then add printer
 
-I'll skip this part for now and assume you have added the printer so that it is accessible for your server.
+I'll skip this part for now and assume you have added the printer which is called "printer"
 
 Add another printer that points to the same printer, which is accessible by all machines on the LAN
 ```sh
-$ sudo lpadmin -p printer-on-server -E -v ipp://192.168.1.3/printers/Brother_DCP-L2530DW_server_driverless -m everywhere
+$ sudo lpadmin -p printer-on-server -E -v ipp://192.168.1.3/printers/printer -m everywhere
 ```
