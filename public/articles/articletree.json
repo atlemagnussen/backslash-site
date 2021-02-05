@@ -334,6 +334,18 @@
                     ]
                 },
                 {
+                    "id": "crypto",
+                    "name": "Cryptocurrency",
+                    "children": [
+                        {
+                            "id": "bitcoin-c-lightning",
+                            "name": "Bitcoin C-lightning",
+                            "desc": "How to run and operate a C lightning node",
+                            "tags": ["crypto", "bitcoin", "lightning network", "linux"]
+                        }
+                    ]
+                },
+                {
                     "id": "music",
                     "name": "Music",
                     "children": [
