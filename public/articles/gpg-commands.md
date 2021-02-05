@@ -1,6 +1,5 @@
 # GPG encryption commands
 
-
 <div class="separator" style="clear: both; text-align: center;"><img border="0" src="https://storage.googleapis.com/atle-static/pics/gpg_logo.png"/></div>
 
 ## Create
@@ -14,7 +13,7 @@ $ gpg --gen-key
 or the more advanced
 
 ```sh
-$ gpg --full-generate-key
+$ gpg --full-generate-key
 ```
 
 Output will be something like this:
@@ -92,7 +91,7 @@ $ gpg --lsign-key 9A5704E6742C5B32395057FCACB6EE444EE8C7A2
 
 Using public key of your friend:
 ```sh
-$ gpg --output file.txt.gpg --encrypt --recipient friendxxx@gmail.com file.txt
+$ gpg --output file.txt.gpg --encrypt --recipient friendxxx@gmail.com file.txt
 ```
 
 ## Add signature
@@ -117,5 +116,5 @@ $ gpg --output decrypted.txt --decrypt file.txt.gpg
 Verify that your friend created the message
 
 ```sh
-$ gpg --verify file.txt.sha256sum.sig
+$ gpg --verify file.txt.sha256sum.sig
 ```
