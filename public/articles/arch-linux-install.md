@@ -143,11 +143,15 @@ Now replace ```exec openbox-session``` with ```exec startxfce4``` in ~/.xinitrc
 
 #### Fonts
 There seems to be missing default monospace fonts or something in latest arch [reddit thread](https://www.reddit.com/r/linuxquestions/comments/86vsm9/letter_overlaping_in_xfce_terminal_with_monospace/dw8mvho/)  
-````
+```
 pacman -S ttf-dejavu ttf-liberation ttf-droid
 ; optional
+
 pacman -S ttf-ubuntu-font-family ttf-roboto noto-fonts
-````
+
+; emoji nerd fonts 
+pacman -S ttf-nerd-fonts-symbols
+```
 ## Sound
 ### Driver
 Alsa  
