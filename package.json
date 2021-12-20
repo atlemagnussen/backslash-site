@@ -3,7 +3,7 @@
     "version": "1.1.0",
     "description": "atles personal blog",
     "engines": {
-        "node": "10"
+        "node": "16"
     },
     "scripts": {
         "build": "rollup -c && node generate-sitemap.js",

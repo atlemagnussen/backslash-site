@@ -50,3 +50,12 @@ $ usermod -a -G newgroup testuser
 ```
 
 ## Create service user
+
+```sh
+$ useradd -r serviceuser
+```
+
+## show user ids
+```sh
+$ id testuser
+```
