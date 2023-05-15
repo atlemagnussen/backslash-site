@@ -34,3 +34,13 @@ $ git push --delete origin tagname
 ```sh
 git push origin --tags
 ```
+
+## Rebase to correct something pushed to origin
+```sh
+git rebase -i e417ef2d # commit to the last commit before the ones you want to squash
+```
+
+## Reset local branch to origin
+```sh
+git reset --hard origin/master
+```
