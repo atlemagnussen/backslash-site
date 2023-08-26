@@ -171,6 +171,12 @@
                             "name": "Mount smb Linux",
                             "desc": "How to mount a smb file share in Linux",
                             "tags": ["smb", "linux", "windows", "file"]
+                        },
+                        {
+                            "id": "kvm-qemu-virt",
+                            "name": "KVM Qemu Virt",
+                            "desc": "Commands for controlling KVM Qemu VMs",
+                            "tags": ["kvm", "linux", "qemu", "virt"]
                         }
                     ]
                 },
