@@ -37,5 +37,4 @@ Get VMs IP addresses
 virsh net-dhcp-leases default
 ```
 
-[Article on how to set up networks in KVM](https://computingforgeeks.com/managing-kvm-network-interfaces-in-linux/?expand_article=1
-)
+[Article on how to set up networks in KVM](https://computingforgeeks.com/managing-kvm-network-interfaces-in-linux/?expand_article=1)
