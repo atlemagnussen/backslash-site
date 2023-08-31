@@ -14,6 +14,16 @@ Start machine
 sudo virsh start debian12
 ```
 
+Edit machine
+```sh
+sudo virsh edit debian12
+```
+
+Clone machine
+```sh
+virt-clone --original debian12 --name debian12-copy --file /var/lib/libvirt/images/debian12-copy.qcow2
+```
+
 ## Network
 
 List
