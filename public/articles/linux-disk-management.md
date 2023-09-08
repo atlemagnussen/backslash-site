@@ -165,3 +165,43 @@ $ sudo mkfs.ext4 -F /dev/md0
 #### mount bind dev
 /mnt/md0/development/ /home/atle/development        none    bind
 ```
+
+## Linux disk check and error handling
+
+### SMART
+
+Show info
+
+```sh
+sudo smartctl --info /dev/sdf
+```
+
+Show attributes
+
+```sh
+sudo smartctl -a /dev/sdf
+```
+
+Run short test
+
+```sh
+sudo smartctl --test=short /dev/sdf
+```
+
+Run long test
+
+```sh
+sudo smartctl -d sat -a -t long /dev/sdf
+```
+
+Show capabilities and status for test
+
+```sh
+sudo smartctl --capabilities /dev/sdf
+```
+
+Show errors if test fails
+
+```sh
+sudo smartctl --log=selftest /dev/sdf
+```
