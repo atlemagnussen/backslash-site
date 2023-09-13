@@ -25,7 +25,7 @@ e04e6c4d-aea5-4465-8a06-c7163196db27 -> ../../sde1
 UUID=e04e6c4d-aea5-4465-8a06-c7163196db27       /mnt/ssd1       ext4    defaults        0       3
 ```
 
-### Create new partition with parted
+### Create new partition table with parted
 
 Start parted on the disk
 
@@ -41,8 +41,16 @@ Create GPT disk label
 
 Create one partition of all available space
 
+### Create partition on entire disk
+
 ```sh
 (parted) mkpart primary 0% 100%
+```
+
+### Create partition on spesific size in MB
+```sh
+(parted) unit MB print free # will print in mb
+(parted) mkpart primary ext4 1MB 8001463MB # from - to
 ```
 
 Print to see current partition table
