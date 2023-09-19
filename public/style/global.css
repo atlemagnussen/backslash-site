@@ -66,3 +66,30 @@ article details[open] .closed {
 article details[open] .open {
     display: inline-block;
 }
+
+article pre code {
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 3px;
+    padding: 0.1rem;
+}
+
+article pre code:hover {
+    border-color: var(--magenta-dark);
+}
+
+article pre code.flash {
+    animation: glowing 500ms 1;
+}
+
+@keyframes glowing {
+    0% {
+      box-shadow: 0 0 3px #2ba805;
+    }
+    50% {
+      box-shadow: 0 0 10px #49e819;
+    }
+    100% {
+      box-shadow: 0 0 3px #2ba805;
+    }
+  }

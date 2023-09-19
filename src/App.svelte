@@ -8,9 +8,10 @@
 
     import LeftNav from "./views/LeftNav.svelte";
     import Container from "./Container.svelte";
-    import Link from "./components/Link.svelte"
     import Toc from "./components/Toc.svelte";
     import Meta from "./components/Meta.svelte";
+
+    import { writeToClipBoard } from "./services/clipboardService"
     
     onMount(() => {
         curRoute.set(window.location.pathname);
@@ -38,6 +39,23 @@
                 left: 0,
                 behavior: "smooth"
             });
+        }
+    });
+
+    document.addEventListener("click", (e) => {
+        const target = e.target;
+        if (target.tagName === "CODE") {
+            e.preventDefault();
+            const text = target.innerText;
+            const parent = target.parentNode;
+            if (parent.tagName == "PRE") {
+                target.classList.add("flash")
+                setTimeout(() => {
+                    target.classList.remove("flash")
+                }, 1000);
+                console.log("code", target.outerHTML)
+                writeToClipBoard(text);
+            }
         }
     });
 </script>
