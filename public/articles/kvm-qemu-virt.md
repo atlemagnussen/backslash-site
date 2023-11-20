@@ -68,3 +68,9 @@ This is in virt manager gui
 - Set up shared memory
 - Press "Add hardware", select "Filesystem"
 - Select the host folder, and add a name for Target path like this "mount_tag_ssd1"
+
+Inside the host you mount it like this
+```sh
+#virtiofs
+mount_tag_umbrel /mnt/umbrel virtiofs rw,relatime       0       0
+```
