@@ -19,6 +19,18 @@ Edit machine
 sudo virsh edit debian12
 ```
 
+Power off machine
+
+```sh
+sudo virsh shutdown debian12
+```
+
+Force shut power off
+
+```sh
+sudo virsh destroy debian12
+```
+
 Clone machine
 ```sh
 virt-clone --original debian12 --name debian12-copy --file /var/lib/libvirt/images/debian12-copy.qcow2
