@@ -60,3 +60,11 @@ virsh net-dhcp-leases default
 ```
 
 [Article on how to set up networks in KVM](https://computingforgeeks.com/managing-kvm-network-interfaces-in-linux/?expand_article=1)
+
+## Mount disk shared with host
+
+This is in virt manager gui
+
+- Set up shared memory
+- Press "Add hardware", select "Filesystem"
+- Select the host folder, and add a name for Target path like this "mount_tag_ssd1"
