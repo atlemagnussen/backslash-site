@@ -80,5 +80,5 @@ Add the path inside the xml right under driver tag:
 Inside the host you mount it like this
 ```sh
 #virtiofs
-mount_tag_umbrel /mnt/umbrel virtiofs rw,relatime       0       0
+mount_tag_ssd1 /mnt/ssd1 virtiofs rw,relatime       0       0
 ```
