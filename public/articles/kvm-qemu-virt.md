@@ -69,6 +69,14 @@ This is in virt manager gui
 - Press "Add hardware", select "Filesystem"
 - Select the host folder, and add a name for Target path like this "mount_tag_ssd1"
 
+Typical error message:
+`Unable to find a satisfying virtiofsd`
+
+Add the path inside the xml right under driver tag:
+```xml
+  <binary path="/run/current-system/sw/bin/virtiofsd"/>
+```
+
 Inside the host you mount it like this
 ```sh
 #virtiofs
