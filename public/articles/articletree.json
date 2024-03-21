@@ -177,6 +177,12 @@
                             "name": "KVM Qemu Virt",
                             "desc": "Commands for controlling KVM Qemu VMs",
                             "tags": ["kvm", "linux", "qemu", "virt"]
+                        },
+                        {
+                            "id": "linux-network",
+                            "name": "Linux Network",
+                            "desc": "Commands and recipes for network operations",
+                            "tags": ["linux", "network", "dns"]
                         }
                     ]
                 },
