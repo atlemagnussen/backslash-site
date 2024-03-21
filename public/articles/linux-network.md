@@ -8,12 +8,16 @@ List all interfaces with IPs
 ip a
 ```
 
-Show routing information
+## Routing
+
+show
 
 ```sh
-# ipv4
 ip route show
-# ipv6
+```
+
+show ipv6
+```sh
 ip -6 route show
 ```
 
@@ -27,7 +31,9 @@ Trace route ipv6
 traceroute -6 domain.com
 ```
 
-## See bound ports
+## Ports
+
+See bound ports
 ```sh
 netstat -ntlp
 ```
