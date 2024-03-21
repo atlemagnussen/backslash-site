@@ -23,12 +23,12 @@ ip -6 route show
 
 Trace route ipv4
 ```sh
-traceroute domain.com
+traceroute google.com
 ```
 
 Trace route ipv6
 ```sh
-traceroute -6 domain.com
+traceroute -6 google.com
 ```
 
 ## Ports

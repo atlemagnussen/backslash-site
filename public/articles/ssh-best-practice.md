@@ -12,7 +12,11 @@ Start using the secure shell as it was meant to be, secure.
 If you're _ssh'ing_ home to your open port 22, you're done. Internet hacker factories continuously crawl the web for open SSH ports.
 
 You can easily prove it yourself, as I've done in my illustration picture above.  
-Try this: `$ grep "Failed pass" /var/log/auth.log` and see if there's any occurrences.  
+Try this: 
+```sh
+grep "Failed pass" /var/log/auth.log
+```
+and see if there's any occurrences.  
 See [this blogpost on tecmint.com](https://www.tecmint.com/find-failed-ssh-login-attempts-in-linux/) to check out other ways, as it depends on your distro where you find the auth log.
 
 Now you see them hackers usually trying to log in with the root user. Luckily the option of logging in as root over ssh is disabled by default. You can enable that, but I will not speak of how.  
@@ -39,7 +43,7 @@ The recommended algorithm as of writing is called [ed25519](https://ed25519.cr.y
 Since this is not default in `ssh-keygen` you need to specify it, like this:
 
 ```sh
-$ ssh-keygen -a 100 -t ed25519
+ssh-keygen -a 100 -t ed25519
 ```
 
 It will prompt you like this:
@@ -78,7 +82,7 @@ Don't worry, just do it again on the right machine. The server can have a pair l
 When you got it all. now print out your public file:
 
 ```sh
-$ cat ~/.ssh/id_ed25519.pub
+cat ~/.ssh/id_ed25519.pub
 ```
 
 Should give you something like this:
@@ -106,11 +110,11 @@ PasswordAuthenctication no
 default SHA256 format:
 
 ```sh
-$ ssh-keygen -lf /etc/ssh/ssh_host_rsa_key.pub
+ssh-keygen -lf /etc/ssh/ssh_host_rsa_key.pub
 ```
 
 old MD5 format:
 
 ```sh
-$ ssh-keygen -lf /etc/ssh/ssh_host_rsa_key.pub -E md5
+ssh-keygen -lf /etc/ssh/ssh_host_rsa_key.pub -E md5
 ```

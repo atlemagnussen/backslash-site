@@ -5,7 +5,7 @@
 ### Find disks UUID
 
 ```sh
-$ ls /dev/disk/by-uuid -la
+ls /dev/disk/by-uuid -la
 ```
 
 Output:
@@ -30,7 +30,7 @@ UUID=e04e6c4d-aea5-4465-8a06-c7163196db27       /mnt/ssd1       ext4    defaults
 Start parted on the disk
 
 ```sh
-$ parted /dev/sdc
+parted /dev/sdc
 ```
 
 Create GPT disk label
@@ -81,7 +81,7 @@ Save and quit
 ### Format partition
 
 ```sh
-$ mkfs.ext4 /dev/sdc1
+mkfs.ext4 /dev/sdc1
 ```
 
 Output
@@ -104,7 +104,7 @@ Writing superblocks and filesystem accounting information: done
 Mount
 
 ```sh
-$ mount /dev/sdc1 /mnt/disk1
+mount /dev/sdc1 /mnt/disk1
 ```
 
 ## Linux software RAID setup with mdadm
@@ -116,13 +116,13 @@ $ mount /dev/sdc1 /mnt/disk1
 Raid 1 (mirror) with 2 devices
 
 ```sh
-$ sudo mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 /dev/sdc /dev/sdd
+sudo mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 /dev/sdc /dev/sdd
 ```
 
 ### check status
 
 ```sh
-$ cat /proc/mdstat
+cat /proc/mdstat
 ```
 
 While creating it could look like this:
@@ -149,7 +149,7 @@ unused devices: <none>
 Add to the config, config file location might vary depending on distro
 
 ```sh
-$ sudo mdadm --detail --scan | sudo tee -a /etc/mdadm/mdadm.conf
+sudo mdadm --detail --scan | sudo tee -a /etc/mdadm/mdadm.conf
 ```
 
 ### md127
@@ -157,13 +157,13 @@ $ sudo mdadm --detail --scan | sudo tee -a /etc/mdadm/mdadm.conf
 If your new raid device appears as `/dev/md127` you should try and update initramfs then reboot
 
 ```sh
-$ sudo update-initramfs -u
+sudo update-initramfs -u
 ```
 
 ### Create filesystem on RAID device
 
 ```sh
-$ sudo mkfs.ext4 -F /dev/md0
+sudo mkfs.ext4 -F /dev/md0
 ```
 
 ### fstab config for mdadm devices

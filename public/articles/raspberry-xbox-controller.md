@@ -11,11 +11,11 @@ Credits:
 First we need to disable Enhanced Re-Transmission Mode (ERTM) to be able to pair without error messages
 
 ```sh
-$ sudo bash -c 'echo 1 > /sys/module/bluetooth/parameters/disable_ertm'
+sudo bash -c 'echo 1 > /sys/module/bluetooth/parameters/disable_ertm'
 ```
 
 Then we open the famliar [bluez]() bluetooth config tool
 
 ```sh
-$ sudo bluetoothctl
+sudo bluetoothctl
 ```

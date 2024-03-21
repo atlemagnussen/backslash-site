@@ -8,8 +8,8 @@ Just install the package `cups` from package manager
 
 Then enable the service and start it
 ```sh
-$ sudo systemctl enable cups
-$ sudo systemctl start cups
+sudo systemctl enable cups
+sudo systemctl start cups
 ```
 If you have access to web browser on this machine you can test it initially by going to
 ```bash
@@ -39,14 +39,14 @@ Locate the line `# Restrict access to the server...` and add to the section like
 ```
 Restart cups to make sure the changes are applied:
 ```sh
-$ sudo systemctl restart cups
+sudo systemctl restart cups
 ```
 ## User access group
 User access is using local users on the server  
 user must be member of lpadmin, create group if not exist
 ```sh
-$ sudo groupadd lpadmin
-$ sudo usermod -a -G lpadmin pi
+sudo groupadd lpadmin
+sudo usermod -a -G lpadmin pi
 ```
 You usually need to log out of the session for the group change to be effected
 
@@ -58,5 +58,5 @@ I'll skip this part for now and assume you have added the printer which is calle
 
 Add another printer that points to the same printer, which is accessible by all machines on the LAN
 ```sh
-$ sudo lpadmin -p printer-on-server -E -v ipp://192.168.1.3/printers/printer -m everywhere
+sudo lpadmin -p printer-on-server -E -v ipp://192.168.1.3/printers/printer -m everywhere
 ```

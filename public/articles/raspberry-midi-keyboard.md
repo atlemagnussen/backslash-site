@@ -34,13 +34,13 @@ Credits:
 Alsa is usually already installed, but we need at least these two packages, so running this to either install or make sure you have it:
 
 ```sh
-$ sudo apt install alsa-base alsa-firmware-loaders
+sudo apt install alsa-base alsa-firmware-loaders
 ```
 
 **Fluidsynth**
 
 ```sh
-$ sudo apt install fluidsynth
+sudo apt install fluidsynth
 ```
 
 ### Configure
@@ -62,7 +62,7 @@ Then reboot
 Note that `FluidR3_GM.sf2` is the [sound font](https://en.wikipedia.org/wiki/SoundFont) file which comes default with Fluidsynth. This is what make it sound like a piano when you play. You can download others when you want to test other instruments.
 
 ```sh
-$ fluidsynth -a alsa -o audio.alsa.device=hw:0 /usr/share/sounds/sf2/FluidR3_GM.sf2
+fluidsynth -a alsa -o audio.alsa.device=hw:0 /usr/share/sounds/sf2/FluidR3_GM.sf2
 ```
 
 When Fluidsynth has started you will be in a new command line interface with a prompt that is only a `>`.  
@@ -74,7 +74,7 @@ Or, you can use [screen](https://linux.die.net/man/1/screen) which allows you to
 #### List alsa outputs
 
 ```sh
-$ aconnect -o
+aconnect -o
 ```
 
 Should output something like
@@ -92,7 +92,7 @@ client 128: 'FLUID Synth (887)' [type=user,pid=887]
 #### Connect the MIDI keyboard to Fluidsynth
 
 ```sh
-$ aconnect 20:0 128:0
+aconnect 20:0 128:0
 ```
 
 You should now be able to play and hear sounds, bit depending if the Pi was able to detect where you have connected sound output.
@@ -102,7 +102,7 @@ I am using headphones but I had to force the sound to the 3.5mm jack output. You
 -   Run raspi-config
 
 ```sh
-$ sudo raspi-config
+sudo raspi-config
 ```
 
 -   Go to `Advanced options`
@@ -137,7 +137,7 @@ Try lower the sample-rate (-r), buffer count (-c) and buffer size (-z)
 If you have low volume you can use the `--gain 1` argument.
 
 ```sh
-$ fluidsynth \
+fluidsynth \
 -a alsa \
   -o audio.alsa.device=hw:0 \
   -r 22050 \
@@ -155,7 +155,7 @@ After some googling it becomes clear that I need to try [JACKD](https://linux.di
 #### Install
 
 ```sh
-$ sudo apt install jackd2 jack-tools
+sudo apt install jackd2 jack-tools
 ```
 
 #### Give dbus rights
@@ -180,11 +180,11 @@ Some of these things are described in the blogpost [Raspberry Pi and realtime, l
 it will probably be a good idea to put this in a script:
 
 ```sh
-$ sudo mount -o remount,size=128M /dev/shm
-$ echo -n performance | sudo tee /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-$ export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
+sudo mount -o remount,size=128M /dev/shm
+echo -n performance | sudo tee /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
 
-$ jackd -P90 -p16 -t2000 -dalsa -dhw:0 -p512 -n3 -r44100
+jackd -P90 -p16 -t2000 -dalsa -dhw:0 -p512 -n3 -r44100
 ```
 
 If you get into trouble starting jackd, please read [Ted's Linux MIDI Guide](http://tedfelix.com/linux/linux-midi.html) as he explains how to test Jackd without using fluidsynth and more.
@@ -192,13 +192,13 @@ If you get into trouble starting jackd, please read [Ted's Linux MIDI Guide](htt
 #### Start fluidsynth connecting to jackd
 
 ```sh
-$ fluidsynth --server --audio-driver=jack --connect-jack-outputs /usr/share/sounds/sf2/FluidR3_GM.sf2
+fluidsynth --server --audio-driver=jack --connect-jack-outputs /usr/share/sounds/sf2/FluidR3_GM.sf2
 ```
 
 and connect the MIDI keyboard to fluidsynth again like previously:
 
 ```sh
-$ aconnect 20:0 128:0
+aconnect 20:0 128:0
 ```
 
 For me it now sounds like real time, finally. If you still have issues, you should also try with different headphones or speakers. I experienced a certain standalone speaker that had a significant delay and initially had me banging my head against the wall.

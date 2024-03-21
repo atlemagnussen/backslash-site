@@ -33,7 +33,7 @@ Is probably `/dev/sda1`
 You will not make the Wifi on MBA work during install. You have options:
 #### USB wired adapter
 [D-Link USB DUB-1312](https://eu.dlink.com/uk/en/products/dub-1312-usb-3-gigabit-ethernet-adapter) usually works out of the box on Linux.
-Plug in and type `$ ip a` it probably already works, if not try too boot up USB with the adapter and network already connected.
+Plug in and type `ip a` it probably already works, if not try too boot up USB with the adapter and network already connected.
 
 ### USB mobile tethering
 An alternative from the guide in my sources:
@@ -42,8 +42,8 @@ An alternative from the guide in my sources:
 ## Remember broadcom wireless
 Install Broadcom dkms drivers
 ```sh
-$ pacman -S linux-headers
-$ pacman -S broadcom-wl-dkms dkms
+pacman -S linux-headers
+pacman -S broadcom-wl-dkms dkms
 ```
 
 ## After install and first boot
@@ -54,24 +54,24 @@ $ pacman -S broadcom-wl-dkms dkms
 network manager is a better choice but not preinstalled.  
 How to set wifi up with cli, this even works with a hidden SSID:
 ```sh
-$ nmcli connection add type wifi con-name con1 ifname wlp3s0 ssid "MyHiddenOrNotSSID"
-$ nmcli connection modify con1 wifi-sec.key-mgmt wpa-psk
-$ nmcli connection modify con1 wifi-sec.psk "greatestpasswordever"
+nmcli connection add type wifi con-name con1 ifname wlp3s0 ssid "MyHiddenOrNotSSID"
+nmcli connection modify con1 wifi-sec.key-mgmt wpa-psk
+nmcli connection modify con1 wifi-sec.psk "greatestpasswordever"
 # setup done, then connect
-$ nmcli connection up con1
+nmcli connection up con1
 ```
 
 ##### netctl
 as root run this to make wifi persist
 ```sh
-$ wifi-menu      # select network, enter pw to create profile
-$ ls /etc/netctl # to see the name of the profile just created
-$ netctl enable wlp3s0-MyHomeWifiNetworkName
+wifi-menu      # select network, enter pw to create profile
+ls /etc/netctl # to see the name of the profile just created
+netctl enable wlp3s0-MyHomeWifiNetworkName
 ```
 
 #### Wired
 If you have a adapter and no network automatically works, try this:
-`$ ip link show` and see if there is another device in addition to loopback.  
+`ip link show` and see if there is another device in addition to loopback.  
 if there is, try to start systemd-networkd:
 
 config file `/etc/systemd/network/50-temp.network`
@@ -85,8 +85,8 @@ DHCP=ipv4
 Services:
 
 ```sh
-$ systemctl start systemd-networkd.service // up the device
-$ systemctl start systemd-resolved.service // for DNS
+systemctl start systemd-networkd.service // up the device
+systemctl start systemd-resolved.service // for DNS
 ```
 
 ### Touchpad
@@ -110,7 +110,7 @@ Reference:
 ### Sound
 First install alsamixer
 ```sh
-$ sudo pacman -S alsa-utils
+sudo pacman -S alsa-utils
 ```
 Then run `alsamixer` and unmute `HDA Intel PCH`, toggle with `m`  
 
@@ -121,20 +121,20 @@ To set your default backlight value, that will be set on reboot and resume
 Set something between 0 and 100
 ```sh
 # get current
-$ cat /sys/class/backlight/acpi_video0/brightness
+cat /sys/class/backlight/acpi_video0/brightness
 # get max
-$ cat /sys/class/backlight/acpi_video0/max_brightness
+cat /sys/class/backlight/acpi_video0/max_brightness
 # only root can set
-$ sudo su
-$ echo 50 > /sys/class/backlight/acpi_video0/brightness
+sudo su
+echo 50 > /sys/class/backlight/acpi_video0/brightness
 ```
 
 #### Xbacklight
 This will temporarily set backlight, resets on reboot and resume  
 Can be used for hotkeys, see [Functionkeys](#functionkeyssetbacklightandvolume)
 ```sh
-$ sudo pacman -S xorg-xbacklight
-$ xbacklight -set 50 # is %
+sudo pacman -S xorg-xbacklight
+xbacklight -set 50 # is %
 ```
 
 ### Keyboard
@@ -172,5 +172,5 @@ exec "xmodmap $HOME/.Xmodmap"
 
 If others keys are wrong, look at all current bindings with this command and then change accordingly in .Xmodmap:  
 ```sh
-$ xmodmap -pke
+xmodmap -pke
 ```

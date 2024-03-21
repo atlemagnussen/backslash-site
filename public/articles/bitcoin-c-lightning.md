@@ -29,7 +29,7 @@ announce-addr=WAN ip or dns
 Just start lightning daemon by:
 
 ```sh
-$ lightningd
+lightningd
 ```
 
 ## Operations
@@ -37,7 +37,7 @@ $ lightningd
 ### Get info
 
 ```sh
-$ lightning-cli getinfo
+lightning-cli getinfo
 ```
 
 gives you number of channels and peers. If 0 you should start by connecting to at least one node
@@ -45,7 +45,7 @@ gives you number of channels and peers. If 0 you should start by connecting to a
 ### on-chain funds
 
 ```sh
-$ lightning-cli listfunds
+lightning-cli listfunds
 ```
 
 ### Connect to peer
@@ -55,13 +55,13 @@ This is free, it's just the peer and gossip connection kind of like the `bitcoin
 Go to [1ML](https://1ml.com/) and find a suitable node
 
 ```sh
-$ lightning-cli connect 0217890e3aad8d35bc054f43acc00084b25229ecff0ab68debd82883ad65ee8266@23.237.77.11:9735
+lightning-cli connect 0217890e3aad8d35bc054f43acc00084b25229ecff0ab68debd82883ad65ee8266@23.237.77.11:9735
 ```
 
 ### List peers
 
 ```sh
-$ lightning-cli listpeers
+lightning-cli listpeers
 ```
 
 ### List channels
@@ -69,7 +69,7 @@ $ lightning-cli listpeers
 This might give you shit loads of channels, but it verifies that you are online
 
 ```sh
-$ lightning-cli listchannels
+lightning-cli listchannels
 ```
 
 ### Close channel
@@ -78,5 +78,5 @@ Will become a unilateral close after the timeout
 
 Example for 10 minutes timeout
 ```sh
-$ lightning-cli close 976bbeb5f244cbc9b9669dc97620b459444f3712b8eebca0309c7292bfa5add7 600 
+lightning-cli close 976bbeb5f244cbc9b9669dc97620b459444f3712b8eebca0309c7292bfa5add7 600 
 ```

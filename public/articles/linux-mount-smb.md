@@ -25,7 +25,7 @@ dns proxy = no
 ### Users
 Need to set smb password:
 ```sh
-$ sudo smbpasswd -a nas
+sudo smbpasswd -a nas
 ```
 
 ## Mount

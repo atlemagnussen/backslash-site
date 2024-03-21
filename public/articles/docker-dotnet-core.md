@@ -30,13 +30,13 @@ ENTRYPOINT ["dotnet", "aspnetapp.dll"]
 
 ## build image
 ```sh
-$ docker build -t aspnetapp .
+docker build -t aspnetapp .
 ```
 
 ## run container
 `-it` means interactive and `--rm` means the container will be deleted after it exits
 ```sh
-$ docker run -it --rm -p 5000:80 --name aspnetcore_sample aspnetapp
+docker run -it --rm -p 5000:80 --name aspnetcore_sample aspnetapp
 ```
 
 ## General work with docker
@@ -44,7 +44,7 @@ $ docker run -it --rm -p 5000:80 --name aspnetcore_sample aspnetapp
 ### Images
 #### List all
 ```sh
-$ docker images
+docker images
 ```
 
 Should display 
@@ -57,13 +57,13 @@ mcr.microsoft.com/dotnet/core/aspnet   3.1                 9ac62e540b12        2
 
 #### Remove image
 ```sh
-$ docker rmi [image-id]
+docker rmi [image-id]
 ```
 
 ### Containers
 #### List all
 ```sh
-$ docker ps -a
+docker ps -a
 ```
 Should display
 ```bash
@@ -74,27 +74,27 @@ d7ad96dca6e9        aspnetapp           "dotnet aspnetapp.dll"   30 seconds ago 
 
 #### Create new and run in foreground
 ```sh
-$ docker run -p 5000:80 --name aspnetcore_sample aspnetapp
+docker run -p 5000:80 --name aspnetcore_sample aspnetapp
 ```
 
 #### Create new and run in background
 ```sh
-$ docker run -d -p 5000:80 --name aspnetcore_sample aspnetapp
+docker run -d -p 5000:80 --name aspnetcore_sample aspnetapp
 ```
 
 #### Stop container running in the background
 ```sh
-$ docker stop aspnetcore_sample
+docker stop aspnetcore_sample
 ```
 
 #### Start existing container again
 ```sh
-$ docker start aspnetcore_sample
+docker start aspnetcore_sample
 ```
 
 #### Restart running container
 ```sh
-$ docker restart aspnetcore_sample
+docker restart aspnetcore_sample
 ```
 
 ## Deploy to Azure 
@@ -104,17 +104,17 @@ First you need to create an Azure Container Registry
 
 Once you have built your image, log in to your registry, lets say you chose the name `myazureregistryname`
 ```sh
-$ docker login myazureregistryname.azurecr.io
+docker login myazureregistryname.azurecr.io
 ```
 
 Then you should tag your image
 ```sh
-$ docker tag aspnetapp:latest myazureregistryname.azurecr.io/aspnetapp
+docker tag aspnetapp:latest myazureregistryname.azurecr.io/aspnetapp
 ```
 
 Then push it
 ```sh
-$ docker push myazureregistryname.azurecr.io/aspnetapp
+docker push myazureregistryname.azurecr.io/aspnetapp
 ```
 
 ## HTTPS in developer mode
@@ -122,22 +122,22 @@ $ docker push myazureregistryname.azurecr.io/aspnetapp
 ### Method 1
 ```sh
 # generate a self-signed cert
-$ dotnet dev-certs https -v
+dotnet dev-certs https -v
 
 # go to cert
-$ cd ~/.dotnet/corefx/cryptography/x509stores/my
+cd ~/.dotnet/corefx/cryptography/x509stores/my
 
 # convert the generated cert from pfx to pem, enter blank pw
-$ openssl pkcs12 -in <certname>.pfx -nokeys -out localhost.crt -nodes
+openssl pkcs12 -in <certname>.pfx -nokeys -out localhost.crt -nodes
 
 # copy to ca-certificates
-$ sudo cp localhost.crt /usr/local/share/ca-certificates/
+sudo cp localhost.crt /usr/local/share/ca-certificates/
 
 # verify the file is there
-$ sudo cat /etc/ssl/certs/localhost.pem
+sudo cat /etc/ssl/certs/localhost.pem
 
 # verify if it's trusted
-$ openssl verify localhost.crt
+openssl verify localhost.crt
 ```
 
 ### Method 2
@@ -170,29 +170,29 @@ Create localhost.conf
 
 Generate cert
 ```sh
-$ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt -config localhost.conf
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt -config localhost.conf
 
 # Convert cert to pfx
-$ openssl pkcs12 -export -out localhost.pfx -inkey localhost.key -in localhost.crt
+openssl pkcs12 -export -out localhost.pfx -inkey localhost.key -in localhost.crt
 
 # Verify
-$ openssl verify -CAfile localhost.crt localhost.crt
+openssl verify -CAfile localhost.crt localhost.crt
 ```
 
 Trust cert
 ```sh
 # Copy
-$ sudo cp localhost.crt /usr/local/share/ca-certificates
+sudo cp localhost.crt /usr/local/share/ca-certificates
 
 # Trust
-$ sudo update-ca-certificates
+sudo update-ca-certificates
 
 # Verify exists
-$ sudo cat /etc/ssl/certs/localhost.pem
+sudo cat /etc/ssl/certs/localhost.pem
 
 # Cerify without -CAfile option
-$ cd /usr/local/share/ca-certificates/
-$ sudo openssl verify localhost.crt
+cd /usr/local/share/ca-certificates/
+sudo openssl verify localhost.crt
 ```
 
 Now force kestrel to use it with `appsetting.json`

@@ -26,19 +26,19 @@ mainly follow the official [Arch installation guide](https://wiki.archlinux.org/
 ## GRUB
 - Install inside chroot (os-prober is to discover other OSes)
 ```sh
-$ pacman -Sy grub efibootmgr os-prober 
+pacman -Sy grub efibootmgr os-prober 
 ```
 - Install to boot 
 ```sh
-$ grub-install --target=x86_64-efi --efi-directory=/boot/ --bootloader-id=GRUB
+grub-install --target=x86_64-efi --efi-directory=/boot/ --bootloader-id=GRUB
 ```
 - To discover Windows, mount Windows EFI partition somewhere 
 ```sh
-$ mount /dev/nvme0n2 /mnt/win
+mount /dev/nvme0n2 /mnt/win
 ```
 - Create config
 ```sh
-$ grub-mkconfig -o /boot/grub/grub.cfg
+grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 ## After first reboot

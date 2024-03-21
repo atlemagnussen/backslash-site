@@ -69,17 +69,33 @@ article details[open] .open {
 
 article pre code {
     cursor: pointer;
-    border: 2px solid transparent;
-    border-radius: 3px;
-    padding: 0.1rem;
+    padding: 0.1rem 0.4rem;
 }
 
 article pre code:hover {
-    border-color: var(--magenta-dark);
+    outline-width: 1px;
+    outline-color: white;
+    outline-style: double;
+    /* border-color: var(--magenta-dark);
+    border-style: double; */
 }
 
 article pre code.flash {
-    animation: glowing 500ms 1;
+    animation: glowing 600ms 1;
+}
+
+article pre.language-sh code {
+    outline-width: 1px;
+    outline-color: var(--cyan-hover);
+    outline-style: double;
+}
+article pre.language-sh code:hover {
+    outline-color: var(--cyan);
+}
+
+article pre.language-sh code::before {
+    content: '$ ';
+    color: var(--cyan-dark);
 }
 
 @keyframes glowing {
@@ -87,9 +103,9 @@ article pre code.flash {
       box-shadow: 0 0 3px #2ba805;
     }
     50% {
-      box-shadow: 0 0 10px #49e819;
+      box-shadow: 0 0 20px #49e819;
     }
     100% {
-      box-shadow: 0 0 3px #2ba805;
+      box-shadow: 0 0 10px #2ba805;
     }
   }

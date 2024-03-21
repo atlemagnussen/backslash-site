@@ -12,7 +12,7 @@ I'm guessing people are familiar with [Docker](https://www.docker.com/), if not 
 there will be different versions, I just use one from an example as of when I wrote this.  
 You really don't need this, as the image will be pulled when you fire up your container the first time that will depend on this.
 ```sh
-$ docker pull mcr.microsoft.com/mssql/server:2019-CU3-ubuntu-18.04
+docker pull mcr.microsoft.com/mssql/server:2019-CU3-ubuntu-18.04
 ```
 
 ### Run docker SQL Server image
@@ -24,7 +24,7 @@ You can read about this topic in [docker documentation storage](https://docs.doc
 
 For this example I create a docker volume first in a custom location:
 ```sh
-$ docker volume create \
+docker volume create \
    --opt type=none \
    --opt device=/mnt/md0/Databases/sql-server/mssql2019-docker \
    --opt o=bind \
@@ -35,7 +35,7 @@ $ docker volume create \
 Then run and make the container use *sqlvolume*:
 ```sh
 # run SQL Server 2019 as docker image
-$ docker run -e 'ACCEPT_EULA=Y' -e "MSSQL_SA_PASSWORD=MySuperPW666!" \
+docker run -e 'ACCEPT_EULA=Y' -e "MSSQL_SA_PASSWORD=MySuperPW666!" \
    -p 1433:1433 --name atlesql2019 \
    -v sqlvolume:/var/opt/mssql \
    -d mcr.microsoft.com/mssql/server:2019-CU3-ubuntu-18.04
@@ -43,8 +43,8 @@ $ docker run -e 'ACCEPT_EULA=Y' -e "MSSQL_SA_PASSWORD=MySuperPW666!" \
 
 ### stop and restart
 ```sh
-$ docker stop mysqlserver2019
-$ docker rm mysqlserver2019
+docker stop mysqlserver2019
+docker rm mysqlserver2019
 ```
 Then re-run the docker run script
 
@@ -53,7 +53,7 @@ Then re-run the docker run script
 
 ### Connect
 ```sh
-$ sqlcmd -S myserver -U sa
+sqlcmd -S myserver -U sa
 ```
 
 ### Manage in VSCode

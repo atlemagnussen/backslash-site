@@ -34,5 +34,5 @@ menuentry "FreeBSD" {
 
 Then just re-create grub config:
 ```sh
-$ grub-mkconfig -o /boot/grub/grub.cfg
+grub-mkconfig -o /boot/grub/grub.cfg
 ```

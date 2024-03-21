@@ -7,13 +7,13 @@
 The simple command
 
 ```sh
-$ gpg --gen-key
+gpg --gen-key
 ```
 
 or the more advanced
 
 ```sh
-$ gpg --full-generate-key
+gpg --full-generate-key
 ```
 
 Output will be something like this:
@@ -28,7 +28,7 @@ sub   rsa3072 2019-08-20 [E] [expires: 2021-08-19]
 ## Delete
 
 ```sh
-$ gpg --delete-secret-and-public-keys mexxxxxxxxx@gmail.com
+gpg --delete-secret-and-public-keys mexxxxxxxxx@gmail.com
 ```
 
 ## Export
@@ -37,13 +37,13 @@ Public key:
 to be sent to your friends so they can encrypt messages only you can decrypt
 
 ```sh
-$ gpg --armor --output xxxxxxx.public.gpg --export mexxxxxxxxx@gmail.com
+gpg --armor --output xxxxxxx.public.gpg --export mexxxxxxxxx@gmail.com
 ```
 
 Private key (only for backup)
 
 ```sh
-$ gpg --armor --output xxxxxxx.secret.gpg --export-secret-keys mexxxxxxxxx@gmail.com
+gpg --armor --output xxxxxxx.secret.gpg --export-secret-keys mexxxxxxxxx@gmail.com
 ```
 
 ## Import
@@ -51,7 +51,7 @@ $ gpg --armor --output xxxxxxx.secret.gpg --export-secret-keys mexxxxxxxxx@gmail
 import public key from a friend
 
 ```sh
-$ gpg --import friendxxx.public.gpg
+gpg --import friendxxx.public.gpg
 ```
 
 ## Edit trust level on an imported key from a friend
@@ -59,7 +59,7 @@ $ gpg --import friendxxx.public.gpg
 get keyid from `--list-keys`
 
 ```sh
-$ gpg --edit-key 9A5704E6742C5B32395057FCACB6EE444EE8C7A2 trust
+gpg --edit-key 9A5704E6742C5B32395057FCACB6EE444EE8C7A2 trust
 # then select level of trust
 gpg> 4
 ```
@@ -84,14 +84,14 @@ gpg> save
 ## Sign an imported key from a friend (validity)
 
 ```sh
-$ gpg --lsign-key 9A5704E6742C5B32395057FCACB6EE444EE8C7A2
+gpg --lsign-key 9A5704E6742C5B32395057FCACB6EE444EE8C7A2
 ```
 
 ## Encrypt
 
 Using public key of your friend:
 ```sh
-$ gpg --output file.txt.gpg --encrypt --recipient friendxxx@gmail.com file.txt
+gpg --output file.txt.gpg --encrypt --recipient friendxxx@gmail.com file.txt
 ```
 
 ## Add signature
@@ -99,8 +99,8 @@ $ gpg --output file.txt.gpg --encrypt --recipient friendxxx@gmail.com file.txt
 To verify you're the sender
 
 ```sh
-$ sha256sum file.txt | awk '{print $1}' > file.txt.sha256sum
-$ gpg --output file.txt.sha256sum.sig --sign file.txt.sha256sum
+sha256sum file.txt | awk '{print $1}' > file.txt.sha256sum
+gpg --output file.txt.sha256sum.sig --sign file.txt.sha256sum
 ```
 
 ## Decrypt
@@ -108,7 +108,7 @@ $ gpg --output file.txt.sha256sum.sig --sign file.txt.sha256sum
 Decrypt encrypted files sent to you:
 
 ```sh
-$ gpg --output decrypted.txt --decrypt file.txt.gpg
+gpg --output decrypted.txt --decrypt file.txt.gpg
 ```
 
 ## Verify signature
@@ -116,5 +116,5 @@ $ gpg --output decrypted.txt --decrypt file.txt.gpg
 Verify that your friend created the message
 
 ```sh
-$ gpg --verify file.txt.sha256sum.sig
+gpg --verify file.txt.sha256sum.sig
 ```
