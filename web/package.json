@@ -18,10 +18,16 @@
         "type": "git",
         "url": "git+https@github.com:atlemagnussen/backslash-site.git"
     },
-    "keywords": ["html","js","ts","lit"],
+    "keywords": [
+        "html",
+        "js",
+        "ts",
+        "lit"
+    ],
     "author": "Atle Magnussen",
     "license": "ISC",
     "devDependencies": {
+        "@types/node": "^20.11.30",
         "typescript": "^5.4.3",
         "vite": "^5.2.3"
     },

@@ -24,7 +24,7 @@ function setHref(children: TreeNode[]) {
 }
 async function findNode(id: string) {
     const data = await getTree()
-    const itemPath = findPath({children: data.nodes}, id)
+    const itemPath = findPath({ id:"root", name: "root", expanded: false, tags:[], children: data.nodes}, id)
 
     if (!itemPath)
         return false;
@@ -37,29 +37,29 @@ async function findNode(id: string) {
 }
 
 async function findPath(root: TreeNode, id: string) {
-    const found = [];
+    const found: TreeNode[] = []
 
     if (root.children && Array.isArray(root.children) && root.children.length > 0) {
         const children = root.children;
 
         for (let i = 0; i < children.length; i++) {
-            const child = children[i];
+            const child = children[i]
 
             if (child.id === id) {
-                found.push(child);
-                return found;
+                found.push(child)
+                return found
             }
         }
         for (let i = 0; i < children.length; i++) {
-            const child = children[i];
-            const grandChild = findPath(child, id);
+            const child = children[i]
+            const grandChild = findPath(child, id)
 
             if (grandChild && Array.isArray(grandChild) && grandChild.length > 0) {
-                found.push(child);
-                found.push(...grandChild);
-                return found;
+                found.push(child)
+                found.push(...grandChild)
+                return found
             }
         }
     }
-    return null;
+    return null
 }

@@ -10,17 +10,20 @@
     <script type="module" src="./app.ts"></script>
 </head>
 <body>
+    <header>
+        <nav-button></nav-button>
+        <navigation-bar active="home" breakpoint="640">
+            <a slot="brand" href="#" class="logo">BackSlash</a>
+            <a href="Blog">Blog</a>
+            <a href="about">About</a>
+        </navigation-bar>
+    </header>
     <main>
-        <header>
-            <navigation-bar active="home" breakpoint="640">
-                <a slot="brand" href="#" class="logo">BackSlash</a>
-                <a href="Blog">Blog</a>
-                <a href="about">About</a>
-            </navigation-bar>
-        </header>
-        <article>
-            <router-slot></router-slot>
-        </article>
+        <nav>
+            <blog-menu></blog-menu>
+        </nav>
+        <router-slot></router-slot>
+        <nav></nav>
     </main>
 </body>
 </html>
