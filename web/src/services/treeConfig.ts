@@ -1,0 +1,65 @@
+import { TreeConfig, TreeNode } from "@common/types"
+
+const treePromise = fetch("/articles/articletree.json")
+
+export async function getTree() {
+        
+    const json = await treePromise.then(res => res.json() as Promise<TreeConfig>)
+    if (json.nodes && Array.isArray(json.nodes) && json.nodes.length > 0) {
+        setHref(json.nodes)
+    }
+    return json
+}
+
+function setHref(children: TreeNode[]) {
+    for (let i = 0; i < children.length; i++) {
+        const child = children[i]
+
+        if (child.children) {
+            setHref(child.children)
+        } else if (child.id) {
+            child.href = `/blog/${child.id}`
+        }
+    }
+}
+async function findNode(id: string) {
+    const data = await getTree()
+    const itemPath = findPath({children: data.nodes}, id)
+
+    if (!itemPath)
+        return false;
+    if (!Array.isArray(itemPath) || itemPath.length === 0)
+        return false;
+
+    const last = itemPath.pop();
+
+    return last;
+}
+
+async function findPath(root: TreeNode, id: string) {
+    const found = [];
+
+    if (root.children && Array.isArray(root.children) && root.children.length > 0) {
+        const children = root.children;
+
+        for (let i = 0; i < children.length; i++) {
+            const child = children[i];
+
+            if (child.id === id) {
+                found.push(child);
+                return found;
+            }
+        }
+        for (let i = 0; i < children.length; i++) {
+            const child = children[i];
+            const grandChild = findPath(child, id);
+
+            if (grandChild && Array.isArray(grandChild) && grandChild.length > 0) {
+                found.push(child);
+                found.push(...grandChild);
+                return found;
+            }
+        }
+    }
+    return null;
+}
