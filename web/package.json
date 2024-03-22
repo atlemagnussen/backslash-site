@@ -1,0 +1,36 @@
+{
+    "name": "backslash.site",
+    "version": "1.1.0",
+    "description": "atles personal blog",
+    "engines": {
+        "node": "18"
+    },
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build:vite": "tsc && vite build",
+        "build:watch": "tsc && vite build --watch",
+        "build": "node generate-sitemap.js",
+        "start": "npm i && npm run dev",
+        "deploy": "npm run build && firebase deploy"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https@github.com:atlemagnussen/backslash-site.git"
+    },
+    "keywords": ["html","js","ts","lit"],
+    "author": "Atle Magnussen",
+    "license": "ISC",
+    "devDependencies": {
+        "typescript": "^5.4.3",
+        "vite": "^5.2.3"
+    },
+    "dependencies": {
+        "lit": "^3.1.2",
+        "open": "^7.3.0",
+        "prism-themes": "^1.4.1",
+        "prismjs": "^1.23.0",
+        "router-slot": "^1.5.5",
+        "showdown": "^1.9.1"
+    }
+}
