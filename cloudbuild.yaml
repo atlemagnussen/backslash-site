@@ -1,9 +1,9 @@
 steps:
-  - name: npm install
+  - name: node
     dir: web
     entrypoint: npm
     args: ['install']
-  - name: npm build
+  - name: node
     dir: web
     entrypoint: npm
     args: ['run', 'build']
