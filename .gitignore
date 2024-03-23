@@ -4,7 +4,7 @@ public/lib
 
 .firebase/
 src/sitemap.xml
-public/sitemap.xml
+web/public/sitemap.xml
 
 # Logs
 logs

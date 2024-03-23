@@ -10,9 +10,11 @@
         "dev": "vite",
         "build:vite": "tsc && vite build",
         "build:watch": "tsc && vite build --watch",
-        "build": "node generate-sitemap.js",
+        "build": "npm run sitemap && npm run build:vite",
         "start": "npm i && npm run dev",
-        "deploy": "npm run build && firebase deploy"
+        "deploy": "npm run build && firebase deploy",
+        "sitemap_bug": "ts-node --esm ./generateSitemap.ts",
+        "sitemap": "node generateSitemap.mjs"
     },
     "repository": {
         "type": "git",
@@ -30,6 +32,7 @@
         "@types/node": "^20.11.30",
         "@types/prismjs": "^1.26.3",
         "@types/showdown": "^2.0.6",
+        "ts-node": "^10.9.2",
         "typescript": "^5.4.3",
         "vite": "^5.2.3"
     },
