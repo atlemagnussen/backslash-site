@@ -1,10 +1,10 @@
 import { TreeConfig, TreeNode } from "@common/types"
 
-const treePromise = fetch("/articles/articletree.json")
+const treePromise = fetch("/articles/articletree.json").then(res => res.json())
 
 export async function getTree() {
         
-    const json = await treePromise.then(res => res.json() as Promise<TreeConfig>)
+    const json = await (treePromise as Promise<TreeConfig>)
     .catch(er => console.error(er))
     if (!json)
         return null

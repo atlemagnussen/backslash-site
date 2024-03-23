@@ -1,6 +1,6 @@
 import { getTree, findNode } from "./treeConfig"
 import showdown  from "showdown"
-const converter = new showdown.Converter();
+const converter = new showdown.Converter()
 import Prism from "prismjs"
 
 export async function getBlog(id: string) {
@@ -34,7 +34,7 @@ async function getArticleMetaData(id: string) {
 }
 
 async function getToc(inputHtml: string) {
-    const temp = document.createElement("div");
+    const temp = document.createElement("div")
 
     try {
         temp.innerHTML = inputHtml
@@ -46,20 +46,26 @@ async function getToc(inputHtml: string) {
     }
 }
 
-function generateMenu(conf) {
-    let html = "<ul class='toc-list'>";
+function generateMenu(conf: HeaderTag[]) {
+    let html = "<ul class='toc-list'>"
 
     for (let i = 0; i < conf.length; i++) {
-        const c = conf[i];
+        const c = conf[i]
 
-        html += `<li><a class="${c.tag}" href="#${c.id}">${c.text}</a></li>`;
+        html += `<li><a class="${c.tag}" href="#${c.id}">${c.text}</a></li>`
     }
-    html += "</ul>";
-    return html;
+    html += "</ul>"
+    return html
+}
+
+interface HeaderTag {
+    id: string
+    tag: string
+    text: string
 }
 
 function parse(artdom: HTMLDivElement, hi: number, lo: number) {
-    const htags = []
+    const htags: HeaderTag[] = []
 
     for (const el of artdom.children) {
         if (el.tagName.startsWith("H") && el.tagName.length === 2) {
