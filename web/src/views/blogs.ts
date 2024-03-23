@@ -12,13 +12,20 @@ export class BlogView extends LitElement {
         :host {
             overflow: hidden;
             height: 100%;
+            width: 100%;
+            max-width: 100%;
             display: flex;
             flex-direction: column;
             padding: 1rem;
             overflow-y: auto;
+            box-sizing: border-box;
         }
         article {
-            padding: 1rem;
+            width: 100%;
+            max-width: 100%;
+        }
+        img {
+            max-width: 100%;
         }
         a {
             color: var(--cyan);

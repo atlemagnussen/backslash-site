@@ -4,17 +4,11 @@ import { customElement } from "lit/decorators.js"
 export class HomeView extends LitElement {
     static styles = css`
         :host {
-            overflow: hidden;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            padding: 0;
-        }
-        article {
+            display: block;
             padding: 1rem;
         }
         a {
-            color: var(--cyan);
+            color: white;
         }
     `
     
@@ -22,11 +16,13 @@ export class HomeView extends LitElement {
         return html`
             <article>
                 <header>
-                    <h1>Blog</h1>
+                    <h1>Welcome</h1>
                 </header>
 
                 <section>
-                    <h2>Welcome</h2>
+                    <a id="blogmenu" href="blogmenu">
+                        <h2>Blogs</h2>
+                    </a>
                 </section>
             </article>
         `

@@ -18,6 +18,10 @@ customElements.whenDefined("router-slot").then(() => {
             component: document.createElement("about-view")
         },
         {
+            path: "blogmenu",
+            component: document.createElement("blog-menu")
+        },
+        {
             path: "blog/:blogId",
             component: BlogView,
             ///@ts-ignore

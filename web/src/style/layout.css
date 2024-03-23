@@ -27,11 +27,14 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    width: 100%;
 }
 main {
     grid-area: main;
     overflow: hidden;
     height: 100%;
+    width: 100%;
+    max-width: 100%;
     display: flex;
     flex-direction: row;
     padding: 0;
@@ -46,12 +49,20 @@ main router-slot {
 footer {
     grid-area: footer;
 }
-main article {
-    flex: auto 1 1;
+#blogmenu {
+    display: none;
 }
-
-@media only screen and (max-width: 1024px) {
-    
+@media only screen and (max-width: 640px) {
+    main nav {
+        display: none;
+    }
+    main router-slot {
+        flex: 0 1 100%;
+        max-width: 100%;
+    }
+    #blogmenu {
+        display: block;
+    }
 }
 
 navigation-bar .logo {
