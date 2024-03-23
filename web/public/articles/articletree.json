@@ -14,23 +14,13 @@
                             "id": "es6-modules",
                             "name": "ES6 modules",
                             "desc": "ES6 modules and how to use them correctly",
-                            "tags": ["es6", "ecmascript", "javascript", "modules", "web development"],
-                            "blogger": {
-                                "publish": true,
-                                "id": "1094851240419157807",
-                                "link": "https://blog.backslash.site/2019/10/es6-modules.html"
-                            }
+                            "tags": ["es6", "ecmascript", "javascript", "modules", "web development"]
                         },
                         {
                             "id": "js-useful-tricks",
                             "name": "JS useful tricks",
                             "desc": "JS tricks and standard functions that is not so commonly used",
-                            "tags": ["ecmascript", "javascript", "web development"],
-                            "blogger": {
-                                "publish": true,
-                                "id": "68264499673938846",
-                                "link": "http://blog.backslash.site/2020/02/js-useful-tricks.html"
-                            }
+                            "tags": ["ecmascript", "javascript", "web development"]
                         }
                     ]
                 },
@@ -42,23 +32,13 @@
                             "id": "dotnet-core-cli-commands",
                             "name": ".NET Core cli commands",
                             "desc": "Collection of typical operations on .NET (dotnet) CLI (command-line interface)",
-                            "tags": [".net core", "dotnet", "cli"],
-                            "blogger": {
-                                "publish": true,
-                                "id": "4657454269074523041",
-                                "link": "https://blog.backslash.site/2019/10/net-core-cli-commands.html"
-                            }
+                            "tags": [".net core", "dotnet", "cli"]
                         },
                         {
                             "id": "docker-dotnet-core",
                             "name": "Docker dotnet core",
                             "desc": "how to use docker with dotnet core",
-                            "tags": ["docker", ".net core", "dotnet", "cli", "linux"],
-                            "blogger": {
-                                "publish": true,
-                                "id": "8464130343546226878",
-                                "link": "http://blog.backslash.site/2020/03/docker-dotnet-core.html"
-                            }
+                            "tags": ["docker", ".net core", "dotnet", "cli", "linux"]
                         }
                     ]
                 },
@@ -70,12 +50,7 @@
                             "id": "git-tricks",
                             "name": "GIT tricks",
                             "desc": "GIT tricks that are not so commonly used",
-                            "tags": ["git", "cli", "source control"],
-                            "blogger": {
-                                "publish": true,
-                                "id": "5349033673193064288",
-                                "link": "http://blog.backslash.site/2020/02/git-tricks.html"
-                            }
+                            "tags": ["git", "cli", "source control"]
                         }
                     ]
                 },
@@ -87,78 +62,43 @@
                             "id": "linux-users-and-groups",
                             "name": "Linux users and groups",
                             "desc": "Typical linux user and groups operations",
-                            "tags": ["linux", "unix", "users", "groups", "cli"],
-                            "blogger": {
-                                "publish": true,
-                                "id": "8743443294573017928",
-                                "link": "https://blog.backslash.site/2019/10/linux-users-and-groups.html"
-                            }
+                            "tags": ["linux", "unix", "users", "groups", "cli"]
                         },
                         {
                             "id": "sane-scanners-on-linux",
                             "name": "Scanners on linux",
                             "desc": "How to use scanners on Linux operation systems",
-                            "tags": ["linux", "scanner", "hardware", "setup"],
-                            "blogger": {
-                                "publish": true,
-                                "id": "3831863161475714931",
-                                "link": "https://blog.backslash.site/2019/10/scanners-on-linux.html"
-                            }
+                            "tags": ["linux", "scanner", "hardware", "setup"]
                         },
                         {
                             "id": "arch-linux-install",
                             "name": "Arch Linux install",
                             "desc": "My experience with installing Arch Linux",
-                            "tags": ["arch linux", "linux", "installation", "os"],
-                            "blogger": {
-                                "publish": true,
-                                "id": "1407329115979965935",
-                                "link": "https://blog.backslash.site/2019/11/arch-linux-install.html"
-                            }
+                            "tags": ["arch linux", "linux", "installation", "os"]
                         },
                         {
                             "id": "arch-linux-macbook-air",
                             "name": "Arch Linux MBA 2013",
                             "desc": "How to install Arch Linux on a Macbook Air 2013 model",
-                            "tags": ["arch linux", "linux", "macbook air", "os"],
-                            "blogger": {
-                                "publish": true,
-                                "id": "206412808621739674",
-                                "link": "http://blog.backslash.site/2019/10/arch-linux-mba-2013.html"
-                            }
+                            "tags": ["arch linux", "linux", "macbook air", "os"]
                         },
                         {
                             "id": "gentoo-samsung-cronos",
                             "name": "Gentoo Linux on Samsung Cronos",
                             "desc": "My experience with install Gentoo on a Samsung Cronos laptop",
-                            "tags": ["cronos", "gentoo linux", "linux", "samsung"],
-                            "blogger": {
-                                "publish": true,
-                                "id": "6828230720378245981",
-                                "link": "https://blog.backslash.site/2019/11/gentoo-linux-on-samsung-cronos.html"
-                            }
+                            "tags": ["cronos", "gentoo linux", "linux", "samsung"]
                         },
                         {
                             "id": "nmcli-how-to",
                             "name": "nmcli how to use",
                             "desc": "Network manager command line interface how to do typical operations",
-                            "tags": ["network manager", "cli", "network", "wifi"],
-                            "blogger": {
-                                "publish": true,
-                                "id": "2000728119576568457",
-                                "link": "https://blog.backslash.site/2019/11/nmcli-how-to-use.html"
-                            }
+                            "tags": ["network manager", "cli", "network", "wifi"]
                         },
                         {
                             "id": "linux-disk-management",
                             "name": "Linux disk management",
                             "desc": "Linux partitioning, fstab and raid with mdadm, how to monitor and setup",
-                            "tags": ["raid", "linux", "mdadm", "config", "cli", "fstab", "partitioning"],
-                            "blogger": {
-                                "publish": true,
-                                "id": "1766837538288488018",
-                                "link": "https://blog.backslash.site/2019/12/linux-disk-management.html"
-                            }
+                            "tags": ["raid", "linux", "mdadm", "config", "cli", "fstab", "partitioning"]
                         },
                         {
                             "id": "arch-linux-bluetooth",
@@ -194,12 +134,7 @@
                             "id": "unix-tar-commond-operations",
                             "name": "Unix tar commond operations",
                             "desc": "How to extract and create tarballs with gzip or bzip compression in unix or linux",
-                            "tags": ["unix", "linux", "tar", "compression", "cli"],
-                            "blogger": {
-                                "publish": true,
-                                "id": "2491551779806479351",
-                                "link": "https://blog.backslash.site/2019/11/unix-tar-commond-operations.html"
-                            }
+                            "tags": ["unix", "linux", "tar", "compression", "cli"]
                         },
                         {
                             "id": "cups-configure",
@@ -217,12 +152,7 @@
                             "id": "freebsd-install",
                             "name": "FreeBSD install",
                             "desc": "How to install FreeBSD and get some basic stuff up and running",
-                            "tags": ["os", "installation", "bsd", "freebsd"],
-                            "blogger": {
-                                "publish": true,
-                                "id": "99969239468267565",
-                                "link": "https://blog.backslash.site/2019/11/freebsd-install.html"
-                            }
+                            "tags": ["os", "installation", "bsd", "freebsd"]
                         },
                         {
                             "id": "freebsd-dualboot-efi-samsung-cronos",
@@ -240,23 +170,13 @@
                             "id": "diy-router-1",
                             "name": "DIY router rPi ipv4",
                             "desc": "How to create your own router on a Raspberry Pi 3",
-                            "tags": ["network", "raspberry pi", "router", "linux", "dyi"],
-                            "blogger": {
-                                "publish": true,
-                                "id": "2712465569829651298",
-                                "link": "https://blog.backslash.site/2019/11/diy-router-rpi-ipv4.html"
-                            }
+                            "tags": ["network", "raspberry pi", "router", "linux", "dyi"]
                         },
                         {
                             "id": "dlink-dcs-5222l-notes",
                             "name": "D-Link DCS-5222L notes",
                             "desc": "D-Link DCS-5222L notes on how to upgrade and general usage",
-                            "tags": ["dlink", "dcs-5222l", "firmware", "ip camera"],
-                            "blogger": {
-                                "publish": true,
-                                "id": "7278323748354023970",
-                                "link": "https://blog.backslash.site/2019/11/d-link-dcs-5222l-notes.html"
-                            }
+                            "tags": ["dlink", "dcs-5222l", "firmware", "ip camera"]
                         }
                     ]
                 },
@@ -268,34 +188,19 @@
                             "id": "gpg-commands",
                             "name": "GPG encryption commands",
                             "desc": "Most useful commands for encrypting files withusing GNU Privacy Guard (gnupg.org)",
-                            "tags": ["gpg", "pgp", "encryption", "linux", "cli"],
-                            "blogger": {
-                                "publish": true,
-                                "id": "1084071241409614009",
-                                "link": "https://blog.backslash.site/2019/11/gpg-encryption-commands.html"
-                            }
+                            "tags": ["gpg", "pgp", "encryption", "linux", "cli"]
                         },
                         {
                             "id": "ssh-best-practice",
                             "name": "SSH best practice",
                             "desc": "How to utilize the security features of ssh and use great features like public key encryption",
-                            "tags": ["ssh", "cli", "encryption", "rsa", "linux", "remote"],
-                            "blogger": {
-                                "publish": true,
-                                "id": "9024053670954169562",
-                                "link": "https://blog.backslash.site/2019/11/ssh-best-practice.html"
-                            }
+                            "tags": ["ssh", "cli", "encryption", "rsa", "linux", "remote"]
                         },
                         {
                             "id": "ssh-legacy-formats",
                             "name": "SSH legacy formats",
                             "desc": "How to create SSH legacy formats",
-                            "tags": ["ssh", "cli", "encryption", "rsa"],
-                            "blogger": {
-                                "publish": true,
-                                "id": "6650231021451325989",
-                                "link": "http://blog.backslash.site/2020/04/ssh-legacy-formats.html"
-                            }
+                            "tags": ["ssh", "cli", "encryption", "rsa"]
                         }
                     ]
                 },
@@ -307,12 +212,7 @@
                             "id": "samsung-s9-bloatware",
                             "name": "Samsung S9 bloatware",
                             "desc": "Samsung Galaxy S9 bloatware to remove and how",
-                            "tags": ["android", "samsung", "s9", "galaxy", "cli", "bloatware"],
-                            "blogger": {
-                                "publish": true,
-                                "id": "3661130018730126039",
-                                "link": "http://blog.backslash.site/2020/01/samsung-s9-bloatware.html"
-                            }
+                            "tags": ["android", "samsung", "s9", "galaxy", "cli", "bloatware"]
                         }
                     ]
                 },
@@ -336,12 +236,7 @@
                             "id": "sql-server-linux",
                             "name": "SQL Server Linux",
                             "desc": "How you use SQL Server in Linux environment using docker, sqlcmd and VSCode",
-                            "tags": ["database", "sqlserver", "docker", "sqlcmd", "vscode"],
-                            "blogger": {
-                                "publish": true,
-                                "id": "2326975353314798452",
-                                "link": "http://blog.backslash.site/2020/03/sql-server-linux.html"
-                            }
+                            "tags": ["database", "sqlserver", "docker", "sqlcmd", "vscode"]
                         }
                     ]
                 },
@@ -365,12 +260,7 @@
                             "id": "raspberry-midi-keyboard",
                             "name": "RaspberryPi MIDI keyboard",
                             "desc": "How to set up a raspberry pi and a midi keyboard",
-                            "tags": ["raspberry pi", "midi keyboard", "fluidsynth", "alsa", "jackd"],
-                            "blogger": {
-                                "publish": true,
-                                "id": "3885095364219837866",
-                                "link": "http://blog.backslash.site/2020/01/raspberrypi-midi-keyboard.html"
-                            }
+                            "tags": ["raspberry pi", "midi keyboard", "fluidsynth", "alsa", "jackd"]
                         }
                     ]
                 },

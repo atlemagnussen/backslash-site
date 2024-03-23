@@ -1,6 +1,6 @@
 const bloggerApi = require("./blogger-api");
 const blogId = "7734453256887931626";
-const config = require("./public/articles/articletree.json");
+const config = require("../public/articles/articletree.json");
 const showdown  = require("showdown");
 const converter = new showdown.Converter();
 const fs = require("fs");
