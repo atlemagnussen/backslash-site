@@ -8,4 +8,5 @@ steps:
     entrypoint: npm
     args: ['run', 'build']
   - name: gcr.io/backslash-project/firebase
+    dir: web
     args: ['deploy', '--project=backslash-project', '--only=hosting']
