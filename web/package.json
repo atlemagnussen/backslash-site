@@ -39,7 +39,6 @@
     "dependencies": {
         "@lit/task": "^1.0.0",
         "lit": "^3.1.2",
-        "open": "^7.3.0",
         "prism-themes": "^1.4.1",
         "prismjs": "^1.29.0",
         "router-slot": "^1.5.5",
