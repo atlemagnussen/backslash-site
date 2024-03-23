@@ -28,6 +28,8 @@ function setHref(children: TreeNode[]) {
 }
 export async function findNode(id: string) {
     const data = await getTree()
+    if (!data)
+        return null
     const itemPath = findPath({ id:"root", name: "root", expanded: false, tags:[], children: data.nodes}, id)
 
     if (!itemPath)

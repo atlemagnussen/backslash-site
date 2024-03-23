@@ -25,7 +25,7 @@ async function getHtml(id: string) {
     return converter.makeHtml(md)
 }
 
-async function getArticleMetaData(id: string) {
+export async function getArticleMetaData(id: string) {
     const node = await findNode(id)
     if (node) {
         return node
@@ -33,17 +33,13 @@ async function getArticleMetaData(id: string) {
     return null
 }
 
-async function getToc(inputHtml: string) {
+export async function getToc(inputHtml: string) {
     const temp = document.createElement("div")
 
-    try {
-        temp.innerHTML = inputHtml
-        const menuConfig = parse(temp, 1, 3)
-        const menuHtml = generateMenu(menuConfig)
-        return menuHtml
-    } catch (err) {
-        temp.innerHTML = JSON.stringify(err)
-    }
+    temp.innerHTML = inputHtml
+    const menuConfig = parse(temp, 1, 3)
+    const menuHtml = generateMenu(menuConfig)
+    return menuHtml
 }
 
 function generateMenu(conf: HeaderTag[]) {
