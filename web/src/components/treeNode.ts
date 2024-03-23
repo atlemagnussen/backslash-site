@@ -8,7 +8,7 @@ export class TreeNodeEl extends LitElement {
     static styles = css`
         :host {
             display: block;
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
         a {
             color: white;

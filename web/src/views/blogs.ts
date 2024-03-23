@@ -35,19 +35,33 @@ export class BlogView extends LitElement {
         }
         pre code {
             cursor: pointer;
-            border: 2px solid transparent;
-            border-radius: 3px;
-            padding: 0.1rem;
+            padding: 0.1rem 0.4rem;
         }
 
+
         pre code:hover {
-            border-color: var(--magenta-dark);
+            outline-width: 1px;
+            outline-color: white;
+            outline-style: double;
         }
 
         pre code.flash {
             animation: glowing 500ms 1;
         }
 
+        pre.language-sh code {
+            outline-width: 1px;
+            outline-color: var(--cyan-hover);
+            outline-style: double;
+        }
+        pre.language-sh code:hover {
+            outline-color: var(--cyan);
+        }
+
+        pre.language-sh code::before {
+            content: '$ ';
+            color: var(--cyan-dark);
+        }
         @keyframes glowing {
             0% {
             box-shadow: 0 0 3px #2ba805;
@@ -99,7 +113,9 @@ export class BlogView extends LitElement {
         return this._blogTask.render({
             pending: () => html`<p>Loading product...</p>`,
             complete: (blog) => html`
-                ${unsafeHTML(blog)}
+                <link rel="stylesheet" href="/lib/prism.css">
+                <link rel="stylesheet" href="/lib/prism-material-dark.css">
+                <article>${unsafeHTML(blog)}</article>
                 `,
             error: (e: any) => html`<p>Error: ${e}</p>`
         })
