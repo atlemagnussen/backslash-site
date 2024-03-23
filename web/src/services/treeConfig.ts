@@ -5,7 +5,11 @@ const treePromise = fetch("/articles/articletree.json")
 export async function getTree() {
         
     const json = await treePromise.then(res => res.json() as Promise<TreeConfig>)
-    if (json.nodes && Array.isArray(json.nodes) && json.nodes.length > 0) {
+    .catch(er => console.error(er))
+    if (!json)
+        return null
+
+    if (json && json.nodes && Array.isArray(json.nodes) && json.nodes.length > 0) {
         setHref(json.nodes)
     }
     return json
@@ -22,7 +26,7 @@ function setHref(children: TreeNode[]) {
         }
     }
 }
-async function findNode(id: string) {
+export async function findNode(id: string) {
     const data = await getTree()
     const itemPath = findPath({ id:"root", name: "root", expanded: false, tags:[], children: data.nodes}, id)
 
