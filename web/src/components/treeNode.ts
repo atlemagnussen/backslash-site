@@ -8,12 +8,20 @@ export class TreeNodeEl extends LitElement {
     static styles = css`
         :host {
             display: block;
+            font-size: 1.2rem;
         }
         a {
             color: white;
         }
         details {
             margin-left: 1rem;
+            cursor: pointer;
+        }
+        details.leaf > summary {
+            list-style: none;
+        }
+        summary:hover {
+            background: var(--hover-color);
         }
     `
     
@@ -24,14 +32,20 @@ export class TreeNodeEl extends LitElement {
         if (!this.node)
             return html`<span>...</span>`
         const isLeaf = !this.node.children
-        const classes = {
-            leaf: isLeaf
+        const classesDetails = {
+            "leaf": isLeaf
+        }
+        const classesSpan = {
+            "icon": true,
+            "icon-file": isLeaf,
+            "icon-file-directory": !isLeaf
         }
 
         return html`
-            <details class=${classMap(classes)} .open=${this.node.expanded}>
+            <link rel="stylesheet" href="/assets/icons/octicons.css">
+            <details class=${classMap(classesDetails)} .open=${this.node.expanded}>
                 <summary id="${this.node.id}">
-                    <span id="${this.node.id}" class="node-text">
+                    <span id="${this.node.id}" class=${classMap(classesSpan)}>
                         ${this.node.href ? html`
                             <a href="${this.node.href}">${this.node.name}</a>
                         ` : html`
