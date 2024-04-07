@@ -38,3 +38,16 @@ See bound ports
 netstat -ntlp
 ```
 
+## Firewall rules
+
+See current iptables rules
+
+```sh
+sudo iptables-save
+```
+
+See current nftables rules
+
+```sh
+sudo nft list ruleset
+```
