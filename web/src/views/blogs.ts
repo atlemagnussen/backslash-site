@@ -40,6 +40,9 @@ export class BlogView extends LitElement {
         h3 {
             color: var(--h3-color);
         }
+        article code.language-none {
+            background-color: #2f2f2f;
+        }
         pre code {
             cursor: pointer;
             padding: 0.1rem 0.4rem;
