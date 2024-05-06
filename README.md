@@ -40,3 +40,13 @@ npm install aws-sdk -g
 ```sh
 firebase deploy
 ```
+
+
+background:
+
+https://codepen.io/agoodwin/pen/NMJoER
+https://codepen.io/shubniggurath/pen/oPGyQw
+https://codepen.io/tonkotsuboy/pen/zJbKNN
+https://codepen.io/hylobates-lar/pen/bGEQXgm
+https://codepen.io/sarazond/pen/LYGbwj
+https://codepen.io/hylobates-lar/pen/qBbQeON
