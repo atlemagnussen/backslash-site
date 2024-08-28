@@ -39,6 +39,11 @@ specify `-r` to remove users home directory and mail spool
 userdel -r testuser
 ```
 
+## List users
+```sh
+less /etc/passwd
+```
+
 ## Create group
 ```sh
 groupadd newgroup
@@ -47,6 +52,11 @@ groupadd newgroup
 ## Add user to group
 ```sh
 usermod -a -G newgroup testuser
+```
+
+## List groups
+```sh
+cat /etc/group
 ```
 
 ## Create service user
