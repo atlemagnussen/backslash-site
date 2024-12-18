@@ -1,3 +1,9 @@
+---
+lang: en-US
+title: About page
+description: About the backslash site blog
+---
+
 # About
 
 ## This a blog 
