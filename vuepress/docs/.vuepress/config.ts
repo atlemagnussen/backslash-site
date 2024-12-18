@@ -6,7 +6,7 @@ import { blogPlugin } from '@vuepress/plugin-blog'
 export default defineUserConfig({
     bundler: viteBundler(),
     theme: defaultTheme({
-        logo: "/public/favicon.svg",
+        logo: "/images/favicon.svg",
         navbar: [
             '/',
             {
@@ -28,7 +28,7 @@ export default defineUserConfig({
           ]
     }),
     head: [
-        ['link', { rel: 'icon', href: '/public/favicon.svg' }]
+        ['link', { rel: 'icon', href: '/images/favicon.svg' }]
     ],
     lang: 'en-US',
     title: 'Hello VuePress',
