@@ -1,12 +1,12 @@
 steps:
-  - name: node
-    dir: web
-    entrypoint: npm
-    args: ['install']
-  - name: node
-    dir: web
-    entrypoint: npm
-    args: ['run', 'build']
-  - name: gcr.io/backslash-project/firebase
-    dir: web
-    args: ['deploy', '--project=backslash-project', '--only=hosting']
+- name: node
+  dir: vuepress
+  entrypoint: npm
+  args: [ 'install' ]
+- name: node
+  dir: vuepress
+  entrypoint: npm
+  args: [ 'run', 'build' ]
+- name: gcr.io/backslash-project/firebase
+  dir: vuepress
+  args: [ 'deploy', '--project=backslash-project', '--only=hosting' ]

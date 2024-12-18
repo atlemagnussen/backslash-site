@@ -1,3 +1,19 @@
+---
+lang: en-US
+title: SSH best practices
+description: How to utilize the security features of ssh and use great features like public key encryption
+date: 2021-02-05
+category:
+  - Security
+tag:
+  - ssh
+  - cli
+  - encryption
+  - RSA
+  - ECDSA
+  - linux
+---
+
 # SSH best practices
 
 Start using the secure shell as it was meant to be, secure.  

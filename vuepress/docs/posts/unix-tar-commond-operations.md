@@ -1,3 +1,17 @@
+---
+lang: en-US
+title: Unix tar commond operations
+description: How to extract and create tarballs with gzip or bzip compression in unix or linux
+date: 2021-02-05
+category:
+  - Security
+tag:
+  - linux
+  - unix
+  - tar
+  - compression
+---
+
 # Tar (tarball) compress and extract files in Unix or Linux
 
 <div class="separator" style="clear: both; text-align: center;"><img border="0" src="https://storage.googleapis.com/atle-static/pics/tar.png" width="420" height="420" /></div>

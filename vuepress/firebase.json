@@ -2,17 +2,11 @@
     "hosting": [
         {
             "target": "prod",
-            "public": "dist",
+            "public": "docs/.vuepress/dist",
             "ignore": [
                 "firebase.json",
                 "**/.*",
                 "**/node_modules/**"
-            ],
-            "rewrites": [
-                {
-                    "source": "**",
-                    "destination": "/index.html"
-                }
             ]
         }
     ]

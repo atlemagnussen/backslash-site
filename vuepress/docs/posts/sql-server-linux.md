@@ -1,3 +1,17 @@
+---
+lang: en-US
+title: SQL Server Docker
+description: How you use SQL Server in Linux environment using docker, sqlcmd and VSCode
+date: 2021-02-05
+category:
+  - Security
+tag:
+  - linux
+  - docker
+  - database
+  - sqlserver
+---
+
 # SQL server on linux
 
 Working with SQL Server in Linux is not as easy as inside a Windows environment, but it certainly is fully possible when Microsoft started releasing SQL Server docker images.
