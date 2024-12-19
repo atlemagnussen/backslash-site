@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-npm i @vuepress/bundler-vite@latest @vuepress/plugin-blog@latest @vuepress/theme-default@latest vuepress@latest
+npm i @vuepress/bundler-vite@next @vuepress/plugin-blog@next @vuepress/theme-default@next vuepress@next @vuepress/plugin-search

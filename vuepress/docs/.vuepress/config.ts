@@ -2,6 +2,8 @@ import { viteBundler } from '@vuepress/bundler-vite'
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress'
 import { blogPlugin } from '@vuepress/plugin-blog'
+import { searchPlugin } from '@vuepress/plugin-search'
+
 
 export default defineUserConfig({
     bundler: viteBundler(),
@@ -34,6 +36,9 @@ export default defineUserConfig({
     title: 'Backslash',
     description: 'backslash blog',
     plugins: [
+        searchPlugin({
+            maxSuggestions: 10
+        }),
         blogPlugin({
           // Only files under posts are articles
           filter: ({ filePathRelative }) =>
