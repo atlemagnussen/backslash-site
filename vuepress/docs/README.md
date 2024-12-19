@@ -5,9 +5,9 @@ description: About the backslash site blog
 date: 2020-01-01
 ---
 
-# About
+<FrontLogo />
 
-## This a blog 
+# This a blog 
 
 ### Here I will write things that I feel is worth writing down.
 

@@ -4,8 +4,12 @@ import Category from './layouts/Category.vue'
 import Tag from './layouts/Tag.vue'
 import Timeline from './layouts/Timeline.vue'
 
+import FrontLogo from "./components/FrontLogo3d.vue"
+
 export default defineClientConfig({
-  // we provide some blog layouts
+  enhance({ app }) {
+    app.component("FrontLogo", FrontLogo)
+  },
   layouts: {
     Article,
     Category,
