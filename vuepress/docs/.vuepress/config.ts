@@ -31,8 +31,8 @@ export default defineUserConfig({
         ['link', { rel: 'icon', href: '/images/favicon.svg' }]
     ],
     lang: 'en-US',
-    title: 'Hello VuePress',
-    description: 'Just playing around',
+    title: 'Backslash',
+    description: 'backslash blog',
     plugins: [
         blogPlugin({
           // Only files under posts are articles
