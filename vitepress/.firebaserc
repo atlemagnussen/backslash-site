@@ -1,0 +1,17 @@
+{
+    "projects": {
+        "default": "backslash-project"
+    },
+    "targets": {
+        "backslash-project": {
+            "hosting": {
+                "redirect": [
+                    "backslash-redirect"
+                ],
+                "prod": [
+                    "backslash-project"
+                ]
+            }
+        }
+    }
+}

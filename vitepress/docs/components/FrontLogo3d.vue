@@ -5,13 +5,13 @@
 </script>
 <style scoped>
     digilean-3d-spinner {
-        width: 200px;
-        height: 200px;
+        width: 400px;
+        height: 400px;
     }
 </style>
 <template>
 
-    <digilean-3d-spinner></digilean-3d-spinner>
+    <digilean-3d-spinner width="400" height="400"></digilean-3d-spinner>
   
 </template>
 

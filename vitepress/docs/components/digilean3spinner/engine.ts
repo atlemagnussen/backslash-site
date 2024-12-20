@@ -3,38 +3,40 @@ import * as B from "@babylonjs/core"
 export class dSpinner {
     ownerEl: HTMLElement
     canvas: HTMLCanvasElement
-    engine: B.Engine
+    engine: B.WebGPUEngine
     scene: B.Scene
 
-    constructor(ownerEl: HTMLElement, canv: HTMLCanvasElement, width: number, height: number) {
+    constructor(ownerEl: HTMLElement, canv: HTMLCanvasElement) {
         this.ownerEl = ownerEl
         this.canvas = canv
-        this.engine = new B.Engine(this.canvas, true)
-
-        this.engine.setSize(width, height)
-        this.scene = new B.Scene(this.engine)
-        //this.scene.clearColor = new B.Color4(0.090196, 0.090196, 0.090196, 1)
-        this.scene.clearColor = B.Color4.FromHexString("#1b1b1f")
-
-        
+        this.engine = new B.WebGPUEngine(this.canvas)
     }
 
-    async start() {
+    async start(width: number, height: number) {
+        await this.engine.initAsync()
+        
+        this.engine.setSize(width, height)
+        this.scene = new B.Scene(this.engine)
+        
+        //this.scene.clearColor = new B.Color4(0.090196, 0.090196, 0.090196, 1)
+        //this.scene.clearColor = B.Color4.FromHexString("#1b1b1f")
+        this.scene.clearColor = new B.Color4(0,0,0,0.000001);
+
         const myMaterial = new B.StandardMaterial("std", this.scene)
-        myMaterial.diffuseColor = new B.Color3(0, 0, 1);
-        myMaterial.specularColor = new B.Color3(0, 0, 0.87);
-        myMaterial.ambientColor = new B.Color3(0, 0, 1);
+        myMaterial.diffuseColor = new B.Color3(1, 1, 1);
+        myMaterial.specularColor = new B.Color3(1, 0, 0.87);
+        myMaterial.ambientColor = new B.Color3(1, 0, 1);
         const result = await B.SceneLoader.ImportMeshAsync("", "/3d/", "digilean-svg-selected.babylon", this.scene, () => {
             //console.log(e)
         })
         //console.log(result)
-        const mesh = result.meshes[0]
+        const mesh = result.meshes[0] as B.Mesh
         const scale = 1.5
         mesh.rotation.x = 1
         mesh.position.y = 0
         mesh.scaling = new B.Vector3(scale, scale, scale)
         const pbr = new B.PBRMetallicRoughnessMaterial("pbr", this.scene)
-        pbr.baseColor = new B.Color3(0, 0.5, 0.8);
+        pbr.baseColor = new B.Color3(0, 0.5, 1);
         pbr.metallic = 1.0
         pbr.roughness = 0.3
         mesh.material = pbr

@@ -1,7 +1,7 @@
 import {LitElement, html, css, PropertyValues} from "lit"
-import {customElement} from "lit/decorators.js"
+import {customElement, property} from "lit/decorators.js"
 
-import { dSpinner } from "./main"
+import { dSpinner } from "./engine.js"
 
 @customElement('digilean-3d-spinner')
 export class DigiLean3dSpinner extends LitElement {
@@ -11,12 +11,15 @@ export class DigiLean3dSpinner extends LitElement {
     interval = 500
     spinner: dSpinner | undefined
 
-    constructor() {
-        super()
-    }
+    @property({attribute: true})
+    width = "200"
+
+    @property({attribute: true})
+    height = "200"
+
     static styles = css`
         :host {
-            background: var(--vp-c-bg, #fff);
+            background: transparent;
             display: block;
 		    box-sizing: border-box;
             touch-action: none;
@@ -32,7 +35,7 @@ export class DigiLean3dSpinner extends LitElement {
         }
         canvas {
             display: block;
-            background-color: black;
+            background-color: transparent;
             width: 100%;
             height: 100%;
         }
@@ -67,8 +70,8 @@ export class DigiLean3dSpinner extends LitElement {
         if (this._canvas) {
             const w = this.clientWidth // or offsetWidth
             const h = this.clientHeight
-            this.spinner = new dSpinner(section, this._canvas, w, h)
-            this.spinner.start()
+            this.spinner = new dSpinner(section, this._canvas)
+            this.spinner.start(w, h)
         }
     }
     resizeCanvas() {
@@ -81,7 +84,7 @@ export class DigiLean3dSpinner extends LitElement {
             </header>
             
             <section>
-                <canvas id="c" width="100" height="100"></canvas>
+                <canvas id="c" width="${this.width}" height="${this.width}"></canvas>
             </section>
 
             <div id="popup">

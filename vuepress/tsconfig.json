@@ -1,0 +1,34 @@
+{
+    "compilerOptions": {
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "lib": [
+            "ES2020",
+            "DOM",
+            "DOM.Iterable"
+        ],
+        "declaration": true,
+        "emitDeclarationOnly": false,
+        "outDir": "./types",
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "isolatedModules": true,
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "useDefineForClassFields": false,
+        "skipLibCheck": true,
+        "baseUrl": ".",
+        "paths": {
+            "@common/*": ["../common/*"]
+        },
+        "jsx": "preserve",
+        "sourceMap": true,
+    },
+    "include": [
+        "src/**/*.ts"
+    ]
+}

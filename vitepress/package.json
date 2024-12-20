@@ -1,0 +1,19 @@
+{
+  "name": "backslash",
+  "version": "1.0.0",
+  "description": "backslash posts",
+  "type": "module",
+  "scripts": {
+    "start": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.5.0",
+    "vue": "^3.5.13"
+  },
+  "dependencies": {
+    "@babylonjs/core": "^7.41.1",
+    "lit": "^3.2.1"
+  }
+}

@@ -1,6 +1,7 @@
 ---
 lang: en-US
 title: Arch Linux bluetooth
+layout: doc
 description: How to pair and connect bluetooth devices to your Arch Linux computer
 date: 2021-02-05
 category:
