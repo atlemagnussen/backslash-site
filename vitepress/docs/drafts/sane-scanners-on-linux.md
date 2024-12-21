@@ -18,13 +18,13 @@ First and foremost, this is a setup that works both for LAN connection and USB c
 So I won't cover setting up a Pi with Raspbian OS. You can go to [Raspberry PI](https://www.raspberrypi.org/downloads/raspbian/) homepages to find that  
 *You can use any PC you want for this of course, old or new, big or small*
 ### Installing SANE
-```terminal
+```bash
 sudo apt install sane-utils
 ```
 Most distros have SANE in their main repositories. So this should install what you need.
 
 ### Detect the scanner
-```terminal
+```bash
 scanimage -L
 ```
 
@@ -50,14 +50,14 @@ If this does not work, try `sudo sane-find-scanner`, it might return something l
 
 ### Testing the scanner on the server
 So if *scanimage -L* returns something, it's time to test actual scanning, stick a picture in there and type:  
-```terminal
+```bash
 scanimage > test.ppm
 ```  
 the file will be an image that you can open in Gimp for verification. You can actually use this command line tool as your primary scanner client if you don't mind. See -h for options and you will see that you can controll all typical settings like resolution and colors and so on.
 
 ### Sharing the scanner over LAN
 Once you have successfully test scanned from your Raspberry Pi scanner server, it's time to share.
-```terminal
+```bash
 sudo nano /etc/sane.d/saned.conf
 ```
 and uncomment `192.168.1.0/24` for enabling you typical LAN subnet, or just type a single or more IP addresses to enable access to saned from other computers
@@ -65,19 +65,19 @@ and uncomment `192.168.1.0/24` for enabling you typical LAN subnet, or just type
 *If you have a firewall enabled you should open up for incoming connections on port 6566*
 
 Then start the socket service (if you use systemd)
-```terminal
+```bash
 sudo systemctl start saned.socket
 ```
 
 #### Making it still share after reboot
 Still systemd, enable saned.socket to start on boot by typing:
-```terminal
+```bash
 sudo systemctl enable saned.socket
 ```
 
 ## The client
 This should be the easy part if no network or firewall magic is playing its games with you. Installation command is the same as for the server:
-```terminal
+```bash
 sudo apt install sane-utils
 ```
 But this time you only need to edit this file:
@@ -97,14 +97,14 @@ If you got this far you might be good enough, as I said this is as good a client
 ### Graphical client
 Enter [gscan2pdf](http://gscan2pdf.sourceforge.net/)
 The project is still pouring out new versions in 2018. Amazing, and it warms my heart when I see open source projects like this endure. To get the latest explore the official good old sourceforge page. Or just get whatever version apt has to offer
-```terminal
+```bash
 sudo apt install gscan2pdf
 ```
 This client is pretty much as good as it gets.
 
 ## A typical problem
 If you have a problem on the client, try to see log files on the server, a quick way is asking systemd right after the error occours.
-```terminal
+```bash
 sudo systemctl status saned.socket
 ```
 
@@ -117,14 +117,14 @@ It seems like the default socket file `/lib/systemd/system/saned.socket` always 
 
 So it only accepts one connection, which you will run into pretty fast:
 Fix this by copying the file over to the etc/systemd file structure and edit it
-```terminal
+```bash
 sudo cp /lib/systemd/system/saned.socket /etc/systemd/system/saned.socket
 ```
 Change the MaxConnection to something higher like  
 `MaxConnections=50`
 
 Then reload and restart:
-```terminal
+```bash
 sudo systemctl daemon-reload
 sudo systemctl restart saned.socket
 ```

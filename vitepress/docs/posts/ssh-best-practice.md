@@ -115,7 +115,7 @@ If you add more keys later, add them on a new line. One public key, one line.
 Now go back to your _client computer_ and try to log in to the _server_ like you always did. Now you should fly right in without a password, unless you set a password on your private key.  
 This means you can now safely remove password authentication in `sshd_config`
 
-```ssh
+```ssh-config
 PasswordAuthenctication no
 ```
 
