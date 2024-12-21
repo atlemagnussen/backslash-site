@@ -72,7 +72,7 @@
   --custom-blue: #1c93d3;
   --custom-gold-gradient: linear-gradient(to right,#d6b39f,#fff6f3);
   --custom-silver-gradient: linear-gradient(#878585, #510f5c);
-
+   --custom-gold: #F0CEBB;
   /* --vp-c-text-1: var(--vp-c-red-2); */
   --vp-custom-block-tip-border: transparent;
   --vp-custom-block-tip-text: var(--vp-c-text-1);

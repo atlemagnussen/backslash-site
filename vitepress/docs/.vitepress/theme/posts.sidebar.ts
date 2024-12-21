@@ -11,8 +11,6 @@ import { DefaultTheme } from "vitepress"
 
 export async function getPostsSidebar() {
     const posts = await loader.load()
-    
-    console.log("Got posts", posts)
 
     const blogSidebarItems: DefaultTheme.SidebarItem[] = posts.map(p => {
         return {

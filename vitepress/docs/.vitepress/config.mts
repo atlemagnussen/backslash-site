@@ -1,11 +1,9 @@
 import { defineConfig } from "vitepress"
-import { getPostsSidebar } from "./theme/posts.sidebar"
+import { generateSidebar } from "vitepress-sidebar"
 
 
 // https://vitepress.dev/reference/site-config
-export default async () => {
-    const postsSidebar = await getPostsSidebar()    
-    
+export default () => {
     return defineConfig({
         head: [
             ["link", { rel: "icon", type: "image/svg+xml", href: "/images/favicon.svg" }]
@@ -21,9 +19,11 @@ export default async () => {
             search: {
                 provider: "local"
             },
-            sidebar: [
-                ...postsSidebar
-            ],
+            sidebar: generateSidebar({
+                capitalizeFirst: true,
+                scanStartPath: "docs",
+                excludePattern: ["drafts"]
+            }),
             socialLinks: [
                 { icon: "github", link: "https://github.com/atlemagnussen" }
             ]
