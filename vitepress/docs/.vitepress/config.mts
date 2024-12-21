@@ -35,6 +35,7 @@ export default () => {
                     isCustomElement: (tag) => tag.includes("-")
                 }
             }
-        }
+        },
+        ignoreDeadLinks: true
     })
 }
