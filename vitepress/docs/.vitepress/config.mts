@@ -22,7 +22,9 @@ export default () => {
             sidebar: generateSidebar({
                 capitalizeFirst: true,
                 scanStartPath: "docs",
-                excludePattern: ["drafts"]
+                excludePattern: ["drafts"],
+                useTitleFromFileHeading: true,
+                collapseDepth: 2
             }),
             socialLinks: [
                 { icon: "github", link: "https://github.com/atlemagnussen" }

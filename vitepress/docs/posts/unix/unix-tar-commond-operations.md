@@ -4,7 +4,7 @@ title: Unix tar commond operations
 description: How to extract and create tarballs with gzip or bzip compression in unix or linux
 date: 2021-02-05
 category:
-  - Security
+  - Unix
 tag:
   - linux
   - unix

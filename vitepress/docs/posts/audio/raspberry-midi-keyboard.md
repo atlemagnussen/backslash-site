@@ -4,7 +4,7 @@ title: RaspberryPi MIDI keyboard
 description: How to set up a raspberry pi and a midi keyboard
 date: 2020-01-01
 category:
-  - CategoryC
+  - Audio
 tag:
   - raspberry pi
   - midi keyboard
@@ -13,6 +13,8 @@ tag:
   - jackd
 ---
 
+How to leverage a Raspberry PI and a MIDI keyboard
+---
 # Raspberry PI and a MIDI keyboard
 
 <div class="separator" style="clear: both; text-align: center;"><img border="0" src="https://storage.googleapis.com/backslash-project.appspot.com/static/rpi-midi-small.jpg"/></div>
