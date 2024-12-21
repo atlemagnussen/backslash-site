@@ -27,6 +27,6 @@
         "sourceMap": true,
     },
     "include": [
-        "docs/**/*.ts",
+        "docs/**/*.ts", "docs/.vitepress/theme/posts.data.ts",
     ]
 }
