@@ -7,17 +7,24 @@
 
 </script>
 <style scoped>
-  article {
+  article.article-list {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     flex-wrap: wrap;
+    h2 {
+      margin: 0.5rem;
+      padding: 0;
+      border-top: 0;
+    }
   }
+  
   ul {
     list-style-type: none;
   }
-  h2 {
-    border-top: 0;
+  ul li {
+    margin-bottom: 2rem;
   }
+  
 </style>
 <template>
   <div>
@@ -31,7 +38,7 @@
     </div>
     <ul>
       <li v-for="{ title, url, date, excerpt } of posts">
-        <article>
+        <article class="article-list">
           <time>{{ date.string }}</time>
           <section class="content">
             <div>
