@@ -56,6 +56,7 @@ export class dSpinner {
 
         meshes[0].material = material
         meshes[1].material = materialTopLeft
+        meshes[1].metadata = "top left"
         meshes[2].material = material
         meshes[3].material = material
 
@@ -63,18 +64,18 @@ export class dSpinner {
         gl.addIncludedOnlyMesh(meshRoot);
 
 
-        const camera = new B.ArcRotateCamera("Camera", 1, 1, 4, B.Vector3.Zero(), this.scene)
+        const camera = new B.ArcRotateCamera("Camera", 1, 5, 4, B.Vector3.Zero(), this.scene)
         camera.attachControl(this.canvas, false)
 
-        const light = new B.HemisphericLight("light1", new B.Vector3(0, 1, 0), this.scene)
+        const light = new B.HemisphericLight("light1", new B.Vector3(1, 5, 8), this.scene)
         light.intensity = 1
 
-        const light2 = new B.HemisphericLight("light2", new B.Vector3(0, 1, 0.1), this.scene)
+        const light2 = new B.HemisphericLight("light2", new B.Vector3(-5, -10, 1), this.scene)
         light2.intensity = 1
         const light3 = new B.HemisphericLight("light2", new B.Vector3(0.5, 1, 0.4), this.scene)
         light3.intensity = 1
-        const light4 = new B.HemisphericLight("light2", new B.Vector3(0.1, 0, 0), this.scene)
-        light4.intensity = 1
+        // const light4 = new B.HemisphericLight("light2", new B.Vector3(0.1, 0, 0), this.scene)
+        // light4.intensity = 1
 
         this.engine.runRenderLoop(() => {
             if (this.scene) {
