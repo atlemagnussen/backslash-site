@@ -40,20 +40,23 @@
         }
     ],
     "devDependencies": {
-        "@types/node": "^20.11.30",
+        "@types/node": "^22.10.2",
         "@types/prismjs": "^1.26.3",
         "@types/showdown": "^2.0.6",
+        "@webgpu/types": "^0.1.52",
         "copy-files-from-to": "^3.9.1",
         "ts-node": "^10.9.2",
         "typescript": "^5.4.3",
-        "vite": "^5.2.3"
+        "vite": "^6.0.5"
     },
     "dependencies": {
+        "@babylonjs/core": "^7.41.1",
+        "@babylonjs/loaders": "^7.41.1",
         "@lit/task": "^1.0.0",
         "lit": "^3.1.2",
         "prism-themes": "^1.4.1",
         "prismjs": "^1.29.0",
         "router-slot": "^1.5.5",
-        "showdown": "^1.9.1"
+        "showdown": "^2.1.0"
     }
 }

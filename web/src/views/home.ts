@@ -20,9 +20,8 @@ export class HomeView extends LitElement {
                 </header>
 
                 <section>
-                    <a id="blogmenu" href="blogmenu">
-                        <h2>Blogs</h2>
-                    </a>
+                    <!-- <web-gpu></web-gpu> -->
+                     <digilean-3d-spinner width="300" height="300"></digilean-3d-spinner>
                 </section>
             </article>
         `
