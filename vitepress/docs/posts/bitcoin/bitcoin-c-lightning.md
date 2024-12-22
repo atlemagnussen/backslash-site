@@ -11,7 +11,6 @@ tag:
   - lightning network
   - linux
 ---
-
 # Operate a C-lightning node
 
 [Core Lightning API Reference (all methods)](https://docs.corelightning.org/reference)
