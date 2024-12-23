@@ -10,6 +10,10 @@ export class HomeView extends LitElement {
         a {
             color: white;
         }
+        digilean-3d-spinner {
+            width: 300px;
+            height: 300px;
+        }
     `
     
     render() {

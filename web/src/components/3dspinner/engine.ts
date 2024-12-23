@@ -1,6 +1,9 @@
 import * as B from "@babylonjs/core"
 import "@babylonjs/loaders/glTF"
 
+
+// https://www.youtube.com/watch?v=b7-VKQeQiV4 
+
 export class dSpinner {
     ownerEl: HTMLElement
     canvas: HTMLCanvasElement
@@ -32,15 +35,17 @@ export class dSpinner {
         })
         //console.log(result)
         const meshRoot = result.meshes[0] as B.Mesh
+
+        meshRoot.position.y = 3
         const meshes = meshRoot.getChildMeshes()
         // console.log(meshes)
 
-        const scale = 20
+        const scale = 50
         meshes.forEach(m => {
             m.isPickable = false
         })
         meshRoot.rotation.x = 1
-        meshRoot.position.y = 0
+        // meshRoot.position.y = 0
         meshRoot.scaling = new B.Vector3(scale, scale, scale)
         const material = new B.PBRMetallicRoughnessMaterial("pbr", this.scene)
         // material.baseColor = new B.Color3(0, 0.5, 0.8);
@@ -60,11 +65,12 @@ export class dSpinner {
         meshes[2].material = material
         meshes[3].material = material
 
-        const gl = new B.GlowLayer("glow", this.scene);
-        gl.addIncludedOnlyMesh(meshRoot);
+        const mergedMesh = B.Mesh.MergeMeshes(meshes as B.Mesh[], true, true, undefined, false, true)
+        // const gl = new B.GlowLayer("glow", this.scene);
+        // gl.addIncludedOnlyMesh(meshRoot);
 
-
-        const camera = new B.ArcRotateCamera("Camera", 1, 5, 4, B.Vector3.Zero(), this.scene)
+        const cameraAngle = new B.Vector3(1, 0, 0) //B.Vector3.Zero()
+        const camera = new B.ArcRotateCamera("Camera", 1, 5, 4, cameraAngle, this.scene)
         camera.attachControl(this.canvas, false)
 
         const light = new B.HemisphericLight("light1", new B.Vector3(1, 5, 8), this.scene)
@@ -77,16 +83,36 @@ export class dSpinner {
         // const light4 = new B.HemisphericLight("light2", new B.Vector3(0.1, 0, 0), this.scene)
         // light4.intensity = 1
 
+        this.createAnimation(mergedMesh)
         this.engine.runRenderLoop(() => {
             if (this.scene) {
                 this.scene.render()
-                meshRoot.rotation.x += 0.01
-                // meshRoot.rotation.y += 0.01
-            }
+           }
         })
     }
     stop() {
         this.engine.stopRenderLoop()
+    }
+    createAnimation(mesh: B.Nullable<B.Mesh>) {
+        if (!mesh)
+            return
+        const keyFrames = []
+        const fps = 60
+        const rotateAnim = new B.Animation("rotateAnim", "rotation.y", fps, B.Animation.ANIMATIONTYPE_FLOAT,
+            B.Animation.ANIMATIONLOOPMODE_CYCLE
+        )
+
+        keyFrames.push({ frame: 0, value: 0})
+        keyFrames.push({
+            frame: 180, value: -Math.PI/2
+        })
+
+        rotateAnim.setKeys(keyFrames)
+
+        mesh.animations.push(rotateAnim)
+
+        if (this.scene)
+            this.scene.beginAnimation(mesh, 0, 180, true)
     }
     resize(width: number, height: number) {
         this.canvas.height = width
