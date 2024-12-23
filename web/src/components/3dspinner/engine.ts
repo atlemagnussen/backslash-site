@@ -33,20 +33,17 @@ export class dSpinner {
         const result = await B.SceneLoader.ImportMeshAsync(null, "/assets/", "digilean3d.glb", this.scene, (e) => {
             console.log(e)
         })
-        //console.log(result)
+        
         const meshRoot = result.meshes[0] as B.Mesh
-
-        meshRoot.position.y = 3
         const meshes = meshRoot.getChildMeshes()
-        // console.log(meshes)
 
-        const scale = 50
+        const scale = 30
         meshes.forEach(m => {
             m.isPickable = false
         })
-        meshRoot.rotation.x = 1
+        //meshRoot.rotation.x = 1
         // meshRoot.position.y = 0
-        meshRoot.scaling = new B.Vector3(scale, scale, scale)
+        //meshRoot.scaling = new B.Vector3(scale, scale, scale)
         const material = new B.PBRMetallicRoughnessMaterial("pbr", this.scene)
         // material.baseColor = new B.Color3(0, 0.5, 0.8);
         material.baseColor = B.Color3.FromHexString("#1c93d3")
@@ -66,6 +63,10 @@ export class dSpinner {
         meshes[3].material = material
 
         const mergedMesh = B.Mesh.MergeMeshes(meshes as B.Mesh[], true, true, undefined, false, true)
+        if (!mergedMesh)
+            return
+        mergedMesh.scaling = new B.Vector3(scale, scale, scale)
+        mergedMesh.position.x = 1
         // const gl = new B.GlowLayer("glow", this.scene);
         // gl.addIncludedOnlyMesh(meshRoot);
 
@@ -89,6 +90,7 @@ export class dSpinner {
                 this.scene.render()
            }
         })
+        return true
     }
     stop() {
         this.engine.stopRenderLoop()

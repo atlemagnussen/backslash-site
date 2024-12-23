@@ -9,6 +9,7 @@ export class WebGpuLogic {
     }
 
     async initialize() {
-        const adapter = window.navigator.gpu?.requestAdapter() as GPUAdapter
+        const adapter = window.navigator.gpu?.requestAdapter() as unknown as GPUAdapter
+        console.log(adapter)
     }
 }

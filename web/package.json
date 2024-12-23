@@ -10,7 +10,7 @@
         "dev": "vite",
         "build:vite": "tsc && vite build",
         "build:watch": "tsc && vite build --watch",
-        "build": "npm run sitemap && npm run copyfiles && npm run build:vite",
+        "build": "npm run copyfiles && npm run build:vite",
         "start": "npm i && npm run dev",
         "deploy": "npm run build && firebase deploy",
         "sitemap_bug": "ts-node --esm ./generateSitemap.ts",
