@@ -79,19 +79,25 @@ export class DigiLean3dSpinner extends LitElement {
         this._popup = this.renderRoot.querySelector("#popup") as HTMLDivElement
     }
 
-    initialized = false
-    protected firstUpdated(_changedProperties: PropertyValues): void {
+    async initCanvas() {
         const section = this.shadowRoot?.querySelector("section")!
         this._canvas = this.renderRoot.querySelector("#c") as HTMLCanvasElement
         if (this._canvas) {
             const w = this.clientWidth // or offsetWidth
             const h = this.clientHeight
             this.spinner = new dSpinner(section, this._canvas)
-            this.spinner.start(w, h).then(i => {
-                console.log(i)
-
-            })
+            await this.spinner.start(w, h)
+            console.log("initialized")
+            this.initialized = true
+            const divEl = this.renderRoot.querySelector("div#svg") as HTMLDivElement
+            divEl.style.display = "none"
         }
+    }
+    initialized = false
+    protected firstUpdated(_changedProperties: PropertyValues): void {
+        setTimeout(() => {
+            this.initCanvas()    
+        }, 1000);
     }
     resizeCanvas() {
         return true
@@ -105,7 +111,7 @@ export class DigiLean3dSpinner extends LitElement {
             <section>
                 <canvas id="c" width="${this.width}" height="${this.width}"></canvas>
             </section>
-            ${this.initialized ? '' : html`
+            ${this.initialized ? html`` : html`
                 <div id="svg" >
                     <digilean-logo></digilean-logo>
                 </div>

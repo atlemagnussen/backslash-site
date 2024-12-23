@@ -47,13 +47,13 @@ export class dSpinner {
         const material = new B.PBRMetallicRoughnessMaterial("pbr", this.scene)
         // material.baseColor = new B.Color3(0, 0.5, 0.8);
         material.baseColor = B.Color3.FromHexString("#1c93d3")
-        material.metallic = 0.95
+        material.metallic = 0.99
         material.roughness = 0.5
         //meshRoot.material = pbr
         const materialTopLeft = new B.PBRMetallicRoughnessMaterial("pbr", this.scene)
         materialTopLeft.baseColor = B.Color3.FromHexString("#acd3ef")
         // materialTopLeft.baseColor = new B.Color3(0, 0.5, 0.9);
-        materialTopLeft.metallic = 0.8
+        materialTopLeft.metallic = 0.9
         materialTopLeft.roughness = 0.3
 
         meshes[0].material = material
@@ -67,6 +67,7 @@ export class dSpinner {
             return
         mergedMesh.scaling = new B.Vector3(scale, scale, scale)
         mergedMesh.position.x = 1
+        // mergedMesh.rotateAround(new B.Vector3(0,0,0), new B.Vector3(1,0,0), Math.PI/2)
         // const gl = new B.GlowLayer("glow", this.scene);
         // gl.addIncludedOnlyMesh(meshRoot);
 
@@ -98,23 +99,40 @@ export class dSpinner {
     createAnimation(mesh: B.Nullable<B.Mesh>) {
         if (!mesh)
             return
-        const keyFrames = []
+        
         const fps = 60
-        const rotateAnim = new B.Animation("rotateAnim", "rotation.y", fps, B.Animation.ANIMATIONTYPE_FLOAT,
-            B.Animation.ANIMATIONLOOPMODE_CYCLE
-        )
 
-        keyFrames.push({ frame: 0, value: 0})
-        keyFrames.push({
-            frame: 180, value: -Math.PI/2
-        })
-
-        rotateAnim.setKeys(keyFrames)
-
+        // spinner
+        const keyFramesSpin = [
+            { frame: 0, value: 0 },
+            { frame: 360, value: -2*Math.PI}
+        ]
+        const rotateAnim = new B.Animation("rotateAnim", "rotation.y", fps, B.Animation.ANIMATIONTYPE_FLOAT, B.Animation.ANIMATIONLOOPMODE_CYCLE)
+        rotateAnim.setKeys(keyFramesSpin)
         mesh.animations.push(rotateAnim)
 
-        if (this.scene)
-            this.scene.beginAnimation(mesh, 0, 180, true)
+        // turn to right side
+        const keyFramesTurn = [
+            { frame: 0, value: 0 },
+            { frame: 1, value: Math.PI }
+        ]
+        const rotationTurn = new B.Animation("turnAnim", "rotation.x", fps, B.Animation.ANIMATIONTYPE_FLOAT, B.Animation.ANIMATIONLOOPMODE_CONSTANT)
+        rotationTurn.setKeys(keyFramesTurn)
+        mesh.animations.push(rotationTurn)
+
+        // tip
+        const keyFramesTip = [
+            { frame: 0, value: 0 },
+            { frame: 20, value: -0.3 },
+        ]
+        const rotationTip = new B.Animation("tipAnim", "rotation.z", fps, B.Animation.ANIMATIONTYPE_FLOAT, B.Animation.ANIMATIONLOOPMODE_CONSTANT)
+        rotationTip.setKeys(keyFramesTip)
+
+        if (this.scene) {
+            // this.scene.beginAnimation(mesh, 0, 180, true)
+            this.scene.beginDirectAnimation(mesh, [rotateAnim, rotationTurn, rotationTip], 0, 360, true)
+        }
+            
     }
     resize(width: number, height: number) {
         this.canvas.height = width
