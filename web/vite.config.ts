@@ -21,6 +21,16 @@ export default defineConfig({
         outDir: buildOutput,  
         sourcemap: true,
         emptyOutDir: true,
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    lit: ["lit"],
+                    babylon: ["@babylonjs/core"],
+                    babylonLoadersGltf: ["@babylonjs/loaders/glTF"]
+                }
+            }
+        }
+
     },
     server: {
         fs: {
