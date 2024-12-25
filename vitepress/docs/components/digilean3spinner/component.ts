@@ -1,6 +1,6 @@
 import {LitElement, html, css, PropertyValues} from "lit"
 import {customElement, property} from "lit/decorators.js"
-
+import "./svg.js"
 import { dSpinner } from "./engine.js"
 
 @customElement('digilean-3d-spinner')
@@ -20,11 +20,13 @@ export class DigiLean3dSpinner extends LitElement {
     static styles = css`
         :host {
             background: transparent;
+            position: relative;
             display: block;
 		    box-sizing: border-box;
             touch-action: none;
             height: 100%;
             width: 100%;
+            border: 1px solid black;
 	    }
 
         main {
@@ -48,6 +50,19 @@ export class DigiLean3dSpinner extends LitElement {
             border-radius: 4px;
             color: white;
         }
+        div#svg {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            z-index: 1000;
+            --digilean-image-height: 13rem;
+            --digilean-image-width: 13rem;
+        }
     `
     
     disconnectedCallback() {
@@ -64,15 +79,25 @@ export class DigiLean3dSpinner extends LitElement {
         this._popup = this.renderRoot.querySelector("#popup") as HTMLDivElement
     }
 
-    protected firstUpdated(_changedProperties: PropertyValues): void {
+    async initCanvas() {
         const section = this.shadowRoot?.querySelector("section")!
         this._canvas = this.renderRoot.querySelector("#c") as HTMLCanvasElement
         if (this._canvas) {
             const w = this.clientWidth // or offsetWidth
             const h = this.clientHeight
             this.spinner = new dSpinner(section, this._canvas)
-            this.spinner.start(w, h)
+            await this.spinner.start(w, h)
+            console.log("initialized")
+            this.initialized = true
+            const divEl = this.renderRoot.querySelector("div#svg") as HTMLDivElement
+            divEl.style.display = "none"
         }
+    }
+    initialized = false
+    protected firstUpdated(_changedProperties: PropertyValues): void {
+        setTimeout(() => {
+            this.initCanvas()    
+        }, 1000);
     }
     resizeCanvas() {
         return true
@@ -86,10 +111,11 @@ export class DigiLean3dSpinner extends LitElement {
             <section>
                 <canvas id="c" width="${this.width}" height="${this.width}"></canvas>
             </section>
-
-            <div id="popup">
-                <span>Hello</span>
-            </div>
+            ${this.initialized ? html`` : html`
+                <div id="svg" >
+                    <digilean-logo></digilean-logo>
+                </div>
+            `}
         `
     }
 }
