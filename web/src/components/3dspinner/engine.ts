@@ -132,7 +132,6 @@ export class dSpinner {
             // this.scene.beginAnimation(mesh, 0, 180, true)
             this.scene.beginDirectAnimation(mesh, [rotateAnim, rotationTurn, rotationTip], 0, 360, true)
         }
-            
     }
     resize(width: number, height: number) {
         this.canvas.height = width

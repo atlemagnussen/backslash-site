@@ -25,7 +25,8 @@ export class HomeView extends LitElement {
 
                 <section>
                     <!-- <web-gpu></web-gpu> -->
-                     <digilean-3d-spinner width="300" height="300"></digilean-3d-spinner>
+                     <!-- <digilean-3d-spinner width="300" height="300"></digilean-3d-spinner> -->
+                    <merkaba-spinner></merkaba-spinner>
                 </section>
             </article>
         `
