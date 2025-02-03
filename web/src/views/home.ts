@@ -14,6 +14,10 @@ export class HomeView extends LitElement {
             width: 300px;
             height: 300px;
         }
+        digilean-logo {
+            width: 1000px;
+            height: 1000px;
+        }
     `
     
     render() {
@@ -26,7 +30,8 @@ export class HomeView extends LitElement {
                 <section>
                     <!-- <web-gpu></web-gpu> -->
                      <!-- <digilean-3d-spinner width="300" height="300"></digilean-3d-spinner> -->
-                    <merkaba-spinner></merkaba-spinner>
+                    <!-- <merkaba-spinner></merkaba-spinner> -->
+                     <digilean-logo></digilean-logo>
                 </section>
             </article>
         `
