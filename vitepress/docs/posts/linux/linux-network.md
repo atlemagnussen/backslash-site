@@ -46,8 +46,9 @@ traceroute -6 google.com
 
 ## Ports
 
-See bound ports
+See listening ports
 ```sh
+ss -l
 netstat -ntlp
 ```
 
