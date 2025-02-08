@@ -2,7 +2,7 @@
 lang: en-US
 title: Bitcoin LND
 description: How to run and operate a Bitcoind LNF node
-date: 2021-02-05
+date: 2025-02-05
 category:
   - Crypto currencies
 tag:
