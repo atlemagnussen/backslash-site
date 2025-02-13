@@ -1,15 +1,15 @@
 import {LitElement, html, css, PropertyValues} from "lit"
 import {customElement, property} from "lit/decorators.js"
 import "./svg.js"
-import { dSpinner } from "./engine.js"
+import { mSpinner } from "./engine.js"
 
-@customElement('digilean-3d-spinner')
-export class DigiLean3dSpinner extends LitElement {
+@customElement('merkaba-spinner')
+export class MerkabaSpinner extends LitElement {
     _isrunning = false
     _canvas: HTMLCanvasElement | null = null
     _popup: HTMLDivElement | null = null
     interval = 500
-    spinner: dSpinner | undefined
+    spinner: mSpinner | undefined
 
     @property({attribute: true})
     width = "200"
@@ -85,7 +85,7 @@ export class DigiLean3dSpinner extends LitElement {
         if (this._canvas) {
             const w = this.clientWidth // or offsetWidth
             const h = this.clientHeight
-            this.spinner = new dSpinner(section, this._canvas)
+            this.spinner = new mSpinner(section, this._canvas)
             await this.spinner.start(w, h)
             console.log("initialized")
             this.initialized = true
@@ -113,7 +113,7 @@ export class DigiLean3dSpinner extends LitElement {
             </section>
             ${this.initialized ? html`` : html`
                 <div id="svg" >
-                    <digilean-logo></digilean-logo>
+                    <merkaba-svg></merkaba-svg>
                 </div>
             `}
         `

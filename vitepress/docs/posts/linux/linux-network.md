@@ -46,9 +46,15 @@ traceroute -6 google.com
 
 ## Ports
 
-See bound ports
+See listening ports
 ```sh
+ss -l
 netstat -ntlp
+```
+
+Check if port is open from another machine
+```sh
+nc -zv 192.168.1.1 80
 ```
 
 ## Firewall rules

@@ -41,12 +41,10 @@ export class DigiLeanLogo extends HTMLElement {
                     --logo-top-left-color: #acd3ef; /* --digilean-blue-sky-light */
                     --logo-main-color: #1c93d3; /* --digilean-blue */
                     --logo-spinner-speed: 2s;
-                    --digilean-image-height: 100%;
-                    --digilean-image-width: 100%;
                 }
                 figure {
-                    height: var(--digilean-image-width);
-                    width: var(--digilean-image-width);
+                    height: var(--digilean-image-height, 3rem);
+                    width: var(--digilean-image-width, 3rem);
                     display: block;
                     margin-block-start: 0;
                     margin-block-end: 0;
