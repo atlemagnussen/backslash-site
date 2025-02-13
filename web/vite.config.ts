@@ -18,7 +18,8 @@ export default defineConfig({
         }  
     },
     build: {
-        outDir: buildOutput,  
+        outDir: buildOutput,
+        target: "modules",
         sourcemap: true,
         emptyOutDir: true,
     },
