@@ -93,3 +93,19 @@ Example for 10 minutes timeout
 ```sh
 lightning-cli close 976bbeb5f244cbc9b9669dc97620b459444f3712b8eebca0309c7292bfa5add7 600 
 ```
+
+
+
+## Enable REST API
+
+Add this to config
+
+```sh
+clnrest-port=9738
+clnrest-host=172.24.0.5
+```
+
+[Official docs](https://docs.corelightning.org/docs/rest)
+
+then
+[create rune](https://docs.corelightning.org/reference/createrune)
