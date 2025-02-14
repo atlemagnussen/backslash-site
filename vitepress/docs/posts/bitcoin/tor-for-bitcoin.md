@@ -14,7 +14,7 @@ tag:
 
 # TOR with bitcoin
 
-Running TOR might in many cases be simpler than NATing your ports around
+## Config
 
 ```sh
 SocksPort 0.0.0.0:9050
@@ -33,4 +33,10 @@ SocksPolicy reject *
 
 HashedControlPassword 16:2E145AA4CFF0FF4960D9B49DAB4D99ABBA6257FF00C84CE4732C46862D
 # CookieAuthentication 1
+```
+
+## Test
+
+```sh
+torsocks -a 192.168.1.2 -P 9050 curl https://api.ipify.org/?format=json
 ```
