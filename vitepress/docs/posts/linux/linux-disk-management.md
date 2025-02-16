@@ -209,13 +209,13 @@ sudo smartctl -a /dev/sdf
 Run short test
 
 ```sh
-sudo smartctl --test=short /dev/sdf
+sudo smartctl -t short -a /dev/sdf
 ```
 
-Run long test
+Run long test (type sata)
 
 ```sh
-sudo smartctl -d sat -a -t long /dev/sdf
+sudo smartctl -d sat -t long -a /dev/sdf
 ```
 
 Show capabilities and status for test
