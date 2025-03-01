@@ -28,16 +28,17 @@ lncli newaddress p2tr
 ```
 
 ```sh
-lncli newaddress p2tr
-```
-
-```sh
 lncli walletbalance
 # or
 lncli wallet addresses list
 ```
 
+## on chain
+
+lncli sendcoins --addr bc1p7l... --sweepall --label sweeping1
+
 ## Peers
 
 lncli listpeers
 
+##
