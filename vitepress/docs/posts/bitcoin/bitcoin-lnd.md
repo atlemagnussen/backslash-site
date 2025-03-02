@@ -41,4 +41,7 @@ lncli sendcoins --addr bc1p7l... --sweepall --label sweeping1
 
 lncli listpeers
 
-##
+## Mobile wallet
+
+how to view macaroon:
+xxd -p -c2000 admin.macaroon
