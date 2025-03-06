@@ -55,6 +55,24 @@ lightning-cli getinfo
 
 gives you number of channels and peers. If 0 you should start by connecting to at least one node
 
+```sh
+lightning-cli listaddresses
+```
+
+
+### new address
+
+```sh
+lightning-cli newaddr p2tr
+
+```
+
+### Send on-chain
+```sh
+lightning-cli withdraw bc1... all
+
+```
+
 ### on-chain funds
 
 ```sh
