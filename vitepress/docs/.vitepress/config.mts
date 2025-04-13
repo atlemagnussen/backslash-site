@@ -28,7 +28,10 @@ export default () => {
             }),
             socialLinks: [
                 { icon: "github", link: "https://github.com/atlemagnussen" }
-            ]
+            ],
+            footer: {
+                message: `Personal blog. <a href="privacy-policy">Privacy Policy</a>`,
+            }
         },
         cleanUrls: true,
         vue: {
