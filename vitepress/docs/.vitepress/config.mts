@@ -5,6 +5,10 @@ import { generateSidebar } from "vitepress-sidebar"
 // https://vitepress.dev/reference/site-config
 export default () => {
     return defineConfig({
+        lastUpdated: true,
+        sitemap: {
+            hostname: "https://blog.atle.guru"
+        },
         head: [
             ["link", { rel: "icon", type: "image/svg+xml", href: "/images/favicon.svg" }]
         ],
@@ -41,6 +45,6 @@ export default () => {
                 }
             }
         },
-        ignoreDeadLinks: true
+        ignoreDeadLinks: true,
     })
 }
