@@ -4,11 +4,6 @@
         .house {
             fill: rgb(240, 130, 20);
         }
-        @media (prefers-color-scheme: dark) {
-            .house {
-                fill: rgb(0, 255, 255);
-            }
-        }
     </style>
     <g class="house">
         <path d="M481.708,220.456l-228.8-204.6c-0.4-0.4-0.8-0.7-1.3-1c-5-4.8-13-5-18.3-0.3l-228.8,204.6c-5.6,5-6,13.5-1.1,19.1
