@@ -1,6 +1,7 @@
 {
     "hosting": [
         {
+            "cleanUrls": true,
             "target": "prod",
             "public": "docs/.vitepress/dist",
             "ignore": [
