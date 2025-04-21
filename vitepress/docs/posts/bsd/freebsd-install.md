@@ -13,9 +13,15 @@ tag:
 ---
 
 # FreeBSD install notes
-<div class="separator" style="clear: both; text-align: center;"><img border="0" src="https://storage.googleapis.com/atle-static/pics/freebsdgreen.png"/></div>
+
+<div class="separator" style="clear: both; text-align: center;">
+  <img border="0" src="https://storage.googleapis.com/atle-static/pics/freebsdgreen.png"/>
+</div>
+
 ## U2F / Yubikey
+
 Install this package:
+
 ```sh
 https://www.freshports.org/security/u2f-devd
 ```
