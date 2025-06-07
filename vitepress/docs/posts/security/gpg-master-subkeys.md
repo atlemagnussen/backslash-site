@@ -56,13 +56,13 @@ gpg --output master-key-backup.gpg --export-secret-keys (email or ID)
 
 Locate your key and edit it:
 
-```
+```sh
 gpg --edit-key (email or ID)
 ```
 
 Add new subkey
 
-```sh
+```gpg
 addkey
 ```
 
@@ -121,4 +121,48 @@ gpg --edit-key (email or ID)
 
 ```sh
 gpg --armor --export 889167D844EAD4C3
+```
+
+## Upload your public master key
+
+```sh
+gpg --keyserver hkps://keys.openpgp.org --send-keys 6CE1EA2A5439398B4389A4F8CF44D1B60C2E81E6
+```
+
+Verify and check wether you need to update
+```sh
+gpg --keyserver hkps://keys.openpgp.org --recv-keys 6CE1EA2A5439398B4389A4F8CF44D1B60C2E81E6
+```
+
+## Managing keys
+
+So after a while your subkeys will expire. Then you
+
+- create new subkeys
+- export and upload your public keys to keyserver
+
+## Edit keys
+
+If you made a mistake or something on master key subkey, you can edit them.
+
+First enter edit mode by master key like when you create new subkey
+
+Then list all
+
+```gpg
+list
+```
+
+Select key (0 is first key / master)
+
+```gpg
+key 1
+```
+
+Now selected key will be prefixed by *
+
+Now edit expire date
+
+```gpg
+expire
 ```
