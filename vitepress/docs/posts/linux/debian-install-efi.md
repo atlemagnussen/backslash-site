@@ -56,7 +56,11 @@ This means that the rest of `/boot` is in root partition, which is better since 
 
 Encrypting a partition
 
-install `cryptsetup`
+Install
+
+```sh
+sudo apt install cryptsetup systemd-cryptsetup
+```
 
 ## Encrypt partition before filesystem
 
@@ -105,6 +109,7 @@ edit `/etc/crypttab`
 
 ```config
 data_crypt      UUID=f3aae62d-32f7-4119-97c9-e23403cb37ba       none    luks,discard
+data_crypt UUID=f3aae62d-32f7-4119-97c9-e23403cb37ba none luks,discard
 ```
 
 Create folder `/data``
@@ -112,14 +117,14 @@ Create folder `/data``
 Edit `/etc/fstab`
 
 ```
-/dev/mapper/data_crypt   /data   btrfs   defaults,nofail,x-systemd.automount,compress=zstd,subvol=@data     0       0
+/dev/mapper/data_crypt   /data   btrfs   defaults,nofail,_netdev,compress=zstd,subvol=@data     0       0
 ```
 
 
 Inspect
 
 ```sh
-cryptsetup luksDump /dev/nvme1n1p4
+sudo cryptsetup luksDump /dev/nvme1n1p4
 ```
 
 Backup / restore header files
@@ -127,3 +132,22 @@ Backup / restore header files
 cryptsetup luksHeaderBackup /dev/nvme1n1p4 --header-backup-file luksHeader.bin
 #cryptsetup luksHeaderRestore /dev/nvme1n1p4 --header-backup-file luksHeader.bin
 ```
+
+
+## TPM2
+
+```sh
+sudo apt install clevis clevis-luks clevis-tpm2 clevis-initramfs tpm2-tools
+```
+
+```sh
+sudo clevis luks bind -d /dev/nvme0n1p4 tpm2 '{}'
+
+# verify
+sudo clevis luks list -d /dev/nvme0n1p4
+
+
+sudo update-initramfs -u -k all
+```
+
+Remember it might needs to be done when BIOS change
