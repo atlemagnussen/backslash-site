@@ -50,3 +50,67 @@ When you have all your partitions go ahead and when you come to partitioning sel
 Then you need to set the boot partition to mount point `/boot/efi`
 
 This means that the rest of `/boot` is in root partition, which is better since the Linux kernels then can use ext file system
+
+
+# LUKS
+
+Encrypting a partition
+
+install `cryptsetup`
+
+## Encrypt partition before filesystem
+
+```sh
+sudo cryptsetup luksFormat /dev/nvme1n1p4
+```
+
+Then open
+
+```sh
+sudo cryptsetup luksOpen /dev/nvme1n1p4 cryptroot
+```
+
+Then make file system
+
+```sh
+sudo mkfs.btrfs /dev/mapper/cryptroot
+```
+
+Now mount temporary it to work with it
+
+```sh
+mount /dev/mapper/cryptroot /mnt/shared/
+```
+
+```sh
+cd /mnt/shared
+sudo btrfs subvolume create @data
+sudo btrfs subvolume create @home
+
+etc...
+```
+
+Then unmount temporary mount 
+
+```sh
+sudo umount /mnt/shared
+```
+
+Find uid
+```sh
+sudo blkid /dev/nvme1n1p4
+```
+
+edit `/etc/crypttab`
+
+```config
+home_crypt      UUID=f3aae62d-32f7-4119-97c9-e23403cb37ba       none    luks,discard
+```
+
+Create folder `/data``
+
+Edit `/etc/fstab`
+
+```
+/dev/mapper/cryptroot   /data   btrfs   defaults,nofail,_netdev,compress=zstd,subvol=@data     0       0
+```
