@@ -67,19 +67,19 @@ sudo cryptsetup luksFormat /dev/nvme1n1p4
 Then open
 
 ```sh
-sudo cryptsetup luksOpen /dev/nvme1n1p4 cryptroot
+sudo cryptsetup luksOpen /dev/nvme1n1p4 data_crypt
 ```
 
 Then make file system
 
 ```sh
-sudo mkfs.btrfs /dev/mapper/cryptroot
+sudo mkfs.btrfs /dev/mapper/data_crypt
 ```
 
 Now mount temporary it to work with it
 
 ```sh
-mount /dev/mapper/cryptroot /mnt/shared/
+mount /dev/mapper/data_crypt /mnt/shared/
 ```
 
 ```sh
@@ -104,7 +104,7 @@ sudo blkid /dev/nvme1n1p4
 edit `/etc/crypttab`
 
 ```config
-home_crypt      UUID=f3aae62d-32f7-4119-97c9-e23403cb37ba       none    luks,discard
+data_crypt      UUID=f3aae62d-32f7-4119-97c9-e23403cb37ba       none    luks,discard
 ```
 
 Create folder `/data``
@@ -112,5 +112,18 @@ Create folder `/data``
 Edit `/etc/fstab`
 
 ```
-/dev/mapper/cryptroot   /data   btrfs   defaults,nofail,_netdev,compress=zstd,subvol=@data     0       0
+/dev/mapper/data_crypt   /data   btrfs   defaults,nofail,x-systemd.automount,compress=zstd,subvol=@data     0       0
+```
+
+
+Inspect
+
+```sh
+cryptsetup luksDump /dev/nvme1n1p4
+```
+
+Backup / restore header files
+```sh
+cryptsetup luksHeaderBackup /dev/nvme1n1p4 --header-backup-file luksHeader.bin
+#cryptsetup luksHeaderRestore /dev/nvme1n1p4 --header-backup-file luksHeader.bin
 ```
