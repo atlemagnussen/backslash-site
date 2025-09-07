@@ -180,3 +180,13 @@ sudo cryptsetup luksOpen /dev/sdc4 data_crypt
 
 sudo mount -t btrfs -o defaults,compress=zstd,subvol=@data /dev/mapper/data_crypt /data
 ```
+
+
+cryptsetup luksHeaderBackup /dev/sdc4 --header-backup-file luksHeader.bin
+
+Share nuget and npm packages
+
+.bashrc:
+export NUGET_PACKAGES="/data/.nuget/packages
+
+npm config set cache /data/.nuget --global
