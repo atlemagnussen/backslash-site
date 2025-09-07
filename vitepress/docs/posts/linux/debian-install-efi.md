@@ -116,8 +116,9 @@ Create folder `/data``
 
 Edit `/etc/fstab`
 
+nofail will not cause interruption of startup if something is wrong, can be removed once it is solid
 ```
-/dev/mapper/data_crypt   /data   btrfs   defaults,nofail,_netdev,compress=zstd,subvol=@data     0       0
+/dev/mapper/data_crypt   /data   btrfs   defaults,nofail,compress=zstd,subvol=@data     0       0
 ```
 
 
