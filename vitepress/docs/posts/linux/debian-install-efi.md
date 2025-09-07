@@ -52,6 +52,8 @@ Then you need to set the boot partition to mount point `/boot/efi`
 This means that the rest of `/boot` is in root partition, which is better since the Linux kernels then can use ext file system
 
 
+
+
 # LUKS
 
 Encrypting a partition
@@ -118,7 +120,7 @@ Edit `/etc/fstab`
 
 nofail will not cause interruption of startup if something is wrong, can be removed once it is solid
 ```
-/dev/mapper/data_crypt   /data   btrfs   defaults,nofail,compress=zstd,subvol=@data     0       0
+/dev/mapper/data_crypt   /data   btrfs   defaults,compress=zstd,subvol=@data     0       0
 ```
 
 
@@ -152,3 +154,29 @@ sudo update-initramfs -u -k all
 ```
 
 Remember it might needs to be done when BIOS change
+
+## WSL2 Mount
+
+PS Admin
+
+```ps
+# list
+wmic diskdrive list brief
+
+# mount whole drive when encrypted
+wsl --mount \\.\PHYSICALDRIVE1 --bare
+```
+
+WSL2
+
+Prerequisite
+
+```sh
+sudo apt install cryptsetup
+```
+
+```sh
+sudo cryptsetup luksOpen /dev/sdc4 data_crypt
+
+sudo mount -t btrfs -o defaults,compress=zstd,subvol=@data /dev/mapper/data_crypt /data
+```
