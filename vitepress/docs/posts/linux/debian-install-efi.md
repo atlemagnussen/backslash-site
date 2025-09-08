@@ -190,3 +190,13 @@ Share nuget and npm packages
 export NUGET_PACKAGES="/data/.nuget/packages
 
 npm config set cache /data/.nuget --global
+
+
+# Fonts
+
+```sh
+sudo apt install fonts-open-sans
+sudo apt install ttf-mscorefonts-installer # Microsoft fonts
+sudo fc-cache -fv
+
+```
