@@ -200,3 +200,16 @@ sudo apt install ttf-mscorefonts-installer # Microsoft fonts
 sudo fc-cache -fv
 
 ```
+
+## Remove Firefox languages
+
+```sh
+sudo apt remove firefox-esr-l10n-be firefox-esr-l10n-de firefox-esr-l10n-et firefox-esr-l10n-he firefox-esr-l10n-kk firefox-esr-l10n-nb-no firefox-esr-l10n-ro firefox-esr-l10n-ta \
+  firefox-esr-l10n-bg firefox-esr-l10n-el firefox-esr-l10n-eu firefox-esr-l10n-hi-in firefox-esr-l10n-km firefox-esr-l10n-ne-np firefox-esr-l10n-ru firefox-esr-l10n-te \
+  firefox-esr-l10n-bn firefox-esr-l10n-fa firefox-esr-l10n-hr firefox-esr-l10n-kn firefox-esr-l10n-nl firefox-esr-l10n-si firefox-esr-l10n-th \
+  firefox-esr-l10n-bs firefox-esr-l10n-eo firefox-esr-l10n-fi firefox-esr-l10n-hu firefox-esr-l10n-ko firefox-esr-l10n-nn-no firefox-esr-l10n-sk firefox-esr-l10n-tr \
+  firefox-esr-l10n-ca firefox-esr-l10n-es-ar firefox-esr-l10n-fr firefox-esr-l10n-id firefox-esr-l10n-lt firefox-esr-l10n-pa-in firefox-esr-l10n-sl firefox-esr-l10n-uk \
+  firefox-esr-l10n-cs firefox-esr-l10n-es-cl firefox-esr-l10n-ga-ie firefox-esr-l10n-is firefox-esr-l10n-lv firefox-esr-l10n-pl firefox-esr-l10n-sq firefox-esr-l10n-vi \
+  firefox-esr-l10n-ar firefox-esr-l10n-cy firefox-esr-l10n-es-es firefox-esr-l10n-gl firefox-esr-l10n-it firefox-esr-l10n-mk firefox-esr-l10n-pt-br firefox-esr-l10n-sr firefox-esr-l10n-zh-cn \
+  firefox-esr-l10n-ast firefox-esr-l10n-da firefox-esr-l10n-es-mx firefox-esr-l10n-gu-in firefox-esr-l10n-ja firefox-esr-l10n-mr firefox-esr-l10n-pt-pt firefox-esr-l10n-sv-se firefox-esr-l10n-zh-tw
+```
