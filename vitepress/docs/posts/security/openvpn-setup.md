@@ -181,7 +181,7 @@ server 10.8.0.0 255.255.255.0
 
 # Push client settings (modify to match your internal network)
 push "redirect-gateway def1 bypass-dhcp"  # Route all traffic through the VPN
-push "dhcp-option DNS 192.168.1.5" # Push your internal BIND server IP (replace 192.168.1.5 with your router/BIND IP)
+push "dhcp-option DNS 192.168.1.1" # Push your internal BIND server IP (replace 192.168.1.1 with your router/BIND IP)
 
 # Security and Stability
 user nobody
@@ -262,6 +262,18 @@ table ip nat {
 }
 
 ```
+
+### On your router
+
+You need to open 1194 from the WAN and NAT into Application server
+
+And probable create a route
+
+```sh
+sudo ip route add 10.8.0.0/24 via 192.168.1.2
+```
+
+If you have DNS bind9 you might need to fiddle some here as well
 
 # Phase 3: Client Key Generation
 
