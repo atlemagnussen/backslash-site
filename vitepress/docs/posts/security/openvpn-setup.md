@@ -1,42 +1,21 @@
-# Open VPN on my Raspberry PI
+---
+lang: en-US
+title: OpenVPN Server
+description: How to set up OpenVPN Server with easy-rsa
+date: 2025-09-26
+category:
+  - Audio
+tag:
+  - linux
+  - vpn
+  - openVPN
+  - Android
+---
+# OpenVPN Server
 
-[Comparitech article with pfs](https://www.comparitech.com/blog/vpn-privacy/build-linux-vpn-server/#gref)
-[Medium article with ln -s openssl1.0](https://medium.com/linode-cube/set-up-openvpn-on-ubuntu-16-04-for-safetys-sake-d73b7ec7e465)
+So just a guide based on explanations from Google Gemini
 
-## create new client - CA directory
-on atle-server
-./build-key newclient
-copy files newclient.crt, newclient.key and ca.key
-
-### Create ovpn file
-client
-;dev tap
-dev tun
-;dev-node MyTap
-;proto tcp
-proto udp
-remote atle.mine.nu 1194
-resolv-retry infinite
-nobind
-user nobody
-group nogroup
-persist-key
-persist-tun
-ca ca.crt
-cert newclient.crt
-key newclient.key
-ns-cert-type server
-comp-lzo
-verb 3
-
-
-# OpenVPN Take 2
-
-That's an honorable approach! You absolutely do not need to blindly trust a script. Doing the setup manually, especially the Public Key Infrastructure (PKI), is the best way to truly understand what's securing your connection.
-
-The OpenVPN Community Edition (CE) setup relies heavily on the Easy-RSA toolset to manage the certificates and keys.
-
-Here is a step-by-step guide focusing on the manual PKI setup and core server configuration on your Linux application box.
+The following would be a set of commands and expected responses
 
 ## Step 1 Install
 
@@ -235,7 +214,8 @@ sudo sysctl --system
 ```
 
 ## Step 9: Configure NAT/Masquerading
-On the Application Server, use iptables to allow traffic coming from the VPN subnet (10.8.0.0/24) to exit to your main LAN interface (e.g., eth0).
+On the Application Server, use nftables to allow traffic coming from the VPN subnet (10.8.0.0/24)
+to exit to your main LAN interface (e.g., enp1s0).
 
 ```sh
 # 1. Create the 'ip' family table named 'nat'
@@ -249,8 +229,8 @@ sudo nft add chain ip nat postrouting { type nat hook postrouting priority 100 \
 
 # 3. Add the Masquerade rule:
 #    - ip saddr 10.8.0.0/24: Matches traffic coming from the VPN tunnel subnet.
-#    - oifname "eth0": Matches packets exiting through your physical LAN interface.
-#    - masquerade: Changes the source IP address (saddr) to the IP of the "eth0" interface.
+#    - oifname "enp1s0": Matches packets exiting through your physical LAN interface.
+#    - masquerade: Changes the source IP address (saddr) to the IP of the "enp1s0" interface.
 sudo nft add rule ip nat postrouting ip saddr 10.8.0.0/24 oifname "enp1s0" masquerade
 
 # 4. Add the 'forward' chain to the 'filter' table (if it doesn't exist)
@@ -262,6 +242,8 @@ sudo nft add rule ip filter forward iifname "enp1s0" oifname "tun0" ct state rel
 # 6. Allow new traffic to flow from the VPN tunnel to the LAN
 sudo nft add rule ip filter forward iifname "tun0" oifname "enp1s0" accept
 ```
+
+Or the outcome of rules that can be put into nftables.conf
 
 ```conf
 table ip filter {
@@ -316,7 +298,6 @@ persist-tun
 remote-cert-tls server
 key-direction 1
 
-lz4-v2
 verb 3
 
 <ca>
