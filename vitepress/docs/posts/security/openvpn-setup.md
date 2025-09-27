@@ -312,10 +312,10 @@ verb 3
 
 2. Embed the Certificates: Copy the contents of the following files and paste them directly into the client's .ovpn file between the appropriate tags:
 
- - ca.crt → between <ca>...</ca>
- - mobile_phone.crt → between <cert>...</cert>
- - mobile_phone.key → between <key>...</key>
- - ta.key → between <tls-auth>...</tls-auth>
+ - `~./openvpn-pki/pki/ca.crt` → between <ca>...</ca>
+ - `~./openvpn-pki/pki/issued/mobile_phone.crt` → between <cert>...</cert>
+ - `~./openvpn-pki/pki/private/mobile_phone.key` → between <key>...</key>
+ - `~./openvpn-pki/ta.key` → between <tls-auth>...</tls-auth>
 
 2. Securely transfer the final .ovpn file to your Android phone.
 
