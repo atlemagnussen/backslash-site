@@ -337,3 +337,54 @@ Android Client App
 You will use the official OpenVPN Connect app (available on the Google Play Store). Just import the .ovpn file into the app, and you'll be ready to connect.
 
 
+## IPv6 bonus
+
+```conf
+# Allocate a private IPv6 subnet for the VPN tunnel (e.g., a /64 ULA block)
+server-ipv6 fd00:dead:beef:0::/64
+
+# Push the default IPv6 route to clients
+push "route-ipv6 ::/0"
+
+# Push IPv6 DNS servers (your own or google/cloudflare)
+push "dhcp-option DNS6 fda9:9699:faa:cda5::1"
+```
+
+nftables adjustment:
+
+```conf
+table inet filter {
+    chain forward {
+        type filter hook forward priority filter; policy drop;
+
+        # Allow VPN-bound traffic to pass through the server
+        iifname "tun0" oifname "enp1s0" ct state new,established,related accept
+        
+        # Allow return traffic for VPN clients
+        iifname "enp1s0" oifname "tun0" ct state established,related accept
+    }
+}
+table inet nat {
+        chain postrouting {
+                type nat hook postrouting priority srcnat; policy accept;
+                ip saddr 10.8.0.0/24 oifname "enp1s0" masquerade
+                ip6 saddr fd00:dead:beef:0::/64 oifname "enp1s0" masquerade
+        }
+}
+```
+
+reboot
+
+```sh
+sudo systemctl restart openvpn@server.service
+```
+
+
+Linux OpenVPN3 Client
+
+```sh
+openvpn3 config-import --config /myHome.ovpn --name MyHomeVPN --persistent
+openvpn3 session-start --config "MyHomeVPN"
+
+openvpn3 sessions-list
+```
