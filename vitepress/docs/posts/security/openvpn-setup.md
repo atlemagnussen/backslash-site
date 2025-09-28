@@ -279,7 +279,8 @@ If you have DNS bind9 you might need to fiddle some here as well
 
 For every mobile device, you need a unique key pair.
 
-Step 10: Generate Client Keys
+## Step 10: Generate Client Keys
+
 Run these steps back in your ~/openvpn-pki directory. Use a unique name for the client (e.g., mobile_phone).
 
 ```sh
@@ -324,10 +325,10 @@ verb 3
 
 2. Embed the Certificates: Copy the contents of the following files and paste them directly into the client's .ovpn file between the appropriate tags:
 
- - `~./openvpn-pki/pki/ca.crt` → between `<ca>...</ca>`
- - `~./openvpn-pki/pki/issued/mobile_phone.crt` → between `<cert>...</cert>`
- - `~./openvpn-pki/pki/private/mobile_phone.key` → between `<key>...</key>`
- - `~./openvpn-pki/ta.key` → between `<tls-auth>...</tls-auth>`
+ - `~/openvpn-pki/pki/ca.crt` → between `<ca>...</ca>`
+ - `~/openvpn-pki/pki/issued/mobile_phone.crt` → between `<cert>...</cert>`
+ - `~/openvpn-pki/pki/private/mobile_phone.key` → between `<key>...</key>`
+ - `~/openvpn-pki/ta.key` → between `<tls-auth>...</tls-auth>`
 
 2. Securely transfer the final .ovpn file to your Android phone.
 
