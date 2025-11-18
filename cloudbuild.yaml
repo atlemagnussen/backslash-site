@@ -7,6 +7,6 @@ steps:
   dir: vitepress
   entrypoint: npm
   args: [ 'run', 'build' ]
-- name: gcr.io/backslash-project/firebase
+- name: us-docker.pkg.dev/firebase-cli/us/firebase
   dir: vitepress
   args: [ 'deploy', '--project=backslash-project', '--only=hosting' ]
