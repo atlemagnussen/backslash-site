@@ -186,8 +186,14 @@ Generate cert
 ```sh
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt -config localhost.conf
 
+# new
+openssl req -x509 -newkey rsa:4096 -keyout server.key -out server.crt -days 365 -nodes -subj "/CN=localhost"
+
 # Convert cert to pfx
 openssl pkcs12 -export -out localhost.pfx -inkey localhost.key -in localhost.crt
+
+#new
+openssl pkcs12 -export -out server.pfx -inkey server.key -in server.crt -name "My Self-Signed Certificate" -passout pass:your_password
 
 # Verify
 openssl verify -CAfile localhost.crt localhost.crt
@@ -197,9 +203,20 @@ Trust cert
 ```sh
 # Copy
 sudo cp localhost.crt /usr/local/share/ca-certificates
+sudo cp server.crt /usr/local/share/ca-certificates/
+
 
 # Trust
 sudo update-ca-certificates
+
+ certutil -d sql:$HOME/.pki/nssdb -A -t "CP,CP," -n localhost -i /usr/local/share/ca-certificates/server.crt
+
+certutil \
+  -d sql:$HOME/.pki/nssdb \
+  -A \
+  -t "CP,CP," \
+  -n localhost \
+  -i /usr/local/share/ca-certificates/localhost-ca.crt
 
 # Verify exists
 sudo cat /etc/ssl/certs/localhost.pem
