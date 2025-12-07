@@ -29,3 +29,22 @@ Rotate logs
 ```sh
 sudo logrotate /etc/logrotate.conf
 ```
+
+## How to adjust power settings
+
+if value is `suspend` it will suspend when idle
+
+```sh
+gsettings get org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type
+```
+
+adjust it
+
+```sh
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
+```
+
+similar setting for battery
+```sh
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'nothing'
+```
