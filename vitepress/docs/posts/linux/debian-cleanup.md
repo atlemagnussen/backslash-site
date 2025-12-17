@@ -48,3 +48,20 @@ similar setting for battery
 ```sh
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'nothing'
 ```
+
+
+## Fix buzzing sound 
+
+Check 
+
+```
+cat /sys/module/snd_hda_intel/parameters/power_save
+```
+
+if larger than 0 it means the audio card goes to sleep and then speaker can buzzzz
+
+```
+sudoedit /sys/module/snd_hda_intel/parameters/power_save
+```
+
+and set to 0
