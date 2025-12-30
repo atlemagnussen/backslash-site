@@ -65,3 +65,15 @@ sudoedit /sys/module/snd_hda_intel/parameters/power_save
 ```
 
 and set to 0
+
+Make it permanent
+
+create new file
+```sh
+sudo vim /etc/modprobe.d/audio_disable_powersave.conf
+```
+
+content:
+```sh
+options snd_hda_intel power_save=0
+```
