@@ -53,3 +53,79 @@ After this have been installed you should be able to Auto scale
 On the top menu of the guest window
 
 View -> Scale Display -> Auto resize VM with window
+
+
+## Network
+
+When using `nftables` you need to apply this
+
+```nft
+#!/usr/sbin/nft -f
+
+flush ruleset
+
+table inet filter {
+  chain input {
+    type filter hook input priority 0;
+
+    # accept any localhost traffic
+    iif lo accept
+
+    # accept traffic originated from us
+    ct state established,related accept
+
+    # --- ADD THIS LINE FOR KVM ---
+    # Allows VMs to talk to the host (DHCP, DNS)
+    iifname "virbr0" accept
+
+    # activate the following line to accept common local services
+    tcp dport { 22, 80, 443, 8080, 3389 } ct state new accept
+    # udp dport { 53, 3389 } ct state new accept
+
+    # ICMPv6 packets which must not be dropped, see https://tools.ietf.org/html/rfc4890#section-4.4.1
+    meta nfproto ipv6 icmpv6 type { destination-unreachable, packet-too-big, time-exceeded, parameter-problem, echo-reply, echo-request, nd-router-solicit, nd-router-advert, nd-neighbor-solicit, nd-neighbor-advert, 148, 149 } accept
+    ip6 saddr fe80::/10 icmpv6 type { 130, 131, 132, 143, 151, 152, 153 } accept
+
+    # count and drop any other traffic
+    counter drop
+  }
+  
+  chain forward {
+	  type filter hook forward priority filter;
+
+	  # --- ADD THESE LINES FOR KVM ---
+    # Allow traffic coming FROM the VMs to the outside world
+    iifname "virbr0" accept
+    # Allow traffic coming FROM the outside world TO the VMs (replies)
+    oifname "virbr0" accept
+  }
+  chain output {
+	  type filter hook output priority filter;
+  }
+}
+```
+
+Then restart nftables
+
+```sh
+sudo systemctl status nftables.service
+```
+
+Edit libvrt network conf
+
+
+```sh
+sudo vim /etc/libvirt/network.conf 
+```
+insert 
+```conf
+firewall_backend = "nftables"
+```
+
+Then reboot
+
+```sh
+sudo systemctl restart virtnetworkd
+#or
+sudo systemctl restart libvirtd
+```
