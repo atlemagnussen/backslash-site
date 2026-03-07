@@ -14,6 +14,94 @@ tag:
 
 # Manage KVM QEMU virtual machines with virt
 
+## Create
+
+If you want network bridge, add this to interfaces
+
+```sh
+auto br0
+iface br0 inet dhcp
+    bridge_ports enp3s0  # Replace with your actual interface
+    bridge_stp off
+    bridge_fd 0
+```
+
+Or if you are using systemd network. Create these 3 files instead of the one you have
+
+`25-br0.netdev`
+
+```sh
+[NetDev]
+Name=br0
+Kind=bridge
+MACAddress=18:31:bf:25:1d:5f
+```
+
+`30-enp10s0.network`
+
+```sh
+[Match]
+Name=enp10s0
+
+[Network]
+Bridge=br0
+```
+
+`35-br0.network`
+
+```sh
+[Match]
+Name=br0
+
+[Network]
+DHCP=ipv4
+IPv6AcceptRA=yes
+Address=fda9:9699:faa:cda5::21/64
+
+[IPv6AcceptRA]
+UseDNS=yes
+UseDomains=yes
+```
+
+then run
+
+```sh
+sudo systemctl restart systemd-networkd
+```
+
+Create file
+```xml
+<network>
+  <name>host-bridge</name>
+  <forward mode="bridge"/>
+  <bridge name="br0"/>
+</network>
+```
+
+Run
+
+```sh
+sudo virsh net-define host-bridge.xml
+sudo virsh net-start host-bridge
+sudo virsh net-autostart host-bridge
+```
+
+Create
+
+```sh
+sudo virt-install \
+--name k8s-master-01 \
+--ram 4096 \
+--vcpus 2 \
+--disk path=/mnt/ssd1/vms/kvm/k8s-master-01.qcow2,size=20 \
+--os-variant debian13 \
+--network network=host-bridge \
+--graphics vnc \
+--console pty,target_type=serial \
+--location '/mnt/ssd1/vms/debian-13.3.0-amd64-netinst.iso' \
+--extra-args 'console=ttyS0,115200n8 serial'
+```
+
 ## VM Operations
 
 List all
