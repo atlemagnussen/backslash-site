@@ -92,7 +92,7 @@ sudo chmod 0644 /etc/qemu/bridge.conf
 sudo chmod u+s /usr/lib/qemu/qemu-bridge-helper
 ```
 
-virsh net-destroy host-bridge
+virsh net-destroy host-bridge to restart
 
 Create
 
@@ -110,6 +110,18 @@ virt-install \
 ```
 
 then you need something to connect to the session through VNC. Cockpit for example.
+
+After you have contact with the VM, enable console properly:
+
+```sh
+
+```sh
+sudo systemctl enable serial-getty@ttyS0.service
+sudo systemctl start serial-getty@ttyS0.service
+```
+
+virsh console k8s-master-01
+````
 
 ## VM Operations
 
