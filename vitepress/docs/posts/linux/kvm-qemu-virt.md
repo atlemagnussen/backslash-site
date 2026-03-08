@@ -114,14 +114,16 @@ then you need something to connect to the session through VNC. Cockpit for examp
 After you have contact with the VM, enable console properly:
 
 ```sh
-
-```sh
 sudo systemctl enable serial-getty@ttyS0.service
 sudo systemctl start serial-getty@ttyS0.service
 ```
 
+Then connect from the host with
+```sh
 virsh console k8s-master-01
-````
+```
+
+maybe you need to a Enter-keypress before it launches login prompt
 
 ## VM Operations
 
