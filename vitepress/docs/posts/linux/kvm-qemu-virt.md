@@ -105,9 +105,7 @@ virt-install \
 --os-variant debian13 \
 --network network=host-bridge \
 --graphics none \
---console pty,target_type=serial \
 --location 'https://deb.debian.org/debian/dists/trixie/main/installer-amd64/' \
---extra-args 'console=ttyS0,115200n8 serial'
 ```
 
 ## VM Operations
