@@ -106,7 +106,7 @@ virt-install \
 --network network=host-bridge \
 --graphics none \
 --console pty,target_type=serial \
---location '/mnt/ssd1/vms/debian-13.3.0-amd64-netinst.iso' \
+--location 'https://deb.debian.org/debian/dists/trixie/main/installer-amd64/' \
 --extra-args 'console=ttyS0,115200n8 serial'
 ```
 
