@@ -123,6 +123,12 @@ Then connect from the host with
 virsh console k8s-master-01
 ```
 
+Also add this to GRUB
+
+```sh
+GRUB_CMDLINE_LINUX_DEFAULT="console=tty0 console=ttyS0,115200n8"
+```
+
 maybe you need to a Enter-keypress before it launches login prompt
 
 ## VM Operations
