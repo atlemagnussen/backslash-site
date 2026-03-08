@@ -167,6 +167,15 @@ Clone machine
 virt-clone --original debian12 --name debian12-copy --file /var/lib/libvirt/images/debian12-copy.qcow2
 ```
 
+
+Snapshot
+```sh
+virsh snapshot-create-as --domain k8s-master-01 \
+    --name post_ingress_stable \
+    --description "Master node with working Ingress and MetalLB" \
+    --atomic
+```
+
 ## Network
 
 List
