@@ -104,9 +104,12 @@ virt-install \
 --disk path=/mnt/ssd1/vms/kvm/k8s-master-01.qcow2,size=20 \
 --os-variant debian13 \
 --network network=host-bridge \
---graphics none \
+--graphics vnc \
 --location 'https://deb.debian.org/debian/dists/trixie/main/installer-amd64/' \
+--virt-type=kvm 
 ```
+
+then you need something to connect to the session through VNC. Cockpit for example.
 
 ## VM Operations
 
