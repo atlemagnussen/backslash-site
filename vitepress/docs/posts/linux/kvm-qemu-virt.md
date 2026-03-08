@@ -84,19 +84,27 @@ Run
 sudo virsh net-define host-bridge.xml
 sudo virsh net-start host-bridge
 sudo virsh net-autostart host-bridge
+
+sudo mkdir -p /etc/qemu
+echo "allow br0" | sudo tee /etc/qemu/bridge.conf
+sudo chmod 0644 /etc/qemu/bridge.conf
+
+sudo chmod u+s /usr/lib/qemu/qemu-bridge-helper
 ```
+
+virsh net-destroy host-bridge
 
 Create
 
 ```sh
-sudo virt-install \
+virt-install \
 --name k8s-master-01 \
 --ram 4096 \
 --vcpus 2 \
 --disk path=/mnt/ssd1/vms/kvm/k8s-master-01.qcow2,size=20 \
 --os-variant debian13 \
 --network network=host-bridge \
---graphics vnc \
+--graphics none \
 --console pty,target_type=serial \
 --location '/mnt/ssd1/vms/debian-13.3.0-amd64-netinst.iso' \
 --extra-args 'console=ttyS0,115200n8 serial'
