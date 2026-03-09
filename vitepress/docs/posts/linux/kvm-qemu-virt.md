@@ -14,9 +14,20 @@ tag:
 
 # Manage KVM QEMU virtual machines with virt
 
+## Prerequisite
+
+sudo apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon
+
+sudo adduser $USER libvirt
+sudo adduser $USER kvm
+
+
 ## Create
 
-If you want network bridge, add this to interfaces
+### Choose network type
+
+If you want network bridge, this will make your VMs a part of your LAN and not NAT through your hosy
+
 
 ```sh
 auto br0
@@ -26,7 +37,7 @@ iface br0 inet dhcp
     bridge_fd 0
 ```
 
-Or if you are using systemd network. Create these 3 files instead of the one you have
+Or if you are using systemd network. Create these 3 files in `/etc/systemd/network/`
 
 `25-br0.netdev`
 
@@ -69,7 +80,8 @@ then run
 sudo systemctl restart systemd-networkd
 ```
 
-Create file
+Create file `host-bridge.xml`
+
 ```xml
 <network>
   <name>host-bridge</name>
