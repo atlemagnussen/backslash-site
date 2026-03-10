@@ -397,3 +397,103 @@ kubectl get certificate
 
 dig @1.1.1.1 TXT _acme-challenge.nginx.your.domain
 
+
+## Scale
+
+kubectl scale deployment nginx-test --replicas=3
+
+## persistense
+
+on host
+
+```sh
+qemu-img create -f qcow2 /mnt/ssd1/vms/kvm/k8s-worker-01-data.qcow2 20G
+
+virsh attach-disk k8s-worker-01 \
+--source /mnt/ssd1/vms/kvm/k8s-worker-01-data.qcow2 \
+--target vdb \
+--driver qemu \
+--subdriver qcow2 \
+--persistent
+```
+
+on VM
+
+```sh
+sudo fdisk /dev/vdb
+sudo mkfs.ext4 /dev/vdb1
+```
+
+fstab
+/dev/vdb1       /data       ext4    defaults        0       2
+
+
+on master
+```yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: local-storage
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+```
+
+on worker
+
+```sh
+sudo mkdir -p /data/k8s/local-pv
+sudo chmod 0777 /data/k8s/local-pv
+```
+
+on master
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-pv-worker2
+spec:
+  capacity:
+    storage: 20Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-storage
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: /data/k8s/local-pv
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - k8s-worker-02
+```
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: app-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-storage
+  resources:
+    requests:
+      storage: 10Gi
+```
+
+
+
+virsh detach-disk --domain k8s-worker-01 --target vdb --live
+virsh detach-disk k8s-worker-01 vdb --config
+
+
+## Disconnect node
+
+kubectl cordon k8s-worker-03
+kubectl drain k8s-worker-03 --ignore-daemonsets --delete-emptydir-data
+kubectl delete node k8s-worker-03
