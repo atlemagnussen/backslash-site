@@ -259,6 +259,23 @@ Edit /etc/exports:
 
 /mnt/md1/bak/k8s-cluster1 192.168.1.0/24(rw,sync,no_subtree_check,no_root_squash)
 
+change /etc/nfs.conf
+```sh
+[mountd]
+port=32767
+```
+
+sudo systemctl restart nfs-kernel-server
+
+open firewall
+
+```sh
+tcp dport { 111, 2049, 32767 } accept
+udp dport { 111, 2049, 32767 } accept
+```
+
 ## Client
 
 sudo apt install nfs-common -y
+
+sudo showmount -e 192.168.1.21
