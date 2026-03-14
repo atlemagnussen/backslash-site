@@ -201,6 +201,18 @@ Start network, must be done before the VM can start
 sudo virsh net-start default
 ```
 
+Stop network
+
+```sh
+sudo virsh net-destroy <network-name>
+```
+
+Delete
+
+```sh
+sudo virsh net-undefine <network-name>
+```
+
 Network info
 ```sh
 virsh net-info default
@@ -234,3 +246,19 @@ Inside the host you mount it like this
 #virtiofs
 mount_tag_ssd1 /mnt/ssd1 virtiofs rw,relatime       0       0
 ```
+
+
+# NFS
+
+## Server
+sudo apt install nfs-kernel-server -y
+
+Edit /etc/exports:
+
+/mnt/your-raid-path  192.168.1.0/24(rw,sync,no_subtree_check,no_root_squash)
+
+/mnt/md1/bak/k8s-cluster1 192.168.1.0/24(rw,sync,no_subtree_check,no_root_squash)
+
+## Client
+
+sudo apt install nfs-common -y
