@@ -236,6 +236,10 @@ This is in virt manager gui
 Typical error message:
 `Unable to find a satisfying virtiofsd`
 
+make sure to install
+
+sudo apt install virtiofsd
+
 Add the path inside the xml right under driver tag:
 ```xml
   <binary path="/run/current-system/sw/bin/virtiofsd"/>
@@ -245,6 +249,27 @@ Inside the host you mount it like this
 ```sh
 #virtiofs
 mount_tag_ssd1 /mnt/ssd1 virtiofs rw,relatime       0       0
+```
+
+
+via virsh edit
+
+```sh
+<domain type='kvm'>
+  ...
+  <memoryBacking>
+    <access mode='shared'/>
+  </memoryBacking>
+  ...
+  <devices>
+    <filesystem type='mount' accessmode='passthrough'>
+      <driver type='virtiofs'/>
+      <source dir='/mnt/raid1/your_folder'/>
+      <target dir='my_raid_mount'/>
+    </filesystem>
+    ...
+  </devices>
+</domain>
 ```
 
 
