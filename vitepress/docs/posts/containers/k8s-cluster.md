@@ -14,11 +14,11 @@ tag:
 
 # K8s cluster
 
-Create a cluster on VMs using virt. See article on that. 
+Create a cluster on VMs using libvirt. See article on initial [libvirt/qemu](../linux/kvm-qemu-virt.md)
 
 ## Spawning VMs
 
-This article assumes you have a relative clean Debian VM that will serve eventually as one of 3 nodes. So we start here by cloning 2 times into 3 total VMs.
+This article is written on the basis of a relative clean Debian VM that will serve eventually as one of 3 nodes. So start by cloning 2 times into 3 total VMs.
 
 Create the clones
 
@@ -50,9 +50,19 @@ sudo swapoff -a
 sudo sed -i '/swap/s/^/#/' /etc/fstab
 ```
 
-4. Enable nftables (nftables is default from k8s 1.33)
+4. Enable nftables 
 
-Example of `/etc/nftables.conf`
+nftables is default from k8s 1.33. So you should enable it so kubernetes can add its stuff.
+Unless you might end up with kubernetes starting to awaken iptables
+
+Leave the default nftsbles file if want no firewall restrictions to begin with
+
+```sh
+sudo systemctl enable --now nftables
+sudo systemctl start nftables
+```
+
+Example of `/etc/nftables.conf` with some rules
 
 ```sh
 #!/usr/sbin/nft -f
@@ -85,11 +95,6 @@ table inet filter {
 }
 ```
 
-```sh
-sudo systemctl enable --now nftables
-sudo systemctl start nftables
-```
-
 5. Make sure your nodes has STATIC IPs. 
 
 or else you need to tear the whole thing down later probably
@@ -120,7 +125,7 @@ sudo apt update
 sudo apt install containerd.io
 ```
 
-#### config containerD
+#### config container.io
 
 ```sh
 containerd config default | sudo tee /etc/containerd/config.toml > /dev/null
@@ -133,7 +138,6 @@ sudo systemctl restart containerd
 #### K8s
 
 ```sh
-
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.35/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 
 echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.35/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
@@ -176,7 +180,9 @@ sudo sysctl net.bridge.bridge-nf-call-iptables net.bridge.bridge-nf-call-ip6tabl
 
 all should be 1
 
-## Initialze (only master node)
+## Initialize
+
+(only master node)
 
 ```sh
 sudo kubeadm init --apiserver-advertise-address=192.168.1.190 --pod-network-cidr=10.244.0.0/16
@@ -217,7 +223,7 @@ kubeadm join 192.168.1.190:6443 --token x \
 save the command from this output and use it to join worker nodes later
 
 
-## Verify
+## Verify first time
 
 ```sh
 kubectl get nodes
@@ -230,7 +236,20 @@ NAME            STATUS     ROLES           AGE     VERSION
 k8s-master-01   NotReady   control-plane   3m33s   v1.35.2
 ```
 
-## Calico (only master node)
+Status NotReady is fine. Now is an OK time to join in a worker node if its ready. Can also add it any time later
+
+```sh
+kubeadm join 192.168.1.190:6443 --token x \
+        --discovery-token-ca-cert-hash sha256:x
+```
+
+## Network
+
+[Container Network Interface (CNI)](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/) must be added before the cluster actually can do anything useful besides existing
+
+(only master node)
+
+### Calico 
 
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.30.0/manifests/calico.yaml
@@ -238,7 +257,13 @@ kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.30.0/
 kubectl set env daemonset/calico-node  -n kube-system IP_AUTODETECTION_METHOD=interface=enp1s0
 ```
 
-## Test app
+::: tip
+
+After CNI its a really good time to bootstrap [GitOps](https://opengitops.dev) with for example [FluxCD](https://fluxcd.io/flux/installation/bootstrap/) 
+
+:::
+
+## Verify 2: Test app
 
 ```sh
 kubectl create deployment nginx-test --image=nginx --replicas=2
@@ -248,7 +273,7 @@ kubectl get svc nginx-test # get port and test in browser
 
 ```
 
-## MetalB
+## Load balancer
 
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.15.3/config/manifests/metallb-native.yaml
 
@@ -320,10 +345,12 @@ kubectl apply -f nginx-ingress.yaml
 
 ## snapshot master node
 
+```sh
 virsh snapshot-create-as --domain k8s-master-01 \
     --name post_ingress_stable \
     --description "Master node with working Ingress and MetalLB" \
     --atomic
+```
 
 ## TLS
 
@@ -486,14 +513,17 @@ spec:
       storage: 10Gi
 ```
 
+To remove disk
 
-
+```sh
 virsh detach-disk --domain k8s-worker-01 --target vdb --live
 virsh detach-disk k8s-worker-01 vdb --config
-
+```
 
 ## Disconnect node
 
+```sh
 kubectl cordon k8s-worker-03
 kubectl drain k8s-worker-03 --ignore-daemonsets --delete-emptydir-data
 kubectl delete node k8s-worker-03
+```
