@@ -149,6 +149,12 @@ Also add this to GRUB
 GRUB_CMDLINE_LINUX_DEFAULT="console=tty0 console=ttyS0,115200n8"
 ```
 
+## guest agents
+
+```sh
+sudo apt install -y qemu-guest-agent spice-vdagentd
+```
+
 maybe you need to a Enter-keypress before it launches login prompt
 
 ## VM Operations
@@ -282,6 +288,23 @@ via virsh edit
 </domain>
 ```
 
+## Extend size of existing disk
+
+
+Host:
+
+```sh
+sudo qemu-img resize debian-vm.qcow2 +20G
+virsh blockresize debian-vm vda 30G
+```
+
+inside VM:
+
+```sh
+sudo apt install cloud-guest-utils -y
+sudo growpart /dev/vda 1
+sudo resize2fs /dev/sda1
+```
 
 # NFS
 
