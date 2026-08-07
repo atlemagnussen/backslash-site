@@ -49,6 +49,21 @@ similar setting for battery
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'nothing'
 ```
 
+# Systemd sleep
+
+[Documented here](https://wiki.debian.org/Suspend)
+
+```sh
+sudo mkdir -p /etc/systemd/sleep.conf.d
+sudo bash -c 'cat <<EOF > /etc/systemd/sleep.conf.d/nosuspend.conf
+[Sleep]
+AllowSuspend=no
+AllowHibernation=no
+AllowSuspendThenHibernate=no
+AllowHybridSleep=no
+EOF'
+```
+
 
 ## Fix buzzing sound 
 
