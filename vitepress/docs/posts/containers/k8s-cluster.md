@@ -11,7 +11,6 @@ tag:
   - containers
 ---
 
-
 # K8s cluster
 
 Create a cluster on VMs using libvirt. See article on initial [libvirt/qemu](../linux/kvm-qemu-virt.md)
