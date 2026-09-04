@@ -35,3 +35,10 @@ sudo kubeadm reset -f
 sudo apt purge -y kubeadm kubectl kubelet kubernetes-cni
 sudo apt autoremove -y
 ```
+
+## Clean data
+
+```sh
+sudo rm -rf /etc/cni /etc/kubernetes /var/lib/kubelet /var/lib/etcd /var/run/kubernetes ~/.kube
+
+```
