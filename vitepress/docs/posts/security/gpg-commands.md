@@ -133,3 +133,9 @@ Verify that your friend created the message
 ```sh
 gpg --verify file.txt.sha256sum.sig
 ```
+
+Verify downloads
+
+```sh
+gpg --keyserver-options auto-key-retrieve --verify archlinux-2026.09.01-x86_64.iso.sig archlinux-2026.09.01-x86_64.iso
+```
