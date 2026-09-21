@@ -16,11 +16,16 @@ tag:
 
 ## Prerequisite
 
+```sh
 sudo apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon
+```
 
+Add user to these groups to not have to use sudo/root for managing machines
+
+```sh
 sudo adduser $USER libvirt
 sudo adduser $USER kvm
-
+```
 
 ## Create
 
@@ -90,12 +95,11 @@ Create file `host-bridge.xml`
 </network>
 ```
 
-Run
 
 ```sh
-sudo virsh net-define host-bridge.xml
-sudo virsh net-start host-bridge
-sudo virsh net-autostart host-bridge
+virsh net-define host-bridge.xml
+virsh net-start host-bridge
+virsh net-autostart host-bridge
 
 sudo mkdir -p /etc/qemu
 echo "allow br0" | sudo tee /etc/qemu/bridge.conf
@@ -104,8 +108,12 @@ sudo chmod 0644 /etc/qemu/bridge.conf
 sudo chmod u+s /usr/lib/qemu/qemu-bridge-helper
 ```
 
-virsh net-destroy host-bridge to restart
+To stop/delete to start from scratch
 
+```sh
+virsh net-destroy host-bridge
+virsh net-undefine host-bridge
+```
 Create
 
 ```sh
@@ -141,6 +149,12 @@ Also add this to GRUB
 GRUB_CMDLINE_LINUX_DEFAULT="console=tty0 console=ttyS0,115200n8"
 ```
 
+## guest agents
+
+```sh
+sudo apt install -y qemu-guest-agent spice-vdagentd
+```
+
 maybe you need to a Enter-keypress before it launches login prompt
 
 ## VM Operations
@@ -148,30 +162,30 @@ maybe you need to a Enter-keypress before it launches login prompt
 List all
 
 ```sh
-sudo virsh list --all
+virsh list --all
 ```
 
 Start machine
 
 ```sh
-sudo virsh start debian12
+virsh start debian12
 ```
 
 Edit machine
 ```sh
-sudo virsh edit debian12
+virsh edit debian12
 ```
 
 Power off machine
 
 ```sh
-sudo virsh shutdown debian12
+virsh shutdown debian12
 ```
 
 Force shut power off
 
 ```sh
-sudo virsh destroy debian12
+virsh destroy debian12
 ```
 
 Clone machine
@@ -193,12 +207,24 @@ virsh snapshot-create-as --domain k8s-master-01 \
 List
 
 ```sh
-sudo virsh net-list --all
+virsh net-list --all
 ```
 
 Start network, must be done before the VM can start
 ```sh
-sudo virsh net-start default
+virsh net-start default
+```
+
+Stop network
+
+```sh
+virsh net-destroy <network-name>
+```
+
+Delete
+
+```sh
+virsh net-undefine <network-name>
 ```
 
 Network info
@@ -224,13 +250,90 @@ This is in virt manager gui
 Typical error message:
 `Unable to find a satisfying virtiofsd`
 
+make sure to install virtiofsd
+
+```sh
+sudo apt install virtiofsd
+```
+
 Add the path inside the xml right under driver tag:
 ```xml
   <binary path="/run/current-system/sw/bin/virtiofsd"/>
 ```
 
-Inside the host you mount it like this
+Inside the VM you mount in `fstab`
 ```sh
 #virtiofs
 mount_tag_ssd1 /mnt/ssd1 virtiofs rw,relatime       0       0
 ```
+
+
+via virsh edit
+
+```sh
+<domain type='kvm'>
+  ...
+  <memoryBacking>
+    <access mode='shared'/>
+  </memoryBacking>
+  ...
+  <devices>
+    <filesystem type='mount' accessmode='passthrough'>
+      <driver type='virtiofs'/>
+      <source dir='/mnt/raid1/your_folder'/>
+      <target dir='my_raid_mount'/>
+    </filesystem>
+    ...
+  </devices>
+</domain>
+```
+
+## Extend size of existing disk
+
+
+Host:
+
+```sh
+sudo qemu-img resize debian-vm.qcow2 +20G
+virsh blockresize debian-vm vda 30G
+```
+
+inside VM:
+
+```sh
+sudo apt install cloud-guest-utils -y
+sudo growpart /dev/vda 1
+sudo resize2fs /dev/sda1
+```
+
+# NFS
+
+## Server
+sudo apt install nfs-kernel-server -y
+
+Edit /etc/exports:
+
+/mnt/your-raid-path  192.168.1.0/24(rw,sync,no_subtree_check,no_root_squash)
+
+/mnt/md1/bak/k8s-cluster1 192.168.1.0/24(rw,sync,no_subtree_check,no_root_squash)
+
+change /etc/nfs.conf
+```sh
+[mountd]
+port=32767
+```
+
+sudo systemctl restart nfs-kernel-server
+
+open firewall
+
+```sh
+tcp dport { 111, 2049, 32767 } accept
+udp dport { 111, 2049, 32767 } accept
+```
+
+## Client
+
+sudo apt install nfs-common -y
+
+sudo showmount -e 192.168.1.21
