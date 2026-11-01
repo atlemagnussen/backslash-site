@@ -89,6 +89,23 @@ Go to [1ML](https://1ml.com/) and find a suitable node
 lightning-cli connect 0217890e3aad8d35bc054f43acc00084b25229ecff0ab68debd82883ad65ee8266@23.237.77.11:9735
 ```
 
+### Open channel example
+
+```sh
+# connect (this is bitrefill A node)
+lightning-cli connect 030bd936b47a53af5eba629529dff8b2222aa9ae0ed2c12476b2bcf28bc996b8a6@54.155.41.207:9735
+
+# verify
+lightning-cli listpeers 030bd936b47a53af5eba629529dff8b2222aa9ae0ed2c12476b2bcf28bc996b8a6
+
+# fund
+
+lightning-cli fundchannel id=030bd936b47a53af5eba629529dff8b2222aa9ae0ed2c12476b2bcf28bc996b8a6 amount=3000000sat feerate=normal
+```
+
+then take the https://mempool.space/tx/[txid] to follow the tx
+
+
 ### List peers
 
 ```sh
