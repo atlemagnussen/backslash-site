@@ -158,3 +158,11 @@ clnrest-host=172.24.0.5
 
 then
 [create rune](https://docs.corelightning.org/reference/createrune)
+
+## Sign message with cln onchain
+
+must be segwit and not taprot
+
+```sh
+lightning-cli signmessagewithkey "I am verifying ownership of the wallet address" bc1q
+```
