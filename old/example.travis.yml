@@ -1,5 +1,0 @@
-deploy:
-  provider: firebase
-  token:
-    secure: "YOUR ENCRYPTED token"
-  message: "your message"

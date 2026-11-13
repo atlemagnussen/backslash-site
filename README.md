@@ -1,52 +1,30 @@
 # Backslash-site
-[![Build Status](https://travis-ci.org/atlemagnussen/backslash-site.svg?branch=master)](https://travis-ci.org/atlemagnussen/backslash-site)
 
-## Credits
-- [Simpleicons](https://simpleicons.org) for clean svg icon
+Source for my blog.
 
-Source code for my [kind of blog](https://www.backslash.site)
+## Layout
 
-## Dependencies
+```
+content/          # site-agnostic markdown — the actual blog
+  posts/<topic>/  # published posts (frontmatter: title, date, description, tag...)
+  drafts/         # unpublished, not built
+  pages/          # standalone pages (privacy policy)
+vitepress/        # current site generator
+  docs/posts            -> ../../content/posts (symlink)
+  docs/privacy-policy.md -> ../../content/pages/privacy-policy.md (symlink)
+```
+
+Content is kept out of any generator's folder so different site systems can be tried against the same markdown.
+
+## VitePress
 
 ```sh
+cd vitepress
 npm install
+npm start        # dev server
+npm run build    # -> docs/.vitepress/dist
 ```
 
-## Start debug
-```sh
-npm start
-```
+## Deploy
 
-## Deployment CI with Travis
-[Travis install and setup](./TRAVIS.md)
-
-## Deploy AWS
-requires AWS SDK and aws init with IAM user, rights to S3 and keys  
-see [S3-SSL](./S3SSL.md) for how to use letsencrypt certbot with S3 and CloudFront
-```sh
-npm run build
-
-aws s3 sync dist/ s3://www.backslash.site
-
-aws cloudfront create-invalidation --distribution-id E1P60CBE5Z918O  --paths /index.html /bundle.js
-```
-
-## AWS SDK setup first time
-```sh
-npm install aws-sdk -g
-```
-
-## Deploy Firebase
-```sh
-firebase deploy
-```
-
-
-background:
-
-https://codepen.io/agoodwin/pen/NMJoER
-https://codepen.io/shubniggurath/pen/oPGyQw
-https://codepen.io/tonkotsuboy/pen/zJbKNN
-https://codepen.io/hylobates-lar/pen/bGEQXgm
-https://codepen.io/sarazond/pen/LYGbwj
-https://codepen.io/hylobates-lar/pen/qBbQeON
+Google Cloud Build (`cloudbuild.yaml`) builds `vitepress/` and deploys to Firebase Hosting (`backslash-project`).

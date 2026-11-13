@@ -1,9 +1,0 @@
-article .token.operator {
-    background: none;
-}
-article code[class*="language-"] {
-    color: var(--default-lang-color);
-}
-article code.language-bash {
-   color: var(--cyan-dark);
-}

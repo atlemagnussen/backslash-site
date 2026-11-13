@@ -38,6 +38,11 @@ export default () => {
             }
         },
         cleanUrls: true,
+        vite: {
+            // content lives in ../../content and is symlinked into docs/.
+            // Keep symlinked paths so markdown resolves deps from vitepress/node_modules.
+            resolve: { preserveSymlinks: true }
+        },
         vue: {
             template: {
                 compilerOptions: {
