@@ -14,6 +14,8 @@ tag:
 
 # Linux mount smb
 
+How to share a folder with Samba and mount the share on another Linux machine.
+
 ## Set up
 ### Config file
 Set up file smb.conf

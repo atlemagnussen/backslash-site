@@ -14,6 +14,8 @@ tag:
 
 # Arch Linux on MacBook Air - 2013
 
+How I installed Arch Linux on a 2013 MacBook Air, and what needed fixing afterwards.
+
 ## Resources
 - [Github user pandeiro's arch on air guide](https://github.com/pandeiro/arch-on-air)
 - [Medium user @philpl article on running Arch Linux on Macbook](https://medium.com/@philpl/arch-linux-running-on-my-macbook-2ea525ebefe3)

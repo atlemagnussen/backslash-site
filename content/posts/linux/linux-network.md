@@ -13,6 +13,8 @@ tag:
 
 # Linux Network 
 
+Commands to inspect network setup on Linux: addresses, routes, open ports and firewall rules.
+
 ## IP addresses
 
 List all interfaces with IPs

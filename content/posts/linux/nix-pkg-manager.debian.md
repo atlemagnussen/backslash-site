@@ -14,6 +14,8 @@ tag:
 
 # Nix package manager
 
+How to install the Nix package manager on Debian and try packages in a throwaway nix-shell.
+
 ## Install On Debian 
 
 ```sh

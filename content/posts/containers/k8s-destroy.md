@@ -14,6 +14,8 @@ tag:
 
 # Destroy a cluster
 
+How to take a kubeadm cluster down cleanly: drain and delete the workers, then reset the control plane.
+
 ## Drain workers
 ```sh
 kubectl drain k3w1 --ignore-daemonsets

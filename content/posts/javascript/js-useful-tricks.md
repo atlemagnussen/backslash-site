@@ -12,6 +12,8 @@ tag:
 
 # Javascript useful things
 
+Small standard JavaScript functions that I tend to forget, with links to MDN.
+
 ## Clone and merge objects
 [MDN Object assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
 ```js

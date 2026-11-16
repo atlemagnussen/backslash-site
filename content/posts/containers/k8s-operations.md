@@ -1,8 +1,11 @@
 ---
 date: 2026-03-11
+description: "Everyday kubectl commands for a running cluster: shell into a pod, scale, export, stop and debug."
 ---
 
 # k8s operations
+
+Everyday kubectl commands for a running cluster: shell into a pod, scale, export, stop and debug.
 
 ## Interactive shell
 

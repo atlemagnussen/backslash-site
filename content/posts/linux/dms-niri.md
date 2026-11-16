@@ -15,6 +15,8 @@ tag:
 
 # DMS Niri
 
+Notes from installing DMS (DankLinux) with the Niri compositor, and the small fixes it needed afterwards.
+
 ## Key ring
 
 You need a keyring for VSCode and similar

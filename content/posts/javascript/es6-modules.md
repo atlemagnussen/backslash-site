@@ -11,6 +11,9 @@ tag:
 ---
 
 # A brief summary and how to use ECMAscript modules in browser
+
+How to use ES6 modules directly in the browser, without a bundler.
+
 ```html
 <script type="module"></script>
 ```

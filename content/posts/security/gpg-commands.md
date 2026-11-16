@@ -15,6 +15,8 @@ tag:
 
 # GPG encryption commands
 
+The GPG commands I use most: create, export and import keys, set trust, and encrypt and decrypt files.
+
 ## Create
 
 The simple command

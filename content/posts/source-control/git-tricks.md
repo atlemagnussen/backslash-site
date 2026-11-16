@@ -13,6 +13,8 @@ tag:
 
 # GIT tricks
 
+Git commands that are useful, but not used often enough for me to remember them.
+
 ## Rebase squashing
 ```sh
 git rebase -i e417ef2d # commit to the last commit before the ones you want to squash

@@ -14,6 +14,8 @@ tag:
 
 # Bitcoin recover keys
 
+How to extract the private keys from an old Bitcoin Wallet (Android) backup, now that the app can no longer sync.
+
 ## Bitcoin Wallet (Android)
 
 Good old "Bitcoin Wallet" is not syncing with servers anymore. So you will not be able to broadcast TX from that app.

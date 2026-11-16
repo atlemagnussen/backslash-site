@@ -14,6 +14,8 @@ tag:
 
 # Manage KVM QEMU virtual machines with virt
 
+How to create and manage KVM/QEMU virtual machines from the command line with virt-install and virsh.
+
 ## Prerequisite
 
 ```sh

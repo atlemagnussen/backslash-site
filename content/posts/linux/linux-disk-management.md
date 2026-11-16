@@ -16,6 +16,8 @@ tag:
 
 # Linux disk management
 
+Partitioning, formatting and software RAID on Linux, with the output to expect at each step.
+
 ## Use UUID in fstab file
 
 ### Find disks UUID

@@ -14,6 +14,8 @@ tag:
 
 # TOR with bitcoin
 
+A Tor config that opens a SOCKS proxy, so Bitcoin services on the local network can route their traffic through Tor.
+
 ## Config
 
 ```sh

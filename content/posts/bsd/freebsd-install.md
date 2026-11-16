@@ -14,6 +14,8 @@ tag:
 
 # FreeBSD install notes
 
+Notes to make a fresh FreeBSD install usable as a desktop: U2F keys, Xorg with Nvidia, fonts and bash.
+
 ## U2F / Yubikey
 
 Install this package:

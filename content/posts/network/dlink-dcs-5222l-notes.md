@@ -11,6 +11,8 @@ tag:
 
 # D-Link DCS-5222L notes on how to upgrade and general usage
 
+How to upgrade the firmware on a D-Link DCS-5222L camera, plus notes on general use.
+
 ## Upgrade firmware
 
 ### Check current version
