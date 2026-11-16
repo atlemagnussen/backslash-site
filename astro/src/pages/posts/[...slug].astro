@@ -1,6 +1,7 @@
 ---
 import { render } from "astro:content"
 import Base from "../../layouts/Base.astro"
+import CategoryIcon from "../../components/CategoryIcon.astro"
 import { getPosts, tree, fmtDate, url, type Post } from "../../lib/posts"
 
 export async function getStaticPaths() {
@@ -22,7 +23,7 @@ const { Content } = await render(post)
 ---
 <Base title={post.title} description={post.data.description} active={post.id} path={url(post)}>
     <article>
-        <h1>{post.title}</h1>
+        <h1 class="post-title"><CategoryIcon category={post.category} />{post.title}</h1>
         <div class="meta">
             {post.data.date && <time datetime={post.data.date.toISOString()}>{fmtDate(post.data.date)}</time>}
             <span>~{post.minutes} min</span>

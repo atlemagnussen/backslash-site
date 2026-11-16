@@ -480,6 +480,20 @@ h4 {
     margin-top: 2em;
 }
 
+/* post title with its category icon (src/lib/icons.ts) */
+.post-title {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+}
+
+.category-icon {
+    flex: none;
+    width: 1.5em;
+    height: 1.5em;
+    color: var(--accent);
+}
+
 .meta {
     font-size: 0.867rem;
     color: var(--muted);
