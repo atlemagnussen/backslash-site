@@ -10,7 +10,7 @@ content/          # site-agnostic markdown — the actual blog
   drafts/         # unpublished, not built
   pages/          # standalone pages (privacy policy)
 astro/            # new site generator (design: design/DESIGN.md)
-vitepress/        # current site generator, still deployed
+vitepress/        # old site generator, no longer deployed
   docs/posts            -> ../../content/posts (symlink)
   docs/privacy-policy.md -> ../../content/pages/privacy-policy.md (symlink)
 ```
@@ -39,4 +39,4 @@ npm run build    # -> docs/.vitepress/dist
 
 ## Deploy
 
-Google Cloud Build (`cloudbuild.yaml`) builds `vitepress/` and deploys to Firebase Hosting (`backslash-project`).
+Google Cloud Build (`cloudbuild.yaml`) builds `astro/` and deploys to Firebase Hosting (`backslash-project`).

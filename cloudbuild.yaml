@@ -1,12 +1,12 @@
 steps:
-- name: node
-  dir: vitepress
+- name: node:24
+  dir: astro
   entrypoint: npm
-  args: [ 'install' ]
-- name: node
-  dir: vitepress
+  args: [ 'ci' ]
+- name: node:24
+  dir: astro
   entrypoint: npm
   args: [ 'run', 'build' ]
 - name: us-docker.pkg.dev/firebase-cli/us/firebase
-  dir: vitepress
-  args: [ 'deploy', '--project=backslash-project', '--only=hosting' ]
+  dir: astro
+  args: [ 'deploy', '--project=backslash-project', '--only=hosting:prod' ]
