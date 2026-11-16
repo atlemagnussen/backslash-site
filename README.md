@@ -37,7 +37,7 @@ npm start        # dev server
 npm run build    # -> dist
 ```
 
-If a markdown config change does not show up, delete `astro/node_modules/.astro` (content cache).
+After a change to the markdown config (`astro.config.mjs`), restart with `npm start -- --force`. Astro caches rendered markdown and does not see config changes.
 
 ## Deploy
 
