@@ -73,7 +73,7 @@ typings/
 .next
 
 dist/
-lib/
+/lib/
 src/articles/
 public/build/
 .DS_Store
