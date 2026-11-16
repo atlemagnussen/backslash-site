@@ -22,21 +22,15 @@ Anyhow, if you want the full documentation go to the official gnome page [here](
 ## Wireless
 
 ### Check if wifi is enabled
-```sh
-nmcli radio
-```
-Will respond like this if it's ok
-```sh
+```console
+$ nmcli radio
 WIFI-HW  WIFI     WWAN-HW  WWAN
 enabled  enabled  enabled  enabled
 ```
 
 ### List devices to see wifi device name
-```sh
-nmcli device
-```
-Will respond something like this
-```sh
+```console
+$ nmcli device
 DEVICE  TYPE      STATE         CONNECTION
 wlp3s0  wifi      disconnected  --
 lo      loopback  unmanaged     --

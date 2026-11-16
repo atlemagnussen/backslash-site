@@ -27,12 +27,8 @@ gpg --gen-key
 
 or the more advanced
 
-```sh
-gpg --full-generate-key
-```
-
-Output will be something like this:
-```bash
+```console
+$ gpg --full-generate-key
 pub   rsa3072 2019-08-20 [SC] [expires: 2021-08-19]
       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

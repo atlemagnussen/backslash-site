@@ -34,14 +34,10 @@ cd ~/openvpn-pki
 
 ## Step 3 Create the Certificate Authority (CA)
 
-```sh
-# Initialize the PKI environment
-./easyrsa init-pki
-```
+Initialize the PKI environment:
 
-Response
-
-```sh
+```console
+$ ./easyrsa init-pki
 init-pki' complete; you may now create a CA or requests.
 
 Your newly created PKI dir is:
@@ -55,13 +51,8 @@ Using Easy-RSA configuration:
 Build the CA. You will be prompted to enter a **CA Passphrase**.
 Make this secure and write it down.
 
-```sh
-./easyrsa build-ca
-```
-
-Response
-
-```sh
+```console
+$ ./easyrsa build-ca
 CA creation complete. Your new CA certificate is at:
 * /home/slash/openvpn-pki/pki/ca.crt
 ```
@@ -69,9 +60,9 @@ CA creation complete. Your new CA certificate is at:
 ## Step 4 Generate Server Keys and Certificate
 
 Generate the server key and CSR. 'server' is the Common Name (CN).
-./easyrsa gen-req server nopass
 
-```sh
+```console
+$ ./easyrsa gen-req server nopass
 Private-Key and Public-Certificate-Request files created.
 Your files are:
 * req: /home/slash/openvpn-pki/pki/reqs/server.req
@@ -79,13 +70,8 @@ Your files are:
 ```
 
 Sign the server certificate using the CA. You will be prompted for the CA Passphrase.
-```sh
-./easyrsa sign-req server server
-```
-
-Response
-
-```sh
+```console
+$ ./easyrsa sign-req server server
 * /home/slash/openvpn-pki/vars
 Please check over the details shown below for accuracy. Note that this request
 has not been cryptographically verified. Please be sure it came from a trusted
@@ -128,13 +114,8 @@ Certificate created at:
 
 ## Step 5 Generate Diffie-Hellman (DH) Parameters and TLS Auth Key
 
-```sh
-./easyrsa gen-dh
-```
-
-Response
-
-```sh
+```console
+$ ./easyrsa gen-dh
 DH parameters of size 2048 created at:
 * /home/slash/openvpn-pki/pki/dh.pem
 ```

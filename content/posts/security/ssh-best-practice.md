@@ -65,13 +65,8 @@ The most common one is known as `RSA`. RSA is now only considered safe if you ha
 The recommended algorithm as of writing is called [ed25519](https://ed25519.cr.yp.to/)  
 Since this is not default in `ssh-keygen` you need to specify it, like this:
 
-```sh
-ssh-keygen -a 100 -t ed25519
-```
-
-It will prompt you like this:
-
-```bash
+```console
+$ ssh-keygen -a 100 -t ed25519
 Generating public/private ed25519 key pair.
 Enter file in which to save the key (/home/slash/.ssh/id_ed25519):
 ```
@@ -81,7 +76,7 @@ Just go with the default location, there is only convenciance and no security to
 Next thing it will ask of you is a password. What this means is: Do you want to encrypt your private key with a password? I usually don't, because the concept of a private key is to keep it private. But a password will add another layer of security, so that if someone steals your private key they must guess a password as well. This **also** means you have to type the password every time you use the key. For example when logging in to your server using public key encryption, as this section in the blog post is about.  
 If you want to skip password, just hit enter - twice. When done you are done you will see something like this:
 
-```bash
+```console
 Your identification has been saved in ~/.ssh/id_ed25519.
 Your public key has been saved in ~/.ssh/id_ed25519.pub.
 The key fingerprint is:
@@ -104,13 +99,8 @@ Hopefully you created the key pair on the client machine you would _log in from_
 Don't worry, just do it again on the right machine. The server can have a pair lying around. No worries.  
 When you got it all. now print out your public file:
 
-```sh
-cat ~/.ssh/id_ed25519.pub
-```
-
-Should give you something like this:
-
-```bash
+```console
+$ cat ~/.ssh/id_ed25519.pub
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKIaMSAI0b3loG9wbWx2Ja/WZPsIj5Zip3XbShxG3zuC slash@slash-server
 ```
 

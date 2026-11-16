@@ -224,13 +224,10 @@ save the command from this output and use it to join worker nodes later
 
 ## Verify first time
 
-```sh
-kubectl get nodes
-```
-
 Expected response before set up network and other nodes:
 
-```bash
+```console
+$ kubectl get nodes
 NAME            STATUS     ROLES           AGE     VERSION
 k8s-master-01   NotReady   control-plane   3m33s   v1.35.2
 ```

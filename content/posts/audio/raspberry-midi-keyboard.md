@@ -90,13 +90,8 @@ Or, you can use [screen](https://linux.die.net/man/1/screen) which allows you to
 
 #### List alsa outputs
 
-```sh
-aconnect -o
-```
-
-Should output something like
-
-```bash
+```console
+$ aconnect -o
 client 14: 'Midi Through' [type=kernel]
     0 'Midi Through Port-0'
 client 20: 'Keystation 49 MK3' [type=kernel,card=1]

@@ -44,7 +44,9 @@ const codeBlocks = {
         let wrapper
         if (TERMINAL_LANGS.has(lang)) {
             const title = this.options.meta?.__raw?.match(/title="([^"]*)"/)?.[1] ?? "terminal"
-            wrapper = el("div", ["code", "terminal"], [el("div", ["code-bar"], [el("span", ["code-title"], [text(title)]), button])])
+            // output-only blocks have nothing worth copying
+            const hasCommand = /^\$ /m.test(this.source)
+            wrapper = el("div", ["code", "terminal"], [el("div", ["code-bar"], [el("span", ["code-title"], [text(title)]), ...(hasCommand ? [button] : [])])])
         } else {
             const label = lang && lang !== "plaintext" && lang !== "text" ? [el("span", ["code-lang"], [text(lang)])] : []
             wrapper = el("div", ["code"], [el("div", ["code-bar"], [...label, button])])

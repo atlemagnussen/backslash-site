@@ -20,13 +20,8 @@ tag:
 
 ### Find disks UUID
 
-```sh
-ls /dev/disk/by-uuid -la
-```
-
-Output:
-
-```bash
+```console
+$ ls /dev/disk/by-uuid -la
 0E8F-D420 -> ../../sdd1
 0f43a799-68a1-412f-9d63-67c78375262e -> ../../sdd2
 2afcf0ee-f07e-4309-8ea9-76898c5a87ff -> ../../sdd4
@@ -96,13 +91,8 @@ Save and quit
 
 ### Format partition
 
-```sh
-mkfs.ext4 /dev/sdc1
-```
-
-Output
-
-```bash
+```console
+$ mkfs.ext4 /dev/sdc1
 mke2fs 1.43.4 (31-Jan-2017)
 Creating filesystem with 2441608704 4k blocks and 305201152 inodes
 Filesystem UUID: c1692a98-9c4a-4127-9bed-f86e5fcab9dc
@@ -137,13 +127,10 @@ sudo mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 /dev/sdc /dev/
 
 ### check status
 
-```sh
-cat /proc/mdstat
-```
-
 While creating it could look like this:
 
-```bash
+```console
+$ cat /proc/mdstat
 Personalities : [raid1] [linear] [multipath] [raid0] [raid6] [raid5] [raid4] [raid10]
 md1 : active raid1 sdd[1] sdc[0]
       9766305792 blocks super 1.2 [2/2] [UU]
@@ -153,7 +140,8 @@ md1 : active raid1 sdd[1] sdc[0]
 
 Healthy output when everything is up and running looks something like this:
 
-```bash
+```console
+$ cat /proc/mdstat
 md0 : active raid1 sda1[1] sdb1[2]
       3906886272 blocks super 1.2 [2/2] [UU]
 
