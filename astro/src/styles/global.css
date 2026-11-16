@@ -860,8 +860,9 @@ hr {
     margin-top: 18px;
 }
 
+/* the rail stays greyscale: color is reserved for the content */
 .rail-cmd .dollar {
-    color: var(--accent-2);
+    color: var(--fg-dim);
 }
 
 .outline {
@@ -885,7 +886,7 @@ hr {
 }
 
 .outline .mark {
-    color: var(--accent);
+    color: var(--fg-dim);
 }
 
 .outline a:hover,
@@ -894,7 +895,7 @@ hr {
 }
 
 .outline a.current .hashes {
-    color: var(--accent);
+    color: var(--fg-dim);
 }
 
 .stat {
@@ -919,7 +920,7 @@ hr {
 }
 
 .progress .bar {
-    color: var(--accent);
+    color: var(--fg-dim);
 }
 
 /* ---------- keys help ("?") ---------- */

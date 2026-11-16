@@ -20,7 +20,7 @@ Status per item: **locked** (decided), **open** (candidates narrowed, not decide
 | Body width | locked | Max 74ch. |
 | Active post marker | locked | Faint accent tint (12%), 2px accent edge on the left, normal text color. Reverse video was too strong: it pulled focus from the content. |
 
-| Right rail | open | Post pages, 1400px and wider. `grep -n '^##'` outline with source line numbers and the current section marked; `stat` block (created, modified from git, words); ASCII reading progress. |
+| Right rail | open | Post pages, 1400px and wider. `grep -n '^##'` outline with source line numbers and the current section marked; `stat` block (created, modified from git, words); ASCII reading progress. Greyscale only: the current section is marked by brightness, not color, so the rail does not pull focus. |
 | Keyboard | open | Vim keys: `j`/`k` scroll, `n`/`p` next/previous post, `gg`/`G` top/bottom, `/` filter, `?` man-page style help. Off while typing in a field. |
 
 ## Colors
