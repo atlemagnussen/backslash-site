@@ -14,8 +14,6 @@ tag:
 
 # Docker dotnet core
 
-<div class="separator" style="clear: both; text-align: center;"><img border="0" src="https://storage.googleapis.com/backslash-project.appspot.com/static/docker-dotnetcore.png"/></div>
-
 Short notice on how to build docker images from aspnet core apps. So that you can can publish them to cloud services like [AWS](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/dotnet-core-tutorial.html), [GCP](https://cloud.google.com/appengine/docs/flexible/dotnet/quickstart) and [Azure](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/azure-apps)
 
 * [Dotnet core docker images for dotnet core](https://hub.docker.com/_/microsoft-dotnet-core)

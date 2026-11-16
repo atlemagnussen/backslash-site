@@ -547,10 +547,6 @@ em {
     height: auto;
 }
 
-.prose .separator {
-    text-align: left !important;
-}
-
 code {
     font-family: inherit;
     font-size: .92em;

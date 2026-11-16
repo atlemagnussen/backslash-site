@@ -28,9 +28,6 @@ I can go on and on
 After 2 decades of experience it's all pretty clear to me: *Consumer market routers* is just a bunch of *crappy things* which are both too complex and too cheap. They usually are both router, switch and Wifi access points. If one of these components fail, you must go buy a whole new crappy device.  
 And what's up with the space ship looks ?!  
 
-![Asus spaceship](https://s3-eu-west-1.amazonaws.com/atle-static/Asus_spaceship.png)
-
-
 The point being, you should separate the router from the wifi access point and regain control. Because the router includes a lot of setup, like static IP addresses and port forwardings and so on. And it should contain your firewall rules.
 The setup of your router are things your should fully control, have full backup of and it should run on an always  updated system. The wireless part should just be an extension of the router's network, and provide little setup except the security password.  
 
@@ -58,9 +55,7 @@ And just to underline it
 * No IPv6, will add this in a separate article
 * No WiFi
 
-![RaspberryPi3Bplus](https://s3-eu-west-1.amazonaws.com/atle-static/rasppi3.jpg)  
-
-I am using latest Raspbian Stretch as of now, which is 25 september 2018.
+The hardware is a Raspberry Pi 3 B+. I am using latest Raspbian Stretch as of now, which is 25 september 2018.
 
 You will need an additional USB Ethernet adapter. I use [D-Link DUB-1312](https://eu.dlink.com/uk/en/products/dub-1312-usb-3-gigabit-ethernet-adapter) just because it was the first one I found that works out of the box on Linux.
 

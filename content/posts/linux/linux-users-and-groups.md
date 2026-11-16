@@ -13,7 +13,6 @@ tag:
 ---
 
 # Linux users and groups CRUD
-<img src="https://storage.googleapis.com/backslash-project.appspot.com/static/tux.png" alt="linux logo tux" width="320">
 
 Creating, deleting and updating users and groups is something I always struggle with remembering. After all I am not a sysadmin so I don't do it too often I guess. So I'm putting together a cheat sheet/article of my own.
 

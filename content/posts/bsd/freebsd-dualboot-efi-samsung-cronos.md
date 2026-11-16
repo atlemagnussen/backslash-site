@@ -16,7 +16,6 @@ tag:
 ---
 
 # FreeBSD dual boot EFI Samsung Cronos
-<div class="separator" style="clear: both; text-align: center;"><img border="0" src="https://storage.googleapis.com/atle-static/pics/freebsdgreen.png"/></div>
 How to install FreeBSD alongside Linux and dual boot from GRUB with EFI enabled on a Samsung Cronos.  
 The knowledge does not only apply to Samsung Cronos of course.  
 

@@ -14,8 +14,6 @@ tag:
 
 # Arch Linux on Macbooc Air - 2013
 
-<div class="separator" style="clear: both; text-align: center;"><img border="0" src="https://storage.googleapis.com/backslash-project.appspot.com/static/Macbook-linux-white.png"/></div>
-
 ## Resources
 - [Github user pandeiro's arch on air guide](https://github.com/pandeiro/arch-on-air)
 - [Medium user @philpl article on running Arch Linux on Macbook](https://medium.com/@philpl/arch-linux-running-on-my-macbook-2ea525ebefe3)
