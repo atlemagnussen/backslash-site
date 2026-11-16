@@ -256,7 +256,7 @@ kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.30.0/
 kubectl set env daemonset/calico-node  -n kube-system IP_AUTODETECTION_METHOD=interface=enp1s0
 ```
 
-::: tip
+:::tip
 
 After CNI its a really good time to bootstrap [GitOps](https://opengitops.dev) with for example [FluxCD](https://fluxcd.io/flux/installation/bootstrap/) 
 

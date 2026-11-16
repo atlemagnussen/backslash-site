@@ -1,0 +1,40 @@
+---
+import { render } from "astro:content"
+import Base from "../../layouts/Base.astro"
+import { getPosts, tree, fmtDate, url, type Post } from "../../lib/posts"
+
+export async function getStaticPaths() {
+    const posts = await getPosts()
+    // prev/next follow the sidebar order
+    const ordered = tree(posts).flatMap(g => g.items)
+    return posts.map(post => {
+        const i = ordered.indexOf(post)
+        return {
+            params: { slug: post.id },
+            props: { post, prev: i > 0 ? ordered[i - 1] : undefined, next: i >= 0 ? ordered[i + 1] : undefined },
+        }
+    })
+}
+
+interface Props { post: Post; prev?: Post; next?: Post }
+const { post, prev, next } = Astro.props
+const { Content } = await render(post)
+---
+<Base title={post.title} description={post.data.description} active={post.id} path={url(post)}>
+    <article>
+        <h1>{post.title}</h1>
+        <div class="meta">
+            {post.data.date && <time datetime={post.data.date.toISOString()}>{fmtDate(post.data.date)}</time>}
+            <span>~{post.minutes} min</span>
+            {post.data.tag?.length && <span>{post.data.tag.map(t => <span class="tag">{t} </span>)}</span>}
+        </div>
+        <div class="prose"><Content /></div>
+    </article>
+    {(prev || next) && <>
+        <hr>
+        <nav class="post-nav">
+            {prev && <a href={url(prev)}><span>← prev</span>{prev.slug}</a>}
+            {next && <a href={url(next)}><span>next →</span>{next.slug}</a>}
+        </nav>
+    </>}
+</Base>

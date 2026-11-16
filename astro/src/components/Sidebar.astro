@@ -1,0 +1,91 @@
+---
+import { getPosts, tree, url } from "../lib/posts"
+interface Props { active?: string }
+const { active } = Astro.props
+const groups = tree(await getPosts())
+const activeCategory = active?.split("/")[0]
+---
+<aside class="side" id="side">
+    <div class="side-head">
+        <a class="logo" href="/"><span class="slash">\</span>backslash</a>
+        <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="side-body">[ ls ]</button>
+    </div>
+    <div class="side-body" id="side-body">
+        <label class="filter"><span>/</span><input id="filter" placeholder="filter posts" autocomplete="off" aria-label="Filter posts"><kbd>/</kbd></label>
+        <nav class="tree" id="tree">
+            {groups.map(({ category, items }) => (
+                <details open={category === activeCategory} data-default-open={category === activeCategory ? "" : undefined}>
+                    <summary><span><span class="caret" />{category}/</span><span class="count">{items.length}</span></summary>
+                    <ul>
+                        {items.map((p, i) => (
+                            <li data-key={`${category}/${p.slug} ${p.title}`.toLowerCase()}>
+                                <a href={url(p)} class:list={{ active: p.id === active }} aria-current={p.id === active ? "page" : undefined} title={p.title}>
+                                    <span class="branch">{i === items.length - 1 ? "└─ " : "├─ "}</span>{p.slug}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </details>
+            ))}
+            <div class="no-match" hidden>no match</div>
+        </nav>
+        <div class="side-foot">
+            <a href="/posts/links">links</a>
+            <a href="/rss.xml">rss</a>
+            <label class="theme">theme
+                <select id="theme" aria-label="Color theme">
+                    <option>gruvbox</option><option>amber</option><option>ash</option><option>tokyo</option>
+                </select>
+            </label>
+        </div>
+    </div>
+</aside>
+
+<script>
+    const side = document.getElementById("side")!
+    const btn = document.getElementById("menu-btn")!
+    const filter = document.getElementById("filter") as HTMLInputElement
+    const tree = document.getElementById("tree")!
+    const theme = document.getElementById("theme") as HTMLSelectElement
+
+    const setOpen = (open: boolean) => {
+        side.classList.toggle("open", open)
+        btn.setAttribute("aria-expanded", String(open))
+        btn.textContent = open ? "[ x ]" : "[ ls ]"
+    }
+    btn.addEventListener("click", () => setOpen(!side.classList.contains("open")))
+
+    const groups = [...tree.querySelectorAll("details")]
+    function applyFilter() {
+        const q = filter.value.trim().toLowerCase()
+        let any = false
+        for (const d of groups) {
+            let hits = 0
+            for (const li of d.querySelectorAll("li")) {
+                const hit = !q || li.dataset.key!.includes(q)
+                li.hidden = !hit
+                if (hit) hits++
+            }
+            d.hidden = hits === 0
+            d.open = q ? hits > 0 : d.hasAttribute("data-default-open")
+            any ||= hits > 0
+        }
+        tree.querySelector<HTMLElement>(".no-match")!.hidden = any
+    }
+    filter.addEventListener("input", applyFilter)
+    document.addEventListener("keydown", e => {
+        const typing = e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement
+        if (e.key === "/" && !typing) { e.preventDefault(); setOpen(true); filter.focus() }
+        if (e.key === "Escape" && e.target === filter) { filter.value = ""; applyFilter(); filter.blur() }
+    })
+
+    theme.value = document.documentElement.dataset.palette ?? "gruvbox"
+    theme.addEventListener("change", () => {
+        document.documentElement.dataset.palette = theme.value
+        try { localStorage.setItem("palette", theme.value) } catch {}
+    })
+
+    // scroll only the tree (scrollIntoView would also scroll the window)
+    const active = tree.querySelector<HTMLElement>(".active")
+    if (active) tree.scrollTop = active.offsetTop - tree.offsetTop - tree.clientHeight / 2
+</script>

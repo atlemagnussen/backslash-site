@@ -7,7 +7,7 @@ export default () => {
     return defineConfig({
         lastUpdated: true,
         sitemap: {
-            hostname: "https://blog.atle.guru"
+            hostname: "https://blog.logout.work"
         },
         head: [
             ["link", { rel: "icon", type: "image/svg+xml", href: "/images/favicon.svg" }]
@@ -31,7 +31,6 @@ export default () => {
                 collapseDepth: 2
             }),
             socialLinks: [
-                { icon: "github", link: "https://github.com/atlemagnussen" }
             ],
             footer: {
                 message: `Personal blog. <a href="privacy-policy">Privacy Policy</a>`,

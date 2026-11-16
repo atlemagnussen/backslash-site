@@ -29,7 +29,7 @@ dns proxy = no
 [Media]
   comment = Media
   path = /mnt/md0/Media
-  valid users = nas atle
+  valid users = nas slash
   force group = nas
   create mask = 0660
   directory mask = 0771

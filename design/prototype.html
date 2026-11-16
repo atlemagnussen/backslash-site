@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>backslash — prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Geist+Mono:wght@400;500;700&family=Martian+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ---------- palettes ---------- */
+:root, [data-palette="gruvbox"] {
+  --bg: #1d2021; --bg-2: #282828; --bg-3: #32302f;
+  --fg: #ebdbb2; --fg-dim: #a89984; --muted: #7c6f64;
+  --accent: #fe8019; --accent-2: #b8bb26; --link: #83a598;
+  --brick: #d65d0e; --code-bg: #171a1a; --border: #3c3836;
+}
+[data-palette="amber"] {
+  --bg: #13110f; --bg-2: #1b1815; --bg-3: #24201b;
+  --fg: #e8d9c0; --fg-dim: #b3a389; --muted: #6f6250;
+  --accent: #ffb000; --accent-2: #e8d9c0; --link: #ffcc66;
+  --brick: #ffb000; --code-bg: #0e0c0a; --border: #2e2822;
+}
+[data-palette="ash"] {
+  --bg: #161616; --bg-2: #1e1e1e; --bg-3: #262626;
+  --fg: #d8d8d8; --fg-dim: #a0a0a0; --muted: #6a6a6a;
+  --accent: #e06c5a; --accent-2: #9fbf8a; --link: #e8a090;
+  --brick: #b0b0b0; --code-bg: #101010; --border: #2c2c2c;
+}
+[data-palette="tokyo"] {
+  --bg: #16161e; --bg-2: #1a1b26; --bg-3: #24283b;
+  --fg: #c0caf5; --fg-dim: #a9b1d6; --muted: #565f89;
+  --accent: #7aa2f7; --accent-2: #9ece6a; --link: #7dcfff;
+  --brick: #7aa2f7; --code-bg: #111118; --border: #292e42;
+}
+
+:root { --font: "IBM Plex Mono", ui-monospace, monospace; --side-w: 290px; }
+* { box-sizing: border-box; }
+html { background: var(--bg); color-scheme: dark; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font-family: var(--font); font-size: 15px; line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--link); text-decoration: none; border-bottom: 1px dotted currentColor; }
+a:hover { color: var(--accent); border-bottom-style: solid; }
+::selection { background: var(--accent); color: var(--bg); }
+
+/* ---------- brick background ---------- */
+#bg {
+  position: fixed; inset: 0; width: 100%; height: 100%;
+  z-index: 0; pointer-events: none; color: var(--brick);
+  opacity: var(--brick-opacity, .12);
+}
+#bg[data-fade="left"]     { -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(var(--side-w) - 40px), transparent calc(var(--side-w) + 260px)); mask-image: linear-gradient(to right, #000 0, #000 calc(var(--side-w) - 40px), transparent calc(var(--side-w) + 260px)); }
+#bg[data-fade="corner"]   { -webkit-mask-image: radial-gradient(ellipse 70% 90% at 0% 0%, #000 20%, transparent 80%); mask-image: radial-gradient(ellipse 70% 90% at 0% 0%, #000 20%, transparent 80%); }
+#bg[data-fade="edges"]    { -webkit-mask-image: linear-gradient(to right, #000 0, transparent 38%, transparent 70%, #000 100%); mask-image: linear-gradient(to right, #000 0, transparent 38%, transparent 70%, #000 100%); }
+#bg[data-fade="bottom"]   { -webkit-mask-image: linear-gradient(to bottom, #000 0, transparent 85%); mask-image: linear-gradient(to bottom, #000 0, transparent 85%); }
+#bg[data-fade="none"]     { -webkit-mask-image: none; mask-image: none; }
+
+/* ---------- layout ---------- */
+.app { position: relative; z-index: 1; display: grid; grid-template-columns: var(--side-w) 1fr; min-height: 100vh; }
+
+.side {
+  position: sticky; top: 0; height: 100vh; overflow: hidden;
+  display: flex; flex-direction: column;
+  border-right: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg) 20%, transparent);
+}
+.side-head { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 10px; }
+.logo { font-weight: 700; font-size: 18px; color: var(--fg); border: 0; letter-spacing: -.01em; }
+.logo .slash { color: var(--accent); margin-right: 2px; }
+.logo:hover { color: var(--fg); }
+.menu-btn { display: none; background: none; border: 1px solid var(--border); color: var(--fg-dim); font: inherit; font-size: 13px; padding: 2px 8px; cursor: pointer; }
+.menu-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+.filter { margin: 4px 20px 10px; display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+.filter input { flex: 1; background: none; border: 0; outline: 0; color: var(--fg); font: inherit; caret-color: var(--accent); }
+.filter input::placeholder { color: var(--muted); }
+.filter kbd { font: inherit; font-size: 11px; border: 1px solid var(--border); padding: 0 5px; color: var(--muted); }
+
+.tree { flex: 1; overflow-y: auto; padding: 0 0 16px; font-size: 13px; line-height: 1.55; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+.tree details { margin: 0; }
+.tree summary { list-style: none; cursor: pointer; padding: 1px 20px; color: var(--fg-dim); user-select: none; display: flex; justify-content: space-between; }
+.tree summary::-webkit-details-marker { display: none; }
+.tree summary .caret { color: var(--muted); display: inline-block; width: 1.2em; }
+.tree details[open] > summary .caret { color: var(--accent); }
+.tree summary .count { color: var(--muted); }
+.tree summary:hover { color: var(--fg); background: var(--bg-3); }
+.tree ul { list-style: none; margin: 0; padding: 0; }
+.tree li a { display: block; border: 0; padding: 1px 20px 1px 20px; color: var(--fg-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tree li a .branch { color: var(--muted); }
+.tree li a:hover { color: var(--fg); background: var(--bg-3); }
+.tree li a.active { background: var(--accent); color: var(--bg); }
+.tree li a.active .branch { color: var(--bg); opacity: .6; }
+.tree .top-links a { color: var(--fg-dim); }
+.tree .sep { color: var(--muted); padding: 8px 20px 2px; font-size: 12px; }
+
+.side-foot { padding: 10px 20px 16px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); display: flex; gap: 14px; }
+.side-foot a { color: var(--fg-dim); border: 0; }
+.side-foot a:hover { color: var(--accent); }
+
+/* ---------- article ---------- */
+main { min-width: 0; padding: 40px 48px 120px; }
+.article { max-width: 74ch; margin: 0 auto 0 6vw; }
+.prompt { font-size: 13px; color: var(--muted); margin-bottom: 28px; }
+.prompt .user { color: var(--accent-2); }
+.prompt .path { color: var(--link); }
+.prompt .cursor { display: inline-block; width: .6em; height: 1.1em; background: var(--fg-dim); vertical-align: text-bottom; margin-left: 4px; opacity: .6; }
+
+h1, h2, h3, h4 { line-height: 1.3; font-weight: 600; margin: 2em 0 .6em; }
+h1 { font-size: 26px; margin-top: 0; font-weight: 700; letter-spacing: -.01em; }
+h2 { font-size: 18px; color: var(--fg); }
+h2::before { content: "## "; color: var(--accent); font-weight: 400; }
+h3 { font-size: 15px; }
+h3::before { content: "### "; color: var(--muted); font-weight: 400; }
+
+.meta { font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 16px; margin: -4px 0 32px; }
+.meta .tag { color: var(--fg-dim); }
+.meta .tag::before { content: "#"; color: var(--muted); }
+
+p { margin: 0 0 1.1em; }
+strong { color: var(--fg); font-weight: 600; }
+em { color: var(--fg-dim); }
+ul.list { padding-left: 0; list-style: none; }
+ul.list li { padding-left: 1.6em; position: relative; margin: .3em 0; }
+ul.list li::before { content: "-"; position: absolute; left: .4em; color: var(--accent); }
+
+code { font-family: inherit; font-size: .92em; background: var(--bg-3); color: var(--fg); padding: .1em .35em; border-radius: 2px; }
+pre {
+  background: var(--code-bg); border: 1px solid var(--border); border-left: 2px solid var(--accent);
+  padding: 14px 18px; overflow-x: auto; font-size: 13.5px; line-height: 1.6; margin: 1.2em 0 1.5em; position: relative;
+}
+pre code { background: none; padding: 0; font-size: inherit; }
+pre .lang { position: absolute; top: 4px; right: 10px; font-size: 11px; color: var(--muted); }
+pre .p { color: var(--muted); user-select: none; }
+pre .k { color: var(--accent); }
+pre .s { color: var(--accent-2); }
+pre .c { color: var(--muted); font-style: italic; }
+
+blockquote { margin: 1.4em 0; padding: 2px 0 2px 16px; border-left: 2px solid var(--muted); color: var(--fg-dim); }
+blockquote p:last-child { margin: 0; }
+
+.callout { border: 1px solid var(--border); background: var(--bg-2); padding: 10px 16px; margin: 1.4em 0; font-size: 14px; }
+.callout .label { color: var(--accent); font-weight: 600; }
+
+hr { border: 0; border-top: 1px dashed var(--border); margin: 3em 0; }
+.post-nav { display: flex; justify-content: space-between; gap: 20px; font-size: 13px; }
+.post-nav span { color: var(--muted); display: block; }
+
+/* ---------- mobile ---------- */
+@media (max-width: 900px) {
+  .app { grid-template-columns: 1fr; }
+  .side { position: sticky; top: 0; height: auto; z-index: 10; border-right: 0; border-bottom: 1px solid var(--border); background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(6px); }
+  .side-head { padding: 10px 16px; }
+  .menu-btn { display: inline-block; }
+  .side:not(.open) .filter, .side:not(.open) .tree, .side:not(.open) .side-foot { display: none; }
+  .side.open { max-height: 100vh; }
+  .side.open .tree { max-height: 60vh; }
+  .filter { margin: 4px 16px 8px; }
+  .tree summary, .tree li a { padding-left: 16px; padding-right: 16px; }
+  main { padding: 24px 16px 80px; }
+  .article { margin: 0 auto; }
+  h1 { font-size: 21px; }
+  body { font-size: 14.5px; }
+  #bg[data-fade="left"] { -webkit-mask-image: linear-gradient(to bottom, #000 0, transparent 50%); mask-image: linear-gradient(to bottom, #000 0, transparent 50%); }
+}
+
+/* ---------- prototype tweak panel (not part of the design) ---------- */
+.tweaks { position: fixed; right: 12px; bottom: 12px; z-index: 50; background: var(--bg-2); border: 1px solid var(--border); font-size: 12px; color: var(--fg-dim); width: 250px; }
+.tweaks summary { cursor: pointer; padding: 6px 10px; color: var(--accent); list-style: none; }
+.tweaks summary::-webkit-details-marker { display: none; }
+.tweaks .body { padding: 4px 10px 10px; display: grid; grid-template-columns: 70px 1fr; gap: 6px 8px; align-items: center; }
+.tweaks select, .tweaks input[type=range] { width: 100%; background: var(--bg); color: var(--fg); border: 1px solid var(--border); font: inherit; font-size: 12px; accent-color: var(--accent); }
+.tweaks button { grid-column: 1 / -1; background: none; border: 1px solid var(--border); color: var(--fg-dim); font: inherit; font-size: 12px; cursor: pointer; padding: 3px; }
+.tweaks button:hover { color: var(--accent); border-color: var(--accent); }
+</style>
+</head>
+<body>
+
+<svg id="bg" data-fade="left" aria-hidden="true"><defs><pattern id="bricks" patternUnits="userSpaceOnUse"></pattern></defs><rect width="100%" height="100%" fill="url(#bricks)"/></svg>
+
+<div class="app">
+  <aside class="side" id="side">
+    <div class="side-head">
+      <a class="logo" href="#"><span class="slash">\</span>backslash</a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="tree">[ ls ]</button>
+    </div>
+    <label class="filter"><span>/</span><input id="filter" placeholder="filter posts" autocomplete="off"><kbd>/</kbd></label>
+    <nav class="tree" id="tree"></nav>
+    <div class="side-foot">
+      <a href="#">about</a><a href="#">links</a><a href="#">rss</a><a href="#">github</a>
+    </div>
+  </aside>
+
+  <main>
+    <article class="article">
+      <div class="prompt"><span class="user">atle@backslash</span>:<span class="path">~/blog/security/ssh-best-practice</span>$<span class="cursor"></span></div>
+
+      <h1>SSH best practices</h1>
+      <div class="meta">
+        <span>2021-02-05</span><span>~6 min</span>
+        <span><span class="tag">ssh</span> <span class="tag">cli</span> <span class="tag">encryption</span> <span class="tag">linux</span></span>
+      </div>
+
+      <p>Start using the secure shell as it was meant to be, secure.</p>
+
+      <div class="callout"><span class="label">TL;DR</span>
+        <ul class="list">
+          <li>Use public key authentication and disable password login in sshd_config: <code>PasswordAuthentication no</code></li>
+          <li>Use ed25519 for your SSH keys: <code>ssh-keygen -a 100 -t ed25519</code></li>
+          <li>Don't ignore the fingerprint changed messages if you get one</li>
+        </ul>
+      </div>
+
+      <p>If you're <em>ssh'ing</em> home to your open port 22, you're done. Internet hacker factories continuously crawl the web for open SSH ports.</p>
+      <p>You can easily prove it yourself. Try this:</p>
+
+<pre><span class="lang">sh</span><code><span class="p">$ </span>grep <span class="s">"Failed pass"</span> /var/log/auth.log</code></pre>
+
+      <p>and see if there's any occurrences. See <a href="#">this blogpost on tecmint.com</a> to check out other ways, as it depends on your distro where you find the auth log.</p>
+
+      <h2>Disable password over ssh</h2>
+      <p>The problem with passwords is that they can be either guessed or too complex to walk around and remember. You can program your router to block multiple failed ssh attempts, and maybe you should, but there is a more convenient way to avoid the problem.</p>
+      <p>Enter <strong>public key authentication</strong>.</p>
+
+      <blockquote><p>If you do this without setting up a key pair that your ssh server will accept, you will now be locked out forever.</p></blockquote>
+
+      <h3>Generate a key</h3>
+<pre><span class="lang">sh</span><code><span class="c"># -a 100 = KDF rounds, makes brute forcing the passphrase slower</span>
+<span class="p">$ </span>ssh-keygen -a <span class="k">100</span> -t <span class="k">ed25519</span> -C <span class="s">"atle@laptop"</span>
+<span class="p">$ </span>ssh-copy-id -i ~/.ssh/id_ed25519.pub user@server</code></pre>
+
+      <h3>Lock down sshd_config</h3>
+<pre><span class="lang">/etc/ssh/sshd_config</span><code><span class="k">PasswordAuthentication</span> no
+<span class="k">PermitRootLogin</span> no
+<span class="k">PubkeyAuthentication</span> yes</code></pre>
+
+      <p>Restart the daemon with <code>sudo systemctl restart sshd</code>, and keep your current session open until you've verified that a new one works.</p>
+
+      <hr>
+      <nav class="post-nav">
+        <a href="#"><span>← prev</span>gpg-master-subkeys</a>
+        <a href="#" style="text-align:right"><span>next →</span>openvpn-setup</a>
+      </nav>
+    </article>
+  </main>
+</div>
+
+<details class="tweaks" open>
+  <summary>[ tweaks ]</summary>
+  <div class="body">
+    <label for="tPalette">palette</label>
+    <select id="tPalette"><option>gruvbox</option><option>amber</option><option>ash</option><option>tokyo</option></select>
+    <label for="tFont">font</label>
+    <select id="tFont">
+      <option value='"Martian Mono"'>Martian Mono</option>
+      <option value='"IBM Plex Mono"'>IBM Plex Mono</option>
+      <option value='"JetBrains Mono"'>JetBrains Mono</option>
+      <option value='"Geist Mono"'>Geist Mono</option>
+    </select>
+    <label for="tStyle">bricks</label>
+    <select id="tStyle"><option value="shaded">shaded bricks</option><option value="both">lines + shade</option></select>
+    <label for="tSize">size</label>
+    <select id="tSize"><option value="32">small</option><option value="56" selected>medium</option><option value="88">large</option></select>
+    <label for="tJitter">jitter</label>
+    <input id="tJitter" type="range" min="0" max="1" step="0.05" value="0.55">
+    <label for="tOpacity">strength</label>
+    <input id="tOpacity" type="range" min="0" max="0.4" step="0.01" value="0.22">
+    <label for="tFade">fade</label>
+    <select id="tFade"><option value="left">behind sidebar</option><option value="corner">top-left corner</option><option value="edges">both edges</option><option value="bottom">top to bottom</option></select>
+    <button id="tReseed">reseed bricks</button>
+  </div>
+</details>
+
+<script>
+/* ---------- nav tree (real post list) ---------- */
+const POSTS = {
+  audio: ["raspberry-midi-keyboard"],
+  bitcoin: ["bitcoin-c-lightning","bitcoin-lnd","bitcoin-recover-keys","tor-for-bitcoin"],
+  bsd: ["freebsd-dualboot-efi-samsung-cronos","freebsd-install"],
+  cloud: ["elastic-setup-linux"],
+  containers: ["k8s-cluster","k8s-destroy","k8s-operations"],
+  dotnet: ["docker-dotnet-core","dotnet-core-cli-commands"],
+  javascript: ["es6-modules","js-useful-tricks"],
+  linux: ["arch-linux-bluetooth","arch-linux-install","arch-linux-macbook-air","arch-linux-recover-from-pacman-crash","debian-cleanup","debian-install-efi","dms-niri","gentoo-samsung-cronos","kvm-qemu-debian","kvm-qemu-virt","kvm-qemu-win11","linux-disk-management","linux-mount-smb","linux-network","linux-users-and-groups","nix-pkg-manager-debian","nmcli-how-to"],
+  network: ["diy-router-1","dlink-dcs-5222l-notes"],
+  security: ["gpg-commands","gpg-master-subkeys","openvpn-setup","sql-server-linux","ssh-best-practice"],
+  "source-control": ["git-tricks"],
+  unix: ["cups-configure","unix-tar-common-operations"],
+};
+const ACTIVE = "ssh-best-practice";
+const tree = document.getElementById("tree");
+
+function renderTree(q = "") {
+  q = q.trim().toLowerCase();
+  let html = "";
+  for (const [cat, posts] of Object.entries(POSTS)) {
+    const hits = posts.filter(p => !q || p.includes(q) || cat.includes(q));
+    if (!hits.length) continue;
+    const open = q || hits.includes(ACTIVE) ? " open" : "";
+    html += `<details${open}><summary><span><span class="caret">${open ? "▾" : "▸"}</span>${cat}/</span><span class="count">${hits.length}</span></summary><ul>`;
+    hits.forEach((p, i) => {
+      const br = i === hits.length - 1 ? "└─ " : "├─ ";
+      html += `<li><a href="#"${p === ACTIVE ? ' class="active"' : ""}><span class="branch">${br}</span>${p}</a></li>`;
+    });
+    html += `</ul></details>`;
+  }
+  tree.innerHTML = html || `<div class="sep">no match</div>`;
+  tree.querySelectorAll("details").forEach(d => d.addEventListener("toggle", () => {
+    d.querySelector(".caret").textContent = d.open ? "▾" : "▸";
+  }));
+}
+renderTree();
+
+const filter = document.getElementById("filter");
+filter.addEventListener("input", () => renderTree(filter.value));
+document.addEventListener("keydown", e => {
+  if (e.key === "/" && document.activeElement !== filter) {
+    e.preventDefault(); side.classList.add("open"); filter.focus();
+  }
+  if (e.key === "Escape") { filter.value = ""; renderTree(); filter.blur(); }
+});
+
+const side = document.getElementById("side");
+const menuBtn = document.getElementById("menuBtn");
+menuBtn.addEventListener("click", () => {
+  const open = side.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", open);
+  menuBtn.textContent = open ? "[ x ]" : "[ ls ]";
+});
+
+/* ---------- brick generator ---------- */
+// Running bond: every second row shifted half a brick. Tile repeats seamlessly.
+// In the real site this runs at build time and emits a static SVG.
+let seed = 7;
+function rng() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+
+function buildBricks() {
+  const w = +tSize.value, h = Math.round(w * 0.4), rows = 8, cols = 6;
+  const style = tStyle.value, jitter = +tJitter.value;
+  const pat = document.getElementById("bricks");
+  pat.setAttribute("width", w * cols);
+  pat.setAttribute("height", h * rows);
+  const s0 = seed; let out = "";
+  for (let r = 0; r < rows; r++) {
+    const off = (r % 2) * w / 2, y = r * h;
+    const shade = Array.from({ length: cols }, () => rng());
+    for (let c = -1; c < cols; c++) {
+      const x = c * w + off;
+      const v = shade[(c + cols) % cols];               // same value for wrapped brick
+      const fillOp = (1 - jitter) * 0.35 + jitter * v * 0.6;
+      if (style === "lines") {
+        const strokeOp = 1 - jitter * 0.8 * v;
+        out += `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="none" stroke="currentColor" stroke-opacity="${strokeOp.toFixed(2)}" stroke-width="1"/>`;
+      } else {
+        const g = style === "both" ? 0 : 3;
+        out += `<rect x="${x + g / 2}" y="${y + g / 2}" width="${w - g}" height="${h - g}" rx="1.5" fill="currentColor" fill-opacity="${fillOp.toFixed(2)}"${style === "both" ? ' stroke="currentColor" stroke-width="1"' : ""}/>`;
+      }
+    }
+  }
+  pat.innerHTML = out;
+  seed = s0;
+}
+
+/* ---------- tweaks ---------- */
+const $ = id => document.getElementById(id);
+const tPalette = $("tPalette"), tFont = $("tFont"), tStyle = $("tStyle"), tSize = $("tSize"),
+      tJitter = $("tJitter"), tOpacity = $("tOpacity"), tFade = $("tFade"), bg = $("bg");
+const controls = { tPalette, tFont, tStyle, tSize, tJitter, tOpacity, tFade };
+
+function apply() {
+  document.documentElement.dataset.palette = tPalette.value;
+  document.documentElement.style.setProperty("--font", `${tFont.value}, ui-monospace, monospace`);
+  bg.style.setProperty("--brick-opacity", tOpacity.value);
+  bg.dataset.fade = tFade.value;
+  buildBricks();
+  const state = Object.fromEntries(Object.entries(controls).map(([k, el]) => [k, el.value]));
+  try { localStorage.setItem("proto-v2", JSON.stringify({ ...state, seed })); } catch {}
+}
+try {
+  const saved = JSON.parse(localStorage.getItem("proto-v2") || "{}");
+  for (const [k, v] of Object.entries(saved)) if (controls[k]) controls[k].value = v;
+  if (saved.seed) seed = saved.seed;
+} catch {}
+Object.values(controls).forEach(el => el.addEventListener("input", apply));
+if (matchMedia("(max-width: 900px)").matches) document.querySelector(".tweaks").open = false;
+$("tReseed").addEventListener("click", () => { seed = Math.floor(Math.random() * 1e9) + 1; apply(); });
+apply();
+</script>
+</body>
+</html>

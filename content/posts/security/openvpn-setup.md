@@ -45,10 +45,10 @@ Response
 init-pki' complete; you may now create a CA or requests.
 
 Your newly created PKI dir is:
-* /home/atle/openvpn-pki/pki
+* /home/slash/openvpn-pki/pki
 
 Using Easy-RSA configuration:
-* /home/atle/openvpn-pki/vars
+* /home/slash/openvpn-pki/vars
 
 ```
 
@@ -63,7 +63,7 @@ Response
 
 ```sh
 CA creation complete. Your new CA certificate is at:
-* /home/atle/openvpn-pki/pki/ca.crt
+* /home/slash/openvpn-pki/pki/ca.crt
 ```
 
 ## Step 4 Generate Server Keys and Certificate
@@ -74,8 +74,8 @@ Generate the server key and CSR. 'server' is the Common Name (CN).
 ```sh
 Private-Key and Public-Certificate-Request files created.
 Your files are:
-* req: /home/atle/openvpn-pki/pki/reqs/server.req
-* key: /home/atle/openvpn-pki/pki/private/server.ke
+* req: /home/slash/openvpn-pki/pki/reqs/server.req
+* key: /home/slash/openvpn-pki/pki/private/server.ke
 ```
 
 Sign the server certificate using the CA. You will be prompted for the CA Passphrase.
@@ -86,7 +86,7 @@ Sign the server certificate using the CA. You will be prompted for the CA Passph
 Response
 
 ```sh
-* /home/atle/openvpn-pki/vars
+* /home/slash/openvpn-pki/vars
 Please check over the details shown below for accuracy. Note that this request
 has not been cryptographically verified. Please be sure it came from a trusted
 source or that you have verified the request checksum with the sender.
@@ -103,8 +103,8 @@ subject=
 Type the word 'yes' to continue, or any other input to abort.
   Confirm requested details: yes
 
-Using configuration from /home/atle/openvpn-pki/pki/1fa12698/temp.1.1
-Enter pass phrase for /home/atle/openvpn-pki/pki/private/ca.key:
+Using configuration from /home/slash/openvpn-pki/pki/1fa12698/temp.1.1
+Enter pass phrase for /home/slash/openvpn-pki/pki/private/ca.key:
 Check that the request matches the signature
 Signature ok
 The Subject's Distinguished Name is as follows
@@ -117,13 +117,13 @@ Database updated
 Notice
 ------
 Inline file created:
-* /home/atle/openvpn-pki/pki/inline/private/server.inline
+* /home/slash/openvpn-pki/pki/inline/private/server.inline
 
 
 Notice
 ------
 Certificate created at:
-* /home/atle/openvpn-pki/pki/issued/server.crt
+* /home/slash/openvpn-pki/pki/issued/server.crt
 ```
 
 ## Step 5 Generate Diffie-Hellman (DH) Parameters and TLS Auth Key
@@ -136,7 +136,7 @@ Response
 
 ```sh
 DH parameters of size 2048 created at:
-* /home/atle/openvpn-pki/pki/dh.pem
+* /home/slash/openvpn-pki/pki/dh.pem
 ```
 
  Generate the shared TLS Authorization key (for HMAC protection)
@@ -302,7 +302,7 @@ This is the file you put on your Android phone. You must bundle the client's key
 client
 dev tun
 proto udp
-remote srv.atle.guru 1194
+remote vpn.example.com 1194
 resolv-retry infinite
 nobind
 persist-key

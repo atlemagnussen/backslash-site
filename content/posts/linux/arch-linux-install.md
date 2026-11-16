@@ -169,7 +169,7 @@ pacman -S ttf-nerd-fonts-symbols
 ## Sound
 ### Driver
 Alsa  
-```usermod -aG audio atle```  
+```usermod -aG audio slash```  
 ```pacman -S alsa-utils```  
 
 ### Soundserver

@@ -66,7 +66,7 @@ It will prompt you like this:
 
 ```bash
 Generating public/private ed25519 key pair.
-Enter file in which to save the key (/home/atle/.ssh/id_ed25519):
+Enter file in which to save the key (/home/slash/.ssh/id_ed25519):
 ```
 
 Just go with the default location, there is only convenciance and no security to gain by going default on ssh key pair file location. It usually means you don't have to specify key when you eventually log in to your server, it will just pick from your `~/.ssh` folder. But you **can** specify the key or other keys if you want to. Besides, you can move the keys around afterwards if you like, or even copy them.
@@ -78,7 +78,7 @@ If you want to skip password, just hit enter - twice. When done you are done you
 Your identification has been saved in ~/.ssh/id_ed25519.
 Your public key has been saved in ~/.ssh/id_ed25519.pub.
 The key fingerprint is:
-SHA256:v6/Gsv9fe/iyeHzDoDfPheF+Pfa94769009Hw9ZXEIc atle@atle-server
+SHA256:v6/Gsv9fe/iyeHzDoDfPheF+Pfa94769009Hw9ZXEIc slash@slash-server
 The key's randomart image is:
 ```
 
@@ -104,7 +104,7 @@ cat ~/.ssh/id_ed25519.pub
 Should give you something like this:
 
 ```bash
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKIaMSAI0b3loG9wbWx2Ja/WZPsIj5Zip3XbShxG3zuC atle@atle-server
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKIaMSAI0b3loG9wbWx2Ja/WZPsIj5Zip3XbShxG3zuC slash@slash-server
 ```
 
 Now log on to your _ssh server_ again, either physically or ssh with password.  

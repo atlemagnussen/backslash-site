@@ -191,7 +191,7 @@ emerge --ask sys-kernel/linux-firmware
 ```sh
 nano -w /etc/conf.d/hostname
 # Set the hostname variable to the selected host name
-hostname="atlelaptop"
+hostname="slashlaptop"
 
 nano -w /etc/conf.d/net
 # Set the dns_domain_lo variable to the selected domain name

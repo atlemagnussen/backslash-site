@@ -56,12 +56,12 @@ cd bitcoinj/tools
 Reset and sync
 
 ```sh
-./wallet-tool reset --wallet=/home/atle/bitcoin/decrypted-backup
+./wallet-tool reset --wallet=/home/slash/bitcoin/decrypted-backup
 
 ```
 
 Dump priv keys
 
 ```sh
-./wallet-tool dump --wallet=/home/atle/bitcoin/decrypted-backup --password={pincode}
+./wallet-tool dump --wallet=/home/slash/bitcoin/decrypted-backup --password={pincode}
 ```

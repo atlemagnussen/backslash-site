@@ -79,3 +79,6 @@ public/build/
 .DS_Store
 
 token.txt
+
+# Astro
+.astro/

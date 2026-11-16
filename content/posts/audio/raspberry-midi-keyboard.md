@@ -177,14 +177,14 @@ sudo apt install jackd2 jack-tools
 
 #### Give dbus rights
 
-Create a file called `/etc/dbus-1/system.d/jack.conf` and put this content into. Just replace `atle` with your username.
+Create a file called `/etc/dbus-1/system.d/jack.conf` and put this content into. Just replace `slash` with your username.
 
 ```bash
-<!-- atle jackd conf -->
+<!-- slash jackd conf -->
 <!DOCTYPE busconfig PUBLIC "-//freedesktop//DTD D-BUS Bus Configuration 1.0//EN"
  "http://www.freedesktop.org/standards/dbus/1.0/busconfig.dtd">
 <busconfig>
-    <policy user="atle">
+    <policy user="slash">
         <allow own="org.freedesktop.ReserveDevice1.Audio0"/>
         <allow own="org.freedesktop.ReserveDevice1.Audio1"/>
     </policy>

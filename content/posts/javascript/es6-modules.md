@@ -93,4 +93,4 @@ let sub = new SubFolderModule();
 console.log(sub.get());
 ```
 
-### Clone this [repo](https://github.com/atlemagnussen/es6modules) and test it
+### Test it

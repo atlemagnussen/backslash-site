@@ -187,7 +187,7 @@ sudo mkfs.ext4 -F /dev/md0
 ```sh
 /dev/md0        /mnt/md0                        ext4    defaults        0       2
 #### mount bind dev
-/mnt/md0/development/ /home/atle/development        none    bind
+/mnt/md0/development/ /home/slash/development        none    bind
 ```
 
 ## Linux disk check and error handling

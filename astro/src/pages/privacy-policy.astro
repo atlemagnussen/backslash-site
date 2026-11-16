@@ -1,0 +1,9 @@
+---
+import { getEntry, render } from "astro:content"
+import Base from "../layouts/Base.astro"
+const page = (await getEntry("pages", "privacy-policy"))!
+const { Content } = await render(page)
+---
+<Base title="Privacy Policy" path="/privacy-policy">
+    <div class="prose"><Content /></div>
+</Base>

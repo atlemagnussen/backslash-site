@@ -1,0 +1,17 @@
+---
+import Base from "../layouts/Base.astro"
+import { getPosts, byDate, fmtDate, url } from "../lib/posts"
+const recent = byDate(await getPosts()).filter(p => p.data.date).slice(0, 12)
+---
+<Base>
+    <h1>backslash</h1>
+    <p>Personal blog and technical notes. Mostly Linux, BSD, networking and things I had to figure out twice.</p>
+
+    <div class="cmd"><span class="dollar">$</span> ls -lt posts/ | head -{recent.length}</div>
+    <ul class="ls">
+        {recent.map(p => (
+            <li><span class="date">{fmtDate(p.data.date)}</span><span><span class="cat">{p.category}/</span><a href={url(p)}>{p.slug}</a></span></li>
+        ))}
+    </ul>
+    <p><a href="/posts">all posts →</a></p>
+</Base>

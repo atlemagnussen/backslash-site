@@ -50,7 +50,7 @@ Then run and make the container use *sqlvolume*:
 ```sh
 # run SQL Server 2019 as docker image
 docker run -e 'ACCEPT_EULA=Y' -e "MSSQL_SA_PASSWORD=MySuperPW666!" \
-   -p 1433:1433 --name atlesql2019 \
+   -p 1433:1433 --name slashsql2019 \
    -v sqlvolume:/var/opt/mssql \
    -d mcr.microsoft.com/mssql/server:2019-CU3-ubuntu-18.04
 ```
