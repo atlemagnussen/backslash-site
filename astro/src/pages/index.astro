@@ -9,8 +9,8 @@ const recent = byDate(await getPosts()).filter(p => p.data.date).slice(0, 12)
 
     <div class="cmd"><span class="dollar">$</span> ls -lt posts/ | head -{recent.length}</div>
     <ul class="ls">
-        {recent.map(p => (
-            <li><span class="date">{fmtDate(p.data.date)}</span><span><span class="cat">{p.category}/</span><a href={url(p)}>{p.slug}</a></span></li>
+        {recent.map((p, i) => (
+            <li style={`--i: ${i}`}><span class="date">{fmtDate(p.data.date)}</span><span><span class="cat">{p.category}/</span><a href={url(p)}>{p.slug}</a></span></li>
         ))}
     </ul>
     <p><a href="/posts">all posts →</a></p>

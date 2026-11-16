@@ -1,10 +1,14 @@
 ---
-import { brickTile } from "../lib/bricks"
+import { brickTile, embers } from "../lib/bricks"
 const tile = brickTile()
+const glow = embers()
 ---
 <svg class="bricks" aria-hidden="true">
     <defs>
         <pattern id="bricks" patternUnits="userSpaceOnUse" width={tile.width} height={tile.height} fill="currentColor" set:html={tile.svg} />
     </defs>
     <rect width="100%" height="100%" fill="url(#bricks)" />
+    <g class="embers">
+        {glow.map(e => <rect x={e.x} y={e.y} width={e.width} height={e.height} rx="1.5" style={e.style} />)}
+    </g>
 </svg>

@@ -7,7 +7,7 @@ Status per item: **locked** (decided), **open** (candidates narrowed, not decide
 ## Direction
 
 - Personal blog with technical notes. An about page and links come later.
-- Terminal feel, but simple. No typing animations, blinking cursors or fake window chrome.
+- Terminal feel, but simple. No typewriter text, endless blinking or fake window chrome.
 - Dark theme first.
 
 ## Layout
@@ -52,6 +52,18 @@ Running-bond pattern (every second row shifted half a brick). Generated at build
 | Fade (desktop) | locked | Both edges: clear from 38% to 70% of the viewport width, behind the content. |
 | Fade (mobile) | open | Top only, gone at 35% height. Not reviewed yet. |
 | Fade: none | rejected | The bricks always fade. |
+
+## Motion
+
+Motion only on arrival or action, never looping in the reading area. All motion is off under `prefers-reduced-motion`. CSS only, in the motion section at the end of `global.css`.
+
+| Item | Status | Decision |
+|---|---|---|
+| Page transitions | open | Native cross-document view transitions. Sidebar and bricks stay; content fades out 90ms, fades in with a 6px rise over 160ms. Browsers without support navigate normally. |
+| Ember bricks | open | 48 bricks on a separate layer glow in the accent color and cool down, 6–15s cycles, random phase. Values in `EMBER` (`astro/src/lib/bricks.ts`). |
+| Command output | open | Home `ls` lines print one by one, 25ms apart. |
+| Prompt cursor | open | Blinks 4 times on load, then stays solid. |
+| Typewriter text, scroll reveals, glitch effects | rejected | They loop or delay reading. |
 
 ## Stack
 

@@ -807,3 +807,38 @@ hr {
         mask-image: linear-gradient(to bottom, #000 0, transparent 35%);
     }
 }
+/* ---------- motion ----------
+   Motion only on arrival or action, never looping in the reading area.
+   Everything is off for prefers-reduced-motion. */
+.embers rect { fill: var(--accent); opacity: 0; }
+
+@media (prefers-reduced-motion: no-preference) {
+    /* 1. page transitions: sidebar and bricks stay, content swaps */
+    @view-transition { navigation: auto; }
+    .bricks { view-transition-name: bricks; }
+    .side { view-transition-name: sidebar; }
+    main { view-transition-name: content; }
+    ::view-transition-group(sidebar), ::view-transition-group(bricks) { animation: none; }
+    ::view-transition-old(sidebar), ::view-transition-old(bricks) { display: none; }
+    ::view-transition-new(sidebar), ::view-transition-new(bricks) { animation: none; }
+    ::view-transition-old(content) { animation: 90ms ease-in both content-out; }
+    ::view-transition-new(content) { animation: 160ms ease-out 40ms both content-in; }
+
+    /* 2. ember bricks */
+    .embers rect { animation: ember 10s ease-in-out infinite; }
+
+    /* 3. command output: lines print one by one */
+    .ls li { animation: print 1ms calc(var(--i, 0) * 25ms) both; }
+
+    /* 4. prompt cursor: blinks a few times, then stays solid */
+    .prompt .cursor { animation: blink 1.1s steps(1) 4; }
+}
+
+@keyframes content-out { to { opacity: 0; transform: translateY(-4px); } }
+@keyframes content-in { from { opacity: 0; transform: translateY(6px); } }
+@keyframes ember {
+    0%, 70%, 100% { opacity: 0; }
+    85% { opacity: .9; }
+}
+@keyframes print { from { visibility: hidden; } }
+@keyframes blink { 50% { opacity: 0; } }
