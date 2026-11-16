@@ -581,14 +581,45 @@ pre code {
     overflow-wrap: normal;
 }
 
-pre[data-language]:not([data-language="plaintext"])::before {
-    content: attr(data-language);
-    position: sticky;
-    float: right;
-    left: 100%;
-    margin: -10px -12px 0 8px;
+/* code block wrapper with language label and [copy] button (built in astro.config.mjs) */
+.code {
+    position: relative;
+    margin: 1.2em 0 1.5em;
+}
+
+.code pre {
+    margin: 0;
+}
+
+.code-bar {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    padding: 2px 6px 2px 10px;
+    background: var(--code-bg);
     font-size: 0.733rem;
     color: var(--muted);
+}
+
+.code-copy {
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    color: var(--fg-dim);
+    cursor: pointer;
+}
+
+.code-copy:hover {
+    color: var(--accent);
+}
+
+.code-copy.done {
+    color: var(--accent-2);
 }
 
 blockquote {
@@ -786,10 +817,12 @@ hr {
         font-size: 16px;
     }
 
-    pre {
+    .code {
         margin-left: -16px;
         margin-right: -16px;
-        border-left-width: 2px;
+    }
+
+    pre {
         border-right: 0;
     }
 
