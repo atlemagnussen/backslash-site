@@ -12,7 +12,7 @@ tag:
   - arch linux
 ---
 
-# Arch Linux on Macbooc Air - 2013
+# Arch Linux on MacBook Air - 2013
 
 ## Resources
 - [Github user pandeiro's arch on air guide](https://github.com/pandeiro/arch-on-air)

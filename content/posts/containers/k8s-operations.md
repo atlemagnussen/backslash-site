@@ -1,3 +1,7 @@
+---
+date: 2026-03-11
+---
+
 # k8s operations
 
 ## Interactive shell
