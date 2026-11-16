@@ -79,7 +79,7 @@ const activeCategory = active?.split("/")[0]
         if (e.key === "Escape" && e.target === filter) { filter.value = ""; applyFilter(); filter.blur() }
     })
 
-    theme.value = document.documentElement.dataset.palette ?? "gruvbox"
+    theme.value = document.documentElement.dataset.palette ?? "ash"
     theme.addEventListener("change", () => {
         document.documentElement.dataset.palette = theme.value
         try { localStorage.setItem("palette", theme.value) } catch {}

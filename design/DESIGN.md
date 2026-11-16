@@ -24,7 +24,7 @@ Status per item: **locked** (decided), **open** (candidates narrowed, not decide
 
 | Item | Status | Decision |
 |---|---|---|
-| Palettes | locked | Four palettes: gruvbox (default), amber, ash, tokyo. Visitors pick one with `theme` in the sidebar footer. Saved in `localStorage`. |
+| Palettes | locked | Four palettes: ash (default), gruvbox, amber, tokyo. Visitors pick one with `theme` in the sidebar footer. Saved in `localStorage`. |
 | Code highlighting | locked | Shiki `css-variables` theme. Token colors come from the palette. |
 | Code copy | locked | `[copy]` button and language label in the top-right corner of each code block. Shows `[copied]` for 1.5s. Built at build time (Shiki transformer), one delegated click handler. |
 | Background | locked | Near-black, never pure `#000`. |

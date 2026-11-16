@@ -1,7 +1,6 @@
 /* Design decisions: design/DESIGN.md */
 
 /* ---------- palettes ---------- */
-:root,
 [data-palette="gruvbox"] {
     --bg: #1d2021;
     --bg-2: #282828;
@@ -44,6 +43,8 @@
     --tok-comment: #6f6250;
 }
 
+/* default palette: applies when no theme is picked */
+:root:not([data-palette]),
 [data-palette="ash"] {
     --bg: #161616;
     --bg-2: #1e1e1e;
