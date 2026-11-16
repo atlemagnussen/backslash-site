@@ -336,14 +336,15 @@ a:hover {
     background: var(--bg-3);
 }
 
+/* active post: faint tint and a thin accent edge, so it does not pull focus from the content */
 .tree li a.active {
-    background: var(--accent);
-    color: var(--bg);
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    box-shadow: inset 2px 0 0 var(--accent);
+    color: var(--fg);
 }
 
 .tree li a.active .branch {
-    color: var(--bg);
-    opacity: .6;
+    color: var(--accent);
 }
 
 .tree .no-match {

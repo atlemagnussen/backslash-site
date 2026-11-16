@@ -18,7 +18,7 @@ Status per item: **locked** (decided), **open** (candidates narrowed, not decide
 | Mobile navigation | locked | Sticky top bar with a `[ ls ]` button that opens the tree. Breakpoint 900px. |
 | Page header | locked | Prompt path above the title: `atle@backslash:~/posts/<category>/<slug>$`. It mirrors the URL. |
 | Body width | locked | Max 74ch. |
-| Active post marker | locked | Reverse video: accent background, page color text. |
+| Active post marker | locked | Faint accent tint (12%), 2px accent edge on the left, normal text color. Reverse video was too strong: it pulled focus from the content. |
 
 | Right rail | open | Post pages, 1400px and wider. `grep -n '^##'` outline with source line numbers and the current section marked; `stat` block (created, modified from git, words); ASCII reading progress. |
 | Keyboard | open | Vim keys: `j`/`k` scroll, `n`/`p` next/previous post, `gg`/`G` top/bottom, `/` filter, `?` man-page style help. Off while typing in a field. |
