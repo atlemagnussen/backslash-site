@@ -394,9 +394,16 @@ main {
     padding: 40px 48px 120px;
 }
 
+.columns {
+    display: flex;
+    align-items: flex-start;
+    gap: 4vw;
+    margin-left: 6vw;
+}
+
 .content {
-    max-width: 74ch;
-    margin: 0 auto 0 6vw;
+    flex: 0 1 74ch;
+    min-width: 0;
 }
 
 .prompt {
@@ -816,6 +823,159 @@ hr {
     color: var(--accent-2);
 }
 
+/* ---------- right rail (post pages, wide screens only) ---------- */
+.rail {
+    display: none;
+}
+
+@media (min-width: 1400px) {
+    .rail {
+        display: block;
+        position: sticky;
+        top: 40px;
+        flex: 0 0 320px;
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: var(--border) transparent;
+        padding: 12px 16px;
+        font-size: 0.75rem;
+        line-height: 1.6;
+        color: var(--fg-dim);
+        background: color-mix(in srgb, var(--bg) 88%, transparent);
+        border-left: 1px solid var(--border);
+    }
+}
+
+.rail-cmd {
+    color: var(--muted);
+    margin: 0 0 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rail-cmd:not(:first-child) {
+    margin-top: 18px;
+}
+
+.rail-cmd .dollar {
+    color: var(--accent-2);
+}
+
+.outline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.outline a {
+    display: block;
+    border: 0;
+    color: var(--fg-dim);
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.outline .ln,
+.outline .hashes {
+    color: var(--muted);
+}
+
+.outline .mark {
+    color: var(--accent);
+}
+
+.outline a:hover,
+.outline a.current {
+    color: var(--fg);
+}
+
+.outline a.current .hashes {
+    color: var(--accent);
+}
+
+.stat {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 2ch;
+    margin: 0;
+}
+
+.stat dt {
+    color: var(--muted);
+}
+
+.stat dd {
+    margin: 0;
+}
+
+.progress {
+    margin-top: 18px;
+    white-space: pre;
+    color: var(--muted);
+}
+
+.progress .bar {
+    color: var(--accent);
+}
+
+/* ---------- keys help ("?") ---------- */
+.keys-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--fg-dim);
+    font: inherit;
+    font-size: inherit;
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+.keys-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.keys-help {
+    background: var(--bg-2);
+    color: var(--fg);
+    border: 1px solid var(--border);
+    padding: 16px 24px;
+    font: inherit;
+    font-size: 0.8rem;
+}
+
+.keys-help::backdrop {
+    background: rgb(0 0 0 / 0.6);
+}
+
+.keys-help pre {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none !important;
+    font-size: inherit;
+}
+
+.keys-help b {
+    color: var(--accent);
+}
+
+.keys-help button {
+    margin-top: 12px;
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    color: var(--fg-dim);
+    cursor: pointer;
+}
+
+.keys-help button:hover {
+    color: var(--accent);
+}
+
 /* ---------- mobile ---------- */
 @media (max-width: 900px) {
     .app {
@@ -865,8 +1025,8 @@ hr {
         padding: 24px 16px 80px;
     }
 
-    .content {
-        margin: 0 auto;
+    .columns {
+        margin-left: 0;
     }
 
     h1 {

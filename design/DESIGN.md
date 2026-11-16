@@ -20,6 +20,9 @@ Status per item: **locked** (decided), **open** (candidates narrowed, not decide
 | Body width | locked | Max 74ch. |
 | Active post marker | locked | Reverse video: accent background, page color text. |
 
+| Right rail | open | Post pages, 1400px and wider. `grep -n '^##'` outline with source line numbers and the current section marked; `stat` block (created, modified from git, words); ASCII reading progress. |
+| Keyboard | open | Vim keys: `j`/`k` scroll, `n`/`p` next/previous post, `gg`/`G` top/bottom, `/` filter, `?` man-page style help. Off while typing in a field. |
+
 ## Colors
 
 | Item | Status | Decision |

@@ -2,6 +2,8 @@
 import { render } from "astro:content"
 import Base from "../../layouts/Base.astro"
 import CategoryIcon from "../../components/CategoryIcon.astro"
+import Rail from "../../components/Rail.astro"
+import { outline, lastModified, wordCount } from "../../lib/rail"
 import { getPosts, tree, fmtDate, url, type Post } from "../../lib/posts"
 
 export async function getStaticPaths() {
@@ -19,7 +21,7 @@ export async function getStaticPaths() {
 
 interface Props { post: Post; prev?: Post; next?: Post }
 const { post, prev, next } = Astro.props
-const { Content } = await render(post)
+const { Content, headings } = await render(post)
 ---
 <Base title={post.title} description={post.data.description} active={post.id} path={url(post)}>
     <article>
@@ -34,8 +36,9 @@ const { Content } = await render(post)
     {(prev || next) && <>
         <hr>
         <nav class="post-nav">
-            {prev && <a href={url(prev)}><span>← prev</span>{prev.slug}</a>}
-            {next && <a href={url(next)}><span>next →</span>{next.slug}</a>}
+            {prev && <a href={url(prev)} rel="prev"><span>← prev</span>{prev.slug}</a>}
+            {next && <a href={url(next)} rel="next"><span>next →</span>{next.slug}</a>}
         </nav>
     </>}
+    <Rail slot="rail" post={post} items={outline(post, headings)} modified={lastModified(post)} words={wordCount(post)} />
 </Base>
