@@ -285,18 +285,20 @@ a:hover {
     display: none;
 }
 
-.tree .caret {
+/* category icon in place of a caret: muted when closed, accent when open */
+.tree .cat-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.tree .tree-icon {
+    width: 1.15em;
+    height: 1.15em;
     color: var(--muted);
-    display: inline-block;
-    width: 1.2em;
 }
 
-.tree .caret::before {
-    content: "▸";
-}
-
-.tree details[open]>summary .caret::before {
-    content: "▾";
+.tree details[open]>summary .tree-icon {
     color: var(--accent);
 }
 
