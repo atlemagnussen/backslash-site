@@ -22,6 +22,18 @@ const TERMINAL_LANGS = new Set(["console", "shellsession"])
 // Click handling: src/scripts/copy-code.ts
 const codeBlocks = {
     name: "code-blocks",
+    // The console grammar barely colors the command itself; re-highlight "$ " lines with the full sh grammar.
+    tokens(lines) {
+        if (!TERMINAL_LANGS.has(this.options.lang)) return
+        const source = this.source.split("\n")
+        return lines.map((tokens, i) => {
+            const command = source[i]?.match(/^\$ (.*)$/)?.[1]
+            if (command === undefined) return tokens
+            const sh = this.codeToTokens(command, { lang: "sh", theme: this.options.theme }).tokens[0] ?? []
+            const prompt = tokens[0]
+            return [prompt, { ...prompt, content: " " }, ...sh]
+        })
+    },
     line(node, line) {
         if (TERMINAL_LANGS.has(this.options.lang) && /^\$ /.test(this.source.split("\n")[line - 1] ?? ""))
             this.addClassToHast(node, "command")
