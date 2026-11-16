@@ -69,15 +69,11 @@ gpg --import friendxxx.public.gpg
 
 get keyid from `--list-keys`
 
-```sh
-gpg --edit-key 9A5704E6742C5B32395057FCACB6EE444EE8C7A2 trust
-# then select level of trust
+Open the key, then select the level of trust (4 = full):
+
+```console prompt="gpg>"
+$ gpg --edit-key 9A5704E6742C5B32395057FCACB6EE444EE8C7A2 trust
 gpg> 4
-```
-
-output:
-
-```bash
 pub  rsa3072/ACB6EE444EE8C7A2
      created: 2021-02-05  expires: 2023-02-05  usage: SC
      trust: full          validity: full
@@ -88,7 +84,7 @@ sub  rsa3072/6634A7A0E2024ADE
 
 Then save and quit:
 
-```sh
+```console prompt="gpg>"
 gpg> save
 ```
 

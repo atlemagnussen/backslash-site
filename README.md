@@ -26,6 +26,14 @@ Nov 16 03:12:44 server sshd[18422]: Failed password for root from 203.0.113.42 p
 ```
 ````
 
+For interactive tools, add the tool's prompt. Those lines then count as commands too:
+
+````md
+```console prompt="(parted)"
+(parted) print
+```
+````
+
 Use documentation IP ranges in example output (`192.0.2.x`, `198.51.100.x`, `203.0.113.x`), never real addresses.
 
 ## Astro

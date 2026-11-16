@@ -1,8 +1,9 @@
 // One delegated handler for every [copy] button (buttons are built in astro.config.mjs).
-// Terminal blocks copy only the commands, without the "$ " prompt and without output.
+// Terminal blocks copy only the commands, without the prompt ("$", or a custom one) and without output.
 function textToCopy(block: Element) {
     const commands = [...block.querySelectorAll<HTMLElement>(".terminal .line.command")]
-    if (commands.length) return commands.map(l => l.innerText.replace(/^\$\s?/, "")).join("\n")
+    if (commands.length)
+        return commands.map(l => [...l.children].filter(c => !c.classList.contains("term-prompt")).map(c => c.textContent).join("").trim()).join("\n")
     return (block.querySelector("pre code") as HTMLElement | null)?.innerText.replace(/\n$/, "") ?? ""
 }
 

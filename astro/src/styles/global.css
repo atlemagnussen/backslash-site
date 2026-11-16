@@ -665,7 +665,7 @@ pre code {
     color: var(--fg-dim) !important;
 }
 
-.terminal .line.command > span:first-child {
+.terminal .line.command > .term-prompt {
     color: var(--accent-2) !important;
 }
 

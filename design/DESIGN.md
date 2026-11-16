@@ -27,7 +27,7 @@ Status per item: **locked** (decided), **open** (candidates narrowed, not decide
 | Palettes | locked | Four palettes: ash (default), gruvbox, amber, tokyo. Visitors pick one with `theme` in the sidebar footer. Saved in `localStorage`. |
 | Code highlighting | locked | Shiki `css-variables` theme. Token colors come from the palette. |
 | Code copy | locked | `[copy]` button and language label in the top-right corner of each code block. Shows `[copied]` for 1.5s. Built at build time (Shiki transformer), one delegated click handler. |
-| Terminal blocks | locked | ` ```console ` fences render as a terminal: title bar (`title="…"` in the fence, default `terminal`), no window dots. `$ ` lines are commands, highlighted with the full `sh` grammar. Other lines are output: dimmed. Long lines wrap with a hanging indent. `[copy]` copies only the commands. |
+| Terminal blocks | locked | ` ```console ` fences render as a terminal: title bar (`title="…"` in the fence, default `terminal`), no window dots. `$ ` lines are commands, highlighted with the full `sh` grammar. Other lines are output: dimmed. Long lines wrap with a hanging indent. `prompt="(parted)"` adds a prompt for interactive tools. `[copy]` copies only the commands, without prompts; no button on output-only blocks. |
 | Images | open | Replace screenshots of terminal output with terminal blocks. Keep local image files only for real photos. |
 | Background | locked | Near-black, never pure `#000`. |
 | Accent | locked | One accent color per palette, plus one muted color for metadata. |

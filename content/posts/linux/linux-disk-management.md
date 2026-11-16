@@ -40,13 +40,13 @@ UUID=e04e6c4d-aea5-4465-8a06-c7163196db27       /mnt/ssd1       ext4    defaults
 
 Start parted on the disk
 
-```sh
-parted /dev/sdc
+```console
+$ parted /dev/sdc
 ```
 
 Create GPT disk label
 
-```sh
+```console prompt="(parted)"
 (parted) mklabel gpt
 ```
 
@@ -54,25 +54,23 @@ Create one partition of all available space
 
 ### Create partition on entire disk
 
-```sh
+```console prompt="(parted)"
 (parted) mkpart primary 0% 100%
 ```
 
 ### Create partition on spesific size in MB
-```sh
-(parted) unit MB print free # will print in mb
-(parted) mkpart primary ext4 1MB 8001463MB # from - to
+
+Switch units to MB and print the free space, then create the partition from start to end:
+
+```console prompt="(parted)"
+(parted) unit MB print free
+(parted) mkpart primary ext4 1MB 8001463MB
 ```
 
-Print to see current partition table
+Print to see current partition table. Output for this example looks like:
 
-```sh
+```console prompt="(parted)"
 (parted) print
-```
-
-Output for this example looks like
-
-```bash
 Model: ATA WDC WD100EFAX-68 (scsi)
 Disk /dev/sdc: 10.0TB
 Sector size (logical/physical): 512B/4096B
@@ -85,7 +83,7 @@ Number  Start   End     Size    File system  Name     Flags
 
 Save and quit
 
-```sh
+```console prompt="(parted)"
 (parted) quit
 ```
 

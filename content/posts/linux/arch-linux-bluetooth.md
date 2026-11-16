@@ -42,7 +42,7 @@ Will get you into a new command line interface
 
 Type `list` to see bluetooth controller is present on the computer  
 If yes make your headphone ready for `pairing` and follow this:
-```sh
+```console prompt="[bluetooth]#"
 [bluetooth]# power on
 [bluetooth]# agent on
 [bluetooth]# default-agent
@@ -51,7 +51,7 @@ If yes make your headphone ready for `pairing` and follow this:
 ```
 
 The last command will start listing devices, you should see a MAC address and a name which will help you recognize the right device. Copy the MAC addres and then
-```sh
+```console prompt="[bluetooth]#"
 [bluetooth]# pair 12:34:56:78:90:AB
 [bluetooth]# trust 12:34:56:78:90:AB
 [bluetooth]# connect 12:34:56:78:90:AB
