@@ -1,0 +1,31 @@
+---
+// Right rail on wide screens: outline as grep output, stat block, reading progress. Script: src/scripts/rail.ts
+import { fmtDate, type Post } from "../lib/posts"
+import type { OutlineItem } from "../lib/rail"
+interface Props { post: Post; items: OutlineItem[]; modified?: string; words: number }
+const { post, items, modified, words } = Astro.props
+const file = `${post.slug}.md`
+const pad = Math.max(...items.map(i => String(i.line ?? "").length), 1)
+---
+<aside class="rail" aria-label="On this page">
+    {items.length > 0 && <>
+        <div class="rail-cmd"><span class="dollar">$</span> grep -n '^##' {file}</div>
+        <ol class="outline">
+            {items.map(i => (
+                <li class:list={[`d${i.depth}`]}>
+                    <a href={`#${i.slug}`} data-slug={i.slug}>
+                        <span class="ln">{String(i.line ?? "").padStart(pad, " ")}</span><span class="mark"> </span><span class="hashes">{"#".repeat(i.depth)}</span> {i.text}
+                    </a>
+                </li>
+            ))}
+        </ol>
+    </>}
+    <div class="rail-cmd"><span class="dollar">$</span> stat {file}</div>
+    <dl class="stat">
+        {post.data.date && <><dt>created</dt><dd>{fmtDate(post.data.date)}</dd></>}
+        {modified && <><dt>modified</dt><dd>{modified}</dd></>}
+        <dt>words</dt><dd>{words} (~{post.minutes} min)</dd>
+    </dl>
+    <div class="progress" aria-hidden="true"><span class="bar">[{" ".repeat(20)}]</span> <span class="pct">0%</span></div>
+</aside>
+<script>import "../scripts/rail"</script>

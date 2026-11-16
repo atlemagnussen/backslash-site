@@ -3,6 +3,7 @@ import "@fontsource-variable/geist-mono"
 import "../styles/global.css"
 import Bricks from "../components/Bricks.astro"
 import Sidebar from "../components/Sidebar.astro"
+import KeysHelp from "../components/KeysHelp.astro"
 
 interface Props { title?: string; description?: string; active?: string; path?: string }
 const { title, description = "Personal blog and technical notes.", active, path = Astro.url.pathname } = Astro.props
@@ -31,12 +32,17 @@ const prompt = `~${clean === "/" ? "" : clean}`
     <div class="app">
         <Sidebar active={active} />
         <main>
-            <div class="content">
-                <div class="prompt"><span class="user">guest@backslash</span>:<span class="path">{prompt}</span>$<span class="cursor" /></div>
-                <slot />
+            <div class="columns">
+                <div class="content">
+                    <div class="prompt"><span class="user">guest@backslash</span>:<span class="path">{prompt}</span>$<span class="cursor" /></div>
+                    <slot />
+                </div>
+                <slot name="rail" />
             </div>
         </main>
     </div>
+    <KeysHelp />
     <script>import "../scripts/copy-code"</script>
+    <script>import "../scripts/keys"</script>
 </body>
 </html>
