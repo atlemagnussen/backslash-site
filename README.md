@@ -9,13 +9,11 @@ content/          # site-agnostic markdown — the actual blog
   posts/<topic>/  # published posts (frontmatter: title, date, description, tag...)
   drafts/         # unpublished, not built
   pages/          # standalone pages (privacy policy)
-astro/            # new site generator (design: design/DESIGN.md)
-vitepress/        # old site generator, no longer deployed
-  docs/posts            -> ../../content/posts (symlink)
-  docs/privacy-policy.md -> ../../content/pages/privacy-policy.md (symlink)
+astro/            # site generator, reads ../content
+design/           # DESIGN.md (decisions) and the early prototype
 ```
 
-Content is kept out of any generator's folder so different site systems can be tried against the same markdown.
+Content is kept out of the generator's folder, so the generator can be swapped without touching the markdown.
 
 ## Astro
 
@@ -28,15 +26,6 @@ npm run build    # -> dist
 
 If a markdown config change does not show up, delete `astro/node_modules/.astro` (content cache).
 
-## VitePress
-
-```sh
-cd vitepress
-npm install
-npm start        # dev server
-npm run build    # -> docs/.vitepress/dist
-```
-
 ## Deploy
 
-Google Cloud Build (`cloudbuild.yaml`) builds `astro/` and deploys to Firebase Hosting (`backslash-project`).
+Google Cloud Build (`cloudbuild.yaml`) builds `astro/` and deploys to Firebase Hosting (`backslash-project`) on every push to `master`. Manual deploy: `cd astro && npm run deploy`.
