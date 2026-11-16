@@ -15,6 +15,19 @@ design/           # DESIGN.md (decisions) and the early prototype
 
 Content is kept out of the generator's folder, so the generator can be swapped without touching the markdown.
 
+## Writing
+
+Show a command with its expected output as a `console` block. Lines starting with `$ ` are commands; the rest is output. `[copy]` copies only the commands.
+
+````md
+```console title="slash@server: ~"
+$ grep "Failed pass" /var/log/auth.log
+Nov 16 03:12:44 server sshd[18422]: Failed password for root from 203.0.113.42 port 50122 ssh2
+```
+````
+
+Use documentation IP ranges in example output (`192.0.2.x`, `198.51.100.x`, `203.0.113.x`), never real addresses.
+
 ## Astro
 
 ```sh

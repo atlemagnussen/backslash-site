@@ -1,12 +1,18 @@
 // One delegated handler for every [copy] button (buttons are built in astro.config.mjs).
+// Terminal blocks copy only the commands, without the "$ " prompt and without output.
+function textToCopy(block: Element) {
+    const commands = [...block.querySelectorAll<HTMLElement>(".terminal .line.command")]
+    if (commands.length) return commands.map(l => l.innerText.replace(/^\$\s?/, "")).join("\n")
+    return (block.querySelector("pre code") as HTMLElement | null)?.innerText.replace(/\n$/, "") ?? ""
+}
+
 document.addEventListener("click", async e => {
     const button = (e.target as Element).closest<HTMLButtonElement>(".code-copy")
-    if (!button) return
-    const code = button.closest(".code")?.querySelector("pre code") as HTMLElement | null
-    if (!code) return
+    const block = button?.closest(".code")
+    if (!button || !block) return
     let label = "[copied]"
     try {
-        await navigator.clipboard.writeText(code.innerText.replace(/\n$/, ""))
+        await navigator.clipboard.writeText(textToCopy(block))
     } catch {
         label = "[failed]"
     }

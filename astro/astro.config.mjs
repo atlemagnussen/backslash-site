@@ -11,18 +11,34 @@ const callouts = defineMdastPlugin({
     },
 })
 
-// Wrap each highlighted block: <div class="code"><div class="code-bar">sh <button>[copy]</button></div><pre>…</pre></div>
-// Built at build time, so the button causes no layout shift. Click handling: src/scripts/copy-code.ts
-const copyButton = {
-    name: "copy-button",
+const el = (tagName, className, children = [], props = {}) => ({ type: "element", tagName, properties: { className, ...props }, children })
+const text = value => ({ type: "text", value })
+const TERMINAL_LANGS = new Set(["console", "shellsession"])
+
+// Wraps each highlighted block, at build time (no layout shift on load):
+//   <div class="code"><div class="code-bar">sh [copy]</div><pre>…</pre></div>
+// ```console blocks become a terminal: lines starting with "$ " are commands (class "command"),
+// the rest is output. Optional title: ```console title="slash@server: ~"
+// Click handling: src/scripts/copy-code.ts
+const codeBlocks = {
+    name: "code-blocks",
+    line(node, line) {
+        if (TERMINAL_LANGS.has(this.options.lang) && /^\$ /.test(this.source.split("\n")[line - 1] ?? ""))
+            this.addClassToHast(node, "command")
+    },
     root(root) {
         const lang = this.options.lang
-        const label = lang && lang !== "plaintext" && lang !== "text" ? [{ type: "element", tagName: "span", properties: { className: ["code-lang"] }, children: [{ type: "text", value: lang }] }] : []
-        const button = { type: "element", tagName: "button", properties: { type: "button", className: ["code-copy"], ariaLabel: "Copy code" }, children: [{ type: "text", value: "[copy]" }] }
-        root.children = [{
-            type: "element", tagName: "div", properties: { className: ["code"] },
-            children: [{ type: "element", tagName: "div", properties: { className: ["code-bar"] }, children: [...label, button] }, ...root.children],
-        }]
+        const button = el("button", ["code-copy"], [text("[copy]")], { type: "button", ariaLabel: "Copy code" })
+        let wrapper
+        if (TERMINAL_LANGS.has(lang)) {
+            const title = this.options.meta?.__raw?.match(/title="([^"]*)"/)?.[1] ?? "terminal"
+            wrapper = el("div", ["code", "terminal"], [el("div", ["code-bar"], [el("span", ["code-title"], [text(title)]), button])])
+        } else {
+            const label = lang && lang !== "plaintext" && lang !== "text" ? [el("span", ["code-lang"], [text(lang)])] : []
+            wrapper = el("div", ["code"], [el("div", ["code-bar"], [...label, button])])
+        }
+        wrapper.children.push(...root.children)
+        root.children = [wrapper]
     },
 }
 
@@ -35,6 +51,6 @@ export default defineConfig({
     markdown: {
         // ::: tip blocks (used in content written for VitePress)
         processor: satteri({ features: { directive: true }, mdastPlugins: [callouts] }),
-        shikiConfig: { theme: "css-variables", transformers: [copyButton] },
+        shikiConfig: { theme: "css-variables", transformers: [codeBlocks] },
     },
 })

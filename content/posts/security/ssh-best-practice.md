@@ -23,16 +23,23 @@ Start using the secure shell as it was meant to be, secure.
 -   Use ed25519 for your SSH keys `$ ssh-keygen -a 100 -t ed25519`
 -   Don't ignore the fingerprint changed messages if you get one
 
-<div class="separator" style="clear: both; text-align: center;"><img border="0" src="https://storage.googleapis.com/atle-static/pics/ssh_danger_zone.jpg" /></div>
-
 If you're _ssh'ing_ home to your open port 22, you're done. Internet hacker factories continuously crawl the web for open SSH ports.
 
-You can easily prove it yourself, as I've done in my illustration picture above.  
-Try this: 
-```sh
-grep "Failed pass" /var/log/auth.log
+You can easily prove it yourself. Try this:
+
+```console title="slash@server: ~"
+$ grep "Failed pass" /var/log/auth.log
+Nov 16 03:12:44 server sshd[18422]: Failed password for root from 203.0.113.42 port 50122 ssh2
+Nov 16 03:12:47 server sshd[18422]: Failed password for root from 203.0.113.42 port 50122 ssh2
+Nov 16 03:12:51 server sshd[18422]: Failed password for root from 203.0.113.42 port 50122 ssh2
+Nov 16 03:14:09 server sshd[18467]: Failed password for invalid user admin from 198.51.100.17 port 40922 ssh2
+Nov 16 03:14:13 server sshd[18467]: Failed password for invalid user admin from 198.51.100.17 port 40922 ssh2
+Nov 16 03:15:30 server sshd[18502]: Failed password for invalid user ubuntu from 192.0.2.201 port 58114 ssh2
+Nov 16 03:15:58 server sshd[18511]: Failed password for invalid user oracle from 192.0.2.201 port 33870 ssh2
+Nov 16 03:17:02 server sshd[18549]: Failed password for root from 203.0.113.88 port 61204 ssh2
 ```
-and see if there's any occurrences.  
+
+If you see lines like these, they are knocking on your door.  
 See [this blogpost on tecmint.com](https://www.tecmint.com/find-failed-ssh-login-attempts-in-linux/) to check out other ways, as it depends on your distro where you find the auth log.
 
 Now you see them hackers usually trying to log in with the root user. Luckily the option of logging in as root over ssh is disabled by default. You can enable that, but I will not speak of how.  

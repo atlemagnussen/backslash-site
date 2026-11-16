@@ -622,6 +622,53 @@ pre code {
 .code-copy.done {
     color: var(--accent-2);
 }
+/* terminal: ```console blocks (built in astro.config.mjs) */
+.terminal {
+    border: 1px solid var(--border);
+    background: var(--code-bg);
+}
+
+.terminal .code-bar {
+    position: static;
+    justify-content: space-between;
+    padding: 4px 12px;
+    background: var(--bg-3);
+    border-bottom: 1px solid var(--border);
+}
+
+.terminal .code-title {
+    color: var(--fg-dim);
+}
+
+.terminal pre {
+    border: 0;
+}
+
+/* wrap long lines like a real terminal, with a hanging indent so each line stays distinct.
+   Normal code blocks scroll instead. "normal" on code drops the newlines between the block-level lines. */
+.terminal pre code {
+    display: block;
+    white-space: normal;
+}
+
+.terminal .line {
+    display: block;
+    min-height: 1lh;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    padding-left: 2ch;
+    text-indent: -2ch;
+}
+
+/* output dimmed, commands bright, prompt in the second accent */
+.terminal .line:not(.command) span {
+    color: var(--fg-dim) !important;
+}
+
+.terminal .line.command > span:first-child {
+    color: var(--accent-2) !important;
+}
+
 
 blockquote {
     margin: 1.4em 0;
