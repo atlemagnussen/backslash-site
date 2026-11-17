@@ -405,6 +405,8 @@ main {
 .content {
     flex: 0 1 74ch;
     min-width: 0;
+    /* long bare URLs in prose break the line instead of widening the page on phones */
+    overflow-wrap: anywhere;
 }
 
 .prompt {
